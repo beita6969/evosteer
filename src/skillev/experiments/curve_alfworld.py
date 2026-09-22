@@ -72,6 +72,10 @@ def _configured_path() -> str:
         candidate = Path(root) / "ragen/env/alfworld/alfworld_config.yaml"
         if candidate.exists():
             return str(candidate)
+    # The repository ships the upstream base config (the pip package does not).
+    repo_config = Path(__file__).resolve().parents[3] / "configs/alfworld/base_config.yaml"
+    if repo_config.exists():
+        return str(repo_config)
     try:
         package = importlib.import_module("alfworld")
         candidate = Path(str(getattr(package, "__file__", ""))).parent / "configs/base_config.yaml"

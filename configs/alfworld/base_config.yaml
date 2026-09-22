@@ -1,0 +1,37 @@
+# ALFWorld text-environment configuration used by skillev.alfworld_env.
+# Same keys and values as the upstream alfworld configs/base_config.yaml for the
+# fields AlfredTWEnv reads (the pip package does not ship this file).
+# $ALFWORLD_DATA is expanded at load time (scripts/provision_alfworld.sh).
+dataset:
+  data_path: '$ALFWORLD_DATA/json_2.1.1/train'
+  eval_id_data_path: '$ALFWORLD_DATA/json_2.1.1/valid_seen'
+  eval_ood_data_path: '$ALFWORLD_DATA/json_2.1.1/valid_unseen'
+  num_train_games: -1
+  num_eval_games: -1
+
+logic:
+  domain: '$ALFWORLD_DATA/logic/alfred.pddl'
+  grammar: '$ALFWORLD_DATA/logic/alfred.twl2'
+
+env:
+  type: 'AlfredTWEnv'
+  regen_game_files: False
+  domain_randomization: False
+  # 1 pick_and_place, 2 look_at_obj_in_light, 3 pick_clean_then_place,
+  # 4 pick_heat_then_place, 5 pick_cool_then_place, 6 pick_two_obj_and_place
+  task_types: [1, 2, 3, 4, 5, 6]
+  expert_timeout_steps: 150
+  expert_type: 'handcoded'
+  goal_desc_human_anns_prob: 0.0
+
+general:
+  random_seed: 42
+  training_method: 'dagger'
+
+dagger:
+  training:
+    max_nb_steps_per_episode: 50
+
+rl:
+  training:
+    max_nb_steps_per_episode: 50
