@@ -28,55 +28,55 @@
         "role_id": "solver",
         "instruction": "Solve the public task. Give the final answer in the form the task requests. If you are running long, stop exploring and give your best current answer in the requested form immediately.",
         "model_maximum": {
-          "input_tokens": 20480,
-          "output_tokens": 8192,
-          "model_calls": 1,
+          "input_tokens": 81920,
+          "output_tokens": 2048,
+          "model_calls": 21,
           "agent_turns": 1,
-          "wall_time_milliseconds": 300000
+          "wall_time_milliseconds": 600000
         }
       },
       {
         "role_id": "verifier",
         "instruction": "Check the available draft against the public task and provide useful feedback.",
         "model_maximum": {
-          "input_tokens": 20480,
-          "output_tokens": 8192,
-          "model_calls": 1,
+          "input_tokens": 81920,
+          "output_tokens": 2048,
+          "model_calls": 21,
           "agent_turns": 1,
-          "wall_time_milliseconds": 300000
+          "wall_time_milliseconds": 600000
         }
       },
       {
         "role_id": "planner",
         "instruction": "Write a short step-by-step plan for the public task. Do not solve it.",
         "model_maximum": {
-          "input_tokens": 20480,
-          "output_tokens": 8192,
-          "model_calls": 1,
+          "input_tokens": 81920,
+          "output_tokens": 2048,
+          "model_calls": 21,
           "agent_turns": 1,
-          "wall_time_milliseconds": 300000
+          "wall_time_milliseconds": 600000
         }
       },
       {
         "role_id": "researcher",
         "instruction": "List the facts from the public task and any draft that are needed to answer it, each with where it comes from. Do not give a final answer.",
         "model_maximum": {
-          "input_tokens": 20480,
-          "output_tokens": 8192,
-          "model_calls": 1,
+          "input_tokens": 81920,
+          "output_tokens": 2048,
+          "model_calls": 21,
           "agent_turns": 1,
-          "wall_time_milliseconds": 300000
+          "wall_time_milliseconds": 600000
         }
       },
       {
         "role_id": "finalizer",
         "instruction": "Give the final answer to the public task based on the available draft, in exactly the form the task requests.",
         "model_maximum": {
-          "input_tokens": 20480,
-          "output_tokens": 8192,
-          "model_calls": 1,
+          "input_tokens": 81920,
+          "output_tokens": 2048,
+          "model_calls": 21,
           "agent_turns": 1,
-          "wall_time_milliseconds": 300000
+          "wall_time_milliseconds": 600000
         }
       }
     ],
@@ -98,7 +98,7 @@
     "max_actions": null,
     "current_rollouts": 2,
     "reference_rollouts": 2,
-    "total_token_cap": 196608,
+    "total_token_cap": 786432,
     "seed": 42,
     "author_interval": 1,
     "retirement_interval": 10,

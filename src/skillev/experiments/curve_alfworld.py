@@ -221,6 +221,11 @@ class ALFWorldTextExecutor:
     def public_environment_state(self) -> dict[str, Any]:
         return self.episode.public_state()
 
+    def _prompt_tokens(self, prompt: str) -> int:
+        """Exact prompt length when the executor can count it (SGLang/HF), else a safe estimate."""
+        count = getattr(self.policy, "frozen_prompt_tokens", None)
+        return int(count(prompt)) if callable(count) else len(prompt) // 2
+
     def _step_prompt(self, request: NodeExecutionRequest, goal: str) -> str:
         recent = self.episode.history[-8:]
         return json.dumps(
@@ -267,13 +272,26 @@ class ALFWorldTextExecutor:
                 seed=int(request.seed),
             )
             inputs_total, outputs_total, calls = int(inputs), int(outputs), 1
-        for offset in range(_steps_per_node()):
+        # The node's usage must fit the reservation the orchestrator made for this
+        # role (role.model_maximum), so every step is checked against what is left
+        # before the model is called; the node ends early instead of overspending.
+        cap = request.role.model_maximum
+        max_calls = min(_steps_per_node(), int(getattr(cap, "model_calls", 1)))
+        wall_limit_ms = int(getattr(cap, "wall_time_milliseconds", 0) or 0)
+        for offset in range(max_calls - calls):
             if self.episode.done:
                 break
+            prompt = self._step_prompt(request, goal)
+            output_budget = min(per_step_output, int(cap.output_tokens) - outputs_total)
+            input_budget = int(cap.input_tokens) - inputs_total
+            if calls and (output_budget < 1 or self._prompt_tokens(prompt) > input_budget):
+                break
+            if calls and wall_limit_ms and (time.monotonic() - started) * 1000 > 0.8 * wall_limit_ms:
+                break
             output, inputs, outputs = self.policy.frozen_text(
-                self._step_prompt(request, goal),
-                max_new_tokens=per_step_output,
-                input_limit=request.role.model_maximum.input_tokens,
+                prompt,
+                max_new_tokens=max(1, output_budget),
+                input_limit=input_budget,
                 temperature=self.temperature,
                 seed=int(request.seed) + offset,
             )

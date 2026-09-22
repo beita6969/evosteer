@@ -73,8 +73,9 @@ def fake_alfworld(monkeypatch):
     monkeypatch.setenv("ALFWORLD_STEPS_PER_NODE", "5")
 
 
-def _request(seed: int = 7):
-    role = SimpleNamespace(instruction="act", model_maximum=SimpleNamespace(output_tokens=8192, input_tokens=20000))
+def _request(seed: int = 7, model_calls: int = 21):
+    role = SimpleNamespace(instruction="act", model_maximum=SimpleNamespace(
+        output_tokens=8192, input_tokens=20000, model_calls=model_calls, wall_time_milliseconds=600000))
     return SimpleNamespace(role=role, task_prompt="Complete the task.", messages=(), previous_output=None, seed=seed)
 
 
@@ -137,3 +138,9 @@ def test_bindings_map_task_index_to_one_game():
     assert [b.task.task_id for b in bindings] == ["alfworld/train/000000", "alfworld/train/000001"]
     assert all(b.task.family == ca.ALFWORLD_FAMILY for b in bindings)
     assert all("game" not in b.task.prompt for b in bindings)  # no game path or goal leaks into the task
+
+
+def test_node_never_exceeds_the_role_reservation():
+    episode = ca._ALFWorldEpisode(request=SimpleNamespace(seed=0), mode="train", max_steps=50, selection_seed=0)
+    result = asyncio.run(ca.ALFWorldTextExecutor(ScriptedPolicy(["look"] * 10), episode).execute(_request(model_calls=3)))
+    assert result.usage.model_calls == 3 and episode.steps == 3
