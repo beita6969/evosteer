@@ -32,7 +32,7 @@
           "output_tokens": 2048,
           "model_calls": 21,
           "agent_turns": 1,
-          "wall_time_milliseconds": 600000
+          "wall_time_milliseconds": 300000
         }
       },
       {
@@ -43,7 +43,7 @@
           "output_tokens": 2048,
           "model_calls": 21,
           "agent_turns": 1,
-          "wall_time_milliseconds": 600000
+          "wall_time_milliseconds": 300000
         }
       },
       {
@@ -54,7 +54,7 @@
           "output_tokens": 2048,
           "model_calls": 21,
           "agent_turns": 1,
-          "wall_time_milliseconds": 600000
+          "wall_time_milliseconds": 300000
         }
       },
       {
@@ -65,7 +65,7 @@
           "output_tokens": 2048,
           "model_calls": 21,
           "agent_turns": 1,
-          "wall_time_milliseconds": 600000
+          "wall_time_milliseconds": 300000
         }
       },
       {
@@ -76,7 +76,7 @@
           "output_tokens": 2048,
           "model_calls": 21,
           "agent_turns": 1,
-          "wall_time_milliseconds": 600000
+          "wall_time_milliseconds": 300000
         }
       }
     ],

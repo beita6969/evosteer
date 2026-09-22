@@ -103,6 +103,19 @@ MEM_FRACTION=0.45 ops/launch_executor_9b.sh 0 31000
 ops/launch_alfworld_smoke.sh /tmp/alfworld-smoke
 ```
 
+Role budgets. The orchestrator reserves `role.model_maximum` for every node,
+and a multi-step ALFWorld node needs more than the one-call budget of the text
+tasks. The ALFWorld config therefore declares 21 model calls, 80k input and 2k
+output tokens and 300 s per node, and an episode cap of 786k tokens. The
+executor checks each step against what is left of the reservation (exact prompt
+length from the executor) and ends the node early rather than overspend.
+
+Smoke result (2026-09-23, 1×H200, 2 steps × 2 games × (2 π + 2 ρ) = 16 episodes,
+logs in the dataset repo under `alfworld_smoke/`): every episode ran in the
+real environment (13–50 environment steps, 18–63 model calls), one episode won
+(13 steps), step-2 AnchorTB loss 0.49, both checkpoints written. This checks the
+integration end to end; it is not a benchmark result.
+
 ALFWorld-only training: `--task-factory skillev.experiments.curve_alfworld:task_factory`
 with `task_families: ["alfworld"]`. Mixed with the text benchmarks: keep
 `curve_benchmarks:task_factory`, add `"alfworld"` to `task_families` and set
