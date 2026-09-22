@@ -1,0 +1,160 @@
+\documentclass[12pt]{article}
+
+% --- Essential Packages ---
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}       % Advanced math typesetting
+\usepackage{amssymb}       % Extended math symbols (e.g., \mathbb)
+\usepackage{amsfonts}      % Math fonts
+\usepackage{bm}            % Bold math symbols (\bm)
+\usepackage{hyperref}      % Hyperlinks inside the document
+\usepackage{geometry}      % Page geometry configuration
+\geometry{margin=1in}
+
+% --- Custom Math Operators (Optional but keeps code clean) ---
+\DeclareMathOperator*{\E}{\mathbb{E}}
+
+\title{Methodology Section: Bayesian Trajectory-Balance-driven Self-Skill-Revolution Loop}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Methodology}
+
+We present the \textbf{Bayesian Trajectory-Balance-driven Self-Skill-Revolution Loop}, a unified probabilistic framework for autonomous skill acquisition in large language model (LLM) agents. The foundational principle is to couple \emph{distributional flow-based orchestration diagnostics} with \emph{feature-conditioned Bayesian confidence estimation}, enabling a closed-loop system that is both representationally expressive and conservatively self-correcting.
+
+The framework operates through three recursive components:
+\begin{enumerate}
+    \item \textbf{Tempered Trajectory-Balance (TTB) Flow Modeling:} Learning a forward-backward dual policy system that induces a reward-proportional trajectory distribution over an orchestration graph.
+    \item \textbf{Distributional Flow Credit Diagnostics:} Extracting step-level and skill-level importance signals from forward-backward asymmetry under the TTB variational family.
+    \item \textbf{Bayesian-Calibrated Skill Evolution:} Performing conservative skill library updates using feature-conditioned posterior confidence bounds over flow-weighted evidence.
+\end{enumerate}
+
+% ============================================================
+\subsection{Orchestration Graph Formulation}
+
+We formalize the agent as operating over a directed acyclic orchestration graph $\mathcal{G} = (\mathcal{V}, \mathcal{A})$. Each node $H_t \in \mathcal{V}$ represents the full interaction history up to step $t$, and each edge $(H_{t-1}, H_t) \in \mathcal{A}$ corresponds to an atomic orchestration action.
+
+State transitions follow the programmatic appending rule:
+\begin{equation}
+H_t = H_{t-1} \oplus (r_t, a_t, o_t^{exec})
+\end{equation}
+where $r_t$ is internal reasoning text, $a_t$ is the executed action (skill/tool call), and $o_t^{exec}$ is external feedback from the environment.
+
+Given a task query $q$, the initial state is defined as:
+\begin{equation}
+H_0 = [q \oplus \mathcal{S}_{ret} \oplus \omega_q]
+\end{equation}
+A complete trajectory $\tau$ terminates at horizon $T$ with a terminal reward $R(\tau) \in [0,1]$, shifted to positive support via:
+\begin{equation}
+\tilde{R}(\tau) = R(\tau) + \epsilon_{min}
+\end{equation}
+
+% ============================================================
+\subsection{Tempered Trajectory Balance Flow Model}
+
+We parameterize the trajectory flow space using a dual-policy system consisting of a forward policy $\pi_\theta$ and a backward policy $P_\phi$.
+
+\subsubsection{Forward and Backward Policies}
+The forward dynamics over the graph edges are guided by:
+\begin{equation}
+P_F(H_t \mid H_{t-1}) = \pi_\theta(a_t \mid r_t, H_{t-1})
+\end{equation}
+The backward dynamics are explicitly hindsight-conditioned, defining the reverse probability of backtracking from a sub-history:
+\begin{equation}
+P_B(H_{t-1} \mid H_t) = P_\phi(a_t \mid H_{t-1} \oplus o_t^{exec})
+\end{equation}
+To ensure robustness against variations in action text lengths, we leverage token-length normalized log probabilities over each edge:
+\begin{equation}
+\hat{\log P}_F^t = \frac{1}{K_t} \sum_{j=1}^{K_t} \log \pi_\theta(\cdot)
+\quad,\quad
+\hat{\log P}_B^t = \frac{1}{K_t} \sum_{j=1}^{K_t} \log P_\phi(\cdot)
+\end{equation}
+
+\subsubsection{TTB Objective}
+We define the Tempered Trajectory Balance residual $\Delta(\tau)$ as:
+\begin{equation}
+\Delta(\tau) = \log Z_\theta(q) + \sum_{t=1}^T \hat{\log P}_F^t - \beta \log \tilde{R}(\tau) - \sum_{t=1}^T \hat{\log P}_B^t
+\end{equation}
+The dual networks are optimized minimizing the length-normalized squared residual over trajectory batches:
+\begin{equation}
+\mathcal{L}_{TTB}(\tau) = \left(\frac{\Delta(\tau)}{T}\right)^2
+\end{equation}
+Importantly, we interpret this objective as inducing a \emph{variational trajectory distribution}, rather than enforcing strict, path-bound deterministic flow conservation.
+
+% ============================================================
+\subsection{Distributional Flow Credit Diagnostics}
+
+\subsubsection{Step Importance (Local Flow Asymmetry)}
+We extract step-level credit assignment by defining step importance as:
+\begin{equation}
+\log I(t) = \hat{\log P}_F^t - \hat{\log P}_B^t
+\end{equation}
+This quantity is directly interpreted as a \textbf{local log-density ratio under the TTB variational family}, avoiding the high variance of textbook policy gradients.
+
+\subsubsection{State Flow as Distributional Expectation}
+To bypass path-independence constraints on general DAGs, we formulate state-level flow as a trajectory-ensemble expectation:
+\begin{equation}
+F(H_t) = \E_{\tau \sim \pi_\theta} \left[ \exp\left(\sum_{t' \le t} \log I(t')\right) \;\middle|\; H_t \right]
+\end{equation}
+This formulation ensures that state flow acts as a robust \textbf{distributional estimator rather than a conserved scalar field}.
+
+\subsubsection{Skill Marginal Flow}
+For any atomic strategic skill $s \in \mathcal{S}$, its absolute credit magnitude is aggregated across the trajectory batch $\mathcal{B}_s$:
+\begin{equation}
+\hat{F}(s) = \E_{\tau \sim \mathcal{B}_s} \left[ \sum_{t: a_t \text{ invokes } s} F(H_t) \right]
+\end{equation}
+
+% ============================================================
+\subsection{Feature-Conditioned Bayesian Calibration}
+
+Each skill invocation generates an environmental context feature vector:
+\begin{equation}
+z = [\text{Context}, \text{Failure Mode}, \text{Token Bucket}, \text{Horizon Bucket}]
+\end{equation}
+We maintain an online Beta-Bernoulli posterior ($\alpha_{s,z}, \beta_{s,z}$) over the skill success rates. The conjugate updates integrate a \textbf{flow-weighted importance term} $w_e$:
+\begin{equation}
+\alpha_{s,z} = \alpha_0 + \sum_e w_e \mathbb{I}[y_e=1]
+\quad,\quad
+\beta_{s,z} = \beta_0 + \sum_e w_e \mathbb{I}[y_e=0]
+\end{equation}
+where the step size scales proportionally to the continuous flow credit: $w_e \propto F(H_t^e)$.
+
+The feature-conditioned posterior mean $\mu_{s,z}$ and variance $\sigma^2_{s,z}$ are computed as:
+\begin{equation}
+\mu_{s,z} = \frac{\alpha_{s,z}}{\alpha_{s,z} + \beta_{s,z}}
+\quad,\quad
+\sigma^2_{s,z} = \frac{\alpha_{s,z}\beta_{s,z}}{(\alpha_{s,z}+\beta_{s,z})^2(\alpha_{s,z}+\beta_{s,z}+1)}
+\end{equation}
+The conservative decision boundary is operationalized via the Lower Confidence Bound (LCB):
+\begin{equation}
+\text{LCB}_{s,z} = \mu_{s,z} - k\sigma_{s,z}
+\end{equation}
+
+% ============================================================
+\subsection{Phase Transition and Skill Evolution Operator}
+
+\subsubsection{Phase Transition Criterion}
+To eliminate spurious textual drift caused by local batch noise, an evolution boundary is triggered if and only if the system encounters an expressiveness plateau identified by a joint stagnation condition:
+\begin{equation}
+\frac{\overline{\Delta^2}_{w-W} - \overline{\Delta^2}_w}{\overline{\Delta^2}_{w-W}} < \rho \quad \land \quad \mathcal{H}(\mathcal{S}) \downarrow
+\end{equation}
+This setup ensures that true capacity saturation is distinguished from optimization variance.
+
+\subsubsection{Dual-Axis Skill Evolution Operator}
+At the verified phase boundaries, the library undergoes structural refinement via the evolution operator $\Phi$:
+\begin{equation}
+\mathcal{S}^{(k+1)} = \Phi(\mathcal{S}^{(k)}; \hat{F}(s), \text{LCB}_{s,z}, \log I(t))
+\end{equation}
+The operator executes distinct, auditable actions based on the mapping:
+\begin{itemize}
+    \item \textbf{Retain \& Compress:} High $\hat{F}(s)$ and high $\text{LCB}_{s,z}$.
+    \item \textbf{Refine / Patch:} High marginal flow but low posterior confidence in localized contexts.
+    \item \textbf{Split:} High marginal flow but multi-modal posterior distribution over disparate environments.
+    \item \textbf{Prune:} Low marginal flow and low upper confidence bound.
+    \item \textbf{Generate:} Zero skill coverage under high residual flow asymmetry $\log I(t)$.
+\end{itemize}
+Following the library update, the partition function $Z_\theta(q)$ is re-initialized, and the Trajectory Balance generative loop resumes training.
+
+\end{document}

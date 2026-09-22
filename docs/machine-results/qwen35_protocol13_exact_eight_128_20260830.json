@@ -1,0 +1,669 @@
+{
+  "format": "skillev-current-iid-result@4",
+  "protocol_version": "skillev-benchmark-protocol@13",
+  "catalog": [
+    "hotpotqa",
+    "triviaqa",
+    "aime-2026",
+    "healthbench",
+    "webshop",
+    "alfworld",
+    "mbpp-plus",
+    "humaneval"
+  ],
+  "overall_status": "fail",
+  "benchmarks": {
+    "hotpotqa": {
+      "status": "blocked",
+      "numeric_status": "pass",
+      "scientific_status": "protocol-incomplete",
+      "formal_status": "blocked",
+      "target_evidence_status": "paper-reported-protocol-incomplete",
+      "formal_target_admitted": false,
+      "nonformal_reason": "target is not eligible for the formal gate",
+      "nonformal_reasons": [
+        "target is not eligible for the formal gate"
+      ],
+      "condition_id": "hotpotqa-raw-ten-passage-direct@4",
+      "reference_eligibility": "formal",
+      "coverage": {
+        "planned": 128,
+        "definitive_scored": 128,
+        "binary_success": 80,
+        "binary_failure": 48,
+        "candidate_invalid": 0,
+        "generation_infrastructure": 0,
+        "environment_infrastructure": 0,
+        "scorer_infrastructure": 0
+      },
+      "runtime_contract_status": "matched",
+      "execution_receipt": {
+        "attempt_id": "p13-fresh-fd5f23c-hotpotqa-20260831",
+        "condition_id": "hotpotqa-raw-ten-passage-direct@4",
+        "population_id": "hotpotqa-final-128-v13",
+        "prompt_profile": "hotpotqa-raw-ten-passage@2",
+        "decoding_profile": "qwen35-nonthinking-general@1",
+        "parser_profile": "short-answer-final@2",
+        "environment_profile": null,
+        "grader_profile": null,
+        "evaluator_profile": null,
+        "code_test_suite": null,
+        "seed_aggregation": "comparison-semantics-unknown",
+        "context_length": 98304,
+        "adapter_active": false
+      },
+      "metrics": {
+        "em": {
+          "unit": "percent",
+          "numerator": "80.0",
+          "denominator": 128,
+          "denominator_id": "planned-panel-128",
+          "projection": "identity-percent",
+          "observed_percent": "62.500",
+          "formula": "official_hotpotqa_exact_match",
+          "aggregation": "mean-over-records"
+        },
+        "f1": {
+          "unit": "percent",
+          "numerator": "100.32931697931697912",
+          "denominator": 128,
+          "denominator_id": "planned-panel-128",
+          "projection": "identity-percent",
+          "observed_percent": "78.382278890091389937500",
+          "formula": "official_hotpotqa_token_f1",
+          "aggregation": "mean-over-records"
+        }
+      },
+      "admission": {
+        "em": {
+          "reference_percent": "60.94",
+          "gap_pp": "1.560",
+          "maximum_gap_pp_exclusive": "7.0",
+          "passed": true
+        },
+        "f1": {
+          "reference_percent": "75.70",
+          "gap_pp": "2.682278890091389937500",
+          "maximum_gap_pp_exclusive": "7.0",
+          "passed": true
+        }
+      },
+      "provenance": {
+        "attempt_id": "p13-fresh-fd5f23c-hotpotqa-20260831",
+        "generation_attempt_id": "p13-fresh-fd5f23c-hotpotqa-20260831:generation",
+        "scoring_attempt_id": "p13-fresh-fd5f23c-hotpotqa-20260831:scoring",
+        "generation_code_revision": "fd5f23cc2b0d36182e9bc8c4c2f982a4befc87dc",
+        "scoring_code_revision": "fd5f23cc2b0d36182e9bc8c4c2f982a4befc87dc",
+        "renderer_code_revision": "d2184254fa91d64fd4ce0a2d93264dab86501bb0",
+        "evaluator_version": "hotpotqa-official-em-f1@2"
+      },
+      "diagnostics": {
+        "submission_count": "128",
+        "manifest_join": "exact"
+      }
+    },
+    "triviaqa": {
+      "status": "blocked",
+      "numeric_status": "pass",
+      "scientific_status": "protocol-incomplete",
+      "formal_status": "blocked",
+      "target_evidence_status": "paper-reported-protocol-incomplete",
+      "formal_target_admitted": false,
+      "nonformal_reason": "target is not eligible for the formal gate",
+      "nonformal_reasons": [
+        "target is not eligible for the formal gate"
+      ],
+      "condition_id": "triviaqa-reference-direct@3",
+      "reference_eligibility": "formal",
+      "coverage": {
+        "planned": 128,
+        "definitive_scored": 127,
+        "binary_success": 66,
+        "binary_failure": 61,
+        "candidate_invalid": 1,
+        "generation_infrastructure": 0,
+        "environment_infrastructure": 0,
+        "scorer_infrastructure": 0
+      },
+      "runtime_contract_status": "matched",
+      "execution_receipt": {
+        "attempt_id": "p13-fresh-fd5f23c-triviaqa-20260831",
+        "condition_id": "triviaqa-reference-direct@3",
+        "population_id": "triviaqa-final-128-v13",
+        "prompt_profile": "short-answer-with-context@1",
+        "decoding_profile": "qwen35-nonthinking-general@1",
+        "parser_profile": "short-answer-final@2",
+        "environment_profile": null,
+        "grader_profile": null,
+        "evaluator_profile": null,
+        "code_test_suite": null,
+        "seed_aggregation": "comparison-semantics-unknown",
+        "context_length": 98304,
+        "adapter_active": false
+      },
+      "metrics": {
+        "em": {
+          "unit": "percent",
+          "numerator": "66.0",
+          "denominator": 128,
+          "denominator_id": "planned-panel-128",
+          "projection": "identity-percent",
+          "observed_percent": "51.562500",
+          "formula": "official_triviaqa_alias_exact_match",
+          "aggregation": "mean-over-records"
+        },
+        "f1": {
+          "unit": "percent",
+          "numerator": "75.7437229437229434",
+          "denominator": 128,
+          "denominator_id": "planned-panel-128",
+          "projection": "identity-percent",
+          "observed_percent": "59.1747835497835495312500",
+          "formula": "official_triviaqa_alias_token_f1",
+          "aggregation": "mean-over-records"
+        }
+      },
+      "admission": {
+        "em": {
+          "reference_percent": "44.88",
+          "gap_pp": "6.682500",
+          "maximum_gap_pp_exclusive": "7.0",
+          "passed": true
+        },
+        "f1": {
+          "reference_percent": "54.30",
+          "gap_pp": "4.8747835497835495312500",
+          "maximum_gap_pp_exclusive": "7.0",
+          "passed": true
+        }
+      },
+      "provenance": {
+        "attempt_id": "p13-fresh-fd5f23c-triviaqa-20260831",
+        "generation_attempt_id": "p13-fresh-fd5f23c-triviaqa-20260831:generation",
+        "scoring_attempt_id": "p13-fresh-fd5f23c-triviaqa-20260831:scoring",
+        "generation_code_revision": "fd5f23cc2b0d36182e9bc8c4c2f982a4befc87dc",
+        "scoring_code_revision": "fd5f23cc2b0d36182e9bc8c4c2f982a4befc87dc",
+        "renderer_code_revision": "d2184254fa91d64fd4ce0a2d93264dab86501bb0",
+        "evaluator_version": "triviaqa-official-alias-em-f1@2"
+      },
+      "diagnostics": {
+        "submission_count": "127",
+        "manifest_join": "exact"
+      }
+    },
+    "aime-2026": {
+      "status": "blocked",
+      "numeric_status": "fail",
+      "scientific_status": "protocol-incomplete",
+      "formal_status": "blocked",
+      "target_evidence_status": "paper-reported-protocol-incomplete",
+      "formal_target_admitted": false,
+      "nonformal_reason": "target is not eligible for the formal gate",
+      "nonformal_reasons": [
+        "target is not eligible for the formal gate"
+      ],
+      "condition_id": "aime2026-boxed-direct@3",
+      "reference_eligibility": "formal",
+      "coverage": {
+        "planned": 30,
+        "definitive_scored": 22,
+        "binary_success": 22,
+        "binary_failure": 0,
+        "candidate_invalid": 8,
+        "generation_infrastructure": 0,
+        "environment_infrastructure": 0,
+        "scorer_infrastructure": 0
+      },
+      "runtime_contract_status": "matched",
+      "execution_receipt": {
+        "attempt_id": "p13-fresh-fd5f23c-aime-2026-20260831",
+        "condition_id": "aime2026-boxed-direct@3",
+        "population_id": "aime-2026-all-30-v13",
+        "prompt_profile": "integer-cot-boxed@1",
+        "decoding_profile": "qwen35-thinking-math-reference@2",
+        "parser_profile": "aime-boxed-integer@1",
+        "environment_profile": null,
+        "grader_profile": null,
+        "evaluator_profile": null,
+        "code_test_suite": null,
+        "seed_aggregation": "single-seed",
+        "context_length": 98304,
+        "adapter_active": false
+      },
+      "metrics": {
+        "accuracy": {
+          "unit": "percent",
+          "numerator": "22.0",
+          "denominator": 30,
+          "denominator_id": "planned-panel-30",
+          "projection": "identity-percent",
+          "observed_percent": "73.33333333333333333333333333",
+          "formula": "official_aime_integer_exact_match",
+          "aggregation": "mean-over-records"
+        }
+      },
+      "admission": {
+        "accuracy": {
+          "reference_percent": "46.67",
+          "gap_pp": "26.66333333333333333333333333",
+          "maximum_gap_pp_exclusive": "7.0",
+          "passed": false
+        }
+      },
+      "provenance": {
+        "attempt_id": "p13-fresh-fd5f23c-aime-2026-20260831",
+        "generation_attempt_id": "p13-fresh-fd5f23c-aime-2026-20260831:generation",
+        "scoring_attempt_id": "p13-fresh-fd5f23c-aime-2026-20260831:scoring",
+        "generation_code_revision": "fd5f23cc2b0d36182e9bc8c4c2f982a4befc87dc",
+        "scoring_code_revision": "fd5f23cc2b0d36182e9bc8c4c2f982a4befc87dc",
+        "renderer_code_revision": "d2184254fa91d64fd4ce0a2d93264dab86501bb0",
+        "evaluator_version": "aime-official-integer@2"
+      },
+      "diagnostics": {
+        "submission_count": "22",
+        "manifest_join": "exact"
+      }
+    },
+    "healthbench": {
+      "status": "blocked",
+      "numeric_status": "not-evaluated",
+      "scientific_status": "external-anchor",
+      "formal_status": "blocked",
+      "target_evidence_status": "external-aggregate-anchor",
+      "formal_target_admitted": false,
+      "nonformal_reason": "target is not eligible for the formal gate",
+      "nonformal_reasons": [
+        "target is not eligible for the formal gate"
+      ],
+      "condition_id": "healthbench-full-qwen-local-diagnostic@4",
+      "reference_eligibility": "diagnostic-only",
+      "coverage": {
+        "planned": 128,
+        "definitive_scored": 128,
+        "binary_success": null,
+        "binary_failure": null,
+        "candidate_invalid": 0,
+        "generation_infrastructure": 0,
+        "environment_infrastructure": 0,
+        "scorer_infrastructure": 0
+      },
+      "runtime_contract_status": "matched",
+      "execution_receipt": {
+        "attempt_id": "p13-fresh-fd5f23c-healthbench-20260831",
+        "condition_id": "healthbench-full-qwen-local-diagnostic@4",
+        "population_id": "healthbench-full-random0-128-v13",
+        "prompt_profile": "official-healthbench-direct@2",
+        "decoding_profile": "official-chatcompletion-compatible@2",
+        "parser_profile": "direct-natural-language@1",
+        "environment_profile": null,
+        "grader_profile": "qwen-local-rubric-per-item@4",
+        "evaluator_profile": null,
+        "code_test_suite": null,
+        "seed_aggregation": "single-seed",
+        "context_length": 98304,
+        "adapter_active": false
+      },
+      "metrics": {
+        "native_rubric_mean": {
+          "unit": "percent",
+          "numerator": "68.171521581005319065",
+          "denominator": 128,
+          "denominator_id": "planned-panel-128",
+          "projection": "clip-mean-to-unit-interval-percent",
+          "observed_percent": "53.2590012351604055195312500",
+          "formula": "clip(mean(simple_evals_overall_score),0,1)*100",
+          "aggregation": "official-aggregate"
+        }
+      },
+      "admission": {},
+      "provenance": {
+        "attempt_id": "p13-fresh-fd5f23c-healthbench-20260831",
+        "generation_attempt_id": "p13-fresh-fd5f23c-healthbench-20260831:generation",
+        "scoring_attempt_id": "p13-fresh-fd5f23c-healthbench-20260831:scoring",
+        "generation_code_revision": "724fc5a9abef71111d27cb1e5ca82dccafe6f7b1",
+        "scoring_code_revision": "724fc5a9abef71111d27cb1e5ca82dccafe6f7b1",
+        "renderer_code_revision": "d2184254fa91d64fd4ce0a2d93264dab86501bb0",
+        "evaluator_version": "healthbench-simple-evals-formula@2"
+      },
+      "diagnostics": {
+        "manifest_join": "exact",
+        "grader_profile": "qwen-local-rubric-per-item@4",
+        "grader_score_count": "128",
+        "empty_candidate_count": "0",
+        "grader_backend": "qwen-sglang",
+        "grader_model": "qwen35-direct-base",
+        "rubric_call_mode": "simple-evals-per-rubric"
+      }
+    },
+    "webshop": {
+      "status": "blocked",
+      "numeric_status": "fail",
+      "scientific_status": "protocol-incomplete",
+      "formal_status": "blocked",
+      "target_evidence_status": "paper-reported-protocol-incomplete",
+      "formal_target_admitted": false,
+      "nonformal_reason": "target is not eligible for the formal gate",
+      "nonformal_reasons": [
+        "target is not eligible for the formal gate"
+      ],
+      "condition_id": "webshop-benchmark-native-no-skill@4",
+      "reference_eligibility": "formal",
+      "coverage": {
+        "planned": 128,
+        "definitive_scored": 127,
+        "binary_success": 17,
+        "binary_failure": 110,
+        "candidate_invalid": 1,
+        "generation_infrastructure": 0,
+        "environment_infrastructure": 0,
+        "scorer_infrastructure": 0
+      },
+      "runtime_contract_status": "matched",
+      "execution_receipt": {
+        "attempt_id": "p13-fresh-fd5f23c-webshop-20260831",
+        "condition_id": "webshop-benchmark-native-no-skill@4",
+        "population_id": "webshop-final-128-v13",
+        "prompt_profile": "webshop-native-react-v4@1",
+        "decoding_profile": "qwen35-visible-react@1",
+        "parser_profile": "native-action@2",
+        "environment_profile": "webshop-official-text@3",
+        "grader_profile": null,
+        "evaluator_profile": null,
+        "code_test_suite": null,
+        "seed_aggregation": "single-seed",
+        "context_length": 98304,
+        "adapter_active": false
+      },
+      "metrics": {
+        "average_score": {
+          "unit": "percent",
+          "numerator": "45.29166666666666537",
+          "denominator": 128,
+          "denominator_id": "planned-panel-128",
+          "projection": "identity-percent",
+          "observed_percent": "35.384114583333332320312500",
+          "formula": "sum(native_task_score) / planned_count * 100",
+          "aggregation": "mean-over-records"
+        },
+        "success_rate": {
+          "unit": "percent",
+          "numerator": "17",
+          "denominator": 128,
+          "denominator_id": "planned-panel-128",
+          "projection": "identity-percent",
+          "observed_percent": "13.2812500",
+          "formula": "count(native_task_score == 1) / planned_count * 100",
+          "aggregation": "success-rate"
+        }
+      },
+      "admission": {
+        "average_score": {
+          "reference_percent": "56.93",
+          "gap_pp": "21.545885416666667679687500",
+          "maximum_gap_pp_exclusive": "7.0",
+          "passed": false
+        },
+        "success_rate": {
+          "reference_percent": "32.03",
+          "gap_pp": "18.7487500",
+          "maximum_gap_pp_exclusive": "7.0",
+          "passed": false
+        }
+      },
+      "provenance": {
+        "attempt_id": "p13-fresh-fd5f23c-webshop-20260831",
+        "generation_attempt_id": "p13-fresh-fd5f23c-webshop-20260831:generation",
+        "scoring_attempt_id": "p13-fresh-fd5f23c-webshop-20260831:scoring",
+        "generation_code_revision": "fd5f23cc2b0d36182e9bc8c4c2f982a4befc87dc",
+        "scoring_code_revision": "fd5f23cc2b0d36182e9bc8c4c2f982a4befc87dc",
+        "renderer_code_revision": "d2184254fa91d64fd4ce0a2d93264dab86501bb0",
+        "evaluator_version": "webshop-official-reward@1"
+      },
+      "diagnostics": {
+        "manifest_join": "exact",
+        "horizon_failures": "44",
+        "budget_exhausted": "45",
+        "terminal_success_count": "17",
+        "terminal_failure_at_budget_count": "1",
+        "terminal_failure_before_budget_count": "65",
+        "mean_steps_milli": "6242",
+        "p95_steps": "10",
+        "cleanup_errors": "0"
+      }
+    },
+    "alfworld": {
+      "status": "blocked",
+      "numeric_status": "fail",
+      "scientific_status": "protocol-incomplete",
+      "formal_status": "blocked",
+      "target_evidence_status": "paper-reported-protocol-incomplete",
+      "formal_target_admitted": false,
+      "nonformal_reason": "target is not eligible for the formal gate",
+      "nonformal_reasons": [
+        "target is not eligible for the formal gate"
+      ],
+      "condition_id": "alfworld-benchmark-native-no-skill@4",
+      "reference_eligibility": "formal",
+      "coverage": {
+        "planned": 128,
+        "definitive_scored": 125,
+        "binary_success": 50,
+        "binary_failure": 75,
+        "candidate_invalid": 3,
+        "generation_infrastructure": 0,
+        "environment_infrastructure": 0,
+        "scorer_infrastructure": 0
+      },
+      "runtime_contract_status": "matched",
+      "execution_receipt": {
+        "attempt_id": "p13-fresh-fd5f23c-alfworld-20260831",
+        "condition_id": "alfworld-benchmark-native-no-skill@4",
+        "population_id": "alfworld-final-seen97-unseen31-v13",
+        "prompt_profile": "alfworld-native-react-v4@1",
+        "decoding_profile": "qwen35-visible-react@1",
+        "parser_profile": "native-action@2",
+        "environment_profile": "alfworld-official-text@3",
+        "grader_profile": null,
+        "evaluator_profile": null,
+        "code_test_suite": null,
+        "seed_aggregation": "single-seed",
+        "context_length": 98304,
+        "adapter_active": false
+      },
+      "metrics": {
+        "success_rate": {
+          "unit": "percent",
+          "numerator": "50",
+          "denominator": 128,
+          "denominator_id": "planned-panel-128",
+          "projection": "identity-percent",
+          "observed_percent": "39.062500",
+          "formula": "count(native_won) / planned_count * 100",
+          "aggregation": "success-rate"
+        }
+      },
+      "admission": {
+        "success_rate": {
+          "reference_percent": "48.28",
+          "gap_pp": "9.217500",
+          "maximum_gap_pp_exclusive": "7.0",
+          "passed": false
+        }
+      },
+      "provenance": {
+        "attempt_id": "p13-fresh-fd5f23c-alfworld-20260831",
+        "generation_attempt_id": "p13-fresh-fd5f23c-alfworld-20260831:generation",
+        "scoring_attempt_id": "p13-fresh-fd5f23c-alfworld-20260831:scoring",
+        "generation_code_revision": "fd5f23cc2b0d36182e9bc8c4c2f982a4befc87dc",
+        "scoring_code_revision": "fd5f23cc2b0d36182e9bc8c4c2f982a4befc87dc",
+        "renderer_code_revision": "d2184254fa91d64fd4ce0a2d93264dab86501bb0",
+        "evaluator_version": "alfworld-official-success@1"
+      },
+      "diagnostics": {
+        "manifest_join": "exact",
+        "horizon_failures": "0",
+        "budget_exhausted": "75",
+        "terminal_success_count": "50",
+        "terminal_failure_at_budget_count": "75",
+        "terminal_failure_before_budget_count": "0",
+        "mean_steps_milli": "10367",
+        "p95_steps": "12",
+        "cleanup_errors": "0",
+        "task_type_look_at_obj_count": "12",
+        "task_type_look_at_obj_success": "4",
+        "task_type_pick_and_place_count": "29",
+        "task_type_pick_and_place_success": "18",
+        "task_type_pick_clean_then_place_count": "23",
+        "task_type_pick_clean_then_place_success": "7",
+        "task_type_pick_cool_then_place_count": "20",
+        "task_type_pick_cool_then_place_success": "8",
+        "task_type_pick_heat_then_place_count": "18",
+        "task_type_pick_heat_then_place_success": "4",
+        "task_type_pick_two_obj_count": "26",
+        "task_type_pick_two_obj_success": "9",
+        "split_valid_seen_count": "97",
+        "split_valid_seen_success": "41",
+        "split_valid_unseen_count": "31",
+        "split_valid_unseen_success": "9"
+      }
+    },
+    "mbpp-plus": {
+      "status": "blocked",
+      "numeric_status": "not-evaluated",
+      "scientific_status": "external-anchor",
+      "formal_status": "blocked",
+      "target_evidence_status": "external-aggregate-anchor",
+      "formal_target_admitted": false,
+      "nonformal_reason": "target is not eligible for the formal gate",
+      "nonformal_reasons": [
+        "target is not eligible for the formal gate"
+      ],
+      "condition_id": "mbpp-plus-random0-128-direct@4",
+      "reference_eligibility": "diagnostic-only",
+      "coverage": {
+        "planned": 128,
+        "definitive_scored": 115,
+        "binary_success": 92,
+        "binary_failure": 23,
+        "candidate_invalid": 13,
+        "generation_infrastructure": 0,
+        "environment_infrastructure": 0,
+        "scorer_infrastructure": 0
+      },
+      "runtime_contract_status": "matched",
+      "execution_receipt": {
+        "attempt_id": "p13-fresh-fd5f23c-mbpp-plus-20260831",
+        "condition_id": "mbpp-plus-random0-128-direct@4",
+        "population_id": "mbpp-plus-v0.2.0-random0-128-v13",
+        "prompt_profile": "evalplus-mbpp-complete-code@1",
+        "decoding_profile": "qwen35-mbpp-plus-deterministic@1",
+        "parser_profile": "python-source@2",
+        "environment_profile": null,
+        "grader_profile": null,
+        "evaluator_profile": "evalplus-cli-26d6d00@1",
+        "code_test_suite": "mbpp-base-plus-v0.2.0",
+        "seed_aggregation": "single-seed",
+        "context_length": 98304,
+        "adapter_active": false
+      },
+      "metrics": {
+        "pass_at_1": {
+          "unit": "percent",
+          "numerator": "92",
+          "denominator": 128,
+          "denominator_id": "planned-panel-128",
+          "projection": "identity-percent",
+          "observed_percent": "71.87500",
+          "formula": "count(evalplus_base_and_plus_pass) / planned_count * 100",
+          "aggregation": "mean-over-records"
+        }
+      },
+      "admission": {},
+      "provenance": {
+        "attempt_id": "p13-fresh-fd5f23c-mbpp-plus-20260831",
+        "generation_attempt_id": "p13-fresh-fd5f23c-mbpp-plus-20260831:generation",
+        "scoring_attempt_id": "p13-fresh-fd5f23c-mbpp-plus-20260831:scoring",
+        "generation_code_revision": "fd5f23cc2b0d36182e9bc8c4c2f982a4befc87dc",
+        "scoring_code_revision": "d2184254fa91d64fd4ce0a2d93264dab86501bb0",
+        "renderer_code_revision": "d2184254fa91d64fd4ce0a2d93264dab86501bb0",
+        "evaluator_version": "evalplus-cli-26d6d00@1"
+      },
+      "diagnostics": {
+        "manifest_join": "exact"
+      }
+    },
+    "humaneval": {
+      "status": "blocked",
+      "numeric_status": "pass",
+      "scientific_status": "protocol-incomplete",
+      "formal_status": "blocked",
+      "target_evidence_status": "paper-reported-protocol-incomplete",
+      "formal_target_admitted": false,
+      "nonformal_reason": "target is not eligible for the formal gate",
+      "nonformal_reasons": [
+        "target is not eligible for the formal gate"
+      ],
+      "condition_id": "humaneval-deterministic-direct@4",
+      "reference_eligibility": "formal",
+      "coverage": {
+        "planned": 128,
+        "definitive_scored": 125,
+        "binary_success": 118,
+        "binary_failure": 7,
+        "candidate_invalid": 3,
+        "generation_infrastructure": 0,
+        "environment_infrastructure": 0,
+        "scorer_infrastructure": 0
+      },
+      "runtime_contract_status": "matched",
+      "execution_receipt": {
+        "attempt_id": "p13-fresh-fd5f23c-humaneval-20260831",
+        "condition_id": "humaneval-deterministic-direct@4",
+        "population_id": "humaneval-native-128-v13",
+        "prompt_profile": "direct-code@1",
+        "decoding_profile": "qwen35-humaneval-deterministic@1",
+        "parser_profile": "python-source@2",
+        "environment_profile": null,
+        "grader_profile": null,
+        "evaluator_profile": "humaneval-python-isolated@2",
+        "code_test_suite": "humaneval-original-v1",
+        "seed_aggregation": "comparison-semantics-unknown",
+        "context_length": 98304,
+        "adapter_active": false
+      },
+      "metrics": {
+        "pass_at_1": {
+          "unit": "percent",
+          "numerator": "118.0",
+          "denominator": 128,
+          "denominator_id": "planned-panel-128",
+          "projection": "identity-percent",
+          "observed_percent": "92.187500",
+          "formula": "count(official_humaneval_pass) / planned_count * 100",
+          "aggregation": "mean-over-records"
+        }
+      },
+      "admission": {
+        "pass_at_1": {
+          "reference_percent": "89.06",
+          "gap_pp": "3.127500",
+          "maximum_gap_pp_exclusive": "7.0",
+          "passed": true
+        }
+      },
+      "provenance": {
+        "attempt_id": "p13-fresh-fd5f23c-humaneval-20260831",
+        "generation_attempt_id": "p13-fresh-fd5f23c-humaneval-20260831:generation",
+        "scoring_attempt_id": "p13-fresh-fd5f23c-humaneval-20260831:scoring",
+        "generation_code_revision": "fd5f23cc2b0d36182e9bc8c4c2f982a4befc87dc",
+        "scoring_code_revision": "fd5f23cc2b0d36182e9bc8c4c2f982a4befc87dc",
+        "renderer_code_revision": "d2184254fa91d64fd4ce0a2d93264dab86501bb0",
+        "evaluator_version": "humaneval-python-isolated@2"
+      },
+      "diagnostics": {
+        "submission_count": "125",
+        "manifest_join": "exact"
+      }
+    }
+  }
+}

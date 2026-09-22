@@ -1,0 +1,162 @@
+format: skillev-benchmark-protocol@10
+status: frozen-scientific-specification
+method_authority: idea.tex
+evaluation_authority: evaluation.tex
+seed: 0
+amendment:
+  id: protocol-v10-healthbench-qwen-judge@1
+  reason: remove-external-api-dependency-and-use-the-frozen-local-base-model-judge
+  adopted_before_first_formal_run: true
+  prior_gpt_4_1_profile_used_for_formal_run: false
+formal_methods:
+  - skillflow-baseline
+  - bayesian-improve-full
+  - bayesian-improve-no-calibration
+execution_gate:
+  executable: true
+  unblock_when: satisfied-by-g3-g7-integration-resume-oom-nine-domain-and-22-step-evidence
+population_policy:
+  roles: [training, validation, final-evaluation]
+  require_disjoint_source_ids: true
+  require_disjoint_normalized_content: true
+  final_evaluation_is_read_only: true
+  training_episodes_per_benchmark: 512
+  training_episode_total: 4608
+  training_block_order:
+    - hotpotqa
+    - triviaqa
+    - aime-2026
+    - healthbench
+    - webshop
+    - alfworld
+    - spreadsheetbench
+    - appworld
+    - mbpp-plus-fixed-100
+  within_block_order: deterministic-shuffle-seed-0
+  undersized_population: repeat-deterministically-shuffled-cycles-with-distinct-episode-ids
+  final_mix_order: deterministic-global-shuffle-seed-0
+  training_count_rule_applies_to: training-only
+  adaptive_sampling: forbidden
+terminal_contract:
+  reward_range: [0.0, 1.0]
+  posterior_success_values: [0, 1]
+  infrastructure_failure: abort-uncommitted-step
+  completed_candidate_failure: valid-zero-reward
+  private_evaluator_payload_model_visible: false
+rollout_budget_profiles:
+  concise-answer: {benchmarks: [hotpotqa, triviaqa, aime-2026], max_turns: 2, max_reasoning_tokens: 512, max_action_tokens: 192}
+  long-answer: {benchmarks: [healthbench], max_turns: 2, max_reasoning_tokens: 512, max_action_tokens: 1536}
+  code-completion: {benchmarks: [mbpp-plus-fixed-100], max_turns: 2, max_reasoning_tokens: 1024, max_action_tokens: 2048}
+  shopping: {benchmarks: [webshop], max_turns: 20, max_reasoning_tokens: 384, max_action_tokens: 256}
+  embodied: {benchmarks: [alfworld], max_turns: official-task-max-steps, max_reasoning_tokens: 384, max_action_tokens: 256}
+  spreadsheet: {benchmarks: [spreadsheetbench], max_turns: 12, max_reasoning_tokens: 512, max_action_tokens: 2048}
+  appworld: {benchmarks: [appworld], max_turns: 20, max_reasoning_tokens: 512, max_action_tokens: 2048}
+benchmarks:
+  - id: hotpotqa
+    version: v1.1-distractor
+    populations:
+      - {role: training, id: hotpotqa-v1.1-train-main}
+      - {role: validation, id: hotpotqa-v1.1-train-holdout}
+      - {role: final-evaluation, id: hotpotqa-v1.1-dev-distractor, sampling: full}
+    native_metrics: [answer-f1, answer-exact-match]
+    ttb_reward_projection: {source: answer-f1, rule: identity}
+    posterior_success_projection: {source: answer-exact-match, rule: equals-one}
+    evaluator: official-hotpotqa-v1
+
+  - id: triviaqa
+    version: v1.0-unfiltered
+    populations:
+      - {role: training, id: triviaqa-v1.0-unfiltered-train-main}
+      - {role: validation, id: triviaqa-v1.0-unfiltered-train-holdout}
+      - {role: final-evaluation, id: triviaqa-v1.0-unfiltered-dev, sampling: full}
+    native_metrics: [answer-f1, answer-exact-match]
+    ttb_reward_projection: {source: answer-f1, rule: identity}
+    posterior_success_projection: {source: answer-exact-match, rule: equals-one}
+    evaluator: official-triviaqa-v1
+
+  - id: aime-2026
+    version: official-30-problem-release
+    populations:
+      - {role: training, id: aime-1983-2024}
+      - {role: validation, id: aime-2025}
+      - {role: final-evaluation, id: aime-2026-all-30, sampling: full}
+    native_metrics: [accuracy]
+    ttb_reward_projection: {source: accuracy, rule: identity}
+    posterior_success_projection: {source: accuracy, rule: equals-one}
+    evaluator: official-symbolic-equivalence
+
+  - id: healthbench
+    version: openai-full-2025-05-07
+    populations:
+      - {role: training, id: independent-health-dialogue-train-v1}
+      - {role: validation, id: independent-health-dialogue-validation-v1}
+      - {role: final-evaluation, id: healthbench-full-5000, sampling: full}
+    native_metrics: [official-rubric-score, triggered-negative-rubric-count]
+    ttb_reward_projection: {source: official-rubric-score, rule: clip-to-zero-one}
+    posterior_success_projection:
+      source: [official-rubric-score, triggered-negative-rubric-count]
+      rule: score-at-least-and-no-negative-rubric-triggered
+      threshold: 0.60
+    evaluator: healthbench-qwen3.5-9b-sglang-temperature-0@1
+    excluded_primary_variants: [healthbench-hard, healthbench-consensus]
+
+  - id: webshop
+    version: official-12087-instruction-release
+    populations:
+      - {role: training, id: webshop-goals-train-v1}
+      - {role: validation, id: webshop-goals-validation-v1}
+      - {role: final-evaluation, id: webshop-goals-test-v1, sampling: full}
+    native_metrics: [average-score, success-rate]
+    ttb_reward_projection: {source: native-score, rule: identity}
+    posterior_success_projection: {source: native-success, rule: equals-one}
+    evaluator: official-webshop-environment
+
+  - id: alfworld
+    version: data-2.1.1
+    populations:
+      - {role: training, id: alfworld-train-main}
+      - {role: validation, id: alfworld-train-holdout}
+      - {role: final-evaluation, id: alfworld-valid-seen, sampling: full}
+      - {role: final-evaluation, id: alfworld-valid-unseen, sampling: full}
+    native_metrics: [valid-seen-success-rate, valid-unseen-success-rate]
+    ttb_reward_projection: {source: episode-success, rule: identity}
+    posterior_success_projection: {source: episode-success, rule: equals-one}
+    evaluator: official-alfworld-environment
+
+  - id: spreadsheetbench
+    version: v1-verified-400
+    populations:
+      - {role: training, id: independent-spreadsheet-train-v1}
+      - {role: validation, id: independent-spreadsheet-validation-v1}
+      - {role: final-evaluation, id: spreadsheetbench-v1-verified-400, sampling: full}
+    native_metrics: [pass@1]
+    ttb_reward_projection: {source: all-workbook-cases-pass, rule: identity}
+    posterior_success_projection: {source: all-workbook-cases-pass, rule: equals-one}
+    evaluator: official-spreadsheetbench-v1-oj
+    excluded_primary_variants: [spreadsheetbench-v1-full-912, spreadsheetbench-2]
+
+  - id: appworld
+    version: data-0.2.0
+    populations:
+      - {role: training, id: appworld-train}
+      - {role: validation, id: appworld-dev}
+      - {role: final-evaluation, id: appworld-test-normal, sampling: full}
+      - {role: final-evaluation, id: appworld-test-challenge, sampling: full}
+    native_metrics: [task-goal-completion, scenario-goal-completion]
+    ttb_reward_projection: {source: task-goal-completion, rule: identity}
+    posterior_success_projection: {source: official-task-success, rule: equals-one}
+    evaluator: official-appworld
+    aggregation_constraint: scenario-goal-completion-requires-complete-scenario-group
+
+  - id: mbpp-plus-fixed-100
+    version: evalplus-v0.2.0
+    populations:
+      - {role: training, id: independent-code-train-excluding-all-mbpp-plus}
+      - {role: validation, id: independent-code-validation-excluding-all-mbpp-plus}
+      - {role: final-evaluation, id: mbpp-plus-fixed-100-v1, sampling: full}
+    final_selection: first-100-by-ascending-canonical-evalplus-task-id
+    forbidden_label: hard-100
+    native_metrics: [pass@1]
+    ttb_reward_projection: {source: all-evalplus-tests-pass, rule: identity}
+    posterior_success_projection: {source: all-evalplus-tests-pass, rule: equals-one}
+    evaluator: official-evalplus-mbpp

@@ -1,0 +1,74 @@
+
+training:
+  algorithm: gflownet_ttb
+  exp_name: skillflow_general
+
+  base_model: "${SKILLFLOW_BASE_MODEL:-Qwen/Qwen3.5-9B}"
+
+  use_lora: true
+  lora_rank: 64
+  lora_alpha: 128
+  lora_target_modules: ["q_proj", "k_proj", "v_proj", "o_proj"]
+  backward_lora_rank: 16
+
+  # Formal launch remaps physical GPU2 to logical cuda:0. The process worker
+  # owns the second visible device; this upstream compatibility field is off.
+  device: "cuda:0"
+  extra_device: null
+  kl_coeff: 0.01
+
+  beta: 1.0
+  epsilon_min: 0.1
+  ttb_edge_normalization: "per_token"
+  ttb_length_normalization: "steps"
+  reward_mode: "outcome_only"
+  skill_mode: "policy_action"
+
+  flow_entropy_threshold: 0.85
+  evolution_phase_steps: 10
+  experience_evolution_threshold: 16
+  min_trajs_for_evolution: 24
+  prune_threshold: -10.0
+  min_usage_before_prune: 20
+  max_skills_total: 60
+  cgf_G_threshold: 0.0
+  cgf_J_threshold: 1.0
+  cgf_K_minus: 2
+  plateau_window_size: 10
+  plateau_rho: 0.05
+  plateau_m_consecutive: 2
+  zeta_trig: 1.0
+
+  genesis_count: 0
+  genesis_explore_episodes: 0
+  genesis_explore_temperature: 0.95
+
+  supervisor_api_base: "http://127.0.0.1:8005/v1"
+  supervisor_model: "supervisor_theta"
+  supervisor_mode: "external"
+
+  executor_api_base: "http://127.0.0.1:8005/v1"
+  executor_model: "${SKILLFLOW_EXECUTOR_MODEL:-Qwen/Qwen3.5-9B}"
+  executor_api_key: ""
+
+  max_steps: 300
+  batch_size: 28
+  n_trajectories_per_question: 4
+  max_episode_steps: 12
+  rollout_workers: 28
+  learning_rate: 1.0e-4
+  max_grad_norm: 3.0
+  save_every: 10
+  sync_lora_every: 1
+  seed_offset: 7
+
+  output_dir: "outputs/skillflow_general"
+
+  train_data: "data/train_v3.json"
+  val_data: "data/test_iid_v3.json"
+
+  log_level: "INFO"
+  dump_trajectories: false
+  tracking_mode: "disabled"
+  max_obs_chars: 0
+  max_context_chars: 0

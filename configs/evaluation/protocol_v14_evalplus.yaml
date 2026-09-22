@@ -1,0 +1,19 @@
+format: skillev-protocol14-evalplus@1
+source_repository: https://github.com/evalplus/evalplus
+source_revision: e9fedc83c161bbd655e145ac246580d2bd92f5f6
+package_version: 0.2.0
+mbpp_plus_dataset_version: v0.2.0
+mbpp_plus_task_count: 378
+humaneval_plus_dataset_version: v0.1.9
+humaneval_plus_task_count: 164
+candidate_count_per_task: 1
+success_rule: base-and-plus
+sandbox:
+  process_per_task: true
+  maximum_memory_bytes: 4294967296
+  minimum_time_limit_seconds: 0.1
+  ground_truth_time_limit_factor: 2.0
+  temporary_working_directory: true
+  network_disabled_by_reliability_guard: true
+  workers: 8
+  total_timeout_seconds: 7200

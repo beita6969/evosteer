@@ -1,0 +1,139 @@
+{
+  "date": "2026-09-17",
+  "method": "EvoSteer first implementation",
+  "source_inventory": {
+    "original_files": 1839,
+    "changed_original_files": [
+      "README.md",
+      "pyproject.toml"
+    ],
+    "missing": [],
+    "new_python_files": [
+      "src/skillev/evosteer_cli.py",
+      "src/skillev/evosteer_demo.py",
+      "src/skillev/evosteer_application.py",
+      "src/skillev/orchestration/model_executor.py",
+      "src/skillev/orchestration/graph.py",
+      "src/skillev/orchestration/actions.py",
+      "src/skillev/orchestration/budget.py",
+      "src/skillev/orchestration/tool_executor.py",
+      "src/skillev/orchestration/evosteer_features.py",
+      "src/skillev/orchestration/execution.py",
+      "src/skillev/evolution/evosteer_author.py",
+      "src/skillev/evolution/validated_admission.py",
+      "src/skillev/evolution/paired_trials.py",
+      "src/skillev/policy/state_value.py",
+      "src/skillev/policy/evosteer.py",
+      "src/skillev/policy/action_trie.py",
+      "src/skillev/scoring/anchor_tb.py",
+      "src/skillev/rollout/evosteer.py",
+      "src/skillev/contracts/evosteer.py",
+      "src/skillev/training/reference_statistics.py",
+      "src/skillev/training/evosteer.py",
+      "tests/evosteer/test_state_value.py",
+      "tests/evosteer/test_paired_trials.py",
+      "tests/evosteer/test_tool_executor.py",
+      "tests/evosteer/test_application.py",
+      "tests/evosteer/test_evosteer_author.py",
+      "tests/evosteer/test_rollout_boundaries.py",
+      "tests/evosteer/test_history_contracts.py",
+      "tests/evosteer/test_training_gradients.py",
+      "tests/evosteer/test_budget.py",
+      "tests/evosteer/test_graph_runtime.py",
+      "tests/evosteer/test_validated_admission.py",
+      "tests/evosteer/test_policy_backend.py",
+      "tests/evosteer/test_anchor_tb.py",
+      "tests/evosteer/test_reference_statistics.py",
+      "tests/evosteer/test_cli.py"
+    ],
+    "parsed_python_files": 1464
+  },
+  "tests": {
+    "passed": 355,
+    "failed": 0,
+    "skipped": 0,
+    "new_evosteer_tests": 227,
+    "existing_regression_tests": 128,
+    "full_repository_suite": false,
+    "warning": "PEFT adjusts fan_in_fan_out for the tiny GPT2 Conv1D fixture",
+    "junit": "docs/evosteer-tests.xml"
+  },
+  "runtime": {
+    "python": "3.11.15",
+    "torch": "2.13.0+cpu",
+    "transformers": "5.14.1",
+    "peft": "0.19.1",
+    "pytest": "8.4.1",
+    "ruff": "0.12.4",
+    "mypy": "1.17.0"
+  },
+  "checks": {
+    "ruff": "21 new source modules and tests/evosteer passed",
+    "mypy": "24 source files passed, --follow-imports=skip --allow-subclassing-any",
+    "syntax": {
+      "parsed_files": 1464,
+      "errors": 0
+    },
+    "wheel_build": true,
+    "existing_wheel_isolation_gate": true
+  },
+  "smoke": {
+    "initial": {
+      "summary": "artifacts/evosteer-smoke-20260917/summary.json",
+      "batch_index": 2,
+      "actor_version": 2,
+      "synthetic": true
+    },
+    "resumed": {
+      "summary": "artifacts/evosteer-smoke-resumed-20260917/summary.json",
+      "batch_index": 3,
+      "actor_version": 3,
+      "synthetic": true
+    }
+  },
+  "gpu_execution": false,
+  "real_benchmark_execution": false,
+  "wheel": {
+    "path": "dist/skillev-0.1.0-py3-none-any.whl",
+    "sha256": "e6b8628ed0c9a3b82fafc11ac018906c4c3ddcddf6e0b1758e91dbbc2036f9ae"
+  },
+  "source_sha256": {
+    "src/skillev/evosteer_cli.py": "952759dbfad33a926ae894d4c383ccdb394b7d20038d23d21eb80b4cc90ca843",
+    "src/skillev/evosteer_demo.py": "5a2f8eefa58804e9eced87a89a079bda5783648ebf286c70f75ae8c4d56b3313",
+    "src/skillev/evosteer_application.py": "322d4ef4a078412b33f630207f6d0d6157eec24c1570f53b4afe8e25d9ed1505",
+    "src/skillev/orchestration/model_executor.py": "8f5c5bc89e7c9a4f900949280843a01d3f947d9745947d7e85e8a729fe5c58c2",
+    "src/skillev/orchestration/graph.py": "79a339c58238361a077c987c6313a515dea6b3e671bc00d710fd921f45c21f06",
+    "src/skillev/orchestration/actions.py": "107a792596b03889f807aca3700894518fb6ffc616ba27b4cc897ac523a04f29",
+    "src/skillev/orchestration/budget.py": "87152a07d5b57972a0a5658ee2b8f5675f8bc98848685c7acc947374f1e64ae6",
+    "src/skillev/orchestration/tool_executor.py": "b894fdc1e7ad4c90d16763891c7d17b89ccfd12fdc3ec581db1f9b82f9cc881e",
+    "src/skillev/orchestration/evosteer_features.py": "a6fb22d2a3979528cf4b886aa9aa210f42b4cb2cddd3455e48a884ede8e51a46",
+    "src/skillev/orchestration/execution.py": "79169171500582437055ff2ee16f2a0bbfe55a7a2dd9e51e12682f007f11e6ca",
+    "src/skillev/evolution/evosteer_author.py": "268af4163a72d08b8e14fc4ea90214780c9bb206373c5105a663d008c4c74f75",
+    "src/skillev/evolution/validated_admission.py": "4acb97bee07063d710db60f741e0637d823a98426fdc49ce97f9080c8f9f069d",
+    "src/skillev/evolution/paired_trials.py": "88cecc54c935630e2d5160ec529cbc6f010729ec69c8a44f2fa6a12d8161ee9f",
+    "src/skillev/policy/state_value.py": "a212c0a9dcdb69ea4e6fbc0373b6afa1af38fb17b43b241d68f0f7b716dd92f7",
+    "src/skillev/policy/evosteer.py": "f8dbf101a711a1f29b399380114476e96ed3e78e8ab434a3c937a32672c1af94",
+    "src/skillev/policy/action_trie.py": "e6315cd214e94d309165a2d9bd8cf9d9f5759636af6dc2bd4eb4a7d82f290f51",
+    "src/skillev/scoring/anchor_tb.py": "09f7e4b2557fb0531229b857a8c75494feaa981b425915f0e220967806135bd9",
+    "src/skillev/rollout/evosteer.py": "ac270cb696ee29f8a4a5c43222447d6b148103066a79c064e833c46041f134e2",
+    "src/skillev/contracts/evosteer.py": "8913ebf0e0d1a6cca92597eee1b65fc72c9ff5541481ea0cde3e2fe524e63395",
+    "src/skillev/training/reference_statistics.py": "cebb09659055ea747c620bd16270bfe68a07ddd2d47b02566d0aab81c6746e6f",
+    "src/skillev/training/evosteer.py": "f5e2ea2a0643c903fdfb86f9309787886dbc2992e82ef43a5dd370110af37401",
+    "tests/evosteer/test_state_value.py": "2c585c3fffa6517b5128920a3acceb91a9c04efc7c91e8b5934eb75dacdd40f9",
+    "tests/evosteer/test_paired_trials.py": "8ad0ea70c25a181358d91b7cc45a9477e996637db4eb9d413ccc3d01eca61076",
+    "tests/evosteer/test_tool_executor.py": "ee06e195e1bbe126a3a58e8381bb39ad262739f3c1aef67825b2bb9d1c6701c6",
+    "tests/evosteer/test_application.py": "f95e879af12bedad436ac15c0ba9b3532eb65b594da6f5689bc5b88f7fb89807",
+    "tests/evosteer/test_evosteer_author.py": "67916f3e5140990a05a0e750bacc25d5cf33db9b15085bb1ae355426c6638eae",
+    "tests/evosteer/test_rollout_boundaries.py": "3d92b30710f9ddab56c8f596457c69291b57b87903441df361e3f9e64d0bc6cf",
+    "tests/evosteer/test_history_contracts.py": "3a67c72a2ede2608902db9bfe86256eae24fd5ca3199b35e1c59feb973015490",
+    "tests/evosteer/test_training_gradients.py": "ea4dcaa3d630c048de6a5a4b8ff6fa2bf36b9723155798c5d554764ba1e70069",
+    "tests/evosteer/test_budget.py": "59cdcbed33748d1d1670c1c61e6a4f605afd5d84d230e6a5da177cd1676cb7b9",
+    "tests/evosteer/test_graph_runtime.py": "f4ed722022616b6b5bdf4ab7c3a3e12db7b6351135278cf918083eeb6ed73b37",
+    "tests/evosteer/test_validated_admission.py": "888437c34d0a60721cbc4c8e9b395178b3a196de596429f4a56b33d93b45a9d2",
+    "tests/evosteer/test_policy_backend.py": "e7ffd7d45d834fd07d148557d448859dad37856ccb3df29d62b96d2a2a6ad803",
+    "tests/evosteer/test_anchor_tb.py": "7eac7fda54ecab5616ed488797b22224b54bf53fe24a6b364f48c424ebc70c4b",
+    "tests/evosteer/test_reference_statistics.py": "68efbbd921da20703c0bebef222607857c4ea07163b3afc641983951af642f8f",
+    "tests/evosteer/test_cli.py": "ac8b1da084a71474dcc8b41e935f5d60430f300e7281788450a098a668bf8292"
+  },
+  "implementation_boundaries": "docs/evosteer-implementation.md#6-明确的实现选择和未完成范围"
+}

@@ -1,0 +1,27 @@
+format: skillev-benchmark-protocol@13
+benchmarks:
+  - hotpotqa
+  - triviaqa
+  - aime-2026
+  - healthbench
+  - webshop
+  - alfworld
+  - mbpp-plus
+  - humaneval
+training:
+  questions_per_domain: 250
+  selection_seed: 0
+  questions_per_step: 8
+  trajectories_per_question: 4
+  effective_batch_size: 32
+  optimizer_steps: 250
+  checkpoint_every_steps: 10
+  checkpoint_count: 25
+  sampling_rule: dataset-balanced-step-major
+execution_gate:
+  executable: false
+  unblock_when:
+    - all eight Protocol 13 runner preflights pass
+    - all eight target contracts are matched and formally eligible
+    - all eight conserved receipts are infrastructure-clear and strictly within their thresholds
+    - no-update and one-step controls are produced by the real runtime

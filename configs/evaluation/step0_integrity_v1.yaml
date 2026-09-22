@@ -1,0 +1,11 @@
+format: skillev-step0-integrity@1
+condition_id: step0-no-skill-flexible-communication@4
+optimizer_steps: 0
+native_thinking: false
+reasoning_pass: disabled
+agent_topology: single-controller
+skill_mode: 'off'
+handwritten_policy_mode: 'off'
+demonstration_mode: 'off'
+semantic_action_pruning: false
+automatic_catalog_actions: false

@@ -1,0 +1,232 @@
+\documentclass[11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\geometry{margin=1in}
+
+\title{SKILLEV Benchmark Protocol 10}
+\date{17 August 2026}
+
+\begin{document}
+\maketitle
+
+\section{Authority and scope}
+
+This document freezes the benchmark science for
+\texttt{skillev-benchmark-protocol@10}.  The learning method remains governed
+exclusively by \texttt{idea.tex}; this document fixes only experimental
+populations, terminal measurements, reward projections, and comparison rules.
+The machine-readable projection is
+\texttt{configs/evaluation/protocol\_v10.yaml}.  A formal run is inadmissible
+until the runtime implements that projection exactly.
+
+All comparisons use one seed, 0, and the same ordered tasks, budgets, model
+revision, tokenizer, evaluator versions, and initial skill library.  The three
+first required conditions are exact SkillFlow baseline,
+BayesianImprove-full, and BayesianImprove-no-calibration.  The latter two are
+not aliases for the historical \texttt{SKILLFLOW\_DISABLED} arm.
+
+\section{Population isolation}
+
+Every domain has three disjoint roles: training, progress validation, and
+final evaluation.  Final evaluation items are never sampled for training,
+posterior updates, threshold selection, skill authoring, or prompt examples.
+Final evaluation is read-only: it cannot update model parameters, the
+Beta--Bernoulli posterior, detector state, or the skill library.
+
+Isolation is checked using canonical source identifiers and normalized public
+task content.  Code tasks additionally compare public function signatures;
+spreadsheet tasks compare instructions, workbook structure, and formulas;
+interactive tasks compare goal, scenario, and environment identifiers.  Any
+overlap aborts the experiment.  Reference answers, tests, rubric criteria,
+hidden environment state, and per-item reports remain inside the trusted
+evaluator and never enter model context or Git.
+
+The training mixture follows the SkillFlow construction rule: every benchmark
+contributes exactly 512 episodes, for 4,608 episodes in total.  The benchmark
+order in this document defines construction and tie-breaking only.  Within
+each benchmark, source tasks are deterministically shuffled with seed 0.  If a
+source population has fewer than 512 unique tasks, additional independently
+shuffled cycles are appended until the benchmark contributes 512 episodes;
+every occurrence receives a distinct episode ID while retaining its
+source-task ID.  If the population has at least 512 tasks, the first 512 of the
+frozen shuffled order are used.  The nine equal-size selections are then
+combined and globally shuffled with seed 0, matching SkillFlow's mixed-domain
+training data rather than presenting nine consecutive domain blocks.  The
+complete 4,608-episode order is shared by every method and never adapted from
+reward or accuracy.
+
+This 512-per-domain rule applies only to the training mixture.  Validation and
+final-evaluation populations retain the independent sizes specified below and
+are never filled with repeated training items.
+
+\section{Terminal signal contract}
+
+Each completed evaluator call emits native metrics, a TTB reward
+$R(\tau)\in[0,1]$, and a separate binary posterior outcome
+$Y(\tau)\in\{0,1\}$.  The TTB objective consumes only $R$; the
+Beta--Bernoulli update consumes only $Y$.  Continuous metrics are therefore
+not silently treated as Bernoulli observations.
+
+Infrastructure failure is not a zero reward.  It aborts the uncommitted step.
+A completed evaluation of a legal but incorrect or invalid candidate is a
+valid zero reward and remains in the batch.  Native private payloads are
+log-only evaluator evidence and are not observations for the evaluated model.
+
+\small
+\begin{tabular}{p{0.13\textwidth}p{0.22\textwidth}p{0.19\textwidth}p{0.22\textwidth}}
+\hline
+Domain & Public native metrics & TTB reward $R$ & Posterior success $Y$ \\
+\hline
+HotpotQA & answer F1, answer EM & official answer F1 & $1[\mathrm{EM}=1]$ \\
+TriviaQA & answer F1, answer EM & official answer F1 & $1[\mathrm{EM}=1]$ \\
+AIME 2026 & accuracy & correctness & correctness \\
+HealthBench & official rubric score & clipped official per-example score &
+$1[\mathrm{score}\geq0.60\ \land\ \mathrm{no\ negative\ criterion\ triggered}]$ \\
+WebShop & average native score, success rate & native score & native success \\
+ALFWorld & seen success, unseen success & episode success & episode success \\
+SpreadsheetBench & Pass@1 & all official workbook cases pass & same \\
+AppWorld & TGC, SGC & per-task TGC & per-task official success \\
+MBPP+ fixed-100 & pass@1 & all EvalPlus tests pass & same \\
+\hline
+\end{tabular}
+\normalsize
+
+The HealthBench threshold is preregistered at 0.60 and cannot be tuned on
+HealthBench.  Its second conjunct prevents a high positive-point total from
+masking any triggered negative-weight rubric criterion.  The official raw
+per-example score may be negative; only the TTB projection clips it to
+$[0,1]$.  Public reporting follows the official aggregate rather than the
+clipped training reward.
+
+\section{Frozen benchmark populations}
+
+The per-domain selections are constructed in this fixed order before the
+global seed-0 shuffle:
+
+\begin{center}
+HotpotQA $\rightarrow$ TriviaQA $\rightarrow$ AIME training $\rightarrow$
+Health training $\rightarrow$ WebShop $\rightarrow$ ALFWorld $\rightarrow$
+Spreadsheet training $\rightarrow$ AppWorld $\rightarrow$ code training.
+\end{center}
+
+Each domain contributes exactly 512 episodes under the repeat-and-reshuffle rule
+above.  The names AIME 2026, HealthBench, SpreadsheetBench, and MBPP+ identify
+capability domains in the training mixture; their protected final populations
+themselves remain evaluation-only.
+
+\subsection{HotpotQA}
+
+Use HotpotQA v1.1 distractor mode and its official evaluator.  Training and
+progress validation are a fixed disjoint partition of the official training
+population.  Final evaluation is the complete official distractor development
+population.  Report answer F1 and EM.  Supporting-fact labels remain private
+and are not added to model context.
+
+\subsection{TriviaQA}
+
+Use TriviaQA v1.0 unfiltered.  Training and progress validation are a fixed
+disjoint partition of the official training population; final evaluation is
+the complete official development population.  Use the official normalization
+and report answer F1 and EM.
+
+\subsection{AIME 2026}
+
+All thirty AIME 2026 tasks are final-evaluation-only.  Train on AIME
+1983--2024 and use AIME 2025 as progress validation.  Exact problem identity
+and normalized statement overlap are forbidden across years and sources.
+The final answer is graded by the official symbolic-equivalence path and
+reported as accuracy.
+
+\subsection{HealthBench}
+
+The primary final population is the complete 5,000-example OpenAI HealthBench
+release dated 7 May 2025.  HealthBench Hard and HealthBench Consensus are not
+additional primary populations in protocol 10.  Training and validation use
+independently licensed health-dialogue and safety tasks with no HealthBench
+conversation, rubric, or reference response.  Before the first formal run,
+Protocol 10 amendment \texttt{protocol-v10-healthbench-qwen-judge@1} replaced
+the unused GPT-4.1 profile with the frozen Qwen3.5-9B base model served by
+SGLang at temperature zero.  The official rubric-item prompt and score formula
+remain unchanged.  The judge never loads a training adapter.  These results
+are reported as ``HealthBench, Qwen3.5-9B judge'' and are not claimed to be
+official GPT-4.1-graded HealthBench scores.  Malformed judge output or grader
+failure is infrastructure failure, never reward zero.
+
+\subsection{WebShop}
+
+Freeze three disjoint goal-ID partitions from the official 12,087-instruction
+release before training.  Training and validation use their respective
+partitions; the held-out partition is final evaluation.  Report average native
+score and native success rate.  Product data and environment build are the
+same across compared methods.
+
+\subsection{ALFWorld}
+
+Training uses official train games and progress validation uses a fixed
+holdout from train.  Final evaluation uses the complete
+\texttt{valid\_seen} and \texttt{valid\_unseen} populations from data release
+2.1.1.  Report their success rates separately; a combined rate may be shown
+only as an explicitly secondary statistic.
+
+\subsection{SpreadsheetBench}
+
+The sole primary final population is SpreadsheetBench V1 Verified, the
+expert-annotated 400-instance release.  Neither the original 912-instance set
+nor SpreadsheetBench 2 is silently substituted.  Training and validation use
+independently generated spreadsheet tasks whose instructions, workbooks,
+formula graphs, and test cases do not overlap the official population.  The
+official online-judge-style evaluator runs every workbook case; Pass@1 requires
+all cases for the instruction to pass.
+
+\subsection{AppWorld}
+
+Use the official data release 0.2.0.  Training uses \texttt{train}, progress
+validation uses \texttt{dev}, and final evaluation reports
+\texttt{test\_normal} and \texttt{test\_challenge} separately and jointly.
+Per-task TGC is the continuous reward.  SGC is computed only by the official
+offline evaluator after every task variation in a scenario group is present;
+it is never fabricated as an episode metric.
+
+\subsection{MBPP+ fixed-100}
+
+EvalPlus v0.2.0 contains 378 MBPP+ tasks and publishes no canonical
+``hard-100'' population.  Protocol 10 therefore uses the honest identity
+\texttt{mbpp-plus-fixed-100@1}: the first 100 tasks in ascending canonical
+EvalPlus task-ID order.  The list is materialized before any project-model
+result is run.  It must not be described as hard-100.  Training and validation
+use independent code tasks and exclude all 378 MBPP+ prompts and public
+signatures.  Report official EvalPlus pass@1.
+
+\section{Reporting and comparison}
+
+The final report includes all native metrics in the table, record counts,
+infrastructure failures, parsing failures, wall time, model-call and token
+cost, and the identities of the method, model, tokenizer, evaluator, and each
+population.  AppWorld includes both task and complete-scenario counts.
+ALFWorld keeps seen and unseen results separate.  HealthBench identifies the
+grader snapshot and also reports the binary success rate defined above.
+
+Only completed, equally budgeted conditions enter method comparisons.  Missing
+conditions remain visible; they are not imputed.  One-seed results are called
+registered primary-seed evidence and not multi-seed robustness evidence.
+
+\section{Primary sources}
+
+\begin{itemize}
+  \item HotpotQA: \url{https://github.com/hotpotqa/hotpot}
+  \item TriviaQA: \url{https://github.com/mandarjoshi90/triviaqa}
+  \item AIME 2026 environment: \url{https://github.com/EnvCommons/AIME2026}
+  \item HealthBench and official evaluator:
+    \url{https://openai.com/index/healthbench/} and
+    \url{https://github.com/openai/simple-evals/blob/main/healthbench_eval.py}
+  \item WebShop: \url{https://github.com/princeton-nlp/WebShop}
+  \item ALFWorld: \url{https://github.com/alfworld/alfworld}
+  \item SpreadsheetBench: \url{https://github.com/RUCKBReasoning/SpreadsheetBench}
+  \item AppWorld: \url{https://github.com/StonyBrookNLP/appworld}
+  \item EvalPlus: \url{https://github.com/evalplus/evalplus}
+\end{itemize}
+
+\end{document}

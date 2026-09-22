@@ -1,0 +1,26 @@
+[build-system]
+requires = ["hatchling==1.27.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "skillev-private-evaluation"
+version = "0.1.0"
+description = "Private task builders and trusted evaluators for SKILLEV"
+requires-python = ">=3.11"
+dependencies = [
+  "antlr4-python3-runtime==4.11.1",
+  "ijson==3.5.1",
+  "math-verify==0.9.0",
+  "numpy==2.3.5",
+  "openpyxl==3.1.5",
+  "pyarrow==21.0.0",
+  "regex==2026.7.19",
+  "skillev==0.1.0",
+  "sympy==1.14.0",
+]
+
+[tool.uv.sources]
+skillev = { workspace = true }
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/skillev_private"]

@@ -1,0 +1,12 @@
+format: skillev-current-iid-targets@1
+targets:
+  hotpotqa: {status: undefined}
+  triviaqa: {status: undefined}
+  aime-2026: {status: undefined}
+  healthbench: {status: undefined}
+  webshop: {status: undefined}
+  alfworld: {status: undefined}
+  spreadsheetbench: {status: undefined}
+  appworld: {status: undefined}
+  mbpp-plus-hard: {status: undefined}
+  humaneval: {status: undefined}

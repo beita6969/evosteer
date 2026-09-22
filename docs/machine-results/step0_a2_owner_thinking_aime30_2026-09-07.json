@@ -1,0 +1,222 @@
+{
+  "schema": "step0-a2-owner-native-thinking-aime30-development@1",
+  "run_id": "focused-aime-a2-owner-native-thinking-6c930c4-20260907T214451Z",
+  "implementation_revision": "6c930c4",
+  "started_utc": "2026-09-07T21:44:54.810189+00:00",
+  "summary_written_utc": "2026-09-07T22:38:40.394909+00:00",
+  "elapsed_seconds_to_summary": 3225.58472,
+  "scope": "A2-only; complete fixed AIME2026 30-case development cohort, not an eight-IID result",
+  "population_exposure": "development-exposed-focused-complete-aime-30-native-thinking",
+  "count": 30,
+  "correct": 25,
+  "metric": "accuracy",
+  "value": 0.8333333333333334,
+  "condition": {
+    "format": "skillev-step0-integrity@3",
+    "condition_id": "A2-owner-native-aime-thinking@1",
+    "optimizer_steps": 0,
+    "native_thinking": false,
+    "reasoning_pass": "disabled",
+    "agent_topology": "multi-agent",
+    "skill_mode": "off",
+    "handwritten_policy_mode": "off",
+    "demonstration_mode": "off",
+    "semantic_action_pruning": false,
+    "automatic_catalog_actions": false,
+    "precomputed_task_context": false,
+    "legacy": false,
+    "tool_call_mode": "qwen-xml"
+  },
+  "model": "Qwen3.5-9B",
+  "optimizer_steps": 0,
+  "adapter_route_sent": null,
+  "sampling_by_benchmark": {
+    "aime-2026": {
+      "enable_thinking": true,
+      "max_new_tokens": 81920,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "profile_id": "owner-native-aime-thinking-seed0@1",
+      "repetition_penalty": 1.0,
+      "sampling_mode": "sampling",
+      "seed": 0,
+      "stop": [],
+      "temperature": 0.7,
+      "top_k": 20,
+      "top_p": 0.8
+    }
+  },
+  "budgets_per_task": {
+    "calls_per_turn": 8,
+    "context_length": 98304,
+    "history_input_tokens": 16384,
+    "skill_instruction_tokens": 2048,
+    "total_model_calls": 8,
+    "total_output_tokens": 81920
+  },
+  "parser": {
+    "benchmarks": {
+      "aime-2026": "single-aime-final-explicit-owner-v4"
+    },
+    "implementation_revision": "6c930c4",
+    "thinking_policy": {
+      "policy_id": "aime-native-thinking-other-iid-off@1",
+      "thinking_by_benchmark": {
+        "aime-2026": true,
+        "alfworld": false,
+        "healthbench": false,
+        "hotpotqa": false,
+        "humaneval": false,
+        "mbpp-plus": false,
+        "triviaqa": false,
+        "webshop": false
+      }
+    },
+    "tool_call_mode": "qwen-xml"
+  },
+  "actual_native_thinking": {
+    "True": 30
+  },
+  "actual_adapter_routes": {
+    "None": 30
+  },
+  "actual_participants": {
+    "owner": 30
+  },
+  "native_channel_counts": {
+    "complete": 27,
+    "malformed": 1,
+    "reasoning-unfinished": 2
+  },
+  "terminal_status_counts": {
+    "submitted": 27,
+    "budget_exhausted": 3
+  },
+  "response_finish_reason_counts": {
+    "stop": 27,
+    "length": 3
+  },
+  "noncomplete_calls_exhausting_total_output_budget": {
+    "True": 3
+  },
+  "execution_status": "complete",
+  "integrity_status": "communication-not-complete",
+  "communication_status": "unresolved-output-failure",
+  "native_metric_contract_status": "pass",
+  "native_diagnostics": {
+    "status_counts": {
+      "scored": 27,
+      "candidate-failure": 3,
+      "infrastructure-failure": 0
+    },
+    "verifier_versions": [
+      "aime-2026-native-integrity@1"
+    ],
+    "failure_kinds": {
+      "empty-submission": 3
+    }
+  },
+  "communication": {
+    "model_requests": 30,
+    "model_responses": 30,
+    "authoritative_model_requests": 30,
+    "authoritative_model_responses": 30,
+    "diagnostic_model_requests": 30,
+    "diagnostic_model_responses": 30,
+    "native_surfaces": 0,
+    "surface_mismatches": 0,
+    "decisions": 0,
+    "accepted_decisions": 0,
+    "rejected_decisions": 0,
+    "control_parse_failures": 0,
+    "terminal_parse_failures": 3,
+    "unresolved_terminal_parse_failures": 3,
+    "repaired_terminal_parse_failures": 0,
+    "unresolved_action_decisions": 0,
+    "repaired_action_decisions": 0,
+    "undelivered_peer_budget_requests": 0,
+    "attempted_control_messages": 0,
+    "successfully_decoded_messages": 0,
+    "delivered_requests": 0,
+    "returned_replies": 0,
+    "undelivered_unresolved_requests": 0,
+    "repair_attempts": 0,
+    "repair_successes": 0,
+    "repaired_delivery_failures": 0,
+    "unresolved_delivery_failures": 0,
+    "executions": 0,
+    "unmatched_executions": 0,
+    "missing_acknowledgements": 0,
+    "feedback_mismatches": 0,
+    "peer_requests": 0,
+    "peer_replies": 0,
+    "late_peer_replies": 0,
+    "peer_route_mismatches": 0,
+    "episodes_with_peer_calls": 0,
+    "voluntary_no_peer_episode_count": 30,
+    "unobserved_required_boundary_count": 0,
+    "executed_decisions": 0,
+    "acknowledged_decisions": 0,
+    "legacy_unverified_events": 0,
+    "actual_peer_calls_by_benchmark": {
+      "aime-2026": 0
+    },
+    "actual_agent_count": 1,
+    "status": "unresolved-output-failure",
+    "native_task_success": "reported-separately",
+    "peer_execution_status": "not-observed",
+    "native_execution_status": "not-applicable"
+  },
+  "actual_cost": {
+    "input_tokens": 31873,
+    "output_tokens": 916715,
+    "model_calls": 30,
+    "tool_calls": 0,
+    "peer_model_calls": 0
+  },
+  "scorer_cost": {
+    "records_with_cost": 30,
+    "records_without_cost": 0,
+    "failed_invocations": 0,
+    "failed_invocation_totals": {},
+    "completed_score_totals": {
+      "wall_seconds": 0.0020431168377399445
+    },
+    "totals": {
+      "wall_seconds": 0.0020431168377399445
+    }
+  },
+  "interventions": {
+    "skill_blocks_injected": 0,
+    "skill_body_tokens": 0,
+    "skill_calls": 0,
+    "handwritten_decisions": 0,
+    "legal_actions_removed_by_policy": 0,
+    "automatic_catalog_actions": 0,
+    "demonstration_tokens": 0,
+    "extra_model_calls_for_serialization": 0,
+    "model_calls": 30,
+    "tool_calls": 0,
+    "communication_repairs": 0,
+    "peer_model_calls": 0,
+    "peer_messages": 0
+  },
+  "transport_event_counts": {
+    "model-transport-complete": 30,
+    "model-transport-start": 30
+  },
+  "cross_run_answers_reused": 0,
+  "candidate_authority": "evaluated-policy-single-final-no-selection",
+  "matched_control_evaluated": false,
+  "causal_architecture_gain_claimed": false,
+  "development_score_goal": {
+    "threshold_percent": 80,
+    "met": true
+  },
+  "routed_physical_gpus": [
+    4,
+    5,
+    7
+  ],
+  "public_release": "aggregate-only; no task IDs, prompts, answers, per-item scores or private paths"
+}

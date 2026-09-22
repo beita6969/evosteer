@@ -1,0 +1,101 @@
+{
+  "stage": "native-result",
+  "benchmark": "alfworld",
+  "count": 126,
+  "planned": 128,
+  "uncompleted": 2,
+  "metric": "success",
+  "value": 0.8174603174603174,
+  "secondary_metrics": {
+    "success": 0.8174603174603174
+  },
+  "native_diagnostics": {
+    "status_counts": {
+      "scored": 126,
+      "candidate-failure": 0,
+      "infrastructure-failure": 0
+    },
+    "verifier_versions": [
+      "alfworld-native-integrity@1"
+    ],
+    "failure_kinds": {},
+    "splits": {
+      "valid_seen": {
+        "count": 97,
+        "successes": 79,
+        "value": 0.8144329896907216
+      },
+      "valid_unseen": {
+        "count": 29,
+        "successes": 24,
+        "value": 0.8275862068965517
+      }
+    },
+    "split_metadata_missing_count": 0
+  },
+  "scoring_status": "complete-for-snapshot",
+  "full_panel_status": "incomplete",
+  "termination_counts": {
+    "success": 103,
+    "terminal_reached": 107,
+    "terminated_by_horizon": 0
+  },
+  "communication": {
+    "model_requests": 5977,
+    "model_responses": 5977,
+    "authoritative_model_requests": 5977,
+    "authoritative_model_responses": 5977,
+    "diagnostic_model_requests": 5977,
+    "diagnostic_model_responses": 5977,
+    "native_surfaces": 5977,
+    "surface_mismatches": 0,
+    "decisions": 5744,
+    "accepted_decisions": 3198,
+    "rejected_decisions": 2546,
+    "control_parse_failures": 225,
+    "terminal_parse_failures": 0,
+    "unresolved_terminal_parse_failures": 0,
+    "repaired_terminal_parse_failures": 0,
+    "unresolved_action_decisions": 2293,
+    "repaired_action_decisions": 253,
+    "undelivered_peer_budget_requests": 0,
+    "attempted_control_messages": 233,
+    "successfully_decoded_messages": 8,
+    "delivered_requests": 0,
+    "returned_replies": 0,
+    "undelivered_unresolved_requests": 157,
+    "repair_attempts": 2752,
+    "repair_successes": 277,
+    "repaired_delivery_failures": 68,
+    "unresolved_delivery_failures": 157,
+    "executions": 3198,
+    "unmatched_executions": 0,
+    "missing_acknowledgements": 0,
+    "feedback_mismatches": 0,
+    "peer_requests": 0,
+    "peer_replies": 0,
+    "late_peer_replies": 0,
+    "peer_route_mismatches": 0,
+    "episodes_with_peer_calls": 0,
+    "voluntary_no_peer_episode_count": 71,
+    "unobserved_required_boundary_count": 0,
+    "executed_decisions": 3198,
+    "acknowledged_decisions": 3198,
+    "legacy_unverified_events": 0,
+    "actual_peer_calls_by_benchmark": {
+      "alfworld": 0
+    },
+    "actual_agent_identities": [
+      "owner"
+    ],
+    "actual_agent_count": 1,
+    "status": "unresolved-delivery-failure",
+    "native_task_success": "reported-separately",
+    "peer_execution_status": "not-observed",
+    "native_execution_status": "observed"
+  },
+  "run_id": "focused-full-a2-native-interaction-v5-fullcatalog-d2c4af9-20260908T022312Z",
+  "implementation_revision": "d2c4af9",
+  "snapshot_utc": "2026-09-08T04:51:29Z",
+  "last_progress_checked_utc": "2026-09-08T05:00:28.198414+00:00"
+}

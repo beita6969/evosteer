@@ -1,0 +1,23 @@
+format: skillev-bayesian-improve@1
+name: skillflow_bayesian_improve
+status: historical-not-protocol-v10
+baseline_config: configs/baseline/paper_v1_250step.yaml
+protocol_v10_formal_config: configs/experiments/protocol_v10_formal.yaml
+method_authority: idea.tex
+mode: hybrid
+posterior:
+  family: beta_bernoulli
+  alpha0: 1.0
+  beta0: 1.0
+  flow_weighting: uncapped_mean_normalized
+decision:
+  confidence_multiplier: 1.0
+  retain_compress: high_flow_and_high_lcb
+  refine_patch: high_flow_and_low_context_lcb
+  split: high_flow_and_multimodal_context_posterior
+  prune: low_flow_and_low_ucb
+  generate: uncovered_high_residual_asymmetry
+phase_transition:
+  residual_stagnation_and_skill_entropy_decrease: true
+training:
+  seed: 0

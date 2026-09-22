@@ -1,0 +1,43 @@
+format: skillev-protocol-v11-sources@1
+benchmarks:
+  - hotpotqa
+  - triviaqa
+  - aime-2026
+  - healthbench
+  - webshop
+  - alfworld
+  - spreadsheetbench
+  - appworld
+  - mbpp-plus-hard
+  - humaneval
+populations:
+  - {benchmark: hotpotqa, population_id: hotpotqa-train-main-v11, source_revision: hotpotqa-v1.1, selection_rule: train-disjoint-final, role: training, expected_count: 512, visibility: public, environment_kind: context-retrieval, evaluator_kind: official-hotpotqa-v1}
+  - {benchmark: hotpotqa, population_id: hotpotqa-validation-v11, source_revision: hotpotqa-v1.1, selection_rule: held-out-train, role: validation-iid, expected_count: 128, visibility: public, environment_kind: context-retrieval, evaluator_kind: official-hotpotqa-v1}
+  - {benchmark: hotpotqa, population_id: hotpotqa-final-128-v11, source_revision: hotpotqa-v1.1, selection_rule: frozen-128, role: final-evaluation, expected_count: 128, visibility: private, environment_kind: full-context-direct, evaluator_kind: official-hotpotqa-v1}
+  - {benchmark: triviaqa, population_id: triviaqa-train-main-v11, source_revision: triviaqa-unfiltered-v1, selection_rule: train-disjoint-final, role: training, expected_count: 512, visibility: public, environment_kind: public-retrieval, evaluator_kind: official-triviaqa-v1}
+  - {benchmark: triviaqa, population_id: triviaqa-validation-v11, source_revision: triviaqa-unfiltered-v1, selection_rule: held-out-train, role: validation-iid, expected_count: 128, visibility: public, environment_kind: public-retrieval, evaluator_kind: official-triviaqa-v1}
+  - {benchmark: triviaqa, population_id: triviaqa-final-128-v11, source_revision: triviaqa-unfiltered-v1, selection_rule: frozen-128, role: final-evaluation, expected_count: 128, visibility: private, environment_kind: public-retrieval, evaluator_kind: official-triviaqa-v1}
+  - {benchmark: aime-2026, population_id: aime-through-2024-v11, source_revision: historical-aime, selection_rule: years-at-most-2024, role: training, expected_count: 512, visibility: public, environment_kind: direct-answer, evaluator_kind: official-symbolic-equivalence}
+  - {benchmark: aime-2026, population_id: aime-2025-v11, source_revision: aime-2025, selection_rule: all-2025, role: validation-iid, expected_count: 30, visibility: private, environment_kind: direct-answer, evaluator_kind: official-symbolic-equivalence}
+  - {benchmark: aime-2026, population_id: aime-2026-all-30-v11, source_revision: aime-2026, selection_rule: all-30, role: final-evaluation, expected_count: 30, visibility: private, environment_kind: direct-answer, evaluator_kind: official-symbolic-equivalence}
+  - {benchmark: healthbench, population_id: independent-health-train-v11, source_revision: independent-medical-dialogue, selection_rule: disjoint-public-training, role: training, expected_count: 512, visibility: public, environment_kind: direct-dialogue, evaluator_kind: healthbench-rubrics}
+  - {benchmark: healthbench, population_id: independent-health-validation-v11, source_revision: independent-medical-dialogue, selection_rule: held-out-public, role: validation-iid, expected_count: 128, visibility: public, environment_kind: direct-dialogue, evaluator_kind: healthbench-rubrics}
+  - {benchmark: healthbench, population_id: healthbench-full-random0-128-v11, source_revision: openai-full-2025-05-07, selection_rule: random-0-sample-128, role: final-evaluation, expected_count: 128, visibility: private, environment_kind: direct-dialogue, evaluator_kind: qwen-local-healthbench-diagnostic}
+  - {benchmark: webshop, population_id: webshop-train-v11, source_revision: official-webshop, selection_rule: official-train, role: training, expected_count: 512, visibility: public, environment_kind: webshop-native, evaluator_kind: official-webshop}
+  - {benchmark: webshop, population_id: webshop-validation-v11, source_revision: official-webshop, selection_rule: official-validation, role: validation-iid, expected_count: 128, visibility: private, environment_kind: webshop-native, evaluator_kind: official-webshop}
+  - {benchmark: webshop, population_id: webshop-final-128-v11, source_revision: official-webshop, selection_rule: frozen-128, role: final-evaluation, expected_count: 128, visibility: private, environment_kind: webshop-native, evaluator_kind: official-webshop}
+  - {benchmark: alfworld, population_id: alfworld-train-v11, source_revision: data-2.1.1, selection_rule: official-train, role: training, expected_count: 512, visibility: public, environment_kind: alfworld-native, evaluator_kind: official-alfworld}
+  - {benchmark: alfworld, population_id: alfworld-validation-v11, source_revision: data-2.1.1, selection_rule: train-holdout, role: validation-iid, expected_count: 128, visibility: private, environment_kind: alfworld-native, evaluator_kind: official-alfworld}
+  - {benchmark: alfworld, population_id: alfworld-final-seen-unseen-128-v11, source_revision: data-2.1.1, selection_rule: frozen-seen95-unseen33, role: final-evaluation, expected_count: 128, visibility: private, environment_kind: alfworld-native, evaluator_kind: official-alfworld}
+  - {benchmark: spreadsheetbench, population_id: spreadsheet-independent-train-v11, source_revision: spreadsheet-rl, selection_rule: disjoint-training, role: training, expected_count: 512, visibility: private, environment_kind: spreadsheet-sandbox, evaluator_kind: official-spreadsheet-oj}
+  - {benchmark: spreadsheetbench, population_id: spreadsheet-independent-validation-v11, source_revision: spreadsheet-rl, selection_rule: held-out-training, role: validation-iid, expected_count: 128, visibility: private, environment_kind: spreadsheet-sandbox, evaluator_kind: official-spreadsheet-oj}
+  - {benchmark: spreadsheetbench, population_id: spreadsheetbench-final-128-v11, source_revision: spreadsheetbench-v1-verified, selection_rule: frozen-128, role: final-evaluation, expected_count: 128, visibility: private, environment_kind: spreadsheet-sandbox, evaluator_kind: official-spreadsheet-oj}
+  - {benchmark: appworld, population_id: appworld-train-v11, source_revision: data-0.2.0, selection_rule: official-train-cycled-to-512, role: training, expected_count: 512, visibility: private, environment_kind: appworld-native, evaluator_kind: official-appworld}
+  - {benchmark: appworld, population_id: appworld-dev-v11, source_revision: data-0.2.0, selection_rule: official-dev-cycled-to-128, role: validation-iid, expected_count: 128, visibility: private, environment_kind: appworld-native, evaluator_kind: official-appworld}
+  - {benchmark: appworld, population_id: appworld-test-random0-128-v11, source_revision: data-0.2.0, selection_rule: random-0-sample-128-from-normal-and-challenge, role: final-evaluation, expected_count: 128, visibility: private, environment_kind: appworld-native, evaluator_kind: official-appworld}
+  - {benchmark: mbpp-plus-hard, population_id: independent-code-train-excluding-all-mbpp-plus-v11, source_revision: independent-public-code, selection_rule: exclude-all-mbpp-plus, role: training, expected_count: 512, visibility: public, environment_kind: code-completion, evaluator_kind: independent-code-tests}
+  - {benchmark: mbpp-plus-hard, population_id: independent-code-validation-excluding-all-mbpp-plus-v11, source_revision: independent-public-code, selection_rule: held-out-excluding-all-mbpp-plus, role: validation-iid, expected_count: 128, visibility: private, environment_kind: code-completion, evaluator_kind: independent-code-tests}
+  - {benchmark: mbpp-plus-hard, population_id: mbpp-plus-v0.2.0-random0-128-v11, source_revision: evalplus-mbppplus-v0.2.0, selection_rule: sorted-canonical-id-random-0-sample-128, role: final-evaluation, expected_count: 128, visibility: private, environment_kind: code-completion, evaluator_kind: official-evalplus-mbpp-plus-tests}
+  - {benchmark: humaneval, population_id: independent-code-train-v11, source_revision: mbpp-apps-codecontests, selection_rule: exclude-humaneval, role: training, expected_count: 512, visibility: public, environment_kind: code-completion, evaluator_kind: independent-code-tests}
+  - {benchmark: humaneval, population_id: independent-code-validation-v11, source_revision: mbpp-apps-codecontests, selection_rule: exclude-humaneval-heldout, role: validation-iid, expected_count: 128, visibility: private, environment_kind: code-completion, evaluator_kind: independent-code-tests}
+  - {benchmark: humaneval, population_id: humaneval-final-128-v11, source_revision: openai-humaneval, selection_rule: frozen-native-ids-128, role: final-evaluation, expected_count: 128, visibility: private, environment_kind: code-completion, evaluator_kind: official-humaneval}

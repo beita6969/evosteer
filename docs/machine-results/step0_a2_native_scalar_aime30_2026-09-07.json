@@ -1,0 +1,302 @@
+{
+  "schema": "step0-a2-native-tools-focused-aime-development-round@1",
+  "run_id": "focused-aime-a2-native-tools-4dd26d3-20260907T193224Z",
+  "implementation_revision": "4dd26d3",
+  "started_utc": "2026-09-07T19:32:27.624328+00:00",
+  "summary_written_utc": "2026-09-07T20:25:53.654274+00:00",
+  "elapsed_seconds_to_summary": 3206.029946,
+  "population_exposure": "development-exposed-focused-complete-aime-30",
+  "scope": "single A2 complete fixed AIME2026 30-case development evaluation; not an eight-IID result",
+  "planned": 30,
+  "scored": 30,
+  "missing": 0,
+  "arms": [
+    {
+      "format": "skillev-step0-integrity@3",
+      "condition_id": "A2-no-thinking-native-tools@12",
+      "optimizer_steps": 0,
+      "native_thinking": false,
+      "reasoning_pass": "disabled",
+      "agent_topology": "multi-agent",
+      "skill_mode": "off",
+      "handwritten_policy_mode": "off",
+      "demonstration_mode": "off",
+      "semantic_action_pruning": false,
+      "automatic_catalog_actions": false,
+      "precomputed_task_context": false,
+      "legacy": false,
+      "tool_call_mode": "qwen-xml"
+    }
+  ],
+  "candidate_authority": "evaluated-policy-single-final-no-selection",
+  "comparison": {
+    "matched_control_evaluated": false,
+    "paired_delta": null,
+    "paired_confidence_interval": null,
+    "causal_improvement_claimed": false
+  },
+  "controls": {
+    "model": "Qwen3.5-9B",
+    "adapter_route_sent": null,
+    "tokenizer": {
+      "class": "Qwen2Tokenizer",
+      "vocabulary_size": 248077,
+      "transformers_version": "5.12.1"
+    },
+    "chat_template": "complete actual template frozen privately in the run configuration",
+    "sampling_by_benchmark": {
+      "aime-2026": {
+        "enable_thinking": false,
+        "max_new_tokens": 81920,
+        "min_p": 0.0,
+        "presence_penalty": 0.0,
+        "profile_id": "integrity-thinking-off-seed0@1",
+        "repetition_penalty": 1.0,
+        "sampling_mode": "sampling",
+        "seed": 0,
+        "stop": [],
+        "temperature": 0.7,
+        "top_k": 20,
+        "top_p": 0.8
+      }
+    },
+    "budgets_by_benchmark": {
+      "aime-2026": {
+        "calls_per_turn": 8,
+        "context_length": 98304,
+        "history_input_tokens": 16384,
+        "skill_instruction_tokens": 2048,
+        "total_model_calls": 8,
+        "total_output_tokens": 81920
+      }
+    },
+    "parser": {
+      "benchmarks": {
+        "aime-2026": "single-aime-final-explicit-owner-v3"
+      },
+      "implementation_revision": "4dd26d3",
+      "tool_call_mode": "qwen-xml"
+    },
+    "verifier_versions": {
+      "aime-2026": "aime-2026-native-integrity@1",
+      "alfworld": "alfworld-native-integrity@1",
+      "healthbench": "healthbench-qwen3.5-9b-sglang-temperature-0@1",
+      "hotpotqa": "hotpotqa-native-em-f1@integrity1",
+      "humaneval": "humaneval-native-integrity@1",
+      "mbpp-plus": "mbpp-plus-native-integrity@1",
+      "triviaqa": "triviaqa-native-em-f1@integrity1",
+      "webshop": "webshop-native-integrity@1"
+    },
+    "service": {
+      "request_routing": "least-inflight-round-robin-ties@1",
+      "coordinator_concurrency": 30,
+      "request_timeout_seconds": 7200,
+      "episode_timeout_seconds": 14400,
+      "transport_attempts": 1
+    },
+    "serving_replicas": [
+      {
+        "context_length": 98304,
+        "max_running_requests": 48,
+        "max_total_tokens": null,
+        "attention_backend": "fa3",
+        "sampling_backend": "pytorch",
+        "grammar_backend": "xgrammar",
+        "enable_deterministic_inference": true,
+        "enable_lora": true,
+        "disable_radix_cache": true,
+        "disable_cuda_graph": true,
+        "chunked_prefill_size": 8192,
+        "max_prefill_tokens": 16384,
+        "reasoning_parser": "qwen3",
+        "random_seed": 486439956,
+        "dtype": "auto",
+        "quantization": null,
+        "version": "0.5.15.post1"
+      },
+      {
+        "context_length": 98304,
+        "max_running_requests": 48,
+        "max_total_tokens": null,
+        "attention_backend": "fa3",
+        "sampling_backend": "pytorch",
+        "grammar_backend": "xgrammar",
+        "enable_deterministic_inference": true,
+        "enable_lora": true,
+        "disable_radix_cache": true,
+        "disable_cuda_graph": true,
+        "chunked_prefill_size": 8192,
+        "max_prefill_tokens": 16384,
+        "reasoning_parser": "qwen3",
+        "random_seed": 486439956,
+        "dtype": "auto",
+        "quantization": null,
+        "version": "0.5.15.post1"
+      },
+      {
+        "context_length": 98304,
+        "max_running_requests": 48,
+        "max_total_tokens": null,
+        "attention_backend": "fa3",
+        "sampling_backend": "pytorch",
+        "grammar_backend": "xgrammar",
+        "enable_deterministic_inference": true,
+        "enable_lora": true,
+        "disable_radix_cache": true,
+        "disable_cuda_graph": true,
+        "chunked_prefill_size": 8192,
+        "max_prefill_tokens": 16384,
+        "reasoning_parser": "qwen3",
+        "random_seed": 486439956,
+        "dtype": "auto",
+        "quantization": null,
+        "version": "0.5.15.post1"
+      }
+    ],
+    "scoring_concurrency": 8,
+    "health_grader": "not invoked in this AIME-only run",
+    "resident_physical_gpus": [
+      4,
+      5,
+      7
+    ],
+    "routed_physical_gpus": [
+      4,
+      5,
+      7
+    ]
+  },
+  "benchmarks": {
+    "aime-2026": {
+      "count": 30,
+      "metric": "accuracy",
+      "value": 0.7666666666666667,
+      "secondary_metrics": {},
+      "execution_status": "complete",
+      "integrity_status": "communication-not-complete",
+      "communication_status": "unresolved-output-failure",
+      "native_metric_contract_status": "pass",
+      "external_reference_status": "not-a-matched-control",
+      "native_diagnostics": {
+        "status_counts": {
+          "scored": 29,
+          "candidate-failure": 1,
+          "infrastructure-failure": 0
+        },
+        "verifier_versions": [
+          "aime-2026-native-integrity@1"
+        ],
+        "failure_kinds": {
+          "empty-submission": 1
+        }
+      },
+      "communication": {
+        "model_requests": 39,
+        "model_responses": 39,
+        "authoritative_model_requests": 39,
+        "authoritative_model_responses": 39,
+        "diagnostic_model_requests": 39,
+        "diagnostic_model_responses": 39,
+        "native_surfaces": 0,
+        "surface_mismatches": 0,
+        "decisions": 0,
+        "accepted_decisions": 0,
+        "rejected_decisions": 0,
+        "control_parse_failures": 6,
+        "terminal_parse_failures": 2,
+        "unresolved_terminal_parse_failures": 2,
+        "repaired_terminal_parse_failures": 0,
+        "unresolved_action_decisions": 0,
+        "repaired_action_decisions": 0,
+        "undelivered_peer_budget_requests": 0,
+        "attempted_control_messages": 8,
+        "successfully_decoded_messages": 2,
+        "delivered_requests": 0,
+        "returned_replies": 0,
+        "undelivered_unresolved_requests": 0,
+        "repair_attempts": 7,
+        "repair_successes": 7,
+        "repaired_delivery_failures": 6,
+        "unresolved_delivery_failures": 0,
+        "executions": 0,
+        "unmatched_executions": 0,
+        "missing_acknowledgements": 0,
+        "feedback_mismatches": 0,
+        "peer_requests": 0,
+        "peer_replies": 0,
+        "late_peer_replies": 0,
+        "peer_route_mismatches": 0,
+        "episodes_with_peer_calls": 0,
+        "voluntary_no_peer_episode_count": 24,
+        "unobserved_required_boundary_count": 0,
+        "executed_decisions": 0,
+        "acknowledged_decisions": 0,
+        "legacy_unverified_events": 0,
+        "actual_peer_calls_by_benchmark": {
+          "aime-2026": 0
+        },
+        "actual_agent_count": 1,
+        "status": "unresolved-output-failure",
+        "native_task_success": "reported-separately",
+        "peer_execution_status": "not-observed",
+        "native_execution_status": "not-applicable"
+      },
+      "development_goal": {
+        "operator": "greater-than-or-equal",
+        "threshold_percent": 80.0,
+        "met": false
+      }
+    }
+  },
+  "actual_cost": {
+    "input_tokens": 78138,
+    "output_tokens": 338337,
+    "model_calls": 39,
+    "tool_calls": 2,
+    "peer_model_calls": 0
+  },
+  "scorer_cost": {
+    "records_with_cost": 30,
+    "records_without_cost": 0,
+    "failed_invocations": 0,
+    "failed_invocation_totals": {},
+    "completed_score_totals": {
+      "wall_seconds": 0.0026293182745575905
+    },
+    "totals": {
+      "wall_seconds": 0.0026293182745575905
+    }
+  },
+  "interventions": {
+    "skill_blocks_injected": 0,
+    "skill_body_tokens": 0,
+    "skill_calls": 0,
+    "handwritten_decisions": 0,
+    "legal_actions_removed_by_policy": 0,
+    "automatic_catalog_actions": 0,
+    "demonstration_tokens": 0,
+    "extra_model_calls_for_serialization": 0,
+    "model_calls": 39,
+    "tool_calls": 2,
+    "communication_repairs": 7,
+    "peer_model_calls": 0,
+    "peer_messages": 0
+  },
+  "transport_event_counts": {
+    "model-transport-complete": 39,
+    "model-transport-start": 39
+  },
+  "answer_reuse": null,
+  "cross_run_answers_reused": 0,
+  "public_release": "aggregate-only; no task identifiers, questions, answers, rubric items, hidden tests, per-item results, private paths or agent instance names",
+  "native_protocol_observations": {
+    "requests_with_native_tools": 39,
+    "decoded_submit_answer": 25,
+    "decoded_history": 2,
+    "malformed_or_ambiguous_native_envelopes": 6
+  },
+  "response_finish_reason_counts": {
+    "stop": 38,
+    "length": 1
+  }
+}

@@ -1,0 +1,583 @@
+{
+  "schema": "step0-a2-retained-iid-results-with-postrun-diagnostics@1",
+  "evaluation_complete": true,
+  "post_control_fix_full_evaluation_complete": false,
+  "acceptance": "execution-complete-but-communication-performance-acceptance-not-passed",
+  "evaluated_actor_revision": "1d09159",
+  "scoring_coordinator_revision": "349b084",
+  "scope": "A2 only; one generation seed; seven 128-task panels and all 30 AIME2026 tasks; not a new blind panel",
+  "score_scale": "Stored native values are fractions; multiply by 100 for the displayed percentages.",
+  "frozen_report": {
+    "schema": "step0-integrity-single-summary@1",
+    "run_id": "full-a2-c96-capacity-1d09159-20260906T211041Z",
+    "population_exposure": "development-exposed",
+    "count_per_arm": 926,
+    "benchmarks": {
+      "hotpotqa": {
+        "count": 128,
+        "arm_id": "A2-multi-no-skill-thinking-off",
+        "metric": "answer-f1",
+        "value": 0.2582950637549045,
+        "secondary_metrics": {
+          "answer-exact-match": 0.125,
+          "answer-f1": 0.2582950637549045
+        },
+        "integrity_status": "pass",
+        "execution_status": "complete",
+        "performance_goal_status": "not-assessed-without-a-control-arm",
+        "external_reference_status": "not-a-matched-control",
+        "communication": {
+          "A2-multi-no-skill-thinking-off": {
+            "model_requests": 296,
+            "model_responses": 296,
+            "native_surfaces": 0,
+            "surface_mismatches": 0,
+            "decisions": 0,
+            "rejected_decisions": 0,
+            "executions": 0,
+            "unmatched_executions": 0,
+            "missing_acknowledgements": 0,
+            "feedback_mismatches": 0,
+            "peer_requests": 83,
+            "peer_replies": 83,
+            "late_peer_replies": 0,
+            "peer_route_mismatches": 0,
+            "episodes_with_peer_calls": 76,
+            "actual_agent_identities": [
+              "owner",
+              "researcher",
+              "solver"
+            ],
+            "actual_agent_count": 3,
+            "status": "pass",
+            "native_task_success": "reported-separately",
+            "native_execution_status": "not-applicable"
+          }
+        },
+        "communication_status": "pass"
+      },
+      "triviaqa": {
+        "count": 128,
+        "arm_id": "A2-multi-no-skill-thinking-off",
+        "metric": "answer-f1",
+        "value": 0.3034946421087703,
+        "secondary_metrics": {
+          "answer-exact-match": 0.15625,
+          "answer-f1": 0.3034946421087703
+        },
+        "integrity_status": "pass",
+        "execution_status": "complete",
+        "performance_goal_status": "not-assessed-without-a-control-arm",
+        "external_reference_status": "not-a-matched-control",
+        "communication": {
+          "A2-multi-no-skill-thinking-off": {
+            "model_requests": 292,
+            "model_responses": 292,
+            "native_surfaces": 0,
+            "surface_mismatches": 0,
+            "decisions": 0,
+            "rejected_decisions": 0,
+            "executions": 0,
+            "unmatched_executions": 0,
+            "missing_acknowledgements": 0,
+            "feedback_mismatches": 0,
+            "peer_requests": 81,
+            "peer_replies": 81,
+            "late_peer_replies": 0,
+            "peer_route_mismatches": 0,
+            "episodes_with_peer_calls": 69,
+            "actual_agent_identities": [
+              "owner",
+              "researcher",
+              "solver"
+            ],
+            "actual_agent_count": 3,
+            "status": "pass",
+            "native_task_success": "reported-separately",
+            "native_execution_status": "not-applicable"
+          }
+        },
+        "communication_status": "pass"
+      },
+      "aime-2026": {
+        "count": 30,
+        "arm_id": "A2-multi-no-skill-thinking-off",
+        "metric": "accuracy",
+        "value": 0.13333333333333333,
+        "secondary_metrics": {},
+        "integrity_status": "pass",
+        "execution_status": "complete",
+        "performance_goal_status": "not-assessed-without-a-control-arm",
+        "external_reference_status": "not-a-matched-control",
+        "communication": {
+          "A2-multi-no-skill-thinking-off": {
+            "model_requests": 30,
+            "model_responses": 30,
+            "native_surfaces": 0,
+            "surface_mismatches": 0,
+            "decisions": 0,
+            "rejected_decisions": 0,
+            "executions": 0,
+            "unmatched_executions": 0,
+            "missing_acknowledgements": 0,
+            "feedback_mismatches": 0,
+            "peer_requests": 0,
+            "peer_replies": 0,
+            "late_peer_replies": 0,
+            "peer_route_mismatches": 0,
+            "episodes_with_peer_calls": 0,
+            "actual_agent_identities": [
+              "owner"
+            ],
+            "actual_agent_count": 1,
+            "status": "pass",
+            "native_task_success": "reported-separately",
+            "native_execution_status": "not-applicable"
+          }
+        },
+        "communication_status": "pass"
+      },
+      "healthbench": {
+        "count": 128,
+        "arm_id": "A2-multi-no-skill-thinking-off",
+        "metric": "qwen-local-rubric-score",
+        "value": 0.4165680727660204,
+        "secondary_metrics": {},
+        "integrity_status": "pass",
+        "execution_status": "complete",
+        "performance_goal_status": "not-assessed-without-a-control-arm",
+        "external_reference_status": "not-a-matched-control",
+        "communication": {
+          "A2-multi-no-skill-thinking-off": {
+            "model_requests": 399,
+            "model_responses": 399,
+            "native_surfaces": 0,
+            "surface_mismatches": 0,
+            "decisions": 0,
+            "rejected_decisions": 0,
+            "executions": 0,
+            "unmatched_executions": 0,
+            "missing_acknowledgements": 0,
+            "feedback_mismatches": 0,
+            "peer_requests": 131,
+            "peer_replies": 131,
+            "late_peer_replies": 0,
+            "peer_route_mismatches": 0,
+            "episodes_with_peer_calls": 103,
+            "actual_agent_identities": [
+              "owner",
+              "researcher",
+              "solver"
+            ],
+            "actual_agent_count": 3,
+            "status": "pass",
+            "native_task_success": "reported-separately",
+            "native_execution_status": "not-applicable"
+          }
+        },
+        "communication_status": "pass"
+      },
+      "webshop": {
+        "count": 128,
+        "arm_id": "A2-multi-no-skill-thinking-off",
+        "metric": "native-reward",
+        "value": 0.25911458333333337,
+        "secondary_metrics": {
+          "success": 0.125
+        },
+        "integrity_status": "pass",
+        "execution_status": "complete",
+        "performance_goal_status": "not-assessed-without-a-control-arm",
+        "external_reference_status": "not-a-matched-control",
+        "communication": {
+          "A2-multi-no-skill-thinking-off": {
+            "model_requests": 1779,
+            "model_responses": 1779,
+            "native_surfaces": 803,
+            "surface_mismatches": 0,
+            "decisions": 1451,
+            "rejected_decisions": 686,
+            "executions": 765,
+            "unmatched_executions": 0,
+            "missing_acknowledgements": 0,
+            "feedback_mismatches": 0,
+            "peer_requests": 163,
+            "peer_replies": 163,
+            "late_peer_replies": 0,
+            "peer_route_mismatches": 0,
+            "episodes_with_peer_calls": 76,
+            "actual_agent_identities": [
+              "owner",
+              "researcher",
+              "solver"
+            ],
+            "actual_agent_count": 3,
+            "status": "pass",
+            "native_task_success": "reported-separately",
+            "native_execution_status": "observed"
+          }
+        },
+        "communication_status": "pass"
+      },
+      "alfworld": {
+        "count": 128,
+        "arm_id": "A2-multi-no-skill-thinking-off",
+        "metric": "success",
+        "value": 0.4140625,
+        "secondary_metrics": {
+          "success": 0.4140625
+        },
+        "integrity_status": "pass",
+        "execution_status": "complete",
+        "performance_goal_status": "not-assessed-without-a-control-arm",
+        "external_reference_status": "not-a-matched-control",
+        "communication": {
+          "A2-multi-no-skill-thinking-off": {
+            "model_requests": 4249,
+            "model_responses": 4249,
+            "native_surfaces": 1717,
+            "surface_mismatches": 0,
+            "decisions": 2519,
+            "rejected_decisions": 831,
+            "executions": 1688,
+            "unmatched_executions": 0,
+            "missing_acknowledgements": 0,
+            "feedback_mismatches": 0,
+            "peer_requests": 861,
+            "peer_replies": 861,
+            "late_peer_replies": 0,
+            "peer_route_mismatches": 0,
+            "episodes_with_peer_calls": 122,
+            "actual_agent_identities": [
+              "owner",
+              "researcher",
+              "solver"
+            ],
+            "actual_agent_count": 3,
+            "status": "pass",
+            "native_task_success": "reported-separately",
+            "native_execution_status": "observed"
+          }
+        },
+        "communication_status": "pass"
+      },
+      "mbpp-plus": {
+        "count": 128,
+        "arm_id": "A2-multi-no-skill-thinking-off",
+        "metric": "base-plus-pass-at-1",
+        "value": 0.6171875,
+        "secondary_metrics": {
+          "base-pass": 0.75,
+          "plus-pass": 0.6171875
+        },
+        "integrity_status": "pass",
+        "execution_status": "complete",
+        "performance_goal_status": "not-assessed-without-a-control-arm",
+        "external_reference_status": "not-a-matched-control",
+        "communication": {
+          "A2-multi-no-skill-thinking-off": {
+            "model_requests": 424,
+            "model_responses": 424,
+            "native_surfaces": 0,
+            "surface_mismatches": 0,
+            "decisions": 0,
+            "rejected_decisions": 0,
+            "executions": 0,
+            "unmatched_executions": 0,
+            "missing_acknowledgements": 0,
+            "feedback_mismatches": 0,
+            "peer_requests": 148,
+            "peer_replies": 148,
+            "late_peer_replies": 0,
+            "peer_route_mismatches": 0,
+            "episodes_with_peer_calls": 113,
+            "actual_agent_identities": [
+              "owner",
+              "researcher",
+              "solver"
+            ],
+            "actual_agent_count": 3,
+            "status": "pass",
+            "native_task_success": "reported-separately",
+            "native_execution_status": "not-applicable"
+          }
+        },
+        "communication_status": "pass"
+      },
+      "humaneval": {
+        "count": 128,
+        "arm_id": "A2-multi-no-skill-thinking-off",
+        "metric": "pass-at-1",
+        "value": 0.8046875,
+        "secondary_metrics": {},
+        "integrity_status": "pass",
+        "execution_status": "complete",
+        "performance_goal_status": "not-assessed-without-a-control-arm",
+        "external_reference_status": "not-a-matched-control",
+        "communication": {
+          "A2-multi-no-skill-thinking-off": {
+            "model_requests": 434,
+            "model_responses": 434,
+            "native_surfaces": 0,
+            "surface_mismatches": 0,
+            "decisions": 0,
+            "rejected_decisions": 0,
+            "executions": 0,
+            "unmatched_executions": 0,
+            "missing_acknowledgements": 0,
+            "feedback_mismatches": 0,
+            "peer_requests": 153,
+            "peer_replies": 153,
+            "late_peer_replies": 0,
+            "peer_route_mismatches": 0,
+            "episodes_with_peer_calls": 110,
+            "actual_agent_identities": [
+              "owner",
+              "researcher",
+              "solver"
+            ],
+            "actual_agent_count": 3,
+            "status": "pass",
+            "native_task_success": "reported-separately",
+            "native_execution_status": "not-applicable"
+          }
+        },
+        "communication_status": "pass"
+      }
+    },
+    "candidate_authority": "evaluated-policy-single-final-no-selection",
+    "scoring_concurrency": 8,
+    "implementation_revision": "1d09159",
+    "interventions": {
+      "A2-multi-no-skill-thinking-off": {
+        "skill_blocks_injected": 0,
+        "skill_body_tokens": 0,
+        "skill_calls": 0,
+        "handwritten_decisions": 0,
+        "legal_actions_removed_by_policy": 0,
+        "automatic_catalog_actions": 0,
+        "demonstration_tokens": 0,
+        "extra_model_calls_for_serialization": 0,
+        "model_calls": 7903,
+        "tool_calls": 2453,
+        "communication_repairs": 1492,
+        "peer_model_calls": 1620,
+        "peer_messages": 3240
+      }
+    },
+    "arms": [
+      {
+        "arm_id": "A2-multi-no-skill-thinking-off",
+        "optimizer_steps": 0,
+        "native_thinking": false,
+        "reasoning_pass": "disabled",
+        "skill_mode": "off",
+        "agent_topology": "multi-agent",
+        "handwritten_policy": false,
+        "semantic_action_pruning": false,
+        "demonstrations": false,
+        "automatic_catalog_actions": false,
+        "precomputed_task_context": false,
+        "legacy": false
+      }
+    ],
+    "actual_cost": {
+      "A2-multi-no-skill-thinking-off": {
+        "input_tokens": 15702186,
+        "output_tokens": 3118150,
+        "model_calls": 7903,
+        "tool_calls": 2453,
+        "peer_model_calls": 1620
+      }
+    },
+    "scorer_cost": {
+      "A2-multi-no-skill-thinking-off": {
+        "records_with_cost": 926,
+        "records_without_cost": 0,
+        "totals": {
+          "known_input_tokens": 2315880.0,
+          "known_output_tokens": 157963.0,
+          "model_request_attempts": 1476.0,
+          "model_responses": 1476.0,
+          "semantic_repairs": 3.0,
+          "unknown_usage_calls": 0.0,
+          "wall_seconds": 1201.1667773695663
+        }
+      }
+    },
+    "answer_reuse": {
+      "source_run_id": "full-a2-c24-no-skill-1d09159-20260906T201104Z",
+      "arm_id": "A2-multi-no-skill-thinking-off",
+      "completed_answers_reused": 776,
+      "selection": "all-completed-selected-arm-answers-without-consulting-scores",
+      "changed_control_groups": [
+        "service"
+      ],
+      "source_implementation_revision": "1d09159"
+    },
+    "coordinator_changes_committed_as": "349b084",
+    "summary_written_utc": "2026-09-06T22:24:30.615904+00:00",
+    "record_counts": {
+      "candidates": 926,
+      "scores": 926,
+      "executions": 2453
+    },
+    "scorer_replica_cases": {
+      "0": 46,
+      "1": 39,
+      "2": 41
+    },
+    "score_status_counts": [
+      {
+        "benchmark": "aime-2026",
+        "status": "candidate-failure",
+        "count": 26
+      },
+      {
+        "benchmark": "aime-2026",
+        "status": "scored",
+        "count": 4
+      },
+      {
+        "benchmark": "alfworld",
+        "status": "scored",
+        "count": 128
+      },
+      {
+        "benchmark": "healthbench",
+        "status": "candidate-failure",
+        "count": 2
+      },
+      {
+        "benchmark": "healthbench",
+        "status": "scored",
+        "count": 126
+      },
+      {
+        "benchmark": "hotpotqa",
+        "status": "scored",
+        "count": 128
+      },
+      {
+        "benchmark": "humaneval",
+        "status": "candidate-failure",
+        "count": 4
+      },
+      {
+        "benchmark": "humaneval",
+        "status": "scored",
+        "count": 124
+      },
+      {
+        "benchmark": "mbpp-plus",
+        "status": "candidate-failure",
+        "count": 6
+      },
+      {
+        "benchmark": "mbpp-plus",
+        "status": "scored",
+        "count": 122
+      },
+      {
+        "benchmark": "triviaqa",
+        "status": "candidate-failure",
+        "count": 1
+      },
+      {
+        "benchmark": "triviaqa",
+        "status": "scored",
+        "count": 127
+      },
+      {
+        "benchmark": "webshop",
+        "status": "scored",
+        "count": 128
+      }
+    ],
+    "transport_failures": 0
+  },
+  "postrun_aime_communication_diagnostic": {
+    "attempted_peer_messages": 20,
+    "invalid_json_escape": 19,
+    "invalid_json_control_character": 1,
+    "actual_peer_calls": 0,
+    "final_candidate_failures": 26,
+    "model_responses_at_81920_output_tokens": 3,
+    "inference": "At least 20 intended peer requests failed encoding; the recorded 4/30 is not a clean estimate of mathematical capability."
+  },
+  "secondary_native_metrics": {
+    "alfworld_splits": {
+      "valid_seen": {
+        "count": 97,
+        "successes": 45,
+        "success_rate": 0.4639175257731959
+      },
+      "valid_unseen": {
+        "count": 31,
+        "successes": 8,
+        "success_rate": 0.25806451612903225
+      }
+    },
+    "healthbench": {
+      "count": 128,
+      "successes_at_0_60_without_negative_rubric": 28,
+      "cases_with_negative_rubrics": 64,
+      "triggered_negative_rubrics": 91,
+      "candidate_failures_without_rubric_grades": 2,
+      "project_binary_success_rate": 0.21875
+    }
+  },
+  "postrun_repair_validation": {
+    "synthetic_live_canary": {
+      "scope": "one synthetic communication canary, not an IID quality measurement",
+      "created_utc": "2026-09-06T22:41:07.751980+00:00",
+      "wall_seconds": 9.09055851958692,
+      "candidate_count": 1,
+      "correct_synthetic_arithmetic": false,
+      "peer_messages": 1,
+      "peer_replies": 1,
+      "math_backslash_preserved_in_peer_body": true,
+      "model_calls": 4,
+      "model_output_tokens": 220,
+      "control_parse_failures": 0,
+      "routes": {
+        "0": 2,
+        "1": 1,
+        "2": 1
+      }
+    },
+    "synthetic_terminal_field_check": {
+      "same_saved_synthetic_owner_response_accepted": true,
+      "additional_gpu_calls": 0,
+      "original_live_canary_result_retained": true,
+      "scope": "CPU deterministic terminal projection of the existing synthetic owner response; no IID candidate or score changed"
+    },
+    "targeted_tests": [
+      {
+        "count": 132,
+        "seconds": 1.5
+      },
+      {
+        "count": 117,
+        "seconds": 0.43
+      }
+    ],
+    "final_cpu_make_check": {
+      "tests_passed": 2659,
+      "pytest_seconds": 118.45,
+      "warnings": 85,
+      "exit_code": 0,
+      "ruff_mypy_wheels_boundary": "passed"
+    }
+  },
+  "limitations": [
+    "This is the retained pre-control-fix A2 run; no benchmark answer or score was replaced after diagnosis.",
+    "The panel is development-exposed. A1/A3 were not evaluated under the final owner scope; no architecture or skill improvement is established.",
+    "Recorded communication consistency checks do not detect every attempted but undecoded control message; AIME had zero realized peer calls.",
+    "MBPP+ hard is the owner lane label; the frozen population is EvalPlus v0.2.0 Base+Plus, not an independently defined official Hard split.",
+    "HealthBench uses the local Qwen rubric judge, not a comparable official external-judge condition.",
+    "Completed-record cost totals exclude discarded A1 work and interrupted attempts from earlier coordinators. Their missing usage is not zero.",
+    "HealthBench grading resumes retain completed grades; any interrupted unjournaled grading attempt is outside the completed-record totals.",
+    "Synthetic communication evidence is not a post-fix IID performance result."
+  ]
+}

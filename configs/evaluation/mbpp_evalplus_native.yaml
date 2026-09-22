@@ -1,0 +1,13 @@
+profile_id: evalplus-26d6d00-native-time-defaults-raw-ipc@2
+source_revision: 26d6d00
+condition: native-time-defaults
+# These must match the selected source's evalplus/config.py defaults.
+min_time_limit: 4.0
+gt_time_limit_factor: 4.0
+maximum_memory_bytes: 4294967296
+per_lane_timeout_seconds: 60
+outer_timeout_seconds: 900.0
+maximum_concurrency: 8
+# Single child writer; parent reads after completion/termination, without
+# inherited locks that remain poisoned after a native timeout kills the child.
+result_transport: single-writer-raw@1

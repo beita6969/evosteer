@@ -1,0 +1,133 @@
+{
+  "schema": "step0-hotpotqa-public-answer-development@1",
+  "run_id": "hotpot32-a2-public-answer-7588601-20260908T080300Z",
+  "implementation_revision": "7588601",
+  "condition": {
+    "benchmark": "hotpotqa",
+    "arm": "A2",
+    "model": "Qwen3.5-9B",
+    "optimizer_steps": 0,
+    "adapter": null,
+    "owner_count": 1,
+    "peer_calls": 0,
+    "native_thinking": false,
+    "skills": "off",
+    "seed": 0,
+    "population_exposure": "development-exposed",
+    "selection": "unchanged frozen source-order first 32",
+    "endpoint_count": 1,
+    "physical_gpu": 5,
+    "change": "Public task instruction describes passage answer spans and yes/no answers; native parser and scoring unchanged."
+  },
+  "result": {
+    "count": 32,
+    "scored": 32,
+    "missing": 0,
+    "answer_f1_percent": 81.02498196248197,
+    "answer_exact_match_percent": 68.75,
+    "full_f1_count": 22,
+    "partial_f1_count": 7,
+    "zero_f1_count": 3,
+    "candidate_failures": 0,
+    "infrastructure_failures": 0
+  },
+  "user_numeric_goal": {
+    "metric": "answer-f1",
+    "threshold_percent": 80,
+    "met_on_this_development_panel": true,
+    "matched_backbone_superiority_established": false
+  },
+  "previous_same_panel": {
+    "run_id": "seven-iid32-a2-owner-2ae5b87-20260908T063713Z",
+    "implementation_revision": "2ae5b87",
+    "answer_f1_percent": 75.0117243867,
+    "answer_exact_match_percent": 56.25,
+    "improved_f1_cases": 4,
+    "regressed_f1_cases": 0,
+    "unchanged_f1_cases": 28,
+    "endpoint_count": 2,
+    "result_composition": false,
+    "comparison_scope": "Historical development comparison, not a matched concurrent control or held-out claim."
+  },
+  "decoding": {
+    "temperature": 0.7,
+    "top_p": 0.8,
+    "top_k": 20,
+    "min_p": 0,
+    "presence_penalty": 0,
+    "repetition_penalty": 1,
+    "max_new_tokens": 8192,
+    "seed": 0,
+    "sampling_mode": "sampling",
+    "enable_thinking": false
+  },
+  "budget": {
+    "total_output_tokens": 32768,
+    "total_model_calls": 8,
+    "calls_per_turn": 8,
+    "history_input_tokens": 32768,
+    "context_length": 98304
+  },
+  "cost": {
+    "model_calls": 33,
+    "input_tokens": 69353,
+    "output_tokens": 2780,
+    "public_history_reads": 1,
+    "peer_model_calls": 0,
+    "scorer_model_calls": 0,
+    "launch_to_summary_seconds": 13.998407,
+    "scorer_wall_seconds_sum": 0.004043883644044399
+  },
+  "delivery_and_score_checks": {
+    "official_metric_equal": 32,
+    "owner_payload_equal": 32,
+    "last_owner_call_equal": 32,
+    "same_task_membership_and_fields": true,
+    "model_requests": 33,
+    "requests_with_complete_public_input": 33,
+    "requests_with_public_answer_semantics": 33,
+    "archived_messages": 0,
+    "actual_native_thinking_calls": 0,
+    "adapter_calls": 0,
+    "input_token_range": [
+      1402,
+      2587
+    ]
+  },
+  "limits": [
+    "Development panel has been inspected; no held-out generalization claim.",
+    "No new 128-case run or other benchmark rerun was performed.",
+    "Launch-to-summary time is for this small batch, not a sustained multi-benchmark throughput estimate.",
+    "All case-level data and answers remain private; no score-based candidate replacement or retries."
+  ],
+  "validation": {
+    "local_targeted": {
+      "files": [
+        "tests/evaluation/test_hotpot_context_delivery.py",
+        "tests/evaluation/test_short_answer_field_boundary.py",
+        "tests/benchmarks/test_step0_integrity_sources.py"
+      ],
+      "progress_cases": 33,
+      "completed": false,
+      "reason": "WSL process exit timeout after all progress markers; not counted as pass"
+    },
+    "local_mypy": "timeout",
+    "cpu_full_check": {
+      "source_revision": "7588601",
+      "gpu_visible": false,
+      "command": "make check",
+      "exit_code": 0,
+      "tests_passed": 3467,
+      "tests_skipped": 1,
+      "skip_reason": "explicit CUDA-only test",
+      "pytest_seconds": 234.9,
+      "ruff_format_and_lint": "passed",
+      "mypy_source_files": 532,
+      "wheels_built": 2,
+      "model_wheel_boundary": "passed"
+    },
+    "extra_full_check_after_docs": false,
+    "subagents_used": false,
+    "checksum_checks": false
+  }
+}

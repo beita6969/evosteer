@@ -1,0 +1,42 @@
+format: skillev-protocol-v10-source-plan@1
+seed: 0
+training_episodes_per_benchmark: 512
+benchmarks:
+  hotpotqa:
+    training: {population: hotpotqa-v1.1-train-main, source: hotpot_qa, subset: distractor, split: train-main}
+    validation: {population: hotpotqa-v1.1-train-holdout, source: hotpot_qa, subset: distractor, split: train-holdout}
+    final-evaluation: {population: hotpotqa-v1.1-dev-distractor, source: hotpot_qa, subset: distractor, split: validation}
+  triviaqa:
+    training: {population: triviaqa-v1.0-unfiltered-train-main, source: mandarjoshi/trivia_qa, subset: unfiltered.nocontext, split: train-main}
+    validation: {population: triviaqa-v1.0-unfiltered-train-holdout, source: mandarjoshi/trivia_qa, subset: unfiltered.nocontext, split: train-holdout}
+    final-evaluation: {population: triviaqa-v1.0-unfiltered-dev, source: mandarjoshi/trivia_qa, subset: unfiltered.nocontext, split: validation}
+  aime-2026:
+    training: {population: aime-1983-2024, source: historical-aime, subset: years-1983-2024, split: all}
+    validation: {population: aime-2025, source: historical-aime, subset: year-2025, split: all}
+    final-evaluation: {population: aime-2026-all-30, source: EnvCommons/AIME2026, subset: official-30, split: all}
+  healthbench:
+    training: {population: independent-health-dialogue-train-v1, source: siyah1/med-dialogue-1M, subset: conversation, split: train-main}
+    validation: {population: independent-health-dialogue-validation-v1, source: siyah1/med-dialogue-1M, subset: conversation, split: train-holdout}
+    final-evaluation: {population: healthbench-full-5000, source: openai/healthbench, subset: full, split: test}
+  webshop:
+    training: {population: webshop-goals-train-v1, source: princeton-nlp/WebShop, subset: goals, split: train}
+    validation: {population: webshop-goals-validation-v1, source: princeton-nlp/WebShop, subset: goals, split: validation}
+    final-evaluation: {population: webshop-goals-test-v1, source: princeton-nlp/WebShop, subset: goals, split: test}
+  alfworld:
+    training: {population: alfworld-train-main, source: alfworld/data-2.1.1, subset: textworld, split: train}
+    validation: {population: alfworld-train-holdout, source: alfworld/data-2.1.1, subset: textworld, split: train-holdout}
+    final-evaluation-seen: {population: alfworld-valid-seen, source: alfworld/data-2.1.1, subset: textworld, split: valid_seen}
+    final-evaluation-unseen: {population: alfworld-valid-unseen, source: alfworld/data-2.1.1, subset: textworld, split: valid_unseen}
+  spreadsheetbench:
+    training: {population: independent-spreadsheet-train-v1, source: Spreadsheet-RL/Spreadsheet-RL, subset: excelforum, split: train-main}
+    validation: {population: independent-spreadsheet-validation-v1, source: Spreadsheet-RL/Spreadsheet-RL, subset: excelforum, split: train-holdout}
+    final-evaluation: {population: spreadsheetbench-v1-verified-400, source: RUCKBReasoning/SpreadsheetBench, subset: v1-verified, split: all}
+  appworld:
+    training: {population: appworld-train, source: StonyBrookNLP/appworld, subset: data-0.2.0, split: train}
+    validation: {population: appworld-dev, source: StonyBrookNLP/appworld, subset: data-0.2.0, split: dev}
+    final-evaluation-normal: {population: appworld-test-normal, source: StonyBrookNLP/appworld, subset: data-0.2.0, split: test_normal}
+    final-evaluation-challenge: {population: appworld-test-challenge, source: StonyBrookNLP/appworld, subset: data-0.2.0, split: test_challenge}
+  mbpp-plus-fixed-100:
+    training: {population: independent-code-train-excluding-all-mbpp-plus, source: google-research-datasets/mbpp, subset: sanitized, split: train}
+    validation: {population: independent-code-validation-excluding-all-mbpp-plus, source: google-research-datasets/mbpp, subset: sanitized, split: validation}
+    final-evaluation: {population: mbpp-plus-fixed-100-v1, source: evalplus/mbppplus, subset: fixed-first-100, split: test}

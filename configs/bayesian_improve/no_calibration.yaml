@@ -1,0 +1,19 @@
+format: skillev-bayesian-improve-no-calibration@1
+method: bayesian-improve-no-calibration
+training_objective: idea-tex-tempered-trajectory-balance
+diagnostics: bayesian-improve-distributional-flow
+phase_trigger: residual-stagnation-and-skill-entropy-decrease
+calibration:
+  enabled: false
+  posterior_state: forbidden
+  lcb_ucb: forbidden
+evolution:
+  policy: flow-only-retain-generate
+  allowed_evidence: [flow-diagnostics, answer-free-edge-importance]
+formal_runtime:
+  external_sglang: required
+  distributed_ttb: required
+  shared_workflow_resources: required
+  versioned_adapter_publication: required
+  step_transaction_journal: required
+  external_base_model_authoring: required

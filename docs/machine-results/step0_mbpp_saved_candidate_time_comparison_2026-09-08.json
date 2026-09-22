@@ -1,0 +1,49 @@
+{
+  "completed": 128,
+  "primary_passes": {
+    "legacy-time-limits": 93,
+    "native-time-defaults": 93
+  },
+  "changed_primary_verdicts": 0,
+  "seconds": 86.26913880743086,
+  "actor_calls": 0,
+  "old_scores_modified": false,
+  "lane_execution": "both profiles independently execute Base and Plus",
+  "conditions": {
+    "legacy-time-limits": {
+      "profile_id": "evalplus-26d6d00-custom-legacy-time@1",
+      "source_revision": "26d6d00",
+      "condition": "custom-time-limits",
+      "min_time_limit": 0.1,
+      "gt_time_limit_factor": 2.0,
+      "maximum_memory_bytes": 4294967296,
+      "per_lane_timeout_seconds": 60,
+      "outer_timeout_seconds": 900.0,
+      "maximum_concurrency": 8,
+      "lane_execution": "independent-base-and-plus",
+      "fast_check": false
+    },
+    "native-time-defaults": {
+      "profile_id": "evalplus-26d6d00-native-time-defaults@1",
+      "source_revision": "26d6d00",
+      "condition": "native-time-defaults",
+      "min_time_limit": 4.0,
+      "gt_time_limit_factor": 4.0,
+      "maximum_memory_bytes": 4294967296,
+      "per_lane_timeout_seconds": 60,
+      "outer_timeout_seconds": 900.0,
+      "maximum_concurrency": 8,
+      "lane_execution": "independent-base-and-plus",
+      "fast_check": false
+    }
+  },
+  "schema": "mbpp-saved-candidate-time-comparison@1",
+  "benchmark": "mbpp-plus",
+  "source_run": "full-a2-native-tools-5a1517a-20260907T185427Z",
+  "implementation_revision": "2ae5b87",
+  "base_passes": 109,
+  "independent_plus_passes": 94,
+  "base_failed_plus_passed": 1,
+  "syntax_valid_count": 128,
+  "interpretation": "The timing mismatch is real, but the same saved candidates have no primary score change in this comparison. Original scores are not overwritten; no model is called."
+}

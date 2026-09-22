@@ -1,0 +1,8 @@
+{
+  "format": "skillev-source-lock@1",
+  "implementation_repository": "https://github.com/YJLi-new/SKILLEV-new",
+  "method_authority": "idea.tex",
+  "skillflow_paper": "https://arxiv.org/abs/2605.14089",
+  "skillflow_repository": "https://github.com/beita6969/SkillFlow",
+  "skillflow_revision": "74be52bb6bd9f0e9e68dacb72636b75649197983"
+}

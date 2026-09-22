@@ -1,0 +1,26 @@
+# Independent development condition; no old answers or selected-case reruns.
+# Qwen3.5-9B model card, Best Practices / General Tasks (non-thinking):
+# https://huggingface.co/Qwen/Qwen3.5-9B#best-practices
+# Override only presence_penalty in each existing complete decoding profile.
+# Keep the per-call token, whole-episode, context and environment-action budgets.
+condition_id: A2-owner-native-interaction@6
+# One experiment seed; the runtime advances a deterministic request substream
+# on every call, not just repairs. Superseded unexecuted drafts stay in the
+# lossless public archive instead of accumulating in the active prompt.
+# Official public renderer retains clickable/selected-option state. No target,
+# product ranking, hidden attributes or reward feedback is added to the actor.
+webshop_observation_mode: text_rich
+decoding_overrides:
+  webshop:
+    presence_penalty: 1.5
+  alfworld:
+    presence_penalty: 1.5
+# No smaller per-action call cap: all owner/repair calls still share the
+# unchanged 160-call episode allowance. No extra answers or restarted cases.
+budget_overrides:
+  webshop:
+    calls_per_turn: 160
+  alfworld:
+    calls_per_turn: 160
+# Two serving replicas, 32 concurrent episodes per replica. GPU4 belongs to training.
+coordinator_concurrency: 64

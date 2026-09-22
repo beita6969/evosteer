@@ -1,0 +1,72 @@
+{
+  "format": "evosteer-local-training@2",
+  "model": {
+    "model_path": "/absolute/path/to/local-causal-lm",
+    "reference_id": "your-model-and-weight-revision@1",
+    "device": "cpu",
+    "dtype": "float32",
+    "lora_rank": 64,
+    "lora_alpha": 128,
+    "target_modules": [
+      "o_proj"
+    ],
+    "context_window": 32768,
+    "max_action_tokens": 512,
+    "context_mode": "full"
+  },
+  "application": {
+    "task_families": [
+      "qa"
+    ],
+    "roles": [
+      {
+        "role_id": "solver",
+        "instruction": "Solve the public task. Return only the final answer.",
+        "model_maximum": {
+          "input_tokens": 4096,
+          "output_tokens": 512,
+          "model_calls": 1,
+          "agent_turns": 1,
+          "wall_time_milliseconds": 120000
+        }
+      },
+      {
+        "role_id": "verifier",
+        "instruction": "Check the available draft against the public task and provide useful feedback.",
+        "model_maximum": {
+          "input_tokens": 4096,
+          "output_tokens": 512,
+          "model_calls": 1,
+          "agent_turns": 1,
+          "wall_time_milliseconds": 120000
+        }
+      }
+    ],
+    "optimizer": {
+      "actor_learning_rate": 5e-06,
+      "head_learning_rate": 0.001,
+      "weight_decay": 0.01,
+      "gradient_clip": 1.0,
+      "beta": 1.0,
+      "value_loss_weight": 1.0,
+      "gradient_mode": "streaming",
+      "outcome_loss_weight": 1.0
+    },
+    "max_nodes": null,
+    "max_actions": null,
+    "current_rollouts": 2,
+    "reference_rollouts": 2,
+    "total_token_cap": 16384,
+    "seed": 42,
+    "author_interval": 1,
+    "retirement_interval": 10,
+    "value_refresh_interval": 1,
+    "strict_value_context": false,
+    "episode_budget": null,
+    "structure_source_mode": "reference_with_paired"
+  },
+  "executor_temperature": 0.3,
+  "steps": 2,
+  "batch_size": 1,
+  "method_mode": "debug"
+}

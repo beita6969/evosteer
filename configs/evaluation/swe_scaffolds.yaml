@@ -1,0 +1,26 @@
+format: skillev-swe-scaffolds@1
+scaffolds:
+  - id: released-skillflow-repository-agent@1
+    status: formal-candidate
+    prompt_profile: skillflow-code-generation-repository-agent@1
+    tool_names: [list_files, search_code, view_file, edit_file, run_tests, submit]
+    editable: true
+    test_execution_allowed: true
+    syntax_feedback_allowed: true
+    horizon: 28
+    decoding_profile: qwen35-repository-agent@1
+    final_submission: workspace-unified-diff
+    evidence_source: upstream-revision-and-config
+    frozen_before_final: true
+  - id: qwen-direct-readonly-repository-agent@1
+    status: posthoc-diagnostic
+    prompt_profile: qwen-direct-readonly-repository-agent@1
+    tool_names: [list_files, search_code, view_file, submit]
+    editable: false
+    test_execution_allowed: false
+    syntax_feedback_allowed: false
+    horizon: 20
+    decoding_profile: qwen35-repository-agent@1
+    final_submission: direct-unified-diff
+    evidence_source: local-ablation
+    frozen_before_final: false

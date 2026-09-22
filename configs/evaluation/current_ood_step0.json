@@ -1,0 +1,155 @@
+{
+  "implementation_revision": "ood-bounded-thinking-choice-agreeing-final-20260916@3",
+  "request_timeout_seconds": 480,
+  "episode_timeout_seconds": 600,
+  "decoding_overrides": {},
+  "budget_overrides": {},
+  "decoding": {
+    "musique": {
+      "profile_id": "ood-thinking-off-capped8000-seed0@1",
+      "enable_thinking": false,
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1,
+      "max_new_tokens": 8000,
+      "stop": [],
+      "seed": 0,
+      "sampling_mode": "sampling"
+    },
+    "nq-open": {
+      "profile_id": "ood-thinking-off-capped8000-seed0@1",
+      "enable_thinking": false,
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1,
+      "max_new_tokens": 8000,
+      "stop": [],
+      "seed": 0,
+      "sampling_mode": "sampling"
+    },
+    "math-hard": {
+      "profile_id": "ood-thinking-on-capped8000-seed0@1",
+      "enable_thinking": true,
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1,
+      "max_new_tokens": 8000,
+      "stop": [],
+      "seed": 0,
+      "sampling_mode": "sampling"
+    },
+    "gpqa-diamond-bioorganic": {
+      "profile_id": "ood-thinking-on-capped8000-seed0@1",
+      "enable_thinking": true,
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1,
+      "max_new_tokens": 8000,
+      "stop": [],
+      "seed": 0,
+      "sampling_mode": "sampling"
+    },
+    "scienceworld": {
+      "profile_id": "ood-thinking-off-capped8000-seed0@1",
+      "enable_thinking": false,
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1,
+      "max_new_tokens": 8000,
+      "stop": [],
+      "seed": 0,
+      "sampling_mode": "sampling"
+    },
+    "apps-introductory": {
+      "profile_id": "ood-thinking-off-code12000-seed0@1",
+      "enable_thinking": false,
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1,
+      "max_new_tokens": 12000,
+      "stop": [],
+      "seed": 0,
+      "sampling_mode": "sampling"
+    }
+  },
+  "budgets": {
+    "musique": {
+      "calls_per_turn": 8,
+      "total_model_calls": 8,
+      "total_output_tokens": 8000,
+      "history_input_tokens": 32768,
+      "skill_instruction_tokens": 2048
+    },
+    "nq-open": {
+      "calls_per_turn": 8,
+      "total_model_calls": 8,
+      "total_output_tokens": 8000,
+      "history_input_tokens": 32768,
+      "skill_instruction_tokens": 2048
+    },
+    "math-hard": {
+      "calls_per_turn": 8,
+      "total_model_calls": 8,
+      "total_output_tokens": 8000,
+      "native_chunk_tokens": 6000,
+      "native_final_reserve_tokens": 2000,
+      "history_input_tokens": 32768,
+      "skill_instruction_tokens": 2048,
+      "native_close_at_reserve": 1
+    },
+    "gpqa-diamond-bioorganic": {
+      "calls_per_turn": 8,
+      "total_model_calls": 8,
+      "total_output_tokens": 8000,
+      "native_chunk_tokens": 6000,
+      "native_final_reserve_tokens": 2000,
+      "history_input_tokens": 32768,
+      "skill_instruction_tokens": 2048,
+      "native_close_at_reserve": 1
+    },
+    "scienceworld": {
+      "calls_per_turn": 8,
+      "total_model_calls": 400,
+      "total_output_tokens": 8000,
+      "history_input_tokens": 32768,
+      "skill_instruction_tokens": 2048
+    },
+    "apps-introductory": {
+      "calls_per_turn": 8,
+      "total_model_calls": 8,
+      "total_output_tokens": 12000,
+      "history_input_tokens": 32768,
+      "skill_instruction_tokens": 2048
+    }
+  },
+  "thinking_policy": {
+    "policy_id": "six-ood-math-gpqa-thinking-on@1",
+    "thinking_by_benchmark": {
+      "musique": false,
+      "nq-open": false,
+      "math-hard": true,
+      "gpqa-diamond-bioorganic": true,
+      "scienceworld": false,
+      "apps-introductory": false
+    }
+  },
+  "concurrency": 32
+}

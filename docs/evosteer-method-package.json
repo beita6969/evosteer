@@ -1,0 +1,8 @@
+{
+  "path": "/home/bedicloud/sharestore2/iclr-users/legal/EvoSteer-method-v2.zip",
+  "files": 1892,
+  "bytes": 5355743,
+  "sha256": "05b3ad560b00570d232b33d0ae1d7095313b849fe9f310080d152c9fc77184d3",
+  "contents": "complete original project plus current EvoSteer source/tests/config/docs; run artifacts and local caches excluded",
+  "source_verified_against": "docs/evosteer-method-validation.json"
+}

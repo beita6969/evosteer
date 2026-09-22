@@ -1,0 +1,62 @@
+format: skillev-skillflow-baseline@1
+name: upstream_head
+upstream_revision: 74be52bb6bd9f0e9e68dacb72636b75649197983
+model:
+  repo_id: Qwen/Qwen3.5-9B
+  path_env: SKILLEV_MODEL_PATH
+  tokenizer_path_env: SKILLEV_TOKENIZER_PATH
+  revision_env: SKILLEV_MODEL_REVISION
+data:
+  train_path_env: SKILLEV_TRAIN_DATA
+  validation_path_env: SKILLEV_IID_VALIDATION_DATA
+  expected_train_rows: 3500
+  expected_validation_rows: 798
+  train_blake2b: 6fcde25e5a86a1a50bb59ebdba54025d325adea9d04451a13a9d4717a8f8d9f5
+  validation_blake2b: e79a11efd9360a4b52146fb7afe0f8f4ee4c9e3ec8992ca322ce940bfa923551
+  allowed_duplicate_extra_rows:
+    train: {SWE-bench: 128}
+    validation: {TriviaQA: 1}
+  strict_data: true
+training:
+  theta_lora_rank: 64
+  theta_lora_alpha: 128
+  theta_target_modules: [q_proj, k_proj, v_proj, o_proj]
+  phi_lora_rank: 16
+  phi_lora_alpha: 32
+  phi_target_modules: [q_proj, v_proj]
+  learning_rate: 0.0001
+  max_grad_norm: 3.0
+  kl_coefficient: 0.01
+  beta: 1.0
+  epsilon_min: 0.1
+  effective_batch_size: 28
+  max_episode_steps: 12
+  max_training_steps: 300
+  checkpoint_every_steps: 10
+  edge_normalization: per_token
+  trajectory_normalization: steps
+  reward_mode: outcome_only
+  logprob_context_length: 32768
+  seed: 0
+services:
+  supervisor:
+    mode: external
+    api_base_env: SUPERVISOR_API_BASE
+    served_model: skillflow-qwen35
+    supervisor_adapter_prefix: theta_step_
+    expected_context_length: 32768
+    expected_physical_gpu: 1
+    require_lora: true
+    require_metrics: true
+    request_timeout_seconds: 60
+    max_retries: 2
+runtime:
+  coordinator_physical_gpu: 2
+  primary_gradient_physical_gpu: 3
+  standby_gradient_physical_gpu: 4
+  forbidden_physical_gpus: []
+  steady_visible_physical_gpus: [2, 3]
+  initial_micro_batch: 4
+  minimum_micro_batch: 1
+  output_root_env: SKILLEV_OUTPUT_ROOT
+  tracking_mode: disabled

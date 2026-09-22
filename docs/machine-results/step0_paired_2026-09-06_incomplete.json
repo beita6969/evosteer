@@ -1,0 +1,16 @@
+{
+  "schema": "step0-integrity-incomplete-attempt@1",
+  "implementation_revision": "3f903e3",
+  "run_id": "full-paired-no-skill-3f903e3-20260906T055155Z",
+  "status": "incomplete-infrastructure-failure",
+  "planned_candidates": 1852,
+  "retained_candidates": 559,
+  "scored_candidates": 0,
+  "uncompleted_logical_calls": 4,
+  "native_metrics": null,
+  "cause": "Long AIME requests exceeded the 2400-second HTTP timeout. Three attempts exhausted; cancellation then waited for other HTTP calls to finish.",
+  "compute_accounting": "Aborted attempt usage is unknown. Successful-response token totals are not total compute cost.",
+  "artifact_policy": "Original source, controls, candidates and traces are retained privately. They are not spliced into a fresh corrected run.",
+  "quality_selection": "No scores existed when the infrastructure repair was selected.",
+  "observed_utc": "2026-09-06T08:42:09Z"
+}

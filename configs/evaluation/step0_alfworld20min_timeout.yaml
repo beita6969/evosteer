@@ -1,0 +1,7 @@
+# Apply only to an ALFWorld-only runtime, after the thinking-on overlay.
+# Other benchmarks retain their own declared wall-time allowance.
+# The existing ActorSandbox episode timer covers the complete trajectory,
+# including tool interaction and waiting for inference; it does not reset per action.
+# Timeout remains an incomplete episode, never a fabricated native success/final.
+condition_id: A2-alfworld-thinking-20m-cap@1
+episode_timeout_seconds: 1200

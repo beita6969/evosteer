@@ -1,0 +1,38 @@
+format: skillev-protocol-v10-formal-experiment@1
+protocol_format: skillev-benchmark-protocol@10
+seed: 0
+methods:
+  - method: skillflow-baseline
+    application: exact-skillflow-baseline
+  - method: bayesian-improve-full
+    application: bayesian-improve-full
+  - method: bayesian-improve-no-calibration
+    application: bayesian-improve-no-calibration
+training:
+  batch_size: 16
+  phase_search_steps: 272
+  closure_steps: 16
+  maximum_cycles: 2
+  total_steps: 288
+  total_episodes: 4608
+method_semantics:
+  state_flow_estimator: single-observed-history-prefix@1
+  skill_outcome_estimator: trajectory-terminal-success-shared-by-invoked-skills@1
+  skill_flow_weight: mean-normalized-state-flow@1
+  closure_semantics: post-treatment-closure-tail-no-new-phase@1
+  authoring_backend: external-sglang-base-model-authoring@1
+  exact_skillflow_baseline:
+    upstream_revision: 74be52bb6bd9f0e9e68dacb72636b75649197983
+    parity_contract: skillflow-upstream-parity@1
+    objective: upstream-ttb-with-kl-and-gradient-clipping
+    evolution: upstream-plateau-and-cgf-d-r-u
+  bayesian_improve_full:
+    objective: idea-tex-tempered-trajectory-balance
+    posterior: beta-bernoulli-with-lcb-ucb
+  bayesian_improve_no_calibration:
+    objective: idea-tex-tempered-trajectory-balance
+    posterior: forbidden
+    evolution: answer-free-flow-only-retain-generate
+execution_gate:
+  executable: true
+  unblock_when: satisfied-by-g3-g7-integration-resume-oom-nine-domain-and-22-step-evidence

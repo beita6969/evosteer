@@ -1,0 +1,429 @@
+format: skillev-current-iid-targets@5
+targets:
+  hotpotqa:
+    status: frozen-matched-reference
+    scope: standalone-benchmark
+    condition_id: hotpotqa-source-parity-128@1
+    reference_condition_id: hotpotqa-source-parity-128@1
+    reference_receipt_id: p14-reference-hotpotqa-07d
+    frozen_at: '2026-08-30T09:48:26.158226+00:00'
+    evidence:
+      source_kind: independent-matched-reference-run
+      repository_or_paper: https://github.com/YJLi-new/SKILLEV-new
+      revision_or_version: 07d14788e7c0664f15888c5553635a858191bcb3
+      path_or_section: docs/machine-results/qwen35_protocol14_reference_targets_20260830.json
+      supported_fields:
+      - benchmark
+      - model_revision
+      - population
+      - panel
+      - prompt
+      - thinking_mode
+      - decoding
+      - parser
+      - environment
+      - scorer
+      - grader
+      - metric
+      - aggregation
+      - coverage
+    metrics:
+    - metric_id: em
+      unit: percent
+      denominator_id: planned-panel-128
+      projection: identity-percent
+      formula: official_hotpotqa_exact_match
+      aggregation: mean-over-planned-records
+      reference_percent: '61.7187500'
+      maximum_gap_pp_exclusive: '7.0'
+      required_for_formal_gate: true
+    - metric_id: f1
+      unit: percent
+      denominator_id: planned-panel-128
+      projection: identity-percent
+      formula: official_hotpotqa_token_f1
+      aggregation: mean-over-planned-records
+      reference_percent: '78.53160668424068176562500'
+      maximum_gap_pp_exclusive: '7.0'
+      required_for_formal_gate: true
+    published_anchors:
+    - label: published source anchor for hotpotqa
+      scope: standalone-benchmark
+      metric_id: em
+      value_percent: '60.94'
+      usable_as_formal_target: false
+      evidence: &id001
+        source_kind: paper-and-official-repository
+        repository_or_paper: https://github.com/beita6969/SkillFlow
+        revision_or_version: 74be52bb6bd9f0e9e68dacb72636b75649197983
+        path_or_section: paper direct-backbone table; protocol incomplete
+        supported_fields:
+        - benchmark
+        - actor_model
+        - headline_metrics
+    - label: published source anchor for hotpotqa
+      scope: standalone-benchmark
+      metric_id: f1
+      value_percent: '75.70'
+      usable_as_formal_target: false
+      evidence: *id001
+  triviaqa:
+    status: frozen-matched-reference
+    scope: standalone-benchmark
+    condition_id: triviaqa-source-parity-128@1
+    reference_condition_id: triviaqa-source-parity-128@1
+    reference_receipt_id: p14-reference-triviaqa-07d
+    frozen_at: '2026-08-30T09:48:26.158226+00:00'
+    evidence:
+      source_kind: independent-matched-reference-run
+      repository_or_paper: https://github.com/YJLi-new/SKILLEV-new
+      revision_or_version: 07d14788e7c0664f15888c5553635a858191bcb3
+      path_or_section: docs/machine-results/qwen35_protocol14_reference_targets_20260830.json
+      supported_fields:
+      - benchmark
+      - model_revision
+      - population
+      - panel
+      - prompt
+      - thinking_mode
+      - decoding
+      - parser
+      - environment
+      - scorer
+      - grader
+      - metric
+      - aggregation
+      - coverage
+    metrics:
+    - metric_id: em
+      unit: percent
+      denominator_id: planned-panel-128
+      projection: identity-percent
+      formula: official_triviaqa_alias_exact_match
+      aggregation: mean-over-planned-records
+      reference_percent: '49.2187500'
+      maximum_gap_pp_exclusive: '7.0'
+      required_for_formal_gate: true
+    - metric_id: f1
+      unit: percent
+      denominator_id: planned-panel-128
+      projection: identity-percent
+      formula: official_triviaqa_alias_token_f1
+      aggregation: mean-over-planned-records
+      reference_percent: '56.037946428571428414062500'
+      maximum_gap_pp_exclusive: '7.0'
+      required_for_formal_gate: true
+    published_anchors:
+    - label: published source anchor for triviaqa
+      scope: standalone-benchmark
+      metric_id: em
+      value_percent: '44.88'
+      usable_as_formal_target: false
+      evidence: *id001
+    - label: published source anchor for triviaqa
+      scope: standalone-benchmark
+      metric_id: f1
+      value_percent: '54.30'
+      usable_as_formal_target: false
+      evidence: *id001
+  aime-2026:
+    status: frozen-matched-reference
+    scope: standalone-benchmark
+    condition_id: aime2026-source-integer-final-all30@1
+    reference_condition_id: aime2026-source-integer-final-all30@1
+    reference_receipt_id: p14-reference-aime-2026-07d
+    frozen_at: '2026-08-30T09:48:26.158226+00:00'
+    evidence:
+      source_kind: independent-matched-reference-run
+      repository_or_paper: https://github.com/YJLi-new/SKILLEV-new
+      revision_or_version: 07d14788e7c0664f15888c5553635a858191bcb3
+      path_or_section: docs/machine-results/qwen35_protocol14_reference_targets_20260830.json
+      supported_fields:
+      - benchmark
+      - model_revision
+      - population
+      - panel
+      - prompt
+      - thinking_mode
+      - decoding
+      - parser
+      - environment
+      - scorer
+      - grader
+      - metric
+      - aggregation
+      - coverage
+    metrics:
+    - metric_id: accuracy
+      unit: percent
+      denominator_id: planned-panel-30
+      projection: identity-percent
+      formula: official_aime_integer_exact_match
+      aggregation: mean-over-planned-records
+      reference_percent: '93.33333333333333333333333333'
+      maximum_gap_pp_exclusive: '7.0'
+      required_for_formal_gate: true
+    published_anchors:
+    - label: published source anchor for aime-2026
+      scope: standalone-benchmark
+      metric_id: accuracy
+      value_percent: '46.67'
+      usable_as_formal_target: false
+      evidence: *id001
+  healthbench:
+    status: frozen-matched-reference
+    scope: standalone-benchmark
+    condition_id: healthbench-qwen-local-random0-128@1
+    reference_condition_id: healthbench-qwen-local-random0-128@1
+    reference_receipt_id: p14-reference-healthbench-4fa
+    frozen_at: '2026-08-30T09:48:26.158226+00:00'
+    evidence:
+      source_kind: independent-matched-reference-run
+      repository_or_paper: https://github.com/YJLi-new/SKILLEV-new
+      revision_or_version: 4fac675f61503a8ed84b55364c4887f1fd196387
+      path_or_section: docs/machine-results/qwen35_protocol14_reference_targets_20260830.json
+      supported_fields:
+      - benchmark
+      - model_revision
+      - population
+      - panel
+      - prompt
+      - thinking_mode
+      - decoding
+      - parser
+      - environment
+      - scorer
+      - grader
+      - metric
+      - aggregation
+      - coverage
+    metrics:
+    - metric_id: overall_score
+      unit: percent
+      denominator_id: planned-panel-128
+      projection: clip-mean-to-unit-interval-percent
+      formula: simple_evals_mean_then_clip
+      aggregation: single-seed-identity
+      reference_percent: '52.9814595967140200'
+      maximum_gap_pp_exclusive: '7.0'
+      required_for_formal_gate: false
+    published_anchors:
+    - label: SERPO Qwen3.5-9B Base HealthBench-500 three-seed mean
+      scope: standalone-benchmark
+      metric_id: healthbench_full500_score
+      value_percent: '44.68'
+      usable_as_formal_target: false
+      evidence:
+        source_kind: official-repository-and-paper
+        repository_or_paper: https://github.com/chiefovoavicii/SERPO
+        revision_or_version: 9b0923282cfebb52cb4060129ca24f6903deab02
+        path_or_section: HealthBench result table and eval/eval_healthbench.py
+        supported_fields:
+        - benchmark
+        - actor_model
+        - population
+        - grader
+        - seeds
+        - reducer
+        - headline_metric
+  webshop:
+    status: frozen-matched-reference
+    scope: standalone-benchmark
+    condition_id: webshop-skillflow-action-only-128@1
+    reference_condition_id: webshop-skillflow-action-only-128@1
+    reference_receipt_id: p14-reference-webshop-001
+    frozen_at: '2026-08-30T09:48:26.158226+00:00'
+    evidence:
+      source_kind: independent-matched-reference-run
+      repository_or_paper: https://github.com/YJLi-new/SKILLEV-new
+      revision_or_version: 001666a3c143b02b7dbbabde3be494e0c957fc81
+      path_or_section: docs/machine-results/qwen35_protocol14_reference_targets_20260830.json
+      supported_fields:
+      - benchmark
+      - model_revision
+      - population
+      - panel
+      - prompt
+      - thinking_mode
+      - decoding
+      - parser
+      - environment
+      - scorer
+      - grader
+      - metric
+      - aggregation
+      - coverage
+    metrics:
+    - metric_id: average_score
+      unit: percent
+      denominator_id: planned-panel-128
+      projection: identity-percent
+      formula: sum(native_task_score) / planned_count * 100
+      aggregation: mean-over-planned-records
+      reference_percent: '32.034970238095237085937500'
+      maximum_gap_pp_exclusive: '7.0'
+      required_for_formal_gate: true
+    - metric_id: success_rate
+      unit: percent
+      denominator_id: planned-panel-128
+      projection: identity-percent
+      formula: count(native_task_score == 1) / planned_count * 100
+      aggregation: success-rate
+      reference_percent: '12.500'
+      maximum_gap_pp_exclusive: '7.0'
+      required_for_formal_gate: true
+    published_anchors:
+    - label: published source anchor for webshop
+      scope: standalone-benchmark
+      metric_id: average_score
+      value_percent: '56.93'
+      usable_as_formal_target: false
+      evidence: *id001
+    - label: published source anchor for webshop
+      scope: standalone-benchmark
+      metric_id: success_rate
+      value_percent: '32.03'
+      usable_as_formal_target: false
+      evidence: *id001
+  alfworld:
+    status: frozen-matched-reference
+    scope: standalone-benchmark
+    condition_id: alfworld-skillflow-action-only-128@1
+    reference_condition_id: alfworld-skillflow-action-only-128@1
+    reference_receipt_id: p14-reference-alfworld-001
+    frozen_at: '2026-08-30T09:48:26.158226+00:00'
+    evidence:
+      source_kind: independent-matched-reference-run
+      repository_or_paper: https://github.com/YJLi-new/SKILLEV-new
+      revision_or_version: 001666a3c143b02b7dbbabde3be494e0c957fc81
+      path_or_section: docs/machine-results/qwen35_protocol14_reference_targets_20260830.json
+      supported_fields:
+      - benchmark
+      - model_revision
+      - population
+      - panel
+      - prompt
+      - thinking_mode
+      - decoding
+      - parser
+      - environment
+      - scorer
+      - grader
+      - metric
+      - aggregation
+      - coverage
+    metrics:
+    - metric_id: success_rate
+      unit: percent
+      denominator_id: planned-panel-128
+      projection: identity-percent
+      formula: count(native_won) / planned_count * 100
+      aggregation: success-rate
+      reference_percent: '3.9062500'
+      maximum_gap_pp_exclusive: '7.0'
+      required_for_formal_gate: true
+    published_anchors:
+    - label: published source anchor for alfworld
+      scope: standalone-benchmark
+      metric_id: success_rate
+      value_percent: '48.28'
+      usable_as_formal_target: false
+      evidence: *id001
+  mbpp-plus:
+    status: frozen-matched-reference
+    scope: standalone-benchmark
+    condition_id: mbpp-plus-evalplus-v020-nonthinking-random0-128@1
+    reference_condition_id: mbpp-plus-evalplus-v020-nonthinking-random0-128@1
+    reference_receipt_id: p14-reference-mbpp-plus-07d
+    frozen_at: '2026-08-30T09:48:26.158226+00:00'
+    evidence:
+      source_kind: independent-matched-reference-run
+      repository_or_paper: https://github.com/YJLi-new/SKILLEV-new
+      revision_or_version: 07d14788e7c0664f15888c5553635a858191bcb3
+      path_or_section: docs/machine-results/qwen35_protocol14_reference_targets_20260830.json
+      supported_fields:
+      - benchmark
+      - model_revision
+      - population
+      - panel
+      - prompt
+      - thinking_mode
+      - decoding
+      - parser
+      - environment
+      - scorer
+      - grader
+      - metric
+      - aggregation
+      - coverage
+    metrics:
+    - metric_id: pass_at_1
+      unit: percent
+      denominator_id: planned-panel-128
+      projection: identity-percent
+      formula: count(base_and_plus_pass) / planned_count * 100
+      aggregation: mean-over-planned-records
+      reference_percent: '67.187500'
+      maximum_gap_pp_exclusive: '7.0'
+      required_for_formal_gate: true
+    published_anchors:
+    - label: Mellum2 Qwen3.5-9B EvalPlus composite
+      scope: composite
+      metric_id: evalplus_aggregate
+      value_percent: '71.8'
+      usable_as_formal_target: false
+      evidence:
+        source_kind: technical-report-and-official-model-card
+        repository_or_paper: https://arxiv.org/abs/2605.31268
+        revision_or_version: Mellum2 technical report
+        path_or_section: EvalPlus table and metric definition
+        supported_fields:
+        - actor_model
+        - thinking_mode
+        - decoding
+        - composite_formula
+        - headline_metric
+  humaneval:
+    status: frozen-matched-reference
+    scope: standalone-benchmark
+    condition_id: humaneval-source-parity-128@1
+    reference_condition_id: humaneval-source-parity-128@1
+    reference_receipt_id: p14-reference-humaneval-07d
+    frozen_at: '2026-08-30T09:48:26.158226+00:00'
+    evidence:
+      source_kind: independent-matched-reference-run
+      repository_or_paper: https://github.com/YJLi-new/SKILLEV-new
+      revision_or_version: 07d14788e7c0664f15888c5553635a858191bcb3
+      path_or_section: docs/machine-results/qwen35_protocol14_reference_targets_20260830.json
+      supported_fields:
+      - benchmark
+      - model_revision
+      - population
+      - panel
+      - prompt
+      - thinking_mode
+      - decoding
+      - parser
+      - environment
+      - scorer
+      - grader
+      - metric
+      - aggregation
+      - coverage
+    metrics:
+    - metric_id: pass_at_1
+      unit: percent
+      denominator_id: planned-panel-128
+      projection: identity-percent
+      formula: count(official_humaneval_pass) / planned_count * 100
+      aggregation: mean-over-planned-records
+      reference_percent: '92.187500'
+      maximum_gap_pp_exclusive: '7.0'
+      required_for_formal_gate: true
+    published_anchors:
+    - label: published source anchor for humaneval
+      scope: standalone-benchmark
+      metric_id: pass_at_1
+      value_percent: '89.06'
+      usable_as_formal_target: false
+      evidence: *id001

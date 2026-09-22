@@ -1,0 +1,75 @@
+# New catalog overlay; no generation is launched by loading this file.
+condition_id: six-iid-backbone64-aime30-20260916@1
+evaluation_sample_counts:
+  aime-2026: 30
+  alfworld: 64
+  healthbench: 64
+  mbpp-plus: 64
+  hotpotqa: 64
+  triviaqa: 64
+sample_selection: fixed-source-order-prefix@1
+excluded_benchmarks:
+- webshop
+- humaneval
+seed: 0
+concurrency: 32
+scoring_concurrency: 8
+thinking_policy:
+  policy_id: six-iid-aime-health-thinking-on@1
+  thinking_by_benchmark:
+    hotpotqa: false
+    triviaqa: false
+    aime-2026: true
+    healthbench: true
+    alfworld: false
+    mbpp-plus: false
+decoding_overrides:
+  hotpotqa: &id001
+    profile_id: qwen35-thinking-off-seed0@1
+    enable_thinking: false
+    temperature: 0.7
+    top_p: 0.8
+    top_k: 20
+    min_p: 0.0
+    presence_penalty: 1.5
+    repetition_penalty: 1.0
+  triviaqa: *id001
+  aime-2026: &thinking_on
+    <<: *id001
+    profile_id: qwen35-thinking-on-seed0@1
+    enable_thinking: true
+  healthbench: *thinking_on
+  alfworld: *id001
+  mbpp-plus:
+    profile_id: qwen35-thinking-off-seed0@1
+    enable_thinking: false
+    temperature: 0.7
+    top_p: 0.8
+    top_k: 20
+    min_p: 0.0
+    presence_penalty: 0.0
+    repetition_penalty: 1.0
+budget_overrides:
+  hotpotqa:
+    native_chunk_tokens: 8192
+    native_final_reserve_tokens: 2048
+  triviaqa:
+    native_chunk_tokens: 8192
+    native_final_reserve_tokens: 2048
+  healthbench:
+    native_chunk_tokens: 8192
+    native_final_reserve_tokens: 2048
+  alfworld:
+    calls_per_turn: 8
+    native_chunk_tokens: 8192
+    native_final_reserve_tokens: 2048
+  mbpp-plus:
+    native_chunk_tokens: 8192
+    native_final_reserve_tokens: 2048
+  aime-2026:
+    total_output_tokens: 81920
+    total_model_calls: 8
+    calls_per_turn: 8
+    native_chunk_tokens: 32768
+    native_final_reserve_tokens: 4096
+mbpp_scorer_profile: configs/evaluation/mbpp_evalplus_native.yaml

@@ -1,0 +1,44 @@
+format: skillev-current-iid-targets@2
+targets:
+  hotpotqa:
+    status: exact
+    condition_id: hotpotqa-full-context-direct@2
+    evidence_source: qwen35-skillflow-direct-reference@2
+    metrics:
+      - {metric_id: em, unit: percent, formula: official_hotpotqa_exact_match, denominator: all-128-final-records, aggregation: mean-over-records, reference_percent: '60.94', maximum_gap_pp_exclusive: '7.0', required_for_formal_gate: true}
+      - {metric_id: f1, unit: percent, formula: official_hotpotqa_token_f1, denominator: all-128-final-records, aggregation: mean-over-records, reference_percent: '75.70', maximum_gap_pp_exclusive: '7.0', required_for_formal_gate: true}
+  triviaqa:
+    status: exact
+    condition_id: triviaqa-reference-direct@1
+    evidence_source: qwen35-skillflow-direct-reference@2
+    metrics:
+      - {metric_id: em, unit: percent, formula: official_triviaqa_alias_exact_match, denominator: all-128-final-records, aggregation: mean-over-records, reference_percent: '44.88', maximum_gap_pp_exclusive: '7.0', required_for_formal_gate: true}
+      - {metric_id: f1, unit: percent, formula: official_triviaqa_alias_token_f1, denominator: all-128-final-records, aggregation: mean-over-records, reference_percent: '54.30', maximum_gap_pp_exclusive: '7.0', required_for_formal_gate: true}
+  aime-2026:
+    status: exact
+    condition_id: aime2026-thinking-direct@2
+    evidence_source: qwen35-skillflow-direct-reference@2
+    metrics:
+      - {metric_id: accuracy, unit: percent, formula: official_aime_integer_exact_match, denominator: all-30-final-records, aggregation: mean-over-records, reference_percent: '46.67', maximum_gap_pp_exclusive: '7.0', required_for_formal_gate: true}
+  healthbench: {status: undefined}
+  webshop:
+    status: reconstructed
+    condition_id: webshop-benchmark-native-no-skill@2
+    evidence_source: qwen35-skillflow-direct-reference@2-approximate
+    metrics:
+      - {metric_id: average_score, unit: percent, formula: official-webshop-native-reward-mean, denominator: all-128-final-records, aggregation: mean-over-records, reference_percent: '56.93', maximum_gap_pp_exclusive: '7.0', required_for_formal_gate: true}
+      - {metric_id: success_rate, unit: percent, formula: official-webshop-success-rate, denominator: all-128-final-records, aggregation: success-rate, reference_percent: '32.03', maximum_gap_pp_exclusive: '7.0', required_for_formal_gate: true}
+  alfworld:
+    status: reconstructed
+    condition_id: alfworld-benchmark-native-no-skill@2
+    evidence_source: qwen35-skillflow-direct-reference@2-approximate
+    metrics:
+      - {metric_id: success_rate, unit: percent, formula: official-alfworld-success-rate, denominator: all-128-final-records, aggregation: success-rate, reference_percent: '48.28', maximum_gap_pp_exclusive: '7.0', required_for_formal_gate: true}
+  spreadsheetbench: {status: undefined}
+  mbpp-plus: {status: undefined}
+  humaneval:
+    status: reconstructed
+    condition_id: humaneval-deterministic-direct@2
+    evidence_source: qwen35-skillflow-direct-reference@2-approximate
+    metrics:
+      - {metric_id: pass_at_1, unit: percent, formula: official-humaneval-pass-at-1, denominator: all-128-final-records, aggregation: mean-over-records, reference_percent: '89.06', maximum_gap_pp_exclusive: '7.0', required_for_formal_gate: true}

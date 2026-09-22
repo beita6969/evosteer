@@ -1,0 +1,63 @@
+# Historical architecture target. The active clean A2 development targets are
+# step0_integrity_targets.yaml (current seven-domain owner directives).
+format: skillev-step0-architecture-targets@1
+target_id: qwen35-current-eight-backbone-strict-improvement-2026-08-31@2
+authority: owner-directive-2026-08-31
+catalog:
+  - hotpotqa
+  - triviaqa
+  - aime-2026
+  - healthbench
+  - webshop
+  - alfworld
+  - mbpp-plus
+  - humaneval
+comparison:
+  candidate: skillev-bayesian-improve-step-zero-no-training
+  reference: qwen35-9b-backbone-only-latest-completed
+  operator: greater-than
+  equality_passes: false
+  unit: percent
+  aggregate_scope: benchmark-headline-metric
+  interactive_horizon_note: owner-raised-step0-horizons-not-backbone-protocol-parity
+backbone_snapshot:
+  synchronization: latest-completed-per-benchmark-not-one-synchronized-run
+  default_sample_count: 128
+  overrides:
+    aime-2026: 30
+benchmarks:
+  hotpotqa:
+    metrics:
+      em: {strictly_greater_than_percent: 62.50}
+      f1: {strictly_greater_than_percent: 78.81}
+  triviaqa:
+    metrics:
+      em: {strictly_greater_than_percent: 51.56}
+      f1: {strictly_greater_than_percent: 59.17}
+  aime-2026:
+    backbone_external_minimum_goal_percent: 80.00
+    metrics:
+      accuracy: {strictly_greater_than_percent: 86.67}
+  healthbench:
+    comparison_scope: healthbench-full-qwen35-local-judge
+    official_gpt_judge_comparable: false
+    metrics:
+      native_rubric_mean: {strictly_greater_than_percent: 53.17}
+  webshop:
+    owner_operational_goal_percent: 80.00
+    metrics:
+      average_score: {strictly_greater_than_percent: 80.00}
+      success_rate: {strictly_greater_than_percent: 80.00}
+  alfworld:
+    owner_operational_goal_percent: 80.00
+    metrics:
+      success_rate: {strictly_greater_than_percent: 80.00}
+  mbpp-plus:
+    requested_label: MBPP+ hard
+    evaluator_scope: evalplus-v0.2.0-base-and-plus
+    official_standalone_hard_split_exists: false
+    metrics:
+      base_plus_pass_at_1: {strictly_greater_than_percent: 67.19}
+  humaneval:
+    metrics:
+      pass_at_1: {strictly_greater_than_percent: 92.19}

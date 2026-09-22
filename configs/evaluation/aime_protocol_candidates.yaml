@@ -1,0 +1,28 @@
+format: skillev-aime-protocol-candidates@3
+calibration_population: aime-through-2025
+final_population: aime-2026-all-30-v13
+profiles:
+  - id: qwen35-thinking-aime-boxed-candidate@3
+    prompt_profile: integer-cot-boxed@1
+    parser_profile: aime-boxed-integer@1
+    decoding_profile: qwen35-thinking-math-reference@2
+    thinking: true
+    sampling:
+      temperature: 0.6
+      top_p: 0.95
+      top_k: 20
+      presence_penalty: 0.0
+    max_new_tokens: 32768
+    seed: 42
+    calibration_max_year: 2025
+    formal_reference_eligible: false
+    evidence:
+      status: pre-final-calibration
+      repository_or_paper: https://huggingface.co/Qwen/Qwen3.5-9B
+      revision_or_version: c202236235762e1c871ad0ccb60c8ee5ba337b9a
+      path_or_section: README / thinking-mode generation guidance
+      supported_fields:
+        - enable_thinking
+        - temperature
+        - top_p
+        - top_k

@@ -1,0 +1,36 @@
+# Candidate serving condition for the fresh @6 architecture; not yet A0-accepted.
+# Reserve output space for the largest declared reasoning request, not just actions.
+format: skillev-sglang-service@6
+model_path_env: SKILLEV_MODEL_PATH
+tokenizer_path_env: SKILLEV_TOKENIZER_PATH
+served_model_name: qwen35-direct-base
+supervisor_adapter_name: training-policy
+host: 127.0.0.1
+port: 18558
+context_length: 81920
+tensor_parallel_size: 1
+dtype: bfloat16
+random_seed: 0
+enable_deterministic_inference: true
+sampling_backend: pytorch
+enable_multimodal: false
+max_lora_rank: 4
+max_loaded_loras: 3
+lora_target_modules: [all]
+enable_metrics: true
+enable_request_time_stats_logging: true
+max_running_requests: 12
+max_loras_per_batch: 2
+mem_fraction_static: 0.75
+chunked_prefill_size: 4096
+max_prefill_tokens: 8192
+attention_backend: fa3
+linear_attn_backend: triton
+grammar_backend: xgrammar
+reasoning_parser: qwen3
+cuda_graph_max_bs_decode: 12
+disable_radix_cache: false
+mamba_radix_cache_strategy: extra_buffer
+page_size: 64
+fp32_mamba_checkpoints: true
+disable_overlap_schedule: false

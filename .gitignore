@@ -1,0 +1,51 @@
+# Local archive of the paused AI4S/FIRE-GFN project. Never open from an
+# active agent workflow and never commit or push it.
+/old_backup_do_not_open_or_push/
+
+# Local instructions from the paused repository are not propagated into the
+# clean SKILLEV-new history.
+/AGENTS.md
+/HANDOFF.md
+
+# Prevent an obsolete method-authority document from reappearing in Git.
+/docs/method_*original*.md
+
+# Private operational material must never enter a repository.
+/.private/
+/docs/private/
+/docs/delta_gpu_使用instruction.md
+/delta_gpu_使用instruction.md
+/docs/delta_gpu_template.md
+# The benchmark guide is tracked at docs/benchmark-evaluation-guide.md.
+# Ignore only the obsolete root-level duplicate.
+/benchmark-evaluation-guide.md
+
+# Generated local environments and caches.
+/.venv/
+/.tmp/
+**/__pycache__/
+*.pyc
+/.pytest_cache/
+/.mypy_cache/
+/.ruff_cache/
+/.hypothesis/
+/build/
+/dist/
+*.egg-info/
+/wheelhouse/
+
+# Local run products remain private unless explicitly promoted.
+/artifacts/
+/test-results/
+/outputs/
+/runs/
+/data/
+/models/
+/manifests/hardware*.json
+/manifests/input_snapshot*.json
+
+# Local scratch and imported review material are never project sources.
+/.pytest-*.log
+/.write-probe
+/docs/*audit*.md
+/docs/code-fix-*-template.md

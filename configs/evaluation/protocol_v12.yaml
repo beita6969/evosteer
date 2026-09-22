@@ -1,0 +1,23 @@
+format: skillev-benchmark-protocol@12
+benchmarks:
+  - hotpotqa
+  - triviaqa
+  - aime-2026
+  - healthbench
+  - webshop
+  - alfworld
+  - spreadsheetbench
+  - mbpp-plus
+  - humaneval
+training:
+  per_domain_episodes: 512
+  global_shuffle_seed: 0
+  batch_size: 16
+  optimizer_steps: 288
+execution_gate:
+  executable: false
+  unblock_when:
+    - all nine Protocol 12 runner preflights pass
+    - all nine target contracts are exact or reconstructed under the same condition
+    - all nine conserved receipts are infrastructure-clear and strictly within 7pp
+    - no-update and one-step controls are produced by the real runtime

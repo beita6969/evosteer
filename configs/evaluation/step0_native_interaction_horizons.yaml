@@ -1,0 +1,6 @@
+# A new development budget condition, not a same-budget improvement claim.
+# Applies uniformly to all frozen tasks, never selected from their scores.
+# Keep the existing model-call, output-token and context allowances unchanged.
+environment_horizons:
+  webshop: 50
+  alfworld: 100

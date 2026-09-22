@@ -1,0 +1,14 @@
+format: skillev-public-interactive-prompt-descriptor@1
+benchmark: webshop
+asset_id: webshop-official-train-replay-v4
+source_kind: official-train-replay
+source_split: train
+source_revision: 64fa2a5c15c7daa698b9ac93f5bb5437b634c9bd
+reasoning_mode: visible-react
+minimum_examples: 4
+required_behavior_coverage:
+  - exact-native-search
+  - result-navigation
+  - product-option-selection
+  - terminal-purchase
+private_payload_required: true

@@ -1,0 +1,29 @@
+{
+  "schema": "step0-integrity-incomplete-attempt@1",
+  "implementation_revision": "7f80f26",
+  "started_utc": "2026-09-06T09:05:00Z",
+  "stop_requested_utc": "2026-09-06T12:44:22Z",
+  "confirmed_stopped_utc": "2026-09-06T12:48:43Z",
+  "status": "incomplete-stopped-for-literal-call-compatibility-repair",
+  "planned_candidates": 1852,
+  "retained_candidates": 866,
+  "retained_scores": 0,
+  "retained_candidates_by_benchmark": {
+    "hotpotqa": 256,
+    "triviaqa": 256,
+    "aime-2026": 60,
+    "healthbench": 256,
+    "webshop": 38,
+    "alfworld": 0,
+    "mbpp-plus": 0,
+    "humaneval": 0
+  },
+  "unfinished_transport_records": 4,
+  "unfinished_transport_token_usage": "unknown",
+  "successful_response_usage_is_total_compute_cost": false,
+  "completed_81920_token_call_observed": true,
+  "quality_scores_available_for_repair": false,
+  "old_candidates_spliced_into_new_run": false,
+  "inference_services_stopped": false,
+  "complete_comparison": false
+}

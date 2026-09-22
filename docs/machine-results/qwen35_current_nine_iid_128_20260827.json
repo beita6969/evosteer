@@ -1,0 +1,361 @@
+{
+  "format": "skillev-current-iid-result@1",
+  "source_commit": "6ae7570",
+  "benchmarks": {
+    "hotpotqa": {
+      "condition_id": "hotpotqa-full-context-direct@1",
+      "attempt_id": "current-nine-20260827-hotpotqa",
+      "status": "target-undefined",
+      "coverage": {
+        "planned": 128,
+        "final_records": 128,
+        "definitive": 128,
+        "candidate_failures": 1,
+        "infrastructure_failures": 0,
+        "generation_infrastructure_failures": 0,
+        "scorer_infrastructure_failures": 0,
+        "environment_infrastructure_failures": 0
+      },
+      "execution_contract": {
+        "population_id": "hotpotqa-final-128-v11",
+        "prompt_profile": "hotpotqa-full-context@1",
+        "decoding_profile": "qwen35-nonthinking-general@1",
+        "actor_route": "qwen35-direct-base",
+        "context_length": 98304,
+        "adapter_active": false,
+        "tool_surface": [],
+        "grader_profile": null,
+        "auxiliary_models": [],
+        "scaffold_id": null
+      },
+      "metrics": {
+        "answer_exact_match": {
+          "observed": 62.5,
+          "reference": null,
+          "gap_pp": null
+        },
+        "answer_f1": {
+          "observed": 78.2660214496152,
+          "reference": null,
+          "gap_pp": null
+        }
+      }
+    },
+    "triviaqa": {
+      "condition_id": "triviaqa-public-retrieval-no-skill@2",
+      "attempt_id": "current-nine-20260827-triviaqa",
+      "status": "target-undefined",
+      "coverage": {
+        "planned": 128,
+        "final_records": 128,
+        "definitive": 128,
+        "candidate_failures": 5,
+        "infrastructure_failures": 0,
+        "generation_infrastructure_failures": 0,
+        "scorer_infrastructure_failures": 0,
+        "environment_infrastructure_failures": 0
+      },
+      "execution_contract": {
+        "population_id": "triviaqa-final-128-v11",
+        "prompt_profile": "trivia-public-search-read@1",
+        "decoding_profile": "qwen35-nonthinking-general@1",
+        "actor_route": "qwen35-direct-base",
+        "context_length": 98304,
+        "adapter_active": false,
+        "tool_surface": [
+          "search",
+          "read",
+          "complete"
+        ],
+        "grader_profile": null,
+        "auxiliary_models": [],
+        "scaffold_id": null
+      },
+      "metrics": {
+        "answer_exact_match": {
+          "observed": 53.125,
+          "reference": null,
+          "gap_pp": null
+        },
+        "answer_f1": {
+          "observed": 60.82465277777778,
+          "reference": null,
+          "gap_pp": null
+        }
+      }
+    },
+    "aime-2026": {
+      "condition_id": "aime2026-thinking-direct@1",
+      "attempt_id": "current-nine-20260827-aime2026",
+      "status": "target-undefined",
+      "coverage": {
+        "planned": 30,
+        "final_records": 30,
+        "definitive": 30,
+        "candidate_failures": 2,
+        "infrastructure_failures": 0,
+        "generation_infrastructure_failures": 0,
+        "scorer_infrastructure_failures": 0,
+        "environment_infrastructure_failures": 0
+      },
+      "execution_contract": {
+        "population_id": "aime-2026-all-30-v11",
+        "prompt_profile": "integer-cot@1",
+        "decoding_profile": "qwen35-thinking-math@1",
+        "actor_route": "qwen35-direct-base",
+        "context_length": 98304,
+        "adapter_active": false,
+        "tool_surface": [],
+        "grader_profile": null,
+        "auxiliary_models": [],
+        "scaffold_id": null
+      },
+      "metrics": {
+        "accuracy": {
+          "observed": 90.0,
+          "reference": null,
+          "gap_pp": null
+        }
+      }
+    },
+    "healthbench": {
+      "condition_id": "healthbench-full-qwen-local-judge@1",
+      "attempt_id": "current-nine-20260827-healthbench",
+      "status": "target-undefined",
+      "coverage": {
+        "planned": 128,
+        "final_records": 128,
+        "definitive": 128,
+        "candidate_failures": 0,
+        "infrastructure_failures": 0,
+        "generation_infrastructure_failures": 0,
+        "scorer_infrastructure_failures": 0,
+        "environment_infrastructure_failures": 0
+      },
+      "execution_contract": {
+        "population_id": "healthbench-full-random0-128-v11",
+        "prompt_profile": "official-healthbench-direct@1",
+        "decoding_profile": "official-chatcompletion-compatible@1",
+        "actor_route": "qwen35-direct-base",
+        "context_length": 98304,
+        "adapter_active": false,
+        "tool_surface": [],
+        "grader_profile": "qwen35-local-rubric-judge@1",
+        "auxiliary_models": [],
+        "scaffold_id": null
+      },
+      "metrics": {
+        "local_qwen_judge_score": {
+          "observed": 50.20237400178809,
+          "reference": null,
+          "gap_pp": null
+        }
+      }
+    },
+    "webshop": {
+      "condition_id": "webshop-benchmark-native-no-skill@1",
+      "attempt_id": "current-nine-20260827-webshop",
+      "status": "target-undefined",
+      "coverage": {
+        "planned": 128,
+        "final_records": 128,
+        "definitive": 128,
+        "candidate_failures": 4,
+        "infrastructure_failures": 0,
+        "generation_infrastructure_failures": 0,
+        "scorer_infrastructure_failures": 0,
+        "environment_infrastructure_failures": 0
+      },
+      "execution_contract": {
+        "population_id": "webshop-final-128-v11",
+        "prompt_profile": "webshop-native-react-v3@1",
+        "decoding_profile": "qwen35-visible-react@1",
+        "actor_route": "qwen35-direct-base",
+        "context_length": 98304,
+        "adapter_active": false,
+        "tool_surface": [
+          "search",
+          "click",
+          "purchase"
+        ],
+        "grader_profile": null,
+        "auxiliary_models": [],
+        "scaffold_id": null
+      },
+      "metrics": {
+        "average_score": {
+          "observed": 37.99758184523809,
+          "reference": null,
+          "gap_pp": null
+        },
+        "success_rate": {
+          "observed": 15.625,
+          "reference": null,
+          "gap_pp": null
+        }
+      }
+    },
+    "alfworld": {
+      "condition_id": "alfworld-benchmark-native-no-skill@1",
+      "attempt_id": "current-nine-20260827-alfworld",
+      "status": "target-undefined",
+      "coverage": {
+        "planned": 128,
+        "final_records": 128,
+        "definitive": 128,
+        "candidate_failures": 5,
+        "infrastructure_failures": 0,
+        "generation_infrastructure_failures": 0,
+        "scorer_infrastructure_failures": 0,
+        "environment_infrastructure_failures": 0
+      },
+      "execution_contract": {
+        "population_id": "alfworld-final-seen-unseen-128-v11",
+        "prompt_profile": "alfworld-native-react-v3@1",
+        "decoding_profile": "qwen35-visible-react@1",
+        "actor_route": "qwen35-direct-base",
+        "context_length": 98304,
+        "adapter_active": false,
+        "tool_surface": [
+          "act"
+        ],
+        "grader_profile": null,
+        "auxiliary_models": [],
+        "scaffold_id": null
+      },
+      "metrics": {
+        "valid_seen_success_rate": {
+          "observed": 40.20618556701031,
+          "reference": null,
+          "gap_pp": null
+        },
+        "valid_unseen_success_rate": {
+          "observed": 25.806451612903224,
+          "reference": null,
+          "gap_pp": null
+        },
+        "success_rate": {
+          "observed": 36.71875,
+          "reference": null,
+          "gap_pp": null
+        }
+      }
+    },
+    "spreadsheetbench": {
+      "condition_id": "spreadsheetbench-public-inspection-no-skill@1",
+      "attempt_id": "current-nine-20260827-spreadsheetbench",
+      "status": "target-undefined",
+      "coverage": {
+        "planned": 128,
+        "final_records": 128,
+        "definitive": 128,
+        "candidate_failures": 122,
+        "infrastructure_failures": 0,
+        "generation_infrastructure_failures": 0,
+        "scorer_infrastructure_failures": 0,
+        "environment_infrastructure_failures": 0
+      },
+      "execution_contract": {
+        "population_id": "spreadsheetbench-final-128-v11",
+        "prompt_profile": "spreadsheet-public-preview@1",
+        "decoding_profile": "qwen35-structured-spreadsheet@1",
+        "actor_route": "qwen35-direct-base",
+        "context_length": 98304,
+        "adapter_active": false,
+        "tool_surface": [
+          "list_sheets",
+          "preview",
+          "describe_range",
+          "find",
+          "execute",
+          "submit"
+        ],
+        "grader_profile": null,
+        "auxiliary_models": [],
+        "scaffold_id": null
+      },
+      "metrics": {
+        "pass_at_1": {
+          "observed": 2.34375,
+          "reference": null,
+          "gap_pp": null
+        }
+      }
+    },
+    "swe-bench-verified": {
+      "condition_id": "swe-released-skillflow-repository-agent@1",
+      "attempt_id": "current-nine-20260827-swe-bench-verified",
+      "status": "target-undefined",
+      "coverage": {
+        "planned": 128,
+        "final_records": 128,
+        "definitive": 128,
+        "candidate_failures": 33,
+        "infrastructure_failures": 0,
+        "generation_infrastructure_failures": 0,
+        "scorer_infrastructure_failures": 0,
+        "environment_infrastructure_failures": 0
+      },
+      "execution_contract": {
+        "population_id": "swe-verified-final-128-v11",
+        "prompt_profile": "skillflow-code-generation-repository-agent@1",
+        "decoding_profile": "qwen35-repository-agent-supervisor@1",
+        "actor_route": "qwen35-direct-base",
+        "context_length": 98304,
+        "adapter_active": false,
+        "tool_surface": [
+          "list_files",
+          "search_code",
+          "view_file",
+          "edit_file",
+          "run_tests",
+          "submit"
+        ],
+        "grader_profile": null,
+        "auxiliary_models": [],
+        "scaffold_id": "released-skillflow-repository-agent@1"
+      },
+      "metrics": {
+        "resolved_rate": {
+          "observed": 27.34375,
+          "reference": null,
+          "gap_pp": null
+        }
+      }
+    },
+    "humaneval": {
+      "condition_id": "humaneval-deterministic-direct@1",
+      "attempt_id": "current-nine-20260827-humaneval",
+      "status": "target-undefined",
+      "coverage": {
+        "planned": 128,
+        "final_records": 128,
+        "definitive": 128,
+        "candidate_failures": 2,
+        "infrastructure_failures": 0,
+        "generation_infrastructure_failures": 0,
+        "scorer_infrastructure_failures": 0,
+        "environment_infrastructure_failures": 0
+      },
+      "execution_contract": {
+        "population_id": "humaneval-final-128-v11",
+        "prompt_profile": "direct-code@1",
+        "decoding_profile": "qwen35-humaneval-deterministic@1",
+        "actor_route": "qwen35-direct-base",
+        "context_length": 98304,
+        "adapter_active": false,
+        "tool_surface": [],
+        "grader_profile": null,
+        "auxiliary_models": [],
+        "scaffold_id": null
+      },
+      "metrics": {
+        "pass_at_1": {
+          "observed": 92.96875,
+          "reference": null,
+          "gap_pp": null
+        }
+      }
+    }
+  }
+}

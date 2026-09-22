@@ -1,0 +1,6 @@
+{
+  "format": "skillev-exact-attempt-run-plan@2",
+  "phase_search_steps": 249,
+  "closure_steps": 1,
+  "maximum_cycles": 2
+}

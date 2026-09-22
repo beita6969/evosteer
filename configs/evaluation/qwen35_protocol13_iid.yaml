@@ -1,0 +1,78 @@
+format: skillev-qwen35-protocol13-runner@2
+model:
+  served_model_name: qwen35-direct-base
+  context_length: 98304
+  adapter_policy: forbidden
+profiles:
+  qwen35-nonthinking-general@1:
+    sampling_mode: sampling
+    enable_thinking: false
+    temperature: 0.7
+    top_p: 0.8
+    top_k: 20
+    min_p: 0.0
+    presence_penalty: 1.5
+    repetition_penalty: 1.0
+    max_new_tokens: 8192
+    seed: 42
+    stop: []
+  official-chatcompletion-compatible@2:
+    sampling_mode: sampling
+    enable_thinking: false
+    temperature: 0.5
+    top_p: 1.0
+    top_k: 0
+    min_p: 0.0
+    presence_penalty: 0.0
+    repetition_penalty: 1.0
+    max_new_tokens: 2048
+    seed: 0
+    stop: []
+  qwen35-visible-react@1:
+    sampling_mode: sampling
+    enable_thinking: false
+    temperature: 0.7
+    top_p: 0.8
+    top_k: 20
+    min_p: 0.0
+    presence_penalty: 1.5
+    repetition_penalty: 1.0
+    max_new_tokens: 8192
+    seed: 42
+    stop: []
+  qwen35-mbpp-plus-deterministic@1:
+    sampling_mode: greedy
+    enable_thinking: true
+    temperature: 0.0
+    top_p: 1.0
+    top_k: 1
+    min_p: 0.0
+    presence_penalty: 0.0
+    repetition_penalty: 1.0
+    max_new_tokens: 32768
+    seed: 42
+    stop: []
+  qwen35-humaneval-deterministic@1:
+    sampling_mode: greedy
+    enable_thinking: true
+    temperature: 0.0
+    top_p: 1.0
+    top_k: 1
+    min_p: 0.0
+    presence_penalty: 0.0
+    repetition_penalty: 1.0
+    max_new_tokens: 32768
+    seed: 42
+    stop: []
+  qwen35-thinking-math-reference@2:
+    sampling_mode: sampling
+    enable_thinking: true
+    temperature: 0.6
+    top_p: 0.95
+    top_k: 20
+    min_p: 0.0
+    presence_penalty: 0.0
+    repetition_penalty: 1.0
+    max_new_tokens: 32768
+    seed: 42
+    stop: []

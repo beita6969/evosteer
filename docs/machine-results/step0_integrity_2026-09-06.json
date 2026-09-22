@@ -1,0 +1,269 @@
+{
+  "schema": "step0-integrity-communication-diagnostic@1",
+  "run_id": "nonfinal-explicit-fields-v4-20260906T053835Z",
+  "implementation_revision": "uncommitted-development-worktree-integrity-v4-explicit-action-fields",
+  "scope": "final-disjoint nonfinal WebShop and ALFWorld communication canary; not a quality estimate",
+  "candidate_count": 4,
+  "count_per_arm": 2,
+  "full_paired_evaluation_complete": false,
+  "quality_scores_intentionally_not_published": "Each canary domain has one task; scores would disclose per-item licensed results. Not used for condition selection.",
+  "arms": [
+    {
+      "arm_id": "A1-single-no-skill-thinking-off",
+      "optimizer_steps": 0,
+      "native_thinking": false,
+      "reasoning_pass": "disabled",
+      "skill_mode": "off",
+      "agent_topology": "single-controller",
+      "handwritten_policy": false,
+      "semantic_action_pruning": false,
+      "demonstrations": false,
+      "automatic_catalog_actions": false,
+      "precomputed_task_context": false,
+      "legacy": false
+    },
+    {
+      "arm_id": "A2-multi-no-skill-thinking-off",
+      "optimizer_steps": 0,
+      "native_thinking": false,
+      "reasoning_pass": "disabled",
+      "skill_mode": "off",
+      "agent_topology": "multi-agent",
+      "handwritten_policy": false,
+      "semantic_action_pruning": false,
+      "demonstrations": false,
+      "automatic_catalog_actions": false,
+      "precomputed_task_context": false,
+      "legacy": false
+    }
+  ],
+  "communication": {
+    "webshop": {
+      "A1-single-no-skill-thinking-off": {
+        "model_requests": 14,
+        "model_responses": 14,
+        "native_surfaces": 10,
+        "surface_mismatches": 0,
+        "decisions": 14,
+        "rejected_decisions": 4,
+        "executions": 10,
+        "unmatched_executions": 0,
+        "missing_acknowledgements": 0,
+        "feedback_mismatches": 0,
+        "peer_requests": 0,
+        "peer_replies": 0,
+        "late_peer_replies": 0,
+        "peer_route_mismatches": 0,
+        "episodes_with_peer_calls": 0,
+        "actual_agent_identities": [
+          "owner"
+        ],
+        "actual_agent_count": 1,
+        "status": "pass",
+        "native_task_success": "reported-separately",
+        "native_execution_status": "observed"
+      },
+      "A2-multi-no-skill-thinking-off": {
+        "model_requests": 21,
+        "model_responses": 21,
+        "native_surfaces": 10,
+        "surface_mismatches": 0,
+        "decisions": 17,
+        "rejected_decisions": 8,
+        "executions": 9,
+        "unmatched_executions": 0,
+        "missing_acknowledgements": 0,
+        "feedback_mismatches": 0,
+        "peer_requests": 2,
+        "peer_replies": 2,
+        "late_peer_replies": 0,
+        "peer_route_mismatches": 0,
+        "episodes_with_peer_calls": 1,
+        "actual_agent_identities": [
+          "owner",
+          "researcher"
+        ],
+        "actual_agent_count": 2,
+        "status": "pass",
+        "native_task_success": "reported-separately",
+        "native_execution_status": "observed"
+      }
+    },
+    "alfworld": {
+      "A1-single-no-skill-thinking-off": {
+        "model_requests": 29,
+        "model_responses": 29,
+        "native_surfaces": 20,
+        "surface_mismatches": 0,
+        "decisions": 29,
+        "rejected_decisions": 9,
+        "executions": 20,
+        "unmatched_executions": 0,
+        "missing_acknowledgements": 0,
+        "feedback_mismatches": 0,
+        "peer_requests": 0,
+        "peer_replies": 0,
+        "late_peer_replies": 0,
+        "peer_route_mismatches": 0,
+        "episodes_with_peer_calls": 0,
+        "actual_agent_identities": [
+          "owner"
+        ],
+        "actual_agent_count": 1,
+        "status": "pass",
+        "native_task_success": "reported-separately",
+        "native_execution_status": "observed"
+      },
+      "A2-multi-no-skill-thinking-off": {
+        "model_requests": 61,
+        "model_responses": 61,
+        "native_surfaces": 20,
+        "surface_mismatches": 0,
+        "decisions": 27,
+        "rejected_decisions": 7,
+        "executions": 20,
+        "unmatched_executions": 0,
+        "missing_acknowledgements": 0,
+        "feedback_mismatches": 0,
+        "peer_requests": 17,
+        "peer_replies": 17,
+        "late_peer_replies": 0,
+        "peer_route_mismatches": 0,
+        "episodes_with_peer_calls": 1,
+        "actual_agent_identities": [
+          "owner",
+          "researcher",
+          "solver"
+        ],
+        "actual_agent_count": 3,
+        "status": "pass",
+        "native_task_success": "reported-separately",
+        "native_execution_status": "observed"
+      }
+    }
+  },
+  "interventions": {
+    "A1-single-no-skill-thinking-off": {
+      "skill_blocks_injected": 0,
+      "skill_body_tokens": 0,
+      "skill_calls": 0,
+      "handwritten_decisions": 0,
+      "legal_actions_removed_by_policy": 0,
+      "automatic_catalog_actions": 0,
+      "demonstration_tokens": 0,
+      "extra_model_calls_for_serialization": 0,
+      "model_calls": 43,
+      "tool_calls": 30,
+      "communication_repairs": 13,
+      "peer_model_calls": 0,
+      "peer_messages": 0
+    },
+    "A2-multi-no-skill-thinking-off": {
+      "skill_blocks_injected": 0,
+      "skill_body_tokens": 0,
+      "skill_calls": 0,
+      "handwritten_decisions": 0,
+      "legal_actions_removed_by_policy": 0,
+      "automatic_catalog_actions": 0,
+      "demonstration_tokens": 0,
+      "extra_model_calls_for_serialization": 0,
+      "model_calls": 82,
+      "tool_calls": 29,
+      "communication_repairs": 15,
+      "peer_model_calls": 19,
+      "peer_messages": 38
+    }
+  },
+  "actual_cost": {
+    "A1-single-no-skill-thinking-off": {
+      "input_tokens": 76860,
+      "output_tokens": 10899,
+      "model_calls": 43,
+      "tool_calls": 30,
+      "peer_model_calls": 0
+    },
+    "A2-multi-no-skill-thinking-off": {
+      "input_tokens": 187927,
+      "output_tokens": 10645,
+      "model_calls": 82,
+      "tool_calls": 29,
+      "peer_model_calls": 19
+    }
+  },
+  "generation_records_per_hour": 50.653161596215135,
+  "candidate_authority": "evaluated-policy-single-final-no-selection",
+  "sampling": {
+    "webshop": {
+      "profile_id": "integrity-thinking-off-seed0@1",
+      "enable_thinking": false,
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.0,
+      "max_new_tokens": 8192,
+      "stop": [],
+      "seed": 0,
+      "sampling_mode": "sampling"
+    },
+    "alfworld": {
+      "profile_id": "integrity-thinking-off-seed0@1",
+      "enable_thinking": false,
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.0,
+      "max_new_tokens": 8192,
+      "stop": [],
+      "seed": 0,
+      "sampling_mode": "sampling"
+    }
+  },
+  "budgets": {
+    "webshop": {
+      "calls_per_turn": 8,
+      "total_model_calls": 160,
+      "total_output_tokens": 163840,
+      "history_input_tokens": 32768,
+      "skill_instruction_tokens": 2048
+    },
+    "alfworld": {
+      "calls_per_turn": 8,
+      "total_model_calls": 160,
+      "total_output_tokens": 163840,
+      "history_input_tokens": 32768,
+      "skill_instruction_tokens": 2048
+    }
+  },
+  "native_horizons": {
+    "webshop": 10,
+    "alfworld": 20
+  },
+  "model": "Qwen3.5-9B adapter-free",
+  "source_notes": {
+    "generated_dossiers": false,
+    "canary_selection": "fixed final-disjoint source identities, not correctness-dependent",
+    "detailed_sources_and_traces": "private only"
+  },
+  "verification": {
+    "final_cpu_make_check": {
+      "exit_code": 0,
+      "tests_passed": 2552,
+      "pytest_seconds": 120.37,
+      "includes": [
+        "ruff format --check",
+        "ruff check",
+        "mypy",
+        "pytest",
+        "both wheels",
+        "model-wheel boundary check"
+      ]
+    },
+    "latest_transport_targeted_tests_passed": 53,
+    "review_subagent_used": false,
+    "hash_verification_used": false
+  }
+}

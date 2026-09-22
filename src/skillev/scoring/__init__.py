@@ -1,0 +1,51 @@
+"""Public pure-function scoring and trajectory-balance objective surface."""
+
+from .objective import (
+    ScoringConfig,
+    ScoringDirection,
+    StreamingTrajectoryScore,
+    TrajectoryScore,
+    TrajectoryScoringMemoryError,
+    backward_trajectory_delta_streaming,
+    edge_logprob_mean,
+    materialize_edge_records,
+    materialize_residual,
+    score_trajectory,
+)
+from .rendering import (
+    TEMPLATE_VERSION,
+    RenderedPrefix,
+    RenderedReasoningPrompt,
+    assembled_context_hash,
+    prefix_content_hash,
+    render_forward_prefix,
+    render_forward_prefix_from_parts,
+    render_hindsight_prefix,
+    render_hindsight_prefix_from_parts,
+    render_reasoning_prefix,
+    render_step_zero_reasoning_prefix,
+)
+
+__all__ = [
+    "TEMPLATE_VERSION",
+    "RenderedPrefix",
+    "RenderedReasoningPrompt",
+    "ScoringConfig",
+    "ScoringDirection",
+    "StreamingTrajectoryScore",
+    "TrajectoryScore",
+    "TrajectoryScoringMemoryError",
+    "assembled_context_hash",
+    "backward_trajectory_delta_streaming",
+    "edge_logprob_mean",
+    "materialize_edge_records",
+    "materialize_residual",
+    "prefix_content_hash",
+    "render_forward_prefix",
+    "render_forward_prefix_from_parts",
+    "render_hindsight_prefix",
+    "render_hindsight_prefix_from_parts",
+    "render_reasoning_prefix",
+    "render_step_zero_reasoning_prefix",
+    "score_trajectory",
+]

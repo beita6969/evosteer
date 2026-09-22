@@ -1,0 +1,262 @@
+{
+  "ablations": [
+    {
+      "arm": "full"
+    },
+    {
+      "arm": "skillflow-disabled"
+    },
+    {
+      "arm": "no-flow-weighting"
+    },
+    {
+      "arm": "capped-flow-weight",
+      "cap": 10.0
+    },
+    {
+      "arm": "clipped-importance",
+      "clip": 10.0
+    },
+    {
+      "arm": "lcb-to-mean"
+    },
+    {
+      "arm": "and-to-single-condition"
+    }
+  ],
+  "benchmarks": [
+    {
+      "benchmark": "webshop",
+      "dataset_snapshot_name": "webshop",
+      "evaluation_sampling": {
+        "algorithm": "stable-hash-ranked-item-id@1",
+        "sample_size": 500,
+        "sampling_type": "fixed-subsample"
+      },
+      "role": "iid",
+      "training_use": "training-mix"
+    },
+    {
+      "benchmark": "alfworld",
+      "dataset_snapshot_name": "alfworld",
+      "evaluation_sampling": {
+        "algorithm": "stable-hash-ranked-item-id@1",
+        "sample_size": 500,
+        "sampling_type": "fixed-subsample"
+      },
+      "role": "iid",
+      "training_use": "training-mix"
+    },
+    {
+      "benchmark": "hotpotqa",
+      "dataset_snapshot_name": "hotpotqa",
+      "evaluation_sampling": {
+        "algorithm": "stable-hash-ranked-item-id@1",
+        "sample_size": 500,
+        "sampling_type": "fixed-subsample"
+      },
+      "role": "iid",
+      "training_use": "training-mix"
+    },
+    {
+      "benchmark": "triviaqa",
+      "dataset_snapshot_name": "triviaqa",
+      "evaluation_sampling": {
+        "algorithm": "stable-hash-ranked-item-id@1",
+        "sample_size": 500,
+        "sampling_type": "fixed-subsample"
+      },
+      "role": "iid",
+      "training_use": "training-mix"
+    },
+    {
+      "benchmark": "medqa",
+      "dataset_snapshot_name": "medqa",
+      "evaluation_sampling": {
+        "algorithm": "stable-hash-ranked-item-id@1",
+        "sample_size": 500,
+        "sampling_type": "fixed-subsample"
+      },
+      "role": "iid",
+      "training_use": "training-mix"
+    },
+    {
+      "benchmark": "aime-2026",
+      "dataset_snapshot_name": "aime-2026",
+      "evaluation_sampling": {
+        "sampling_type": "full"
+      },
+      "role": "iid",
+      "training_use": "progress-anchor"
+    },
+    {
+      "benchmark": "swe-bench-verified",
+      "dataset_snapshot_name": "swe-bench-verified",
+      "evaluation_sampling": {
+        "algorithm": "stable-hash-ranked-item-id@1",
+        "sample_size": 500,
+        "sampling_type": "fixed-subsample"
+      },
+      "role": "iid",
+      "training_use": "training-mix"
+    },
+    {
+      "benchmark": "musique",
+      "dataset_snapshot_name": "musique",
+      "evaluation_sampling": {
+        "algorithm": "stable-hash-ranked-item-id@1",
+        "sample_size": 500,
+        "sampling_type": "fixed-subsample"
+      },
+      "role": "ood",
+      "training_use": "evaluation-only"
+    },
+    {
+      "benchmark": "nq-open",
+      "dataset_snapshot_name": "nq-open",
+      "evaluation_sampling": {
+        "algorithm": "stable-hash-ranked-item-id@1",
+        "sample_size": 500,
+        "sampling_type": "fixed-subsample"
+      },
+      "role": "ood",
+      "training_use": "evaluation-only"
+    },
+    {
+      "benchmark": "math-hard",
+      "dataset_snapshot_name": "math-hard",
+      "evaluation_sampling": {
+        "algorithm": "stable-hash-ranked-item-id@1",
+        "sample_size": 500,
+        "sampling_type": "fixed-subsample"
+      },
+      "role": "ood",
+      "training_use": "evaluation-only"
+    },
+    {
+      "benchmark": "gpqa-diamond",
+      "dataset_snapshot_name": "gpqa-diamond",
+      "evaluation_sampling": {
+        "sampling_type": "full"
+      },
+      "role": "ood",
+      "training_use": "evaluation-only"
+    },
+    {
+      "benchmark": "humaneval",
+      "dataset_snapshot_name": "humaneval",
+      "evaluation_sampling": {
+        "sampling_type": "full"
+      },
+      "role": "ood",
+      "training_use": "evaluation-only"
+    },
+    {
+      "benchmark": "scienceworld",
+      "dataset_snapshot_name": "scienceworld",
+      "evaluation_sampling": {
+        "sampling_type": "full"
+      },
+      "role": "ood",
+      "training_use": "evaluation-only"
+    },
+    {
+      "benchmark": "mind2web",
+      "dataset_snapshot_name": "mind2web",
+      "evaluation_sampling": {
+        "algorithm": "stable-hash-ranked-item-id@1",
+        "sample_size": 500,
+        "sampling_type": "fixed-subsample"
+      },
+      "role": "ood",
+      "training_use": "evaluation-only"
+    }
+  ],
+  "dataset_snapshots": [
+    {
+      "hash": "sha256:1fb1bbb00706d0628340bfb86d73d7cc2daf30b4ec183b25cf5fdeca204a4c8f",
+      "name": "webshop",
+      "version": "64fa2a5c15c7daa698b9ac93f5bb5437b634c9bd"
+    },
+    {
+      "hash": "sha256:7d156fa28068a53b9b7276b036047c0de87098fc441fd7ab21b2d89c8a846cc2",
+      "name": "alfworld",
+      "version": "aaba6870f86c5be6a08a491f32a50b906227bc3e"
+    },
+    {
+      "hash": "sha256:5576690226187216e10fefd7f61f97617455013bb8110cf4a55d48025d115e95",
+      "name": "hotpotqa",
+      "version": "1908d6afbbead072334abe2965f91bd2709910ab"
+    },
+    {
+      "hash": "sha256:f4bade3675c1f47752b504bfde00b4c85514cdf4bed71a1cfd9618c9c0f6363d",
+      "name": "triviaqa",
+      "version": "0ec8889492d5187b26c51b8d1781239a4cf6741e"
+    },
+    {
+      "hash": "sha256:d5cb77e69e818f3a994ac97de47998e1566bf70f109812853fadd45e72817817",
+      "name": "medqa",
+      "version": "27b02f66aac217933c9648a06f82e9f720377925"
+    },
+    {
+      "hash": "sha256:c246338d4ae042b8d3735f289b42c1ce4ec7111cafeecf386f623d59cd27f38a",
+      "name": "aime-2026",
+      "version": "d2de22f3c656b4f56cf8981212186377d1e23bc3"
+    },
+    {
+      "hash": "sha256:8ddc96c8374c955e02c96a7948c9da106310dade22600f7915d0a634df03dcf5",
+      "name": "swe-bench-verified",
+      "version": "91aa3ed51b709be6457e12d00300a6a596d4c6a3"
+    },
+    {
+      "hash": "sha256:a51b458b0ad76d7023216453f63f08688a33afa8f72979505997f9936aa45ae8",
+      "name": "musique",
+      "version": "922ac98f19a201998dbdae6d7f2887a5258dbdeb"
+    },
+    {
+      "hash": "sha256:74428198f3bd4122a0993d6766815b86b5a1698c6f529c4bbcd81aeb1667f9de",
+      "name": "nq-open",
+      "version": "0ec8889492d5187b26c51b8d1781239a4cf6741e"
+    },
+    {
+      "hash": "sha256:d981aefc3eb0332ce7f5e29af4dea5a3fd3eb08bb27022ae1eb69f5459325200",
+      "name": "math-hard",
+      "version": "69bc17a93d6754e3c3a22084a58f6ad2c24f1f07"
+    },
+    {
+      "hash": "sha256:7e2806e309d271543731eb410e8bcc4b7d10e044378b9d6d2e2376ca18af9d81",
+      "name": "gpqa-diamond",
+      "version": "633f5ee89ab8ad4522a9f850766b73f62147ffdd"
+    },
+    {
+      "hash": "sha256:65da25f9755502b43f2ae908d60f3873b6f15065a73d44f2d228f5b18c5e5135",
+      "name": "humaneval",
+      "version": "6d43fb980f9fee3c892a914eda09951f772ad10d"
+    },
+    {
+      "hash": "sha256:44eaa64b535f2767a6fdf29dd984ed2a1d19cfbfb8a143f8aa0b8df78d5bb2fb",
+      "name": "scienceworld",
+      "version": "f6d8f5ec41eadfdcad23cc3ab097f0903dc1378b"
+    },
+    {
+      "hash": "sha256:b62e67493b2f79562252f7af87f70083df0406f917020324726a0d5aac4d4e86",
+      "name": "mind2web",
+      "version": "17ece8eb89862368edc0cc806acee6fca5163474"
+    }
+  ],
+  "format": "skillev-benchmark-protocol@3",
+  "full_method_identity": {
+    "flow_weighting": "mean-normalized-uncapped",
+    "format": "skillev-full-method-identity@4",
+    "gradient_transform": "none",
+    "importance_estimator": "raw-log-importance",
+    "optimizer": "adamw-weight-decay-0",
+    "phase_rule": "residual-and-entropy",
+    "policy_distribution": "raw-categorical-softmax",
+    "posterior_decision": "confidence-bound"
+  },
+  "ood_freeze": {
+    "protocol_type": "frozen-library-posterior-policy-single-pass"
+  },
+  "seed": 20260721
+}

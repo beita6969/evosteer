@@ -1,0 +1,31 @@
+format: skillev-public-interactive-prompt@1
+benchmark: alfworld
+source_split: train
+reasoning_mode: visible-react
+examples:
+  - example_id: train/synthetic-alfworld-001
+    task: Put the visible mug on the visible table.
+    turns:
+      - observation: You are in a room. A mug and table are visible. Admissible commands include take mug.
+        assistant: |
+          Thought: I must first hold the mug using an admissible command.
+          Action: take mug
+      - observation: You are holding the mug. Admissible commands include put mug on table.
+        assistant: |
+          Thought: I can now complete the requested placement.
+          Action: put mug on table
+  - example_id: train/synthetic-alfworld-002
+    task: Put the visible apple in the visible refrigerator.
+    turns:
+      - observation: You see an apple and a closed refrigerator. Admissible commands include take apple.
+        assistant: |
+          Thought: I must hold the apple before placing it.
+          Action: take apple
+      - observation: You hold the apple. Admissible commands include open refrigerator.
+        assistant: |
+          Thought: The destination is closed, so I need to open it.
+          Action: open refrigerator
+      - observation: The refrigerator is open. Admissible commands include put apple in refrigerator.
+        assistant: |
+          Thought: I can now perform the requested placement.
+          Action: put apple in refrigerator

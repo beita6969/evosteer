@@ -1,0 +1,740 @@
+{
+  "schema": "step0-a2-signature-fence-repair-rounds@1",
+  "source_revision": "db680d9",
+  "rounds": {
+    "nonfinal_canary": {
+      "schema": "step0-a2-focused-interface-repair@1",
+      "run_id": "canary-a2-signature-fence-db680d9-20260907T094538Z",
+      "implementation_revision": "db680d9",
+      "arm": {
+        "agent_topology": "multi-agent",
+        "automatic_catalog_actions": false,
+        "condition_id": "A2-no-thinking-integrity-repair@6",
+        "demonstration_mode": "off",
+        "format": "skillev-step0-integrity@2",
+        "handwritten_policy_mode": "off",
+        "legacy": false,
+        "native_thinking": false,
+        "optimizer_steps": 0,
+        "precomputed_task_context": false,
+        "reasoning_pass": "disabled",
+        "semantic_action_pruning": false,
+        "skill_mode": "off"
+      },
+      "scope": {
+        "webshop": 6,
+        "mbpp-plus": 1,
+        "humaneval": 1
+      },
+      "nonfinal_canary": true,
+      "full_eight_iid_result": false,
+      "planned": 8,
+      "retained_candidates": 8,
+      "scored": 8,
+      "missing": 0,
+      "complete": true,
+      "population_exposure": "nonfinal-development-canary",
+      "started_utc": "2026-09-07T09:45:41.695438+00:00",
+      "ended_utc": "2026-09-07T09:48:03.486668+00:00",
+      "elapsed_seconds": 141.79123,
+      "candidate_authority": "evaluated-owner-single-final-no-selection",
+      "cross_run_answers_reused": 0,
+      "matched_control_evaluated": false,
+      "causal_improvement_claimed": false,
+      "controls": {
+        "model": "Qwen3.5-9B",
+        "adapter_route_sent": null,
+        "budgets_by_benchmark": {
+          "webshop": {
+            "calls_per_turn": 8,
+            "context_length": 98304,
+            "environment_steps": 10,
+            "history_input_tokens": 32768,
+            "skill_instruction_tokens": 2048,
+            "total_model_calls": 160,
+            "total_output_tokens": 163840
+          },
+          "mbpp-plus": {
+            "calls_per_turn": 8,
+            "context_length": 98304,
+            "history_input_tokens": 32768,
+            "skill_instruction_tokens": 2048,
+            "total_model_calls": 8,
+            "total_output_tokens": 32768
+          },
+          "humaneval": {
+            "calls_per_turn": 8,
+            "context_length": 98304,
+            "history_input_tokens": 32768,
+            "skill_instruction_tokens": 2048,
+            "total_model_calls": 8,
+            "total_output_tokens": 32768
+          }
+        },
+        "sampling": {
+          "humaneval": {
+            "enable_thinking": false,
+            "max_new_tokens": 8192,
+            "min_p": 0.0,
+            "presence_penalty": 0.0,
+            "profile_id": "integrity-thinking-off-seed0@1",
+            "repetition_penalty": 1.0,
+            "sampling_mode": "sampling",
+            "seed": 0,
+            "stop": [],
+            "temperature": 0.7,
+            "top_k": 20,
+            "top_p": 0.8
+          },
+          "mbpp-plus": {
+            "enable_thinking": false,
+            "max_new_tokens": 8192,
+            "min_p": 0.0,
+            "presence_penalty": 0.0,
+            "profile_id": "integrity-thinking-off-seed0@1",
+            "repetition_penalty": 1.0,
+            "sampling_mode": "sampling",
+            "seed": 0,
+            "stop": [],
+            "temperature": 0.7,
+            "top_k": 20,
+            "top_p": 0.8
+          },
+          "webshop": {
+            "enable_thinking": false,
+            "max_new_tokens": 8192,
+            "min_p": 0.0,
+            "presence_penalty": 0.0,
+            "profile_id": "integrity-thinking-off-seed0@1",
+            "repetition_penalty": 1.0,
+            "sampling_mode": "sampling",
+            "seed": 0,
+            "stop": [],
+            "temperature": 0.7,
+            "top_k": 20,
+            "top_p": 0.8
+          }
+        },
+        "parser": {
+          "benchmarks": {
+            "humaneval": "single-python-source-explicit-owner-v2",
+            "mbpp-plus": "single-python-source-explicit-owner-v2",
+            "webshop": "explicit-native-action-explicit-owner-v2"
+          },
+          "implementation_revision": "db680d9"
+        },
+        "verifier_versions": {
+          "aime-2026": "aime-2026-native-integrity@1",
+          "alfworld": "alfworld-native-integrity@1",
+          "healthbench": "healthbench-qwen3.5-9b-sglang-temperature-0@1",
+          "hotpotqa": "hotpotqa-native-em-f1@integrity1",
+          "humaneval": "humaneval-native-integrity@1",
+          "mbpp-plus": "mbpp-plus-native-integrity@1",
+          "triviaqa": "triviaqa-native-em-f1@integrity1",
+          "webshop": "webshop-native-integrity@1"
+        },
+        "service": {
+          "request_routing": "least-inflight-round-robin-ties@1",
+          "coordinator_concurrency": 8,
+          "request_timeout_seconds": 7200,
+          "episode_timeout_seconds": 14400,
+          "transport_attempts": 1
+        },
+        "physical_gpus": [
+          1,
+          3,
+          7
+        ],
+        "scoring_concurrency": 8
+      },
+      "actual_cost": {
+        "input_tokens": 250598,
+        "output_tokens": 10437,
+        "model_calls": 64,
+        "tool_calls": 53,
+        "peer_model_calls": 0
+      },
+      "scorer_cost": {
+        "records_with_cost": 8,
+        "records_without_cost": 0,
+        "failed_invocations": 0,
+        "failed_invocation_totals": {},
+        "completed_score_totals": {
+          "wall_seconds": 1.031118287704885
+        },
+        "totals": {
+          "wall_seconds": 1.031118287704885
+        }
+      },
+      "interventions": {
+        "skill_blocks_injected": 0,
+        "skill_body_tokens": 0,
+        "skill_calls": 0,
+        "handwritten_decisions": 0,
+        "legal_actions_removed_by_policy": 0,
+        "automatic_catalog_actions": 0,
+        "demonstration_tokens": 0,
+        "extra_model_calls_for_serialization": 0,
+        "model_calls": 64,
+        "tool_calls": 53,
+        "communication_repairs": 9,
+        "peer_model_calls": 0,
+        "peer_messages": 0
+      },
+      "communication": {
+        "model_requests": 64,
+        "model_responses": 64,
+        "authoritative_model_requests": 64,
+        "authoritative_model_responses": 64,
+        "diagnostic_model_requests": 64,
+        "diagnostic_model_responses": 64,
+        "native_surfaces": 62,
+        "surface_mismatches": 0,
+        "decisions": 62,
+        "accepted_decisions": 53,
+        "rejected_decisions": 9,
+        "control_parse_failures": 0,
+        "terminal_parse_failures": 0,
+        "unresolved_terminal_parse_failures": 0,
+        "repaired_terminal_parse_failures": 0,
+        "unresolved_action_decisions": 0,
+        "repaired_action_decisions": 9,
+        "undelivered_peer_budget_requests": 0,
+        "attempted_control_messages": 0,
+        "successfully_decoded_messages": 0,
+        "delivered_requests": 0,
+        "returned_replies": 0,
+        "undelivered_unresolved_requests": 0,
+        "repair_attempts": 9,
+        "repair_successes": 9,
+        "repaired_delivery_failures": 0,
+        "unresolved_delivery_failures": 0,
+        "executions": 53,
+        "unmatched_executions": 0,
+        "missing_acknowledgements": 0,
+        "feedback_mismatches": 0,
+        "peer_requests": 0,
+        "peer_replies": 0,
+        "late_peer_replies": 0,
+        "peer_route_mismatches": 0,
+        "episodes_with_peer_calls": 0,
+        "voluntary_no_peer_episode_count": 8,
+        "unobserved_required_boundary_count": 0,
+        "executed_decisions": 53,
+        "acknowledged_decisions": 53,
+        "legacy_unverified_events": 0,
+        "actual_peer_calls_by_benchmark": {
+          "webshop": 0,
+          "mbpp-plus": 0,
+          "humaneval": 0
+        },
+        "actual_agent_count": 1,
+        "status": "complete-with-repairs",
+        "native_task_success": "reported-separately",
+        "peer_execution_status": "not-observed",
+        "native_execution_status": "observed"
+      },
+      "communication_status": "complete-with-repairs",
+      "transport_events": {
+        "model-transport-complete": 64,
+        "model-transport-start": 64
+      },
+      "healthbench_grading_attempted": false,
+      "public_release": "aggregate-only; no questions, answers, identifiers, hidden tests, rubrics, per-item grades, private paths or agent instance names"
+    },
+    "focused_complete_cohorts": {
+      "schema": "step0-a2-focused-interface-repair@1",
+      "run_id": "focused-a2-signature-fence-db680d9-20260907T094943Z",
+      "implementation_revision": "db680d9",
+      "arm": {
+        "agent_topology": "multi-agent",
+        "automatic_catalog_actions": false,
+        "condition_id": "A2-no-thinking-integrity-repair@6",
+        "demonstration_mode": "off",
+        "format": "skillev-step0-integrity@2",
+        "handwritten_policy_mode": "off",
+        "legacy": false,
+        "native_thinking": false,
+        "optimizer_steps": 0,
+        "precomputed_task_context": false,
+        "reasoning_pass": "disabled",
+        "semantic_action_pruning": false,
+        "skill_mode": "off"
+      },
+      "scope": {
+        "webshop": 128,
+        "mbpp-plus": 128,
+        "humaneval": 128
+      },
+      "nonfinal_canary": false,
+      "full_eight_iid_result": false,
+      "planned": 384,
+      "retained_candidates": 384,
+      "scored": 384,
+      "missing": 0,
+      "complete": true,
+      "population_exposure": "development-exposed-focused-complete-128-cohorts",
+      "started_utc": "2026-09-07T09:49:46.895931+00:00",
+      "ended_utc": "2026-09-07T10:14:01.374903+00:00",
+      "elapsed_seconds": 1454.478972,
+      "candidate_authority": "evaluated-owner-single-final-no-selection",
+      "cross_run_answers_reused": 0,
+      "matched_control_evaluated": false,
+      "causal_improvement_claimed": false,
+      "controls": {
+        "model": "Qwen3.5-9B",
+        "adapter_route_sent": null,
+        "budgets_by_benchmark": {
+          "webshop": {
+            "calls_per_turn": 8,
+            "context_length": 98304,
+            "environment_steps": 10,
+            "history_input_tokens": 32768,
+            "skill_instruction_tokens": 2048,
+            "total_model_calls": 160,
+            "total_output_tokens": 163840
+          },
+          "mbpp-plus": {
+            "calls_per_turn": 8,
+            "context_length": 98304,
+            "history_input_tokens": 32768,
+            "skill_instruction_tokens": 2048,
+            "total_model_calls": 8,
+            "total_output_tokens": 32768
+          },
+          "humaneval": {
+            "calls_per_turn": 8,
+            "context_length": 98304,
+            "history_input_tokens": 32768,
+            "skill_instruction_tokens": 2048,
+            "total_model_calls": 8,
+            "total_output_tokens": 32768
+          }
+        },
+        "sampling": {
+          "humaneval": {
+            "enable_thinking": false,
+            "max_new_tokens": 8192,
+            "min_p": 0.0,
+            "presence_penalty": 0.0,
+            "profile_id": "integrity-thinking-off-seed0@1",
+            "repetition_penalty": 1.0,
+            "sampling_mode": "sampling",
+            "seed": 0,
+            "stop": [],
+            "temperature": 0.7,
+            "top_k": 20,
+            "top_p": 0.8
+          },
+          "mbpp-plus": {
+            "enable_thinking": false,
+            "max_new_tokens": 8192,
+            "min_p": 0.0,
+            "presence_penalty": 0.0,
+            "profile_id": "integrity-thinking-off-seed0@1",
+            "repetition_penalty": 1.0,
+            "sampling_mode": "sampling",
+            "seed": 0,
+            "stop": [],
+            "temperature": 0.7,
+            "top_k": 20,
+            "top_p": 0.8
+          },
+          "webshop": {
+            "enable_thinking": false,
+            "max_new_tokens": 8192,
+            "min_p": 0.0,
+            "presence_penalty": 0.0,
+            "profile_id": "integrity-thinking-off-seed0@1",
+            "repetition_penalty": 1.0,
+            "sampling_mode": "sampling",
+            "seed": 0,
+            "stop": [],
+            "temperature": 0.7,
+            "top_k": 20,
+            "top_p": 0.8
+          }
+        },
+        "parser": {
+          "benchmarks": {
+            "humaneval": "single-python-source-explicit-owner-v2",
+            "mbpp-plus": "single-python-source-explicit-owner-v2",
+            "webshop": "explicit-native-action-explicit-owner-v2"
+          },
+          "implementation_revision": "db680d9"
+        },
+        "verifier_versions": {
+          "aime-2026": "aime-2026-native-integrity@1",
+          "alfworld": "alfworld-native-integrity@1",
+          "healthbench": "healthbench-qwen3.5-9b-sglang-temperature-0@1",
+          "hotpotqa": "hotpotqa-native-em-f1@integrity1",
+          "humaneval": "humaneval-native-integrity@1",
+          "mbpp-plus": "mbpp-plus-native-integrity@1",
+          "triviaqa": "triviaqa-native-em-f1@integrity1",
+          "webshop": "webshop-native-integrity@1"
+        },
+        "service": {
+          "request_routing": "least-inflight-round-robin-ties@1",
+          "coordinator_concurrency": 96,
+          "request_timeout_seconds": 7200,
+          "episode_timeout_seconds": 14400,
+          "transport_attempts": 1
+        },
+        "physical_gpus": [
+          1,
+          3,
+          7
+        ],
+        "scoring_concurrency": 8
+      },
+      "actual_cost": {
+        "input_tokens": 4180222,
+        "output_tokens": 333545,
+        "model_calls": 1330,
+        "tool_calls": 869,
+        "peer_model_calls": 0
+      },
+      "scorer_cost": {
+        "records_with_cost": 384,
+        "records_without_cost": 0,
+        "failed_invocations": 0,
+        "failed_invocation_totals": {},
+        "completed_score_totals": {
+          "wall_seconds": 169.890315069817
+        },
+        "totals": {
+          "wall_seconds": 169.890315069817
+        }
+      },
+      "interventions": {
+        "skill_blocks_injected": 0,
+        "skill_body_tokens": 0,
+        "skill_calls": 0,
+        "handwritten_decisions": 0,
+        "legal_actions_removed_by_policy": 0,
+        "automatic_catalog_actions": 0,
+        "demonstration_tokens": 0,
+        "extra_model_calls_for_serialization": 0,
+        "model_calls": 1330,
+        "tool_calls": 869,
+        "communication_repairs": 189,
+        "peer_model_calls": 0,
+        "peer_messages": 0
+      },
+      "communication": {
+        "model_requests": 1330,
+        "model_responses": 1330,
+        "authoritative_model_requests": 1330,
+        "authoritative_model_responses": 1330,
+        "diagnostic_model_requests": 1330,
+        "diagnostic_model_responses": 1330,
+        "native_surfaces": 1070,
+        "surface_mismatches": 0,
+        "decisions": 1070,
+        "accepted_decisions": 869,
+        "rejected_decisions": 201,
+        "control_parse_failures": 0,
+        "terminal_parse_failures": 4,
+        "unresolved_terminal_parse_failures": 0,
+        "repaired_terminal_parse_failures": 4,
+        "unresolved_action_decisions": 128,
+        "repaired_action_decisions": 73,
+        "undelivered_peer_budget_requests": 0,
+        "attempted_control_messages": 0,
+        "successfully_decoded_messages": 0,
+        "delivered_requests": 0,
+        "returned_replies": 0,
+        "undelivered_unresolved_requests": 0,
+        "repair_attempts": 189,
+        "repair_successes": 71,
+        "repaired_delivery_failures": 0,
+        "unresolved_delivery_failures": 0,
+        "executions": 869,
+        "unmatched_executions": 0,
+        "missing_acknowledgements": 0,
+        "feedback_mismatches": 0,
+        "peer_requests": 0,
+        "peer_replies": 0,
+        "late_peer_replies": 0,
+        "peer_route_mismatches": 0,
+        "episodes_with_peer_calls": 0,
+        "voluntary_no_peer_episode_count": 384,
+        "unobserved_required_boundary_count": 0,
+        "executed_decisions": 869,
+        "acknowledged_decisions": 869,
+        "legacy_unverified_events": 0,
+        "actual_peer_calls_by_benchmark": {
+          "webshop": 0,
+          "mbpp-plus": 0,
+          "humaneval": 0
+        },
+        "actual_agent_count": 1,
+        "status": "unresolved-output-failure",
+        "native_task_success": "reported-separately",
+        "peer_execution_status": "not-observed",
+        "native_execution_status": "observed"
+      },
+      "communication_status": "unresolved-output-failure",
+      "transport_events": {
+        "model-transport-complete": 1330,
+        "model-transport-start": 1330
+      },
+      "healthbench_grading_attempted": false,
+      "public_release": "aggregate-only; no questions, answers, identifiers, hidden tests, rubrics, per-item grades, private paths or agent instance names",
+      "benchmarks": {
+        "webshop": {
+          "planned": 128,
+          "scored": 128,
+          "missing": 0,
+          "metric": "native-reward",
+          "value": 0.21822916666666667,
+          "secondary_metrics": {
+            "success": 0.0859375
+          },
+          "native_diagnostics": {
+            "status_counts": {
+              "scored": 128,
+              "candidate-failure": 0,
+              "infrastructure-failure": 0
+            },
+            "verifier_versions": [
+              "webshop-native-integrity@1"
+            ],
+            "failure_kinds": {}
+          },
+          "communication": {
+            "model_requests": 1070,
+            "model_responses": 1070,
+            "authoritative_model_requests": 1070,
+            "authoritative_model_responses": 1070,
+            "diagnostic_model_requests": 1070,
+            "diagnostic_model_responses": 1070,
+            "native_surfaces": 1070,
+            "surface_mismatches": 0,
+            "decisions": 1070,
+            "accepted_decisions": 869,
+            "rejected_decisions": 201,
+            "control_parse_failures": 0,
+            "terminal_parse_failures": 0,
+            "unresolved_terminal_parse_failures": 0,
+            "repaired_terminal_parse_failures": 0,
+            "unresolved_action_decisions": 128,
+            "repaired_action_decisions": 73,
+            "undelivered_peer_budget_requests": 0,
+            "attempted_control_messages": 0,
+            "successfully_decoded_messages": 0,
+            "delivered_requests": 0,
+            "returned_replies": 0,
+            "undelivered_unresolved_requests": 0,
+            "repair_attempts": 185,
+            "repair_successes": 67,
+            "repaired_delivery_failures": 0,
+            "unresolved_delivery_failures": 0,
+            "executions": 869,
+            "unmatched_executions": 0,
+            "missing_acknowledgements": 0,
+            "feedback_mismatches": 0,
+            "peer_requests": 0,
+            "peer_replies": 0,
+            "late_peer_replies": 0,
+            "peer_route_mismatches": 0,
+            "episodes_with_peer_calls": 0,
+            "voluntary_no_peer_episode_count": 128,
+            "unobserved_required_boundary_count": 0,
+            "executed_decisions": 869,
+            "acknowledged_decisions": 869,
+            "legacy_unverified_events": 0,
+            "actual_peer_calls_by_benchmark": {
+              "webshop": 0
+            },
+            "actual_agent_count": 1,
+            "status": "unresolved-output-failure",
+            "native_task_success": "reported-separately",
+            "peer_execution_status": "not-observed",
+            "native_execution_status": "observed"
+          },
+          "native_metric_contract_status": "pass",
+          "development_goal": {
+            "operator": "greater-than-or-equal",
+            "threshold_percent": 80.0,
+            "met": false
+          }
+        },
+        "mbpp-plus": {
+          "planned": 128,
+          "scored": 128,
+          "missing": 0,
+          "metric": "base-plus-pass-at-1",
+          "value": 0.7109375,
+          "secondary_metrics": {
+            "base-pass": 0.8515625,
+            "plus-pass": 0.7109375
+          },
+          "native_diagnostics": {
+            "status_counts": {
+              "scored": 91,
+              "candidate-failure": 37,
+              "infrastructure-failure": 0
+            },
+            "verifier_versions": [
+              "mbpp-plus-native-integrity@1"
+            ],
+            "failure_kinds": {
+              "base-test-failure": 19,
+              "plus-test-failure": 18
+            }
+          },
+          "communication": {
+            "model_requests": 130,
+            "model_responses": 130,
+            "authoritative_model_requests": 130,
+            "authoritative_model_responses": 130,
+            "diagnostic_model_requests": 130,
+            "diagnostic_model_responses": 130,
+            "native_surfaces": 0,
+            "surface_mismatches": 0,
+            "decisions": 0,
+            "accepted_decisions": 0,
+            "rejected_decisions": 0,
+            "control_parse_failures": 0,
+            "terminal_parse_failures": 2,
+            "unresolved_terminal_parse_failures": 0,
+            "repaired_terminal_parse_failures": 2,
+            "unresolved_action_decisions": 0,
+            "repaired_action_decisions": 0,
+            "undelivered_peer_budget_requests": 0,
+            "attempted_control_messages": 0,
+            "successfully_decoded_messages": 0,
+            "delivered_requests": 0,
+            "returned_replies": 0,
+            "undelivered_unresolved_requests": 0,
+            "repair_attempts": 2,
+            "repair_successes": 2,
+            "repaired_delivery_failures": 0,
+            "unresolved_delivery_failures": 0,
+            "executions": 0,
+            "unmatched_executions": 0,
+            "missing_acknowledgements": 0,
+            "feedback_mismatches": 0,
+            "peer_requests": 0,
+            "peer_replies": 0,
+            "late_peer_replies": 0,
+            "peer_route_mismatches": 0,
+            "episodes_with_peer_calls": 0,
+            "voluntary_no_peer_episode_count": 128,
+            "unobserved_required_boundary_count": 0,
+            "executed_decisions": 0,
+            "acknowledged_decisions": 0,
+            "legacy_unverified_events": 0,
+            "actual_peer_calls_by_benchmark": {
+              "mbpp-plus": 0
+            },
+            "actual_agent_count": 1,
+            "status": "complete-with-repairs",
+            "native_task_success": "reported-separately",
+            "peer_execution_status": "not-observed",
+            "native_execution_status": "not-applicable"
+          },
+          "native_metric_contract_status": "pass",
+          "development_goal": {
+            "operator": "greater-than",
+            "threshold_percent": 70.0,
+            "met": true
+          }
+        },
+        "humaneval": {
+          "planned": 128,
+          "scored": 128,
+          "missing": 0,
+          "metric": "pass-at-1",
+          "value": 0.859375,
+          "secondary_metrics": {},
+          "native_diagnostics": {
+            "status_counts": {
+              "scored": 110,
+              "candidate-failure": 18,
+              "infrastructure-failure": 0
+            },
+            "verifier_versions": [
+              "humaneval-native-integrity@1"
+            ],
+            "failure_kinds": {
+              "test-failure": 15,
+              "runtime-error": 3
+            }
+          },
+          "communication": {
+            "model_requests": 130,
+            "model_responses": 130,
+            "authoritative_model_requests": 130,
+            "authoritative_model_responses": 130,
+            "diagnostic_model_requests": 130,
+            "diagnostic_model_responses": 130,
+            "native_surfaces": 0,
+            "surface_mismatches": 0,
+            "decisions": 0,
+            "accepted_decisions": 0,
+            "rejected_decisions": 0,
+            "control_parse_failures": 0,
+            "terminal_parse_failures": 2,
+            "unresolved_terminal_parse_failures": 0,
+            "repaired_terminal_parse_failures": 2,
+            "unresolved_action_decisions": 0,
+            "repaired_action_decisions": 0,
+            "undelivered_peer_budget_requests": 0,
+            "attempted_control_messages": 0,
+            "successfully_decoded_messages": 0,
+            "delivered_requests": 0,
+            "returned_replies": 0,
+            "undelivered_unresolved_requests": 0,
+            "repair_attempts": 2,
+            "repair_successes": 2,
+            "repaired_delivery_failures": 0,
+            "unresolved_delivery_failures": 0,
+            "executions": 0,
+            "unmatched_executions": 0,
+            "missing_acknowledgements": 0,
+            "feedback_mismatches": 0,
+            "peer_requests": 0,
+            "peer_replies": 0,
+            "late_peer_replies": 0,
+            "peer_route_mismatches": 0,
+            "episodes_with_peer_calls": 0,
+            "voluntary_no_peer_episode_count": 128,
+            "unobserved_required_boundary_count": 0,
+            "executed_decisions": 0,
+            "acknowledged_decisions": 0,
+            "legacy_unverified_events": 0,
+            "actual_peer_calls_by_benchmark": {
+              "humaneval": 0
+            },
+            "actual_agent_count": 1,
+            "status": "complete-with-repairs",
+            "native_task_success": "reported-separately",
+            "peer_execution_status": "not-observed",
+            "native_execution_status": "not-applicable"
+          },
+          "native_metric_contract_status": "pass",
+          "development_goal": {
+            "operator": "greater-than-or-equal",
+            "threshold_percent": 92.1875,
+            "met": false
+          }
+        }
+      }
+    }
+  },
+  "read_only_old_output_diagnosis": {
+    "original_actor_revision": "7926eb9",
+    "diagnostic_parser_revision": "db680d9",
+    "webshop_decisions_newly_accepted": 8,
+    "webshop_episodes_affected": 1,
+    "humaneval_code_responses_now_unsubmitted": 1,
+    "mbpp_code_responses_now_unsubmitted": 1,
+    "model_calls": 0,
+    "scores_changed": 0,
+    "candidates_replaced": 0
+  },
+  "all_eight_goals_achieved": false,
+  "other_five_benchmarks_reused_as_new_results": false
+}

@@ -1,0 +1,21 @@
+format: skillev-protocol14-healthbench-qwen-grader@1
+profile_id: qwen-local-rubric-per-item@5
+backend: qwen-sglang
+model_route: qwen35-direct-base
+rubric_source_repository: https://github.com/openai/simple-evals
+rubric_source_revision: 652c89d0ca9df547706735883097e9537d40dc47
+rubric_source_path: healthbench_eval.py
+call_mode: per-rubric
+system_message: You are a helpful assistant.
+response_format: plain-json-then-schema-once
+max_tokens: 2048
+temperature: 0.5
+top_p: null
+top_k: null
+seed: null
+enable_thinking: false
+request_timeout_seconds: 120
+maximum_attempts: 4
+total_deadline_seconds: 300
+semantic_repair_attempts: 1
+official_gpt_comparable: false

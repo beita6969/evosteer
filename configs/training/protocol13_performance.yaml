@@ -1,0 +1,20 @@
+resident_trajectories: 16
+actor_requests: 8
+environment_calls: 8
+terminal_evaluations: 8
+process_graders: 4
+transport_threads: 16
+coordinator_participates: true
+max_running_requests: 12
+max_loras_per_batch: 2
+pipeline_mode: within-step
+# Long-horizon-first is implemented, but promotion needs exact-token schedule qualification.
+rollout_scheduling_policy: stable-fifo-work-conserving
+# Completed ALFWorld steps compute only temporary ∇Delta; no partial updates.
+provisional_edge_gradients: true
+z_feature_cache_entries: 256
+# The measured 512 MiB limit held only eight out-of-order Qwen contributions.
+# This host-memory cap fits the complete fixed batch without changing reduction.
+gradient_buffer_bytes: 2147483648
+disable_radix_cache: true
+deterministic_gradients: true

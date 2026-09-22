@@ -1,0 +1,329 @@
+{
+  "schema": "step0-seven-iid32-native-repair-results@1",
+  "run_id": "seven-iid32-a2-owner-2ae5b87-20260908T063713Z",
+  "implementation_revision": "2ae5b87",
+  "repair_revision": "b40257b",
+  "started_utc": "2026-09-08T06:37:15.564130+00:00",
+  "summary_written_utc": "2026-09-08T07:29:29.852387+00:00",
+  "elapsed_seconds": 3134.288257,
+  "candidate_count": 222,
+  "scored_count": 222,
+  "model": "Qwen3.5-9B",
+  "optimizer_steps": 0,
+  "adapter_route": null,
+  "skill_mode": "off",
+  "agent_topology": "single-controller",
+  "seed": 0,
+  "thinking_by_benchmark": {
+    "hotpotqa": false,
+    "triviaqa": false,
+    "aime-2026": true,
+    "healthbench": false,
+    "alfworld": false,
+    "mbpp-plus": false,
+    "humaneval": false
+  },
+  "benchmarks": {
+    "hotpotqa": {
+      "count": 32,
+      "metric": "answer-f1",
+      "value": 0.750117243867244,
+      "secondary_metrics": {
+        "answer-exact-match": 0.5625,
+        "answer-f1": 0.750117243867244
+      },
+      "integrity_status": "pass",
+      "execution_status": "complete",
+      "communication_status": "complete",
+      "native_metric_contract_status": "pass",
+      "native_diagnostics": {
+        "A2-seven-iid32-integrity-repair@1": {
+          "status_counts": {
+            "scored": 32,
+            "candidate-failure": 0,
+            "infrastructure-failure": 0
+          },
+          "verifier_versions": [
+            "hotpotqa-native-em-f1@integrity1"
+          ],
+          "failure_kinds": {}
+        }
+      }
+    },
+    "triviaqa": {
+      "count": 32,
+      "metric": "answer-f1",
+      "value": 0.8197822398190044,
+      "secondary_metrics": {
+        "answer-exact-match": 0.78125,
+        "answer-f1": 0.8197822398190044
+      },
+      "integrity_status": "pass",
+      "execution_status": "complete",
+      "communication_status": "complete-with-repairs",
+      "native_metric_contract_status": "pass",
+      "native_diagnostics": {
+        "A2-seven-iid32-integrity-repair@1": {
+          "status_counts": {
+            "scored": 32,
+            "candidate-failure": 0,
+            "infrastructure-failure": 0
+          },
+          "verifier_versions": [
+            "triviaqa-native-em-f1@integrity1"
+          ],
+          "failure_kinds": {}
+        }
+      }
+    },
+    "aime-2026": {
+      "count": 30,
+      "metric": "accuracy",
+      "value": 0.5333333333333333,
+      "secondary_metrics": {},
+      "integrity_status": "communication-not-complete",
+      "execution_status": "complete",
+      "communication_status": "unresolved-output-failure",
+      "native_metric_contract_status": "pass",
+      "native_diagnostics": {
+        "A2-seven-iid32-integrity-repair@1": {
+          "status_counts": {
+            "scored": 24,
+            "candidate-failure": 6,
+            "infrastructure-failure": 0
+          },
+          "verifier_versions": [
+            "aime-2026-native-integrity@1"
+          ],
+          "failure_kinds": {
+            "empty-submission": 6
+          }
+        }
+      }
+    },
+    "healthbench": {
+      "count": 32,
+      "metric": "qwen-local-rubric-score",
+      "value": 0.38450564177364793,
+      "secondary_metrics": {
+        "triggered-negative-rubric-count": 0.84375
+      },
+      "integrity_status": "pass",
+      "execution_status": "complete",
+      "communication_status": "complete",
+      "native_metric_contract_status": "pass",
+      "native_diagnostics": {
+        "A2-seven-iid32-integrity-repair@1": {
+          "status_counts": {
+            "scored": 32,
+            "candidate-failure": 0,
+            "infrastructure-failure": 0
+          },
+          "verifier_versions": [
+            "healthbench-qwen3.5-9b-sglang-temperature-0@1"
+          ],
+          "failure_kinds": {}
+        }
+      }
+    },
+    "alfworld": {
+      "count": 32,
+      "metric": "success",
+      "value": 0.84375,
+      "secondary_metrics": {
+        "success": 0.84375
+      },
+      "integrity_status": "pass",
+      "execution_status": "complete",
+      "communication_status": "complete-with-repairs",
+      "native_metric_contract_status": "pass",
+      "native_diagnostics": {
+        "A2-seven-iid32-integrity-repair@1": {
+          "status_counts": {
+            "scored": 32,
+            "candidate-failure": 0,
+            "infrastructure-failure": 0
+          },
+          "verifier_versions": [
+            "alfworld-native-integrity@1"
+          ],
+          "failure_kinds": {},
+          "splits": {
+            "valid_seen": {
+              "count": 22,
+              "successes": 19,
+              "value": 0.8636363636363636
+            },
+            "valid_unseen": {
+              "count": 10,
+              "successes": 8,
+              "value": 0.8
+            }
+          },
+          "split_metadata_missing_count": 0
+        }
+      }
+    },
+    "mbpp-plus": {
+      "count": 32,
+      "metric": "base-plus-pass-at-1",
+      "value": 0.78125,
+      "secondary_metrics": {
+        "base-pass": 0.84375,
+        "plus-pass": 0.78125
+      },
+      "integrity_status": "pass",
+      "execution_status": "complete",
+      "communication_status": "complete",
+      "native_metric_contract_status": "pass",
+      "native_diagnostics": {
+        "A2-seven-iid32-integrity-repair@1": {
+          "status_counts": {
+            "scored": 25,
+            "candidate-failure": 7,
+            "infrastructure-failure": 0
+          },
+          "verifier_versions": [
+            "mbpp-plus-native-default-time-independent-lanes@2"
+          ],
+          "failure_kinds": {
+            "plus-test-failure": 2,
+            "base-execution-failure": 3,
+            "base-test-failure": 2
+          }
+        }
+      }
+    },
+    "humaneval": {
+      "count": 32,
+      "metric": "pass-at-1",
+      "value": 0.875,
+      "secondary_metrics": {},
+      "integrity_status": "pass",
+      "execution_status": "complete",
+      "communication_status": "complete",
+      "native_metric_contract_status": "pass",
+      "native_diagnostics": {
+        "A2-seven-iid32-integrity-repair@1": {
+          "status_counts": {
+            "scored": 28,
+            "candidate-failure": 4,
+            "infrastructure-failure": 0
+          },
+          "verifier_versions": [
+            "humaneval-native-integrity@1"
+          ],
+          "failure_kinds": {
+            "test-failure": 2,
+            "runtime-error": 2
+          }
+        }
+      }
+    }
+  },
+  "actual_cost": {
+    "A2-seven-iid32-integrity-repair@1": {
+      "input_tokens": 11580220,
+      "output_tokens": 1075244,
+      "model_calls": 1482,
+      "tool_calls": 971,
+      "peer_model_calls": 0
+    }
+  },
+  "scorer_cost": {
+    "A2-seven-iid32-integrity-repair@1": {
+      "records_with_cost": 222,
+      "records_without_cost": 0,
+      "failed_invocations": 0,
+      "failed_invocation_totals": {},
+      "completed_score_totals": {
+        "known_input_tokens": 533796.0,
+        "known_output_tokens": 41827.0,
+        "model_request_attempts": 400.0,
+        "model_responses": 400.0,
+        "semantic_repairs": 0.0,
+        "unknown_usage_calls": 0.0,
+        "wall_seconds": 372.02900926209986
+      },
+      "totals": {
+        "known_input_tokens": 533796.0,
+        "known_output_tokens": 41827.0,
+        "model_request_attempts": 400.0,
+        "model_responses": 400.0,
+        "semantic_repairs": 0.0,
+        "unknown_usage_calls": 0.0,
+        "wall_seconds": 372.02900926209986
+      }
+    }
+  },
+  "scope": "fixed-source-order 32-task development prefixes; AIME full30; WebShop excluded; no matched backbone control",
+  "result_status": "execution-complete; AIME output failures unresolved",
+  "raw_ipc_saved_candidate_comparison": {
+    "count": 32,
+    "payload_changes": 0,
+    "primary_verdict_changes": 0,
+    "actor_calls": 0
+  },
+  "qa_final_field_saved_candidate_comparison": {
+    "hotpotqa_count": 32,
+    "triviaqa_count": 32,
+    "payload_changes": 0,
+    "actor_calls": 0
+  },
+  "evidence_notes": [
+    "The formal round retains its original frozen parser and scorer profiles. Later transport fixes do not overwrite its candidates or grades.",
+    "All 216 precomputed grades were produced from this same run after candidate submission, not copied from historical runs.",
+    "AIME final-reserve tokens remained available to the same thinking stream; this did not guarantee an owner final.",
+    "Actual MBPP population is EvalPlus MBPP v0.2, not a separately verified hard subset."
+  ],
+  "scorer_recovery_ledger": {
+    "native_worker_failures_without_verdict": 1,
+    "failure_class": "abandoned shared-result lock after child termination",
+    "same_candidate_same_profile_retries": 1,
+    "model_regeneration_count": 0,
+    "cpu_recovery_wall_seconds": null,
+    "cpu_recovery_wall_seconds_note": "not separately metered; included in the measured end-to-end run interval but not in completed-score wall-time totals",
+    "helper_configuration_failures_before_scoring": 1,
+    "helper_configuration_repair": "restore frozen SDL_VIDEODRIVER=dummy; no generation or grading call before correction"
+  },
+  "validation": {
+    "release_revision": "b40257b",
+    "full_check": "make check on approved CPU host with CUDA_VISIBLE_DEVICES empty",
+    "tests_passed": 3443,
+    "tests_skipped": 1,
+    "skip_reason": "GPU-only real-Qwen test; explicitly CPU verification",
+    "ruff": "passed",
+    "mypy_source_files": 527,
+    "wheels": "both passed; model-wheel boundary passed",
+    "hash_checks": false,
+    "independent_review_agents": false
+  },
+  "hotpot_context_checks": {
+    "historical_128": {
+      "tasks": 128,
+      "requests": 145,
+      "requests_missing_passages": 0,
+      "requests_missing_question": 0,
+      "omitted_messages": 0,
+      "input_token_range": [
+        1626,
+        3527
+      ]
+    },
+    "current_32": {
+      "tasks": 32,
+      "requests": 33,
+      "passages_per_task": 10,
+      "source_mismatches": 0,
+      "requests_missing_passages": 0,
+      "missing_question_content": 0,
+      "boundary_whitespace_only": 2,
+      "omitted_messages": 0,
+      "input_token_range": [
+        1390,
+        2575
+      ],
+      "official_scorer_discrepancies": 0
+    }
+  }
+}

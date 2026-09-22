@@ -1,0 +1,89 @@
+{
+  "schema": "skillev-healthbench-conversation-tools-diagnostic@1",
+  "run_id": "health32-a2-conversational-history-0937752-20260908T175500Z",
+  "ordered_panel_identical_to_previous": true,
+  "candidates": 32,
+  "scores": 32,
+  "owner_requests": 33,
+  "owner_requests_with_complete_source_dialogue": 33,
+  "grader_requests": 400,
+  "grader_requests_with_complete_dialogue_and_candidate": 400,
+  "rubric_lists_matching_source": 32,
+  "score_arithmetic_matches": 32,
+  "owner_submission_source_matches": 32,
+  "positive_rubrics": 279,
+  "positive_met": 139,
+  "negative_rubrics": 121,
+  "negative_triggered": 21,
+  "participants": {
+    "owner": 33
+  },
+  "model_channel_status": {
+    "complete": 33
+  },
+  "owner_thinking_on_calls": 0,
+  "adapter_calls": 0,
+  "actual_grader_profiles": [
+    {
+      "temperature": 0.5,
+      "max_tokens": 2048,
+      "enable_thinking": false
+    }
+  ],
+  "history_archive_counts": {
+    "conversation": 1
+  },
+  "negative_raw_cases": 1,
+  "score_100": 45.0336396779778,
+  "summary_aggregate_matches": true,
+  "started_utc": "2026-09-08T17:54:42.774169+00:00",
+  "completed_summary_utc": "2026-09-08T17:56:12.821500+00:00",
+  "wall_seconds_to_summary": 90.047331,
+  "completed_records_per_hour": 1279.3272018245605,
+  "actual_cost": {
+    "input_tokens": 26191,
+    "output_tokens": 12722,
+    "model_calls": 33,
+    "tool_calls": 1,
+    "peer_model_calls": 0
+  },
+  "scorer_cost": {
+    "known_input_tokens": 526585.0,
+    "known_output_tokens": 40233.0,
+    "model_request_attempts": 400.0,
+    "model_responses": 400.0,
+    "semantic_repairs": 0.0,
+    "unknown_usage_calls": 0.0,
+    "wall_seconds": 339.63135673478246
+  },
+  "interventions": {
+    "skill_access_episodes": 0,
+    "skill_retrieval_requests": 0,
+    "skill_retrieved": 0,
+    "skill_no_match": 0,
+    "skill_budget_skips": 0,
+    "skill_context_omissions": 0,
+    "skill_discovery_calls": 0,
+    "skill_read_calls": 0,
+    "skill_blocks_injected": 0,
+    "skill_body_tokens": 0,
+    "skill_calls": 0,
+    "handwritten_decisions": 0,
+    "legal_actions_removed_by_policy": 0,
+    "automatic_catalog_actions": 0,
+    "demonstration_tokens": 0,
+    "extra_model_calls_for_serialization": 0,
+    "model_calls": 33,
+    "tool_calls": 1,
+    "communication_repairs": 0,
+    "peer_model_calls": 0,
+    "peer_messages": 0
+  },
+  "source_revision": "0937752",
+  "population": "same fixed 32-case development panel",
+  "seed": 0,
+  "target_100": 45,
+  "goal_met_in_this_run": true,
+  "official_gpt_judge_comparable": false,
+  "owner_call_identity_scope": "run, arm, episode, call_id; call_id alone is episode-local"
+}

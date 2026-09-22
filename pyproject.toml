@@ -1,0 +1,111 @@
+[build-system]
+requires = ["hatchling==1.27.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "skillev"
+version = "0.1.0"
+description = "EvoSteer multi-agent orchestration and legacy SKILLEV skill evolution"
+requires-python = ">=3.11"
+dependencies = [
+    "aiohttp==3.14.3",
+    "datasets==5.0.1",
+    "docker==7.2.0",
+    "pyyaml==6.0.3",
+]
+
+[project.scripts]
+evosteer = "skillev.evosteer_cli:main"
+
+[dependency-groups]
+dev = [
+  "hatchling==1.27.0",
+  "hypothesis==6.136.6",
+  "evalplus @ git+https://github.com/evalplus/evalplus.git@26d6d00",
+  "mypy==1.17.0",
+  "pytest==8.4.1",
+  "ruff==0.12.4",
+  "skillev-private-evaluation",
+  "types-openpyxl>=3.1.5.20260807",
+  "types-pyyaml>=6.0.12.20260724",
+]
+policy = [
+  "openai==2.6.1",
+  "peft==0.19.1",
+  "torch==2.13.0",
+  "transformers==5.14.1",
+]
+gpu = [
+  "causal-conv1d==1.6.2.post1",
+  "flash-linear-attention==0.5.2",
+]
+
+[tool.uv]
+default-groups = ["dev", "policy"]
+
+[tool.uv.workspace]
+members = ["packages/private-evaluation"]
+
+[tool.uv.sources]
+skillev-private-evaluation = { workspace = true }
+torch = { index = "pytorch-cpu" }
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/skillev"]
+
+[tool.pytest.ini_options]
+addopts = "-ra --strict-config --strict-markers"
+pythonpath = [".", "src", "packages/private-evaluation/src"]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+extend-exclude = [
+  "src/executor",
+  "src/memory",
+  "src/ragen_adapter.py",
+  "src/skills",
+  "training/backward_policy.py",
+  "training/batch_inference.py",
+  "training/environment.py",
+  "training/experience_store.py",
+  "training/flow_metrics.py",
+  "training/gflownet_trainer.py",
+  "training/react_prompts.py",
+  "training/reward.py",
+  "training/sglang_manager.py",
+  "training/skill_evolution.py",
+  "training/swe_bench_eval.py",
+  "training/swebench_client.py",
+  "training/task_prompts.py",
+  "training/tools.py",
+  "training/trajectory.py",
+]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "UP", "B", "A", "C4", "DTZ", "ISC", "PIE", "PT", "RUF", "S"]
+ignore = [
+  "S101",
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*.py" = ["DTZ001", "PT011", "S105", "S106", "S108"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+files = ["src/skillev", "packages/private-evaluation/src"]
+
+[[tool.mypy.overrides]]
+module = ["training.*", "src.*"]
+ignore_errors = true

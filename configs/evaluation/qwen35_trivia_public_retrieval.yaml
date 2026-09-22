@@ -1,0 +1,8 @@
+format: skillev-trivia-public-retrieval@1
+condition_id: triviaqa-public-retrieval-no-skill@2
+corpus_id: simplewiki-20260801-pages-articles@2
+source: fixed-simplewiki-20260801-pages-articles-dump
+target_dependency: forbidden
+auxiliary_models: []
+tools: {search_limit: 2, read_limit: 2, hits_per_search: 8}
+final: {population: triviaqa-final-128-v11, count: 128, scorer: official-triviaqa-v1}

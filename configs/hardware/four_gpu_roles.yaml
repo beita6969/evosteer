@@ -1,0 +1,10 @@
+format: skillev-four-gpu-roles@4
+inference_physical_index: 5
+coordinator_physical_index: 4
+gradient_primary_physical_index: 7
+gradient_standby_physical_index: 6
+forbidden_physical_indices: []
+minimum_free_memory_mib: 70000
+standby_minimum_free_memory_mib: 70000
+standby_may_share: false
+standby_must_be_cold: true

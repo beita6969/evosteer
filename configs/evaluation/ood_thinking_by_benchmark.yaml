@@ -1,0 +1,8 @@
+policy_id: six-ood-math-gpqa-thinking-on@1
+thinking_by_benchmark:
+  musique: false
+  nq-open: false
+  math-hard: true
+  gpqa-diamond-bioorganic: true
+  scienceworld: false
+  apps-introductory: false

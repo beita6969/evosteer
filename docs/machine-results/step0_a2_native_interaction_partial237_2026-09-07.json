@@ -1,0 +1,239 @@
+{
+  "schema": "step0-native-partial-cpu-scoring@1",
+  "run_id": "focused-full-a2-native-interaction-fullcatalog-42a33b4-20260907T231425Z",
+  "implementation_revision": "42a33b4",
+  "arm_id": "A2-owner-native-interaction@2",
+  "condition": {
+    "agent_topology": "multi-agent",
+    "automatic_catalog_actions": false,
+    "condition_id": "A2-owner-native-interaction@2",
+    "demonstration_mode": "off",
+    "format": "skillev-step0-integrity@3",
+    "handwritten_policy_mode": "off",
+    "legacy": false,
+    "native_thinking": false,
+    "optimizer_steps": 0,
+    "precomputed_task_context": false,
+    "reasoning_pass": "disabled",
+    "semantic_action_pruning": false,
+    "skill_mode": "off",
+    "tool_call_mode": "qwen-xml"
+  },
+  "model": "Qwen3.5-9B",
+  "optimizer_steps": 0,
+  "population_exposure": "development-exposed; completion-conditioned partial cohort",
+  "planned_count": 256,
+  "committed_count": 237,
+  "scored_count": 237,
+  "uncompleted_count": 19,
+  "execution_status": "partial-user-paused-not-full-128-per-benchmark",
+  "missing_imputed_as_zero": false,
+  "new_model_calls": 0,
+  "new_environment_steps": 0,
+  "scoring_CUDA_VISIBLE_DEVICES": "",
+  "scoring_pid": 15073,
+  "source_generation_gpu_physical_ids": [
+    4,
+    5,
+    7
+  ],
+  "environment_horizons": {
+    "webshop": 50,
+    "alfworld": 100
+  },
+  "catalog_correction": {
+    "verified_full_index_documents": 1181370,
+    "product_store_count": 1181430,
+    "all_goals_checked": 12087,
+    "unique_goal_products_checked": 10014,
+    "missing_goal_products": 0,
+    "changed_deployment_count": {
+      "canary": 1,
+      "focused-full": 1
+    },
+    "scope": "existing complete official search index; no goal-conditioned index or candidate retrieval"
+  },
+  "benchmarks": {
+    "webshop": {
+      "count": 123,
+      "planned": 128,
+      "uncompleted": 5,
+      "coverage": 0.9609375,
+      "metric": "native-reward",
+      "value": 0.37522260936895085,
+      "secondary_metrics": {
+        "success": 0.17073170731707318
+      },
+      "native_diagnostics": {
+        "status_counts": {
+          "scored": 123,
+          "candidate-failure": 0,
+          "infrastructure-failure": 0
+        },
+        "verifier_versions": [
+          "webshop-native-integrity@1"
+        ],
+        "failure_kinds": {}
+      },
+      "scoring_status": "complete-for-committed-subset",
+      "full_panel_status": "incomplete",
+      "communication": {
+        "model_requests": 2387,
+        "model_responses": 2387,
+        "authoritative_model_requests": 2387,
+        "authoritative_model_responses": 2387,
+        "diagnostic_model_requests": 2387,
+        "diagnostic_model_responses": 2387,
+        "native_surfaces": 2386,
+        "surface_mismatches": 0,
+        "decisions": 2385,
+        "accepted_decisions": 2064,
+        "rejected_decisions": 321,
+        "control_parse_failures": 0,
+        "terminal_parse_failures": 0,
+        "unresolved_terminal_parse_failures": 0,
+        "repaired_terminal_parse_failures": 0,
+        "unresolved_action_decisions": 216,
+        "repaired_action_decisions": 105,
+        "undelivered_peer_budget_requests": 0,
+        "attempted_control_messages": 1,
+        "successfully_decoded_messages": 1,
+        "delivered_requests": 1,
+        "returned_replies": 1,
+        "undelivered_unresolved_requests": 0,
+        "repair_attempts": 294,
+        "repair_successes": 93,
+        "repaired_delivery_failures": 0,
+        "unresolved_delivery_failures": 0,
+        "executions": 2064,
+        "unmatched_executions": 0,
+        "missing_acknowledgements": 0,
+        "feedback_mismatches": 0,
+        "peer_requests": 1,
+        "peer_replies": 1,
+        "late_peer_replies": 0,
+        "peer_route_mismatches": 0,
+        "episodes_with_peer_calls": 1,
+        "voluntary_no_peer_episode_count": 122,
+        "unobserved_required_boundary_count": 0,
+        "executed_decisions": 2064,
+        "acknowledged_decisions": 2064,
+        "legacy_unverified_events": 0,
+        "actual_peer_calls_by_benchmark": {
+          "webshop": 1
+        },
+        "actual_agent_identities": [
+          "owner",
+          "researcher"
+        ],
+        "actual_agent_count": 2,
+        "status": "unresolved-output-failure",
+        "native_task_success": "reported-separately",
+        "peer_execution_status": "observed",
+        "native_execution_status": "observed"
+      },
+      "communication_status": "unresolved-output-failure",
+      "integrity_status": "communication-not-complete"
+    },
+    "alfworld": {
+      "count": 114,
+      "planned": 128,
+      "uncompleted": 14,
+      "coverage": 0.890625,
+      "metric": "success",
+      "value": 0.8070175438596491,
+      "secondary_metrics": {
+        "success": 0.8070175438596491
+      },
+      "native_diagnostics": {
+        "status_counts": {
+          "scored": 114,
+          "candidate-failure": 0,
+          "infrastructure-failure": 0
+        },
+        "verifier_versions": [
+          "alfworld-native-integrity@1"
+        ],
+        "failure_kinds": {},
+        "splits": {
+          "valid_seen": {
+            "count": 85,
+            "successes": 68,
+            "value": 0.8
+          },
+          "valid_unseen": {
+            "count": 29,
+            "successes": 24,
+            "value": 0.8275862068965517
+          }
+        },
+        "split_metadata_missing_count": 0
+      },
+      "scoring_status": "complete-for-committed-subset",
+      "full_panel_status": "incomplete",
+      "communication": {
+        "model_requests": 3373,
+        "model_responses": 3373,
+        "authoritative_model_requests": 3373,
+        "authoritative_model_responses": 3373,
+        "diagnostic_model_requests": 3373,
+        "diagnostic_model_responses": 3373,
+        "native_surfaces": 3373,
+        "surface_mismatches": 0,
+        "decisions": 3325,
+        "accepted_decisions": 3011,
+        "rejected_decisions": 314,
+        "control_parse_failures": 37,
+        "terminal_parse_failures": 0,
+        "unresolved_terminal_parse_failures": 0,
+        "repaired_terminal_parse_failures": 0,
+        "unresolved_action_decisions": 99,
+        "repaired_action_decisions": 215,
+        "undelivered_peer_budget_requests": 0,
+        "attempted_control_messages": 48,
+        "successfully_decoded_messages": 11,
+        "delivered_requests": 0,
+        "returned_replies": 0,
+        "undelivered_unresolved_requests": 8,
+        "repair_attempts": 337,
+        "repair_successes": 213,
+        "repaired_delivery_failures": 29,
+        "unresolved_delivery_failures": 8,
+        "executions": 3011,
+        "unmatched_executions": 0,
+        "missing_acknowledgements": 0,
+        "feedback_mismatches": 0,
+        "peer_requests": 0,
+        "peer_replies": 0,
+        "late_peer_replies": 0,
+        "peer_route_mismatches": 0,
+        "episodes_with_peer_calls": 0,
+        "voluntary_no_peer_episode_count": 98,
+        "unobserved_required_boundary_count": 0,
+        "executed_decisions": 3011,
+        "acknowledged_decisions": 3011,
+        "legacy_unverified_events": 0,
+        "actual_peer_calls_by_benchmark": {
+          "alfworld": 0
+        },
+        "actual_agent_identities": [
+          "owner"
+        ],
+        "actual_agent_count": 1,
+        "status": "unresolved-delivery-failure",
+        "native_task_success": "reported-separately",
+        "peer_execution_status": "not-observed",
+        "native_execution_status": "observed"
+      },
+      "communication_status": "unresolved-delivery-failure",
+      "integrity_status": "communication-not-complete"
+    }
+  },
+  "retained_record_counts": {
+    "candidates": 237,
+    "model_outputs": 6656,
+    "executions": 5832
+  },
+  "scoring_elapsed_seconds": 2.9892210755497217,
+  "scoring_completed_utc": "2026-09-08T00:02:18.424936+00:00"
+}

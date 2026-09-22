@@ -1,0 +1,592 @@
+{
+  "schema": "step0-seven-iid-thinking-followup@1",
+  "updated_at_utc": "2026-09-08T22:17:56.013178+00:00",
+  "iid_list": [
+    "hotpotqa",
+    "triviaqa",
+    "aime-2026",
+    "healthbench",
+    "alfworld",
+    "mbpp-plus",
+    "humaneval"
+  ],
+  "condition": {
+    "task_owners": 1,
+    "model": "Qwen3.5-9B",
+    "optimizer_steps": 0,
+    "adapters": false,
+    "skills": "off",
+    "seed": 0,
+    "population": "development-exposed fixed-source-order first32",
+    "native_thinking": true,
+    "health_judge_thinking": false,
+    "selection_or_fallback": false
+  },
+  "not_rerun": {
+    "aime-2026": "already thinking-on; do not merge complete30 with later interrupted28"
+  },
+  "runs": {
+    "mbpp-plus": {
+      "run_id": "skillev-seven-thinking-resources-20260908T195500Z-mbpp-plus",
+      "arm": "A2-mbpp-plus32-thinking-native-sampling@4",
+      "count": 32,
+      "metric": "base-plus-pass-at-1",
+      "score_percent": 84.375,
+      "secondary_metrics_unit": {
+        "base-pass": 0.875,
+        "plus-pass": 0.84375
+      },
+      "execution_status": "complete",
+      "integrity_status": "pass",
+      "communication_status": "complete",
+      "native_diagnostics": {
+        "status_counts": {
+          "scored": 27,
+          "candidate-failure": 5,
+          "infrastructure-failure": 0
+        },
+        "verifier_versions": [
+          "mbpp-plus-native-default-time-independent-lanes@2"
+        ],
+        "failure_kinds": {
+          "base-execution-failure": 1,
+          "base-test-failure": 2,
+          "syntax-error": 1,
+          "plus-test-failure": 1
+        }
+      },
+      "actual_cost": {
+        "input_tokens": 22880,
+        "output_tokens": 22215,
+        "model_calls": 32,
+        "tool_calls": 0,
+        "peer_model_calls": 0
+      },
+      "scorer_cost": {
+        "records_with_cost": 32,
+        "records_without_cost": 0,
+        "failed_invocations": 0,
+        "failed_invocation_totals": {},
+        "completed_score_totals": {
+          "wall_seconds": 70.68086049321573
+        },
+        "totals": {
+          "wall_seconds": 70.68086049321573
+        }
+      },
+      "effective_configuration": {
+        "native_thinking": true,
+        "agent_topology": "single-controller",
+        "decoding": {
+          "profile_id": "qwen35-thinking-coding-seed0@1",
+          "enable_thinking": true,
+          "temperature": 0.6,
+          "top_p": 0.95,
+          "top_k": 20,
+          "min_p": 0.0,
+          "presence_penalty": 0.0,
+          "repetition_penalty": 1.0,
+          "max_new_tokens": 8192,
+          "stop": [],
+          "seed": 0,
+          "sampling_mode": "sampling"
+        },
+        "budgets": {
+          "calls_per_turn": 8,
+          "total_model_calls": 8,
+          "total_output_tokens": 32768,
+          "history_input_tokens": 32768,
+          "skill_instruction_tokens": 2048,
+          "native_chunk_tokens": 8192,
+          "native_final_reserve_tokens": 2048,
+          "context_length": 98304
+        },
+        "native_continuation": "same-owner-token-stream-through-final-stop@2",
+        "reasoning_state_context": "verbatim-required-within-declared-context",
+        "python_carrier": "single-python-module@2"
+      },
+      "actual_thinking_flags": {
+        "true": 32
+      },
+      "channel_statuses": {
+        "complete": 32
+      },
+      "participants": {
+        "owner": 32
+      },
+      "terminal_statuses": {
+        "submitted": 32
+      },
+      "implementation": "9752a0b+verified-seven-thinking-and-continuation-overlay",
+      "elapsed_seconds": 239.75743,
+      "records_per_hour": 480.48563083112793
+    },
+    "hotpotqa": {
+      "run_id": "seven-thinking-hotpotqa-markdown-20260908",
+      "arm": "A2-hotpotqa32-thinking-markdown-final@5",
+      "count": 32,
+      "metric": "answer-f1",
+      "score_percent": 79.59385521885524,
+      "secondary_metrics_unit": {
+        "answer-exact-match": 0.59375,
+        "answer-f1": 0.7959385521885524
+      },
+      "execution_status": "complete",
+      "integrity_status": "pass",
+      "communication_status": "complete-with-repairs",
+      "native_diagnostics": {
+        "status_counts": {
+          "scored": 32,
+          "candidate-failure": 0,
+          "infrastructure-failure": 0
+        },
+        "verifier_versions": [
+          "hotpotqa-native-em-f1@integrity1"
+        ],
+        "failure_kinds": {}
+      },
+      "actual_cost": {
+        "input_tokens": 77197,
+        "output_tokens": 21169,
+        "model_calls": 34,
+        "tool_calls": 1,
+        "peer_model_calls": 0
+      },
+      "scorer_cost": {
+        "records_with_cost": 32,
+        "records_without_cost": 0,
+        "failed_invocations": 0,
+        "failed_invocation_totals": {},
+        "completed_score_totals": {
+          "wall_seconds": 0.009679957875050604
+        },
+        "totals": {
+          "wall_seconds": 0.009679957875050604
+        }
+      },
+      "effective_configuration": {
+        "native_thinking": true,
+        "agent_topology": "single-controller",
+        "decoding": {
+          "profile_id": "qwen35-thinking-general-seed0@1",
+          "enable_thinking": true,
+          "temperature": 1.0,
+          "top_p": 0.95,
+          "top_k": 20,
+          "min_p": 0.0,
+          "presence_penalty": 1.5,
+          "repetition_penalty": 1.0,
+          "max_new_tokens": 8192,
+          "stop": [],
+          "seed": 0,
+          "sampling_mode": "sampling"
+        },
+        "budgets": {
+          "calls_per_turn": 8,
+          "total_model_calls": 8,
+          "total_output_tokens": 32768,
+          "history_input_tokens": 32768,
+          "skill_instruction_tokens": 2048,
+          "native_chunk_tokens": 8192,
+          "native_final_reserve_tokens": 2048,
+          "context_length": 98304
+        },
+        "native_continuation": "same-owner-token-stream-through-final-stop@2",
+        "reasoning_state_context": "verbatim-required-within-declared-context",
+        "python_carrier": null
+      },
+      "actual_thinking_flags": {
+        "true": 34
+      },
+      "channel_statuses": {
+        "complete": 34
+      },
+      "participants": {
+        "owner": 34
+      },
+      "terminal_statuses": {
+        "submitted": 32
+      },
+      "implementation": "9752a0b+verified-seven-thinking-and-continuation-overlay+scoped-native-scorer-initialization+markdown-owner-final-fields",
+      "elapsed_seconds": 429.0,
+      "records_per_hour": 268.53146853146853
+    },
+    "triviaqa": {
+      "run_id": "skillev-seven-thinking-resources-20260908T195500Z-triviaqa",
+      "arm": "A2-triviaqa32-thinking-native-sampling@4",
+      "count": 32,
+      "metric": "answer-f1",
+      "score_percent": 86.74242424242424,
+      "secondary_metrics_unit": {
+        "answer-exact-match": 0.84375,
+        "answer-f1": 0.8674242424242423
+      },
+      "execution_status": "complete",
+      "integrity_status": "pass",
+      "communication_status": "complete",
+      "native_diagnostics": {
+        "status_counts": {
+          "scored": 32,
+          "candidate-failure": 0,
+          "infrastructure-failure": 0
+        },
+        "verifier_versions": [
+          "triviaqa-native-em-f1@integrity1"
+        ],
+        "failure_kinds": {}
+      },
+      "actual_cost": {
+        "input_tokens": 55555,
+        "output_tokens": 22158,
+        "model_calls": 32,
+        "tool_calls": 0,
+        "peer_model_calls": 0
+      },
+      "scorer_cost": {
+        "records_with_cost": 32,
+        "records_without_cost": 0,
+        "failed_invocations": 0,
+        "failed_invocation_totals": {},
+        "completed_score_totals": {
+          "wall_seconds": 0.006562193972058594
+        },
+        "totals": {
+          "wall_seconds": 0.006562193972058594
+        }
+      },
+      "effective_configuration": {
+        "native_thinking": true,
+        "agent_topology": "single-controller",
+        "decoding": {
+          "profile_id": "qwen35-thinking-general-seed0@1",
+          "enable_thinking": true,
+          "temperature": 1.0,
+          "top_p": 0.95,
+          "top_k": 20,
+          "min_p": 0.0,
+          "presence_penalty": 1.5,
+          "repetition_penalty": 1.0,
+          "max_new_tokens": 8192,
+          "stop": [],
+          "seed": 0,
+          "sampling_mode": "sampling"
+        },
+        "budgets": {
+          "calls_per_turn": 8,
+          "total_model_calls": 8,
+          "total_output_tokens": 32768,
+          "history_input_tokens": 32768,
+          "skill_instruction_tokens": 2048,
+          "native_chunk_tokens": 8192,
+          "native_final_reserve_tokens": 2048,
+          "context_length": 98304
+        },
+        "native_continuation": "same-owner-token-stream-through-final-stop@2",
+        "reasoning_state_context": "verbatim-required-within-declared-context",
+        "python_carrier": null
+      },
+      "actual_thinking_flags": {
+        "true": 32
+      },
+      "channel_statuses": {
+        "complete": 32
+      },
+      "participants": {
+        "owner": 32
+      },
+      "terminal_statuses": {
+        "submitted": 32
+      },
+      "implementation": "9752a0b+verified-seven-thinking-and-continuation-overlay+scoped-native-scorer-initialization",
+      "elapsed_seconds": 247.33257,
+      "records_per_hour": 465.76963155317554
+    },
+    "humaneval": {
+      "run_id": "skillev-seven-thinking-resources-20260908T195500Z-humaneval",
+      "arm": "A2-humaneval32-thinking-native-sampling@4",
+      "count": 32,
+      "metric": "pass-at-1",
+      "score_percent": 84.375,
+      "secondary_metrics_unit": {},
+      "execution_status": "complete",
+      "integrity_status": "communication-not-complete",
+      "communication_status": "unresolved-output-failure",
+      "native_diagnostics": {
+        "status_counts": {
+          "scored": 27,
+          "candidate-failure": 5,
+          "infrastructure-failure": 0
+        },
+        "verifier_versions": [
+          "humaneval-native-public-scaffold@2"
+        ],
+        "failure_kinds": {
+          "test-failure": 2,
+          "runtime-error": 2,
+          "empty-submission": 1
+        }
+      },
+      "actual_cost": {
+        "input_tokens": 117448,
+        "output_tokens": 78014,
+        "model_calls": 37,
+        "tool_calls": 0,
+        "peer_model_calls": 0
+      },
+      "scorer_cost": {
+        "records_with_cost": 32,
+        "records_without_cost": 0,
+        "failed_invocations": 0,
+        "failed_invocation_totals": {},
+        "completed_score_totals": {
+          "wall_seconds": 1.3951166133629158
+        },
+        "totals": {
+          "wall_seconds": 1.3951166133629158
+        }
+      },
+      "effective_configuration": {
+        "native_thinking": true,
+        "agent_topology": "single-controller",
+        "decoding": {
+          "profile_id": "qwen35-thinking-coding-seed0@1",
+          "enable_thinking": true,
+          "temperature": 0.6,
+          "top_p": 0.95,
+          "top_k": 20,
+          "min_p": 0.0,
+          "presence_penalty": 0.0,
+          "repetition_penalty": 1.0,
+          "max_new_tokens": 8192,
+          "stop": [],
+          "seed": 0,
+          "sampling_mode": "sampling"
+        },
+        "budgets": {
+          "calls_per_turn": 8,
+          "total_model_calls": 8,
+          "total_output_tokens": 32768,
+          "history_input_tokens": 32768,
+          "skill_instruction_tokens": 2048,
+          "native_chunk_tokens": 8192,
+          "native_final_reserve_tokens": 2048,
+          "context_length": 98304
+        },
+        "native_continuation": "same-owner-token-stream-through-final-stop@2",
+        "reasoning_state_context": "verbatim-required-within-declared-context",
+        "python_carrier": "single-python-module@2"
+      },
+      "actual_thinking_flags": {
+        "true": 37
+      },
+      "channel_statuses": {
+        "complete": 31,
+        "reasoning-unfinished": 6
+      },
+      "participants": {
+        "owner": 37
+      },
+      "terminal_statuses": {
+        "submitted": 31,
+        "budget_exhausted": 1
+      },
+      "implementation": "9752a0b+verified-seven-thinking-and-continuation-overlay+scoped-native-scorer-initialization",
+      "elapsed_seconds": 1537.901888,
+      "records_per_hour": 74.90724921978898
+    },
+    "healthbench": {
+      "run_id": "skillev-seven-thinking-resources-20260908T195500Z-healthbench",
+      "arm": "A2-healthbench32-thinking-native-sampling@4",
+      "count": 32,
+      "metric": "qwen-local-rubric-score",
+      "score_percent": 51.03550086620101,
+      "secondary_metrics_unit": {
+        "triggered-negative-rubric-count": 0.4375
+      },
+      "execution_status": "complete",
+      "integrity_status": "pass",
+      "communication_status": "complete-with-repairs",
+      "native_diagnostics": {
+        "status_counts": {
+          "scored": 32,
+          "candidate-failure": 0,
+          "infrastructure-failure": 0
+        },
+        "verifier_versions": [
+          "healthbench-qwen3.5-9b-sglang-temperature-0.5@2"
+        ],
+        "failure_kinds": {}
+      },
+      "actual_cost": {
+        "input_tokens": 33900,
+        "output_tokens": 19463,
+        "model_calls": 37,
+        "tool_calls": 3,
+        "peer_model_calls": 0
+      },
+      "scorer_cost": {
+        "records_with_cost": 32,
+        "records_without_cost": 0,
+        "failed_invocations": 0,
+        "failed_invocation_totals": {},
+        "completed_score_totals": {
+          "known_input_tokens": 502682.0,
+          "known_output_tokens": 41080.0,
+          "model_request_attempts": 400.0,
+          "model_responses": 400.0,
+          "semantic_repairs": 0.0,
+          "unknown_usage_calls": 0.0,
+          "wall_seconds": 1492.0528734731488
+        },
+        "totals": {
+          "known_input_tokens": 502682.0,
+          "known_output_tokens": 41080.0,
+          "model_request_attempts": 400.0,
+          "model_responses": 400.0,
+          "semantic_repairs": 0.0,
+          "unknown_usage_calls": 0.0,
+          "wall_seconds": 1492.0528734731488
+        }
+      },
+      "effective_configuration": {
+        "native_thinking": true,
+        "agent_topology": "single-controller",
+        "decoding": {
+          "profile_id": "qwen35-thinking-general-seed0@1",
+          "enable_thinking": true,
+          "temperature": 1.0,
+          "top_p": 0.95,
+          "top_k": 20,
+          "min_p": 0.0,
+          "presence_penalty": 1.5,
+          "repetition_penalty": 1.0,
+          "max_new_tokens": 8192,
+          "stop": [],
+          "seed": 0,
+          "sampling_mode": "sampling"
+        },
+        "budgets": {
+          "calls_per_turn": 8,
+          "total_model_calls": 8,
+          "total_output_tokens": 32768,
+          "history_input_tokens": 32768,
+          "skill_instruction_tokens": 2048,
+          "native_chunk_tokens": 8192,
+          "native_final_reserve_tokens": 2048,
+          "context_length": 98304
+        },
+        "native_continuation": "same-owner-token-stream-through-final-stop@2",
+        "reasoning_state_context": "verbatim-required-within-declared-context",
+        "python_carrier": null
+      },
+      "actual_thinking_flags": {
+        "true": 37
+      },
+      "channel_statuses": {
+        "complete": 36,
+        "reasoning-unfinished": 1
+      },
+      "participants": {
+        "owner": 37
+      },
+      "terminal_statuses": {
+        "submitted": 32
+      },
+      "implementation": "9752a0b+verified-seven-thinking-and-continuation-overlay+scoped-native-scorer-initialization",
+      "elapsed_seconds": 585.716065,
+      "records_per_hour": 196.68232934672878,
+      "judge_profile": {
+        "profile_id": "qwen-local-rubric-per-item@5",
+        "backend": "qwen-sglang",
+        "model_route": "qwen35-direct-base",
+        "rubric_source_repository": "https://github.com/openai/simple-evals",
+        "rubric_source_revision": "652c89d0ca9df547706735883097e9537d40dc47",
+        "rubric_source_path": "healthbench_eval.py",
+        "call_mode": "per-rubric",
+        "system_message": "You are a helpful assistant.",
+        "response_format": "plain-json-then-schema-once",
+        "max_tokens": 2048,
+        "temperature": 0.5,
+        "top_p": null,
+        "top_k": null,
+        "seed": null,
+        "enable_thinking": false,
+        "request_timeout_seconds": 120.0,
+        "maximum_attempts": 4,
+        "total_deadline_seconds": 300.0,
+        "semantic_repair_attempts": 1,
+        "official_gpt_comparable": false
+      }
+    },
+    "alfworld": {
+      "run_id": "seven-thinking-alfworld-response-budget-20260908",
+      "arm": "A2-alfworld32-thinking-response-budget@5",
+      "count": 31,
+      "planned_count": 32,
+      "metric": "native-success",
+      "score_percent": null,
+      "native_successes": 31.0,
+      "operator_stopped_count": 1,
+      "successes_over_planned_percent": 96.875,
+      "denominator_note": "Includes one operator-stopped case as non-success only for this operational ratio; not a complete native 32-case result or a prospective uniform 20-minute run.",
+      "execution_status": "operator-stopped-incomplete",
+      "integrity_status": "incomplete-not-all-planned-owner-trajectories-finished",
+      "operator_stopped_at_utc": "2026-09-08T22:14:47.747550+00:00",
+      "actual_cost_completed_model_responses": {
+        "input_tokens": 7924679,
+        "output_tokens": 200003,
+        "model_calls": 815
+      },
+      "aborted_or_uncompleted_model_calls": 1,
+      "actual_thinking_flags": {
+        "true": 815
+      },
+      "participants": {
+        "owner": 815
+      },
+      "channel_statuses": {
+        "complete": 789,
+        "reasoning-unfinished": 26
+      },
+      "effective_configuration": {
+        "native_thinking": true,
+        "agent_topology": "single-controller",
+        "decoding": {
+          "profile_id": "qwen35-thinking-general-seed0@1",
+          "enable_thinking": true,
+          "temperature": 1.0,
+          "top_p": 0.95,
+          "top_k": 20,
+          "min_p": 0.0,
+          "presence_penalty": 1.5,
+          "repetition_penalty": 1.0,
+          "max_new_tokens": 8192,
+          "stop": [],
+          "seed": 0,
+          "sampling_mode": "sampling"
+        },
+        "budgets": {
+          "calls_per_turn": 8,
+          "total_model_calls": 160,
+          "total_output_tokens": 163840,
+          "history_input_tokens": 32768,
+          "skill_instruction_tokens": 2048,
+          "native_chunk_tokens": 8192,
+          "native_final_reserve_tokens": 2048,
+          "context_length": 98304,
+          "environment_steps": 100
+        },
+        "native_continuation": "same-owner-token-stream-through-final-stop@2",
+        "reasoning_state_context": "verbatim-required-within-declared-context",
+        "python_carrier": null
+      },
+      "original_episode_timeout_seconds": 14400,
+      "prospective_timeout_seconds": 1200,
+      "prospective_timeout_applied_retroactively": false,
+      "elapsed_to_operator_stop_seconds": 3961.74755,
+      "completed_records_per_hour": 28.169387017100572
+    }
+  },
+  "six_requested_reruns_complete": false,
+  "followup_status": "ended-by-owner-with-ALFWorld-partial-results"
+}

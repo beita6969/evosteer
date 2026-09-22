@@ -1,0 +1,14 @@
+format: skillev-step0-integrity@3
+condition_id: A2-no-thinking-native-tools@14
+optimizer_steps: 0
+native_thinking: false
+reasoning_pass: disabled
+agent_topology: single-controller
+skill_mode: 'off'
+handwritten_policy_mode: 'off'
+demonstration_mode: 'off'
+semantic_action_pruning: false
+automatic_catalog_actions: false
+precomputed_task_context: false
+legacy: false
+tool_call_mode: qwen-xml

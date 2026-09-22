@@ -1,0 +1,137 @@
+{
+  "implementation_revision": "ood-operational-recovery-capped8000@1",
+  "request_timeout_seconds": 480,
+  "episode_timeout_seconds": 600,
+  "decoding_overrides": {},
+  "budget_overrides": {},
+  "decoding": {
+    "musique": {
+      "profile_id": "ood-thinking-off-capped8000-seed0@1",
+      "enable_thinking": false,
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1,
+      "max_new_tokens": 8000,
+      "stop": [],
+      "seed": 0,
+      "sampling_mode": "sampling"
+    },
+    "nq-open": {
+      "profile_id": "ood-thinking-off-capped8000-seed0@1",
+      "enable_thinking": false,
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1,
+      "max_new_tokens": 8000,
+      "stop": [],
+      "seed": 0,
+      "sampling_mode": "sampling"
+    },
+    "omni-math": {
+      "profile_id": "ood-thinking-off-capped8000-seed0@1",
+      "enable_thinking": false,
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1,
+      "max_new_tokens": 8000,
+      "stop": [],
+      "seed": 0,
+      "sampling_mode": "sampling"
+    },
+    "livecodebench": {
+      "profile_id": "ood-thinking-off-capped8000-seed0@1",
+      "enable_thinking": false,
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1,
+      "max_new_tokens": 8000,
+      "stop": [],
+      "seed": 0,
+      "sampling_mode": "sampling"
+    },
+    "apps-introductory": {
+      "profile_id": "ood-thinking-off-capped8000-seed0@1",
+      "enable_thinking": false,
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1,
+      "max_new_tokens": 8000,
+      "stop": [],
+      "seed": 0,
+      "sampling_mode": "sampling"
+    },
+    "scienceworld": {
+      "profile_id": "ood-thinking-off-capped8000-seed0@1",
+      "enable_thinking": false,
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1,
+      "max_new_tokens": 8000,
+      "stop": [],
+      "seed": 0,
+      "sampling_mode": "sampling"
+    }
+  },
+  "budgets": {
+    "musique": {
+      "calls_per_turn": 8,
+      "total_model_calls": 8,
+      "total_output_tokens": 8000,
+      "history_input_tokens": 32768,
+      "skill_instruction_tokens": 2048
+    },
+    "nq-open": {
+      "calls_per_turn": 8,
+      "total_model_calls": 8,
+      "total_output_tokens": 8000,
+      "history_input_tokens": 32768,
+      "skill_instruction_tokens": 2048
+    },
+    "omni-math": {
+      "calls_per_turn": 8,
+      "total_model_calls": 8,
+      "total_output_tokens": 8000,
+      "history_input_tokens": 32768,
+      "skill_instruction_tokens": 2048
+    },
+    "livecodebench": {
+      "calls_per_turn": 8,
+      "total_model_calls": 8,
+      "total_output_tokens": 8000,
+      "history_input_tokens": 32768,
+      "skill_instruction_tokens": 2048
+    },
+    "apps-introductory": {
+      "calls_per_turn": 8,
+      "total_model_calls": 8,
+      "total_output_tokens": 8000,
+      "history_input_tokens": 32768,
+      "skill_instruction_tokens": 2048
+    },
+    "scienceworld": {
+      "calls_per_turn": 8,
+      "total_model_calls": 400,
+      "total_output_tokens": 8000,
+      "history_input_tokens": 32768,
+      "skill_instruction_tokens": 2048
+    }
+  }
+}

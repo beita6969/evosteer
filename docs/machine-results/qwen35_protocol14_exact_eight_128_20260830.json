@@ -1,0 +1,848 @@
+{
+  "benchmarks": {
+    "aime-2026": {
+      "admission": {
+        "accuracy": {
+          "absolute_gap_pp": "6.66666666666666666666666666",
+          "capability_floor_status": "pass",
+          "maximum_gap_pp_exclusive": "7.0",
+          "parity_status": "pass",
+          "reference_percent": "93.33333333333333333333333333",
+          "relative_error_percent": "7.142857142857142857142857136",
+          "signed_gap_pp": "-6.66666666666666666666666666"
+        }
+      },
+      "capability_floor_status": "pass",
+      "condition_id": "aime2026-source-integer-final-all30@1",
+      "coverage": {
+        "binary_failure": 4,
+        "binary_success": 26,
+        "environment_infrastructure": 0,
+        "generation_infrastructure": 0,
+        "model_output_invalid": 3,
+        "planned": 30,
+        "scored_valid": 27,
+        "scorer_infrastructure": 0
+      },
+      "diagnostic_comparison": {},
+      "diagnostic_status": "not-applicable",
+      "diagnostics": {},
+      "execution_receipt": {
+        "adapter_active": false,
+        "aggregation": {
+          "dispersion": null,
+          "reducer": "identity",
+          "run_count": 1,
+          "seeds": [
+            42
+          ]
+        },
+        "attempt_id": "p14-candidate-aime-2026-9adc",
+        "code_test_suite": null,
+        "context_length": 98304,
+        "decoding_profile": "qwen35-thinking-aime-source@1",
+        "environment_profile": null,
+        "grader_profile": null,
+        "panel_manifest_id": "aime-2026-all-30-v13",
+        "parser_profile": "aime-integer-final@3",
+        "population_id": "aime-2026-source-parity-all-30-v14",
+        "prompt_profile": "integer-cot@1",
+        "scorer_profile": "aime-official-integer@2",
+        "thinking_mode": "enabled"
+      },
+      "formal_eligibility": "formal",
+      "formal_status": "pass",
+      "formal_target_admitted": true,
+      "metrics": {
+        "accuracy": {
+          "aggregation": "mean-over-planned-records",
+          "denominator": 30,
+          "denominator_id": "planned-panel-30",
+          "formula": "official_aime_integer_exact_match",
+          "numerator": "26.0",
+          "observed_percent": "86.66666666666666666666666667",
+          "projection": "identity-percent",
+          "unit": "percent"
+        }
+      },
+      "nonformal_reasons": [],
+      "parity_status": "pass",
+      "provenance": {
+        "completed_at": "2026-08-30T11:35:01.445532+00:00",
+        "evaluator_version": "aime-official-integer@2",
+        "generation_code_revision": "9adc0f5dbd9bb5bc7ed3c5f582b52c55f49f91f0",
+        "scoring_code_revision": "9adc0f5dbd9bb5bc7ed3c5f582b52c55f49f91f0",
+        "started_at": "2026-08-30T10:06:37.695758+00:00"
+      },
+      "target": {
+        "frozen_at": "2026-08-30T09:48:26.158226+00:00",
+        "published_anchors": [
+          {
+            "label": "published source anchor for aime-2026",
+            "metric_id": "accuracy",
+            "scope": "standalone-benchmark",
+            "usable_as_formal_target": false,
+            "value_percent": "46.67"
+          }
+        ],
+        "reference_receipt_id": "p14-reference-aime-2026-07d",
+        "scope": "standalone-benchmark",
+        "status": "frozen-matched-reference"
+      }
+    },
+    "alfworld": {
+      "admission": {
+        "success_rate": {
+          "absolute_gap_pp": "0E-7",
+          "capability_floor_status": "pass",
+          "maximum_gap_pp_exclusive": "7.0",
+          "parity_status": "pass",
+          "reference_percent": "3.9062500",
+          "relative_error_percent": "0",
+          "signed_gap_pp": "0E-7"
+        }
+      },
+      "capability_floor_status": "pass",
+      "condition_id": "alfworld-skillflow-action-only-128@1",
+      "coverage": {
+        "binary_failure": 123,
+        "binary_success": 5,
+        "environment_infrastructure": 0,
+        "generation_infrastructure": 0,
+        "model_output_invalid": 0,
+        "planned": 128,
+        "scored_valid": 128,
+        "scorer_infrastructure": 0
+      },
+      "diagnostic_comparison": {},
+      "diagnostic_status": "not-applicable",
+      "diagnostics": {
+        "invalid_actions": "0",
+        "total_steps": "1515"
+      },
+      "execution_receipt": {
+        "adapter_active": false,
+        "aggregation": {
+          "dispersion": null,
+          "reducer": "identity",
+          "run_count": 1,
+          "seeds": [
+            0
+          ]
+        },
+        "attempt_id": "p14-candidate-alfworld-9adc",
+        "code_test_suite": null,
+        "context_length": 98304,
+        "decoding_profile": "skillflow-react-source@1",
+        "environment_profile": "alfworld-skillflow-pinned-text@1",
+        "grader_profile": null,
+        "panel_manifest_id": "alfworld-final-seen97-unseen31-v13",
+        "parser_profile": "alfworld-source-action-strict@1",
+        "population_id": "alfworld-skillflow-action-only-128-v14",
+        "prompt_profile": "alfworld-skillflow-action-only-v1@1",
+        "scorer_profile": "alfworld-official-success@1",
+        "thinking_mode": "disabled"
+      },
+      "formal_eligibility": "formal",
+      "formal_status": "pass",
+      "formal_target_admitted": true,
+      "metrics": {
+        "success_rate": {
+          "aggregation": "success-rate",
+          "denominator": 128,
+          "denominator_id": "planned-panel-128",
+          "formula": "count(native_won) / planned_count * 100",
+          "numerator": "5",
+          "observed_percent": "3.9062500",
+          "projection": "identity-percent",
+          "unit": "percent"
+        }
+      },
+      "nonformal_reasons": [],
+      "parity_status": "pass",
+      "provenance": {
+        "completed_at": "2026-08-30T10:28:37.568089+00:00",
+        "evaluator_version": "alfworld-official-success@1",
+        "generation_code_revision": "9adc0f5dbd9bb5bc7ed3c5f582b52c55f49f91f0",
+        "scoring_code_revision": "9adc0f5dbd9bb5bc7ed3c5f582b52c55f49f91f0",
+        "started_at": "2026-08-30T10:23:51.816670+00:00"
+      },
+      "target": {
+        "frozen_at": "2026-08-30T09:48:26.158226+00:00",
+        "published_anchors": [
+          {
+            "label": "published source anchor for alfworld",
+            "metric_id": "success_rate",
+            "scope": "standalone-benchmark",
+            "usable_as_formal_target": false,
+            "value_percent": "48.28"
+          }
+        ],
+        "reference_receipt_id": "p14-reference-alfworld-001",
+        "scope": "standalone-benchmark",
+        "status": "frozen-matched-reference"
+      }
+    },
+    "healthbench": {
+      "admission": {},
+      "capability_floor_status": "not-applicable",
+      "condition_id": "healthbench-qwen-local-random0-128@1",
+      "coverage": {
+        "binary_failure": null,
+        "binary_success": null,
+        "environment_infrastructure": 0,
+        "generation_infrastructure": 0,
+        "model_output_invalid": 0,
+        "planned": 128,
+        "scored_valid": 128,
+        "scorer_infrastructure": 0
+      },
+      "diagnostic_comparison": {
+        "overall_score": {
+          "absolute_gap_pp": "0.18939393939393600",
+          "maximum_gap_pp_exclusive": "7.0",
+          "numeric_status": "pass",
+          "reference_percent": "52.9814595967140200",
+          "relative_error_percent": "0.3574721059698447075394425395",
+          "signed_gap_pp": "0.18939393939393600"
+        }
+      },
+      "diagnostic_status": "pass",
+      "diagnostics": {
+        "judge_backend": "qwen-sglang",
+        "judge_label": "Qwen-local-judge diagnostic",
+        "official_gpt_comparable": "false",
+        "population_std_percent": "not-applicable-single-seed",
+        "seed_count": "1"
+      },
+      "execution_receipt": {
+        "adapter_active": false,
+        "aggregation": {
+          "dispersion": null,
+          "reducer": "identity",
+          "run_count": 1,
+          "seeds": [
+            0
+          ]
+        },
+        "attempt_id": "p14-candidate-healthbench-9adc",
+        "code_test_suite": null,
+        "context_length": 98304,
+        "decoding_profile": "healthbench-qwen-local-candidate@1",
+        "environment_profile": null,
+        "grader_profile": "qwen-local-rubric-per-item@5",
+        "panel_manifest_id": "healthbench-full-random0-128-v13",
+        "parser_profile": "direct-natural-language@1",
+        "population_id": "healthbench-qwen-local-random0-128-v14",
+        "prompt_profile": "official-healthbench-direct@2",
+        "scorer_profile": "healthbench-simple-evals-formula@2",
+        "thinking_mode": "disabled"
+      },
+      "formal_eligibility": "diagnostic-only",
+      "formal_status": "diagnostic-only",
+      "formal_target_admitted": false,
+      "metrics": {
+        "overall_score": {
+          "aggregation": "single-seed-identity",
+          "denominator": 128,
+          "denominator_id": "planned-panel-128",
+          "formula": "simple_evals_mean_then_clip",
+          "numerator": "68.05869252621818368",
+          "observed_percent": "53.17085353610795600",
+          "projection": "clip-mean-to-unit-interval-percent",
+          "unit": "percent"
+        }
+      },
+      "nonformal_reasons": [
+        "execution is diagnostic-only and excluded from the formal gate"
+      ],
+      "parity_status": "not-applicable",
+      "provenance": {
+        "completed_at": "2026-08-30T11:43:43.860739+00:00",
+        "evaluator_version": "healthbench-simple-evals-formula@2",
+        "generation_code_revision": "9adc0f5dbd9bb5bc7ed3c5f582b52c55f49f91f0",
+        "scoring_code_revision": "9adc0f5dbd9bb5bc7ed3c5f582b52c55f49f91f0",
+        "started_at": "2026-08-30T10:52:56.004475+00:00"
+      },
+      "target": {
+        "frozen_at": "2026-08-30T09:48:26.158226+00:00",
+        "published_anchors": [
+          {
+            "label": "SERPO Qwen3.5-9B Base HealthBench-500 three-seed mean",
+            "metric_id": "healthbench_full500_score",
+            "scope": "standalone-benchmark",
+            "usable_as_formal_target": false,
+            "value_percent": "44.68"
+          }
+        ],
+        "reference_receipt_id": "p14-reference-healthbench-4fa",
+        "scope": "standalone-benchmark",
+        "status": "frozen-matched-reference"
+      }
+    },
+    "hotpotqa": {
+      "admission": {
+        "em": {
+          "absolute_gap_pp": "0.7812500",
+          "capability_floor_status": "pass",
+          "maximum_gap_pp_exclusive": "7.0",
+          "parity_status": "pass",
+          "reference_percent": "61.7187500",
+          "relative_error_percent": "1.265822784810126582278481013",
+          "signed_gap_pp": "0.7812500"
+        },
+        "f1": {
+          "absolute_gap_pp": "0.27753296474271706250000",
+          "capability_floor_status": "pass",
+          "maximum_gap_pp_exclusive": "7.0",
+          "parity_status": "pass",
+          "reference_percent": "78.53160668424068176562500",
+          "relative_error_percent": "0.3534028863800273527500554932",
+          "signed_gap_pp": "0.27753296474271706250000"
+        }
+      },
+      "capability_floor_status": "pass",
+      "condition_id": "hotpotqa-source-parity-128@1",
+      "coverage": {
+        "binary_failure": null,
+        "binary_success": null,
+        "environment_infrastructure": 0,
+        "generation_infrastructure": 0,
+        "model_output_invalid": 1,
+        "planned": 128,
+        "scored_valid": 127,
+        "scorer_infrastructure": 0
+      },
+      "diagnostic_comparison": {},
+      "diagnostic_status": "not-applicable",
+      "diagnostics": {},
+      "execution_receipt": {
+        "adapter_active": false,
+        "aggregation": {
+          "dispersion": null,
+          "reducer": "identity",
+          "run_count": 1,
+          "seeds": [
+            42
+          ]
+        },
+        "attempt_id": "p14-candidate-hotpotqa-9adc",
+        "code_test_suite": null,
+        "context_length": 98304,
+        "decoding_profile": "qwen35-nonthinking-general@1",
+        "environment_profile": null,
+        "grader_profile": null,
+        "panel_manifest_id": "hotpotqa-final-128-v13",
+        "parser_profile": "short-answer-final@2",
+        "population_id": "hotpotqa-source-parity-128-v14",
+        "prompt_profile": "hotpotqa-raw-ten-passage@2",
+        "scorer_profile": "hotpotqa-official-em-f1@2",
+        "thinking_mode": "disabled"
+      },
+      "formal_eligibility": "formal",
+      "formal_status": "pass",
+      "formal_target_admitted": true,
+      "metrics": {
+        "em": {
+          "aggregation": "mean-over-planned-records",
+          "denominator": 128,
+          "denominator_id": "planned-panel-128",
+          "formula": "official_hotpotqa_exact_match",
+          "numerator": "80.0",
+          "observed_percent": "62.500",
+          "projection": "identity-percent",
+          "unit": "percent"
+        },
+        "f1": {
+          "aggregation": "mean-over-planned-records",
+          "denominator": 128,
+          "denominator_id": "planned-panel-128",
+          "formula": "official_hotpotqa_token_f1",
+          "numerator": "100.87569875069875050",
+          "observed_percent": "78.80913964898339882812500",
+          "projection": "identity-percent",
+          "unit": "percent"
+        }
+      },
+      "nonformal_reasons": [],
+      "parity_status": "pass",
+      "provenance": {
+        "completed_at": "2026-08-30T10:06:32.479465+00:00",
+        "evaluator_version": "hotpotqa-official-em-f1@2",
+        "generation_code_revision": "9adc0f5dbd9bb5bc7ed3c5f582b52c55f49f91f0",
+        "scoring_code_revision": "9adc0f5dbd9bb5bc7ed3c5f582b52c55f49f91f0",
+        "started_at": "2026-08-30T10:04:18.673986+00:00"
+      },
+      "target": {
+        "frozen_at": "2026-08-30T09:48:26.158226+00:00",
+        "published_anchors": [
+          {
+            "label": "published source anchor for hotpotqa",
+            "metric_id": "em",
+            "scope": "standalone-benchmark",
+            "usable_as_formal_target": false,
+            "value_percent": "60.94"
+          },
+          {
+            "label": "published source anchor for hotpotqa",
+            "metric_id": "f1",
+            "scope": "standalone-benchmark",
+            "usable_as_formal_target": false,
+            "value_percent": "75.70"
+          }
+        ],
+        "reference_receipt_id": "p14-reference-hotpotqa-07d",
+        "scope": "standalone-benchmark",
+        "status": "frozen-matched-reference"
+      }
+    },
+    "humaneval": {
+      "admission": {
+        "pass_at_1": {
+          "absolute_gap_pp": "0.000000",
+          "capability_floor_status": "pass",
+          "maximum_gap_pp_exclusive": "7.0",
+          "parity_status": "pass",
+          "reference_percent": "92.187500",
+          "relative_error_percent": "0",
+          "signed_gap_pp": "0.000000"
+        }
+      },
+      "capability_floor_status": "pass",
+      "condition_id": "humaneval-source-parity-128@1",
+      "coverage": {
+        "binary_failure": 10,
+        "binary_success": 118,
+        "environment_infrastructure": 0,
+        "generation_infrastructure": 0,
+        "model_output_invalid": 3,
+        "planned": 128,
+        "scored_valid": 125,
+        "scorer_infrastructure": 0
+      },
+      "diagnostic_comparison": {},
+      "diagnostic_status": "not-applicable",
+      "diagnostics": {},
+      "execution_receipt": {
+        "adapter_active": false,
+        "aggregation": {
+          "dispersion": null,
+          "reducer": "identity",
+          "run_count": 1,
+          "seeds": [
+            0
+          ]
+        },
+        "attempt_id": "p14-candidate-humaneval-9adc",
+        "code_test_suite": "humaneval-original-v1",
+        "context_length": 98304,
+        "decoding_profile": "qwen35-humaneval-greedy@1",
+        "environment_profile": null,
+        "grader_profile": null,
+        "panel_manifest_id": "humaneval-native-128-v13",
+        "parser_profile": "python-source@3",
+        "population_id": "humaneval-source-parity-128-v14",
+        "prompt_profile": "direct-code@1",
+        "scorer_profile": "humaneval-original-pass1@3",
+        "thinking_mode": "enabled"
+      },
+      "formal_eligibility": "formal",
+      "formal_status": "pass",
+      "formal_target_admitted": true,
+      "metrics": {
+        "pass_at_1": {
+          "aggregation": "mean-over-planned-records",
+          "denominator": 128,
+          "denominator_id": "planned-panel-128",
+          "formula": "count(official_humaneval_pass) / planned_count * 100",
+          "numerator": "118.0",
+          "observed_percent": "92.187500",
+          "projection": "identity-percent",
+          "unit": "percent"
+        }
+      },
+      "nonformal_reasons": [],
+      "parity_status": "pass",
+      "provenance": {
+        "completed_at": "2026-08-30T10:23:47.641769+00:00",
+        "evaluator_version": "humaneval-original-pass1@3",
+        "generation_code_revision": "9adc0f5dbd9bb5bc7ed3c5f582b52c55f49f91f0",
+        "scoring_code_revision": "9adc0f5dbd9bb5bc7ed3c5f582b52c55f49f91f0",
+        "started_at": "2026-08-30T10:08:17.467086+00:00"
+      },
+      "target": {
+        "frozen_at": "2026-08-30T09:48:26.158226+00:00",
+        "published_anchors": [
+          {
+            "label": "published source anchor for humaneval",
+            "metric_id": "pass_at_1",
+            "scope": "standalone-benchmark",
+            "usable_as_formal_target": false,
+            "value_percent": "89.06"
+          }
+        ],
+        "reference_receipt_id": "p14-reference-humaneval-07d",
+        "scope": "standalone-benchmark",
+        "status": "frozen-matched-reference"
+      }
+    },
+    "mbpp-plus": {
+      "admission": {
+        "pass_at_1": {
+          "absolute_gap_pp": "0.000000",
+          "capability_floor_status": "pass",
+          "maximum_gap_pp_exclusive": "7.0",
+          "parity_status": "pass",
+          "reference_percent": "67.187500",
+          "relative_error_percent": "0",
+          "signed_gap_pp": "0.000000"
+        }
+      },
+      "capability_floor_status": "pass",
+      "condition_id": "mbpp-plus-evalplus-v020-nonthinking-random0-128@1",
+      "coverage": {
+        "binary_failure": 42,
+        "binary_success": 86,
+        "environment_infrastructure": 0,
+        "generation_infrastructure": 0,
+        "model_output_invalid": 9,
+        "planned": 128,
+        "scored_valid": 119,
+        "scorer_infrastructure": 0
+      },
+      "diagnostic_comparison": {},
+      "diagnostic_status": "not-applicable",
+      "diagnostics": {
+        "source_full_count": "378",
+        "source_full_percent": "65.34391534391534"
+      },
+      "execution_receipt": {
+        "adapter_active": false,
+        "aggregation": {
+          "dispersion": null,
+          "reducer": "identity",
+          "run_count": 1,
+          "seeds": [
+            0
+          ]
+        },
+        "attempt_id": "p14-candidate-mbpp-plus-9adc",
+        "code_test_suite": "mbpp-base-plus-v0.2.0-378",
+        "context_length": 98304,
+        "decoding_profile": "qwen35-evalplus-nonthinking-greedy@1",
+        "environment_profile": null,
+        "grader_profile": null,
+        "panel_manifest_id": "mbpp-plus-v0.2.0-random0-128-v13",
+        "parser_profile": "python-source@3",
+        "population_id": "mbpp-plus-evalplus-v020-nonthinking-random0-128-v14",
+        "prompt_profile": "evalplus-mbpp-complete-code@1",
+        "scorer_profile": "evalplus-mbpp-base-plus-v0.2.0@3",
+        "thinking_mode": "disabled"
+      },
+      "formal_eligibility": "formal",
+      "formal_status": "pass",
+      "formal_target_admitted": true,
+      "metrics": {
+        "pass_at_1": {
+          "aggregation": "mean-over-planned-records",
+          "denominator": 128,
+          "denominator_id": "planned-panel-128",
+          "formula": "count(base_and_plus_pass) / planned_count * 100",
+          "numerator": "86",
+          "observed_percent": "67.187500",
+          "projection": "identity-percent",
+          "unit": "percent"
+        }
+      },
+      "nonformal_reasons": [],
+      "parity_status": "pass",
+      "provenance": {
+        "completed_at": "2026-08-30T10:47:26.253067+00:00",
+        "evaluator_version": "evalplus-mbpp-base-plus-v0.2.0@3",
+        "generation_code_revision": "9adc0f5dbd9bb5bc7ed3c5f582b52c55f49f91f0",
+        "scoring_code_revision": "9adc0f5dbd9bb5bc7ed3c5f582b52c55f49f91f0",
+        "started_at": "2026-08-30T10:31:17.671684+00:00"
+      },
+      "target": {
+        "frozen_at": "2026-08-30T09:48:26.158226+00:00",
+        "published_anchors": [
+          {
+            "label": "Mellum2 Qwen3.5-9B EvalPlus composite",
+            "metric_id": "evalplus_aggregate",
+            "scope": "composite",
+            "usable_as_formal_target": false,
+            "value_percent": "71.8"
+          }
+        ],
+        "reference_receipt_id": "p14-reference-mbpp-plus-07d",
+        "scope": "standalone-benchmark",
+        "status": "frozen-matched-reference"
+      }
+    },
+    "triviaqa": {
+      "admission": {
+        "em": {
+          "absolute_gap_pp": "2.3437500",
+          "capability_floor_status": "pass",
+          "maximum_gap_pp_exclusive": "7.0",
+          "parity_status": "pass",
+          "reference_percent": "49.2187500",
+          "relative_error_percent": "4.761904761904761904761904762",
+          "signed_gap_pp": "2.3437500"
+        },
+        "f1": {
+          "absolute_gap_pp": "3.136837121212121117187500",
+          "capability_floor_status": "pass",
+          "maximum_gap_pp_exclusive": "7.0",
+          "parity_status": "pass",
+          "reference_percent": "56.037946428571428414062500",
+          "relative_error_percent": "5.597701773762319316655565626",
+          "signed_gap_pp": "3.136837121212121117187500"
+        }
+      },
+      "capability_floor_status": "pass",
+      "condition_id": "triviaqa-source-parity-128@1",
+      "coverage": {
+        "binary_failure": null,
+        "binary_success": null,
+        "environment_infrastructure": 0,
+        "generation_infrastructure": 0,
+        "model_output_invalid": 1,
+        "planned": 128,
+        "scored_valid": 127,
+        "scorer_infrastructure": 0
+      },
+      "diagnostic_comparison": {},
+      "diagnostic_status": "not-applicable",
+      "diagnostics": {},
+      "execution_receipt": {
+        "adapter_active": false,
+        "aggregation": {
+          "dispersion": null,
+          "reducer": "identity",
+          "run_count": 1,
+          "seeds": [
+            42
+          ]
+        },
+        "attempt_id": "p14-candidate-triviaqa-9adc",
+        "code_test_suite": null,
+        "context_length": 98304,
+        "decoding_profile": "qwen35-nonthinking-general@1",
+        "environment_profile": null,
+        "grader_profile": null,
+        "panel_manifest_id": "triviaqa-final-128-v13",
+        "parser_profile": "short-answer-final@2",
+        "population_id": "triviaqa-source-parity-128-v14",
+        "prompt_profile": "short-answer-with-context@1",
+        "scorer_profile": "triviaqa-official-alias-em-f1@2",
+        "thinking_mode": "disabled"
+      },
+      "formal_eligibility": "formal",
+      "formal_status": "pass",
+      "formal_target_admitted": true,
+      "metrics": {
+        "em": {
+          "aggregation": "mean-over-planned-records",
+          "denominator": 128,
+          "denominator_id": "planned-panel-128",
+          "formula": "official_triviaqa_alias_exact_match",
+          "numerator": "66.0",
+          "observed_percent": "51.562500",
+          "projection": "identity-percent",
+          "unit": "percent"
+        },
+        "f1": {
+          "aggregation": "mean-over-planned-records",
+          "denominator": 128,
+          "denominator_id": "planned-panel-128",
+          "formula": "official_triviaqa_alias_token_f1",
+          "numerator": "75.7437229437229434",
+          "observed_percent": "59.1747835497835495312500",
+          "projection": "identity-percent",
+          "unit": "percent"
+        }
+      },
+      "nonformal_reasons": [],
+      "parity_status": "pass",
+      "provenance": {
+        "completed_at": "2026-08-30T10:08:13.482506+00:00",
+        "evaluator_version": "triviaqa-official-alias-em-f1@2",
+        "generation_code_revision": "9adc0f5dbd9bb5bc7ed3c5f582b52c55f49f91f0",
+        "scoring_code_revision": "9adc0f5dbd9bb5bc7ed3c5f582b52c55f49f91f0",
+        "started_at": "2026-08-30T10:04:18.672878+00:00"
+      },
+      "target": {
+        "frozen_at": "2026-08-30T09:48:26.158226+00:00",
+        "published_anchors": [
+          {
+            "label": "published source anchor for triviaqa",
+            "metric_id": "em",
+            "scope": "standalone-benchmark",
+            "usable_as_formal_target": false,
+            "value_percent": "44.88"
+          },
+          {
+            "label": "published source anchor for triviaqa",
+            "metric_id": "f1",
+            "scope": "standalone-benchmark",
+            "usable_as_formal_target": false,
+            "value_percent": "54.30"
+          }
+        ],
+        "reference_receipt_id": "p14-reference-triviaqa-07d",
+        "scope": "standalone-benchmark",
+        "status": "frozen-matched-reference"
+      }
+    },
+    "webshop": {
+      "admission": {
+        "average_score": {
+          "absolute_gap_pp": "0E-24",
+          "capability_floor_status": "pass",
+          "maximum_gap_pp_exclusive": "7.0",
+          "parity_status": "pass",
+          "reference_percent": "32.034970238095237085937500",
+          "relative_error_percent": "0",
+          "signed_gap_pp": "0E-24"
+        },
+        "success_rate": {
+          "absolute_gap_pp": "0.000",
+          "capability_floor_status": "pass",
+          "maximum_gap_pp_exclusive": "7.0",
+          "parity_status": "pass",
+          "reference_percent": "12.500",
+          "relative_error_percent": "0",
+          "signed_gap_pp": "0.000"
+        }
+      },
+      "capability_floor_status": "pass",
+      "condition_id": "webshop-skillflow-action-only-128@1",
+      "coverage": {
+        "binary_failure": 112,
+        "binary_success": 16,
+        "environment_infrastructure": 0,
+        "generation_infrastructure": 0,
+        "model_output_invalid": 4,
+        "planned": 128,
+        "scored_valid": 124,
+        "scorer_infrastructure": 0
+      },
+      "diagnostic_comparison": {},
+      "diagnostic_status": "not-applicable",
+      "diagnostics": {
+        "invalid_actions": "4",
+        "total_steps": "839"
+      },
+      "execution_receipt": {
+        "adapter_active": false,
+        "aggregation": {
+          "dispersion": null,
+          "reducer": "identity",
+          "run_count": 1,
+          "seeds": [
+            0
+          ]
+        },
+        "attempt_id": "p14-candidate-webshop-9adc",
+        "code_test_suite": null,
+        "context_length": 98304,
+        "decoding_profile": "skillflow-react-source@1",
+        "environment_profile": "webshop-skillflow-pinned-text@1",
+        "grader_profile": null,
+        "panel_manifest_id": "webshop-final-128-v13",
+        "parser_profile": "webshop-source-action-strict@1",
+        "population_id": "webshop-skillflow-action-only-128-v14",
+        "prompt_profile": "webshop-skillflow-action-only-v1@1",
+        "scorer_profile": "webshop-official-reward@1",
+        "thinking_mode": "disabled"
+      },
+      "formal_eligibility": "formal",
+      "formal_status": "pass",
+      "formal_target_admitted": true,
+      "metrics": {
+        "average_score": {
+          "aggregation": "mean-over-planned-records",
+          "denominator": 128,
+          "denominator_id": "planned-panel-128",
+          "formula": "sum(native_task_score) / planned_count * 100",
+          "numerator": "41.00476190476190347",
+          "observed_percent": "32.034970238095237085937500",
+          "projection": "identity-percent",
+          "unit": "percent"
+        },
+        "success_rate": {
+          "aggregation": "success-rate",
+          "denominator": 128,
+          "denominator_id": "planned-panel-128",
+          "formula": "count(native_task_score == 1) / planned_count * 100",
+          "numerator": "16",
+          "observed_percent": "12.500",
+          "projection": "identity-percent",
+          "unit": "percent"
+        }
+      },
+      "nonformal_reasons": [],
+      "parity_status": "pass",
+      "provenance": {
+        "completed_at": "2026-08-30T11:31:21.501343+00:00",
+        "evaluator_version": "webshop-official-reward@1",
+        "generation_code_revision": "9adc0f5dbd9bb5bc7ed3c5f582b52c55f49f91f0",
+        "scoring_code_revision": "9adc0f5dbd9bb5bc7ed3c5f582b52c55f49f91f0",
+        "started_at": "2026-08-30T11:27:17.696301+00:00"
+      },
+      "target": {
+        "frozen_at": "2026-08-30T09:48:26.158226+00:00",
+        "published_anchors": [
+          {
+            "label": "published source anchor for webshop",
+            "metric_id": "average_score",
+            "scope": "standalone-benchmark",
+            "usable_as_formal_target": false,
+            "value_percent": "56.93"
+          },
+          {
+            "label": "published source anchor for webshop",
+            "metric_id": "success_rate",
+            "scope": "standalone-benchmark",
+            "usable_as_formal_target": false,
+            "value_percent": "32.03"
+          }
+        ],
+        "reference_receipt_id": "p14-reference-webshop-001",
+        "scope": "standalone-benchmark",
+        "status": "frozen-matched-reference"
+      }
+    }
+  },
+  "catalog": [
+    "hotpotqa",
+    "triviaqa",
+    "aime-2026",
+    "healthbench",
+    "webshop",
+    "alfworld",
+    "mbpp-plus",
+    "humaneval"
+  ],
+  "diagnostic_benchmarks": [
+    "healthbench"
+  ],
+  "diagnostic_completion_status": "complete",
+  "formal_gate_benchmarks": [
+    "hotpotqa",
+    "triviaqa",
+    "aime-2026",
+    "webshop",
+    "alfworld",
+    "mbpp-plus",
+    "humaneval"
+  ],
+  "formal_gate_status": "pass",
+  "format": "skillev-current-iid-result@5",
+  "gate_mode": "absolute_percentage_points",
+  "overall_status": "pass",
+  "planned_record_count": 926,
+  "protocol_version": "skillev-benchmark-protocol@14",
+  "threshold_exclusive": "7.0"
+}

@@ -1,0 +1,13 @@
+format: skillev-model-service-contract@1
+profile_id: sglang-qwen35-base@3
+served_model_name: qwen35-direct-base
+model_repo_id: Qwen/Qwen3.5-9B
+model_revision: 21eca8a083a2121a92fba681f4a7c72cf20ff1a7
+tokenizer_repo_id: Qwen/Qwen3.5-9B
+tokenizer_revision: 21eca8a083a2121a92fba681f4a7c72cf20ff1a7
+chat_template_profile: qwen3.5-native-thinking-switch@1
+context_length: 98304
+dtype: auto
+reasoning_parser: qwen3
+tool_call_parser: null
+adapter_policy: forbidden

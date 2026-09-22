@@ -1,0 +1,17 @@
+format: skillev-protocol14-healthbench-grader@1
+profile_id: healthbench-luna-medium-api-per-rubric@1
+backend: openai-chat-completions
+model: gpt-5.6-luna
+rubric_source_repository: https://github.com/openai/simple-evals
+rubric_source_revision: 652c89d0ca9df547706735883097e9537d40dc47
+rubric_source_path: healthbench_eval.py
+endpoint_environment: OPENAI_BASE_URL
+api_key_environment: OPENAI_API_KEY
+call_mode: per-rubric
+response_format: json-object
+max_completion_tokens: 8000
+reasoning_effort: medium
+temperature: null
+top_p: null
+request_timeout_seconds: 120.0
+maximum_attempts: 1

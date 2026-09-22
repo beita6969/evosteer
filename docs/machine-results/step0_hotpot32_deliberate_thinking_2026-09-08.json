@@ -1,0 +1,184 @@
+{
+  "schema": "step0-hotpot-deliberate-thinking-followup@1",
+  "benchmark": "hotpotqa",
+  "run_id": "seven-thinking-hotpotqa-deliberate-fp32-20260908",
+  "arm": "A2-hotpotqa32-deliberate-thinking-fp32@1",
+  "count": 32,
+  "population_exposure": "development-exposed",
+  "condition": {
+    "model": "Qwen3.5-9B",
+    "owners_per_episode": 1,
+    "optimizer_steps": 0,
+    "adapters": false,
+    "skills": "off",
+    "native_thinking": true,
+    "seed": 0,
+    "deliberation_prompt": "hotpotqa-only-evidence-entity-relation-check@1",
+    "selection_or_fallback": false,
+    "physical_gpu": 6,
+    "concurrency": 4
+  },
+  "metric": "answer-f1",
+  "score_percent": 82.58748196248197,
+  "secondary_metrics_unit": {
+    "answer-exact-match": 0.6875,
+    "answer-f1": 0.8258748196248197
+  },
+  "execution_status": "complete",
+  "integrity_status": "pass",
+  "communication_status": "complete",
+  "native_diagnostics": {
+    "status_counts": {
+      "scored": 32,
+      "candidate-failure": 0,
+      "infrastructure-failure": 0
+    },
+    "verifier_versions": [
+      "hotpotqa-native-em-f1@integrity1"
+    ],
+    "failure_kinds": {}
+  },
+  "actual_cost": {
+    "input_tokens": 71478,
+    "output_tokens": 19925,
+    "model_calls": 32,
+    "tool_calls": 0,
+    "peer_model_calls": 0
+  },
+  "effective_configuration": {
+    "native_thinking": true,
+    "agent_topology": "single-controller",
+    "decoding": {
+      "profile_id": "qwen35-thinking-general-seed0@1",
+      "enable_thinking": true,
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "max_new_tokens": 8192,
+      "stop": [],
+      "seed": 0,
+      "sampling_mode": "sampling"
+    },
+    "budgets": {
+      "calls_per_turn": 8,
+      "total_model_calls": 8,
+      "total_output_tokens": 32768,
+      "history_input_tokens": 32768,
+      "skill_instruction_tokens": 2048,
+      "native_chunk_tokens": 8192,
+      "native_final_reserve_tokens": 2048,
+      "context_length": 98304
+    },
+    "native_continuation": "same-owner-token-stream-through-final-stop@2",
+    "reasoning_state_context": "verbatim-required-within-declared-context",
+    "python_carrier": null
+  },
+  "actual_native_thinking": {
+    "true": 32
+  },
+  "finish_reasons": {
+    "stop": 32
+  },
+  "channel_statuses": {
+    "complete": 32
+  },
+  "participants": {
+    "owner": 32
+  },
+  "token_distributions_per_call": {
+    "reasoning_tokens": {
+      "total": 16587,
+      "mean": 518.34375,
+      "median": 388.5,
+      "minimum": 162,
+      "maximum": 1560
+    },
+    "final_tokens": {
+      "total": 3274,
+      "mean": 102.3125,
+      "median": 103.5,
+      "minimum": 28,
+      "maximum": 234
+    },
+    "output_tokens": {
+      "total": 19925,
+      "mean": 622.65625,
+      "median": 475.0,
+      "minimum": 218,
+      "maximum": 1704
+    },
+    "input_tokens": {
+      "total": 71478,
+      "mean": 2233.6875,
+      "median": 2257.0,
+      "minimum": 1531,
+      "maximum": 2716
+    }
+  },
+  "reasoning_tokens_per_episode": {
+    "total": 16587,
+    "mean": 518.34375,
+    "median": 388.5,
+    "minimum": 162,
+    "maximum": 1560
+  },
+  "continuation_calls": 0,
+  "public_context_check": {
+    "same_fixed_panel_as_previous": true,
+    "rendered_calls": 32,
+    "complete_public_tasks": 32,
+    "deliberation_instruction_visible": 32,
+    "official_native_score_matches": 32
+  },
+  "service_cache": {
+    "mamba_radix_cache_strategy": "extra_buffer",
+    "page_size": 64,
+    "fp32_mamba_checkpoints": true,
+    "disable_radix_cache": false,
+    "synthetic_cases": 4,
+    "selected_logprob_difference_max": 0.0
+  },
+  "elapsed_seconds": 215.0,
+  "records_per_hour": 535.8139534883721,
+  "implementation": "a76237c+hotpot-deliberate-thinking+fp32-cache",
+  "previous_run": {
+    "run_id": "seven-thinking-hotpotqa-markdown-20260908",
+    "score_percent": 79.59385521885524,
+    "answer_em_percent": 59.375,
+    "reasoning_tokens_mean_per_call": 540.2352941176471,
+    "reasoning_tokens_mean_per_episode": 574.0,
+    "preserved_unchanged": true
+  },
+  "interpretation": "new prompt and cache condition; development-exposed; not a matched isolated causal comparison",
+  "native_f1_distribution": {
+    "partial": 8,
+    "full": 22,
+    "zero": 2
+  },
+  "validation": {
+    "targeted_pytest": {
+      "passed": 24,
+      "seconds": 5.72,
+      "cpu_host": "22049"
+    },
+    "make_check": {
+      "passed": 3611,
+      "skipped": 1,
+      "pytest_seconds": 291.38,
+      "cpu_host": "22049",
+      "cuda_visible_devices": "",
+      "ruff": "pass",
+      "format": "pass",
+      "mypy": "pass",
+      "wheels": "pass",
+      "model_wheel_boundary": "pass",
+      "exit_code": 0
+    },
+    "local_targeted_pytest": "150-second WSL timeout; no pass claimed",
+    "independent_review_agents": 0,
+    "checksum_checks": false
+  }
+}

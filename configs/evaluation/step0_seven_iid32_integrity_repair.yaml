@@ -1,0 +1,84 @@
+# Overlay the private runtime's unchanged sources and native environment settings.
+# Only one untrained A2 owner; no candidate selection, consultants or answer reuse.
+condition_id: A2-seven-iid32-thinking-native-sampling@3
+evaluation_sample_counts:
+  aime-2026: 30  # The complete available population; do not duplicate two cases.
+  alfworld: 32
+  healthbench: 32
+  mbpp-plus: 32
+  humaneval: 32
+  hotpotqa: 32
+  triviaqa: 32
+sample_selection: fixed-source-order-prefix@1
+excluded_benchmarks: [webshop]
+seed: 0
+concurrency: 32
+scoring_concurrency: 8
+thinking_policy:
+  policy_id: seven-iid-native-thinking@4
+  thinking_by_benchmark:
+    hotpotqa: true
+    triviaqa: true
+    aime-2026: true
+    healthbench: true
+    alfworld: true
+    mbpp-plus: true
+    humaneval: true
+# Qwen/Qwen3.5-9B official model card, Best Practices (2026-09-08).
+# These are new declared conditions, not relabelled historical scores. Preserve
+# seed, max_new_tokens and whole-episode budgets from the private runtime.
+decoding_overrides:
+  hotpotqa: &thinking_general
+    profile_id: qwen35-thinking-general-seed0@1
+    enable_thinking: true
+    temperature: 1.0
+    top_p: 0.95
+    top_k: 20
+    min_p: 0.0
+    presence_penalty: 1.5
+    repetition_penalty: 1.0
+  triviaqa: *thinking_general
+  aime-2026: *thinking_general
+  healthbench: *thinking_general
+  alfworld: *thinking_general
+  mbpp-plus: &thinking_coding
+    profile_id: qwen35-thinking-coding-seed0@1
+    enable_thinking: true
+    temperature: 0.6
+    top_p: 0.95
+    top_k: 20
+    min_p: 0.0
+    presence_penalty: 0.0
+    repetition_penalty: 1.0
+  humaneval: *thinking_coding
+budget_overrides:
+  # Resume a length pause on the original owner token stream. This does not
+  # increase the existing episode token/call budgets or guarantee a final.
+  hotpotqa:
+    native_chunk_tokens: 8192
+    native_final_reserve_tokens: 2048
+  triviaqa:
+    native_chunk_tokens: 8192
+    native_final_reserve_tokens: 2048
+  healthbench:
+    native_chunk_tokens: 8192
+    native_final_reserve_tokens: 2048
+  alfworld:
+    # Explicitly replace legacy calls_per_turn=160 overrides. The thinking
+    # condition reserves one action's continuation, not the whole episode.
+    calls_per_turn: 8
+    native_chunk_tokens: 8192
+    native_final_reserve_tokens: 2048
+  mbpp-plus:
+    native_chunk_tokens: 8192
+    native_final_reserve_tokens: 2048
+  humaneval:
+    native_chunk_tokens: 8192
+    native_final_reserve_tokens: 2048
+  aime-2026:
+    total_output_tokens: 81920
+    total_model_calls: 8
+    calls_per_turn: 8
+    native_chunk_tokens: 32768
+    native_final_reserve_tokens: 4096
+mbpp_scorer_profile: configs/evaluation/mbpp_evalplus_native.yaml

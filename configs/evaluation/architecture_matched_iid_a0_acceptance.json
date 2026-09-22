@@ -1,0 +1,39 @@
+{
+  "hotpotqa": {
+    "metric": "answer-f1",
+    "minimum": 0.8,
+    "comparison": "at-least"
+  },
+  "triviaqa": {
+    "metric": "answer-f1",
+    "minimum": 0.75,
+    "comparison": "strictly-above"
+  },
+  "aime-2026": {
+    "metric": "accuracy",
+    "minimum": 0.8,
+    "comparison": "at-least"
+  },
+  "healthbench": {
+    "metric": "luna-medium-api-rubric-score",
+    "minimum": 0.45,
+    "comparison": "at-least",
+    "basis": "Owner approved for the Luna-medium judge condition before A0; not an assertion of comparability with historical judges."
+  },
+  "alfworld": {
+    "metric": "alfworld-success",
+    "minimum": 0.8,
+    "comparison": "at-least"
+  },
+  "mbpp-plus": {
+    "metric": "base-plus-pass@1",
+    "minimum": 0.8,
+    "comparison": "at-least"
+  },
+  "humaneval": {
+    "metric": "pass@1",
+    "minimum": 0.9,
+    "comparison": "at-least",
+    "basis": "Owner revised the minimum to 90 percent before any A0 sampling."
+  }
+}

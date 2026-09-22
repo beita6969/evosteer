@@ -1,0 +1,97 @@
+format: skillev-current-iid-targets@4
+targets:
+  hotpotqa:
+    status: paper-reported-protocol-incomplete
+    condition_id: hotpotqa-raw-ten-passage-direct@4
+    reference_condition_id: null
+    reference_population: null
+    reference_aggregation: null
+    evidence: &skillflow-evidence
+      source_kind: paper-and-official-repository
+      repository_or_paper: https://github.com/beita6969/SkillFlow
+      revision_or_version: public-qwen35-table
+      path_or_section: paper-direct-backbone-table
+      supported_fields: [benchmark, actor_model, headline_metrics]
+    metrics:
+      - {metric_id: em, unit: percent, denominator_id: planned-panel-128, projection: identity-percent, formula: official_hotpotqa_exact_match, aggregation: mean-over-records, reference_percent: '60.94', maximum_gap_pp_exclusive: '7.0', required_for_formal_gate: true}
+      - {metric_id: f1, unit: percent, denominator_id: planned-panel-128, projection: identity-percent, formula: official_hotpotqa_token_f1, aggregation: mean-over-records, reference_percent: '75.70', maximum_gap_pp_exclusive: '7.0', required_for_formal_gate: true}
+  triviaqa:
+    status: paper-reported-protocol-incomplete
+    condition_id: triviaqa-reference-direct@3
+    reference_condition_id: null
+    reference_population: null
+    reference_aggregation: null
+    evidence: *skillflow-evidence
+    metrics:
+      - {metric_id: em, unit: percent, denominator_id: planned-panel-128, projection: identity-percent, formula: official_triviaqa_alias_exact_match, aggregation: mean-over-records, reference_percent: '44.88', maximum_gap_pp_exclusive: '7.0', required_for_formal_gate: true}
+      - {metric_id: f1, unit: percent, denominator_id: planned-panel-128, projection: identity-percent, formula: official_triviaqa_alias_token_f1, aggregation: mean-over-records, reference_percent: '54.30', maximum_gap_pp_exclusive: '7.0', required_for_formal_gate: true}
+  aime-2026:
+    status: owner-defined-goal
+    condition_id: aime2026-boxed-direct@3
+    reference_condition_id: null
+    reference_population: null
+    reference_aggregation: null
+    evidence:
+      source_kind: owner-defined-benchmark-goal
+      repository_or_paper: project-owner-directive
+      revision_or_version: '2026-08-31'
+      path_or_section: AIME-2026 minimum score goal
+      supported_fields: [benchmark, metric, minimum_goal_percent]
+    metrics:
+      - {metric_id: accuracy, unit: percent, denominator_id: planned-panel-30, projection: identity-percent, formula: official_aime_integer_exact_match, aggregation: mean-over-records, reference_percent: '80.00', maximum_gap_pp_exclusive: '7.0', required_for_formal_gate: true}
+  healthbench:
+    status: external-aggregate-anchor
+    condition_id: healthbench-full-qwen-local-diagnostic@4
+    reference_condition_id: null
+    reference_population: null
+    reference_aggregation: null
+    evidence:
+      source_kind: official-repository
+      repository_or_paper: https://github.com/chiefovoavicii/SERPO
+      revision_or_version: 9b0923282cfebb52cb4060129ca24f6903deab02
+      path_or_section: eval/eval_healthbench.py
+      supported_fields: [benchmark, actor_model, headline_metric]
+    metrics:
+      - {metric_id: external_healthbench_anchor, unit: percent, denominator_id: external-full-profile, projection: identity-percent, formula: serpo_reported_healthbench_score, aggregation: external-reported, reference_percent: '44.68', maximum_gap_pp_exclusive: '7.0', required_for_formal_gate: false}
+  webshop:
+    status: paper-reported-protocol-incomplete
+    condition_id: webshop-benchmark-native-stateact-memory-v17@1
+    reference_condition_id: null
+    reference_population: null
+    reference_aggregation: null
+    evidence: *skillflow-evidence
+    metrics:
+      - {metric_id: average_score, unit: percent, denominator_id: planned-panel-128, projection: identity-percent, formula: sum(native_task_score) / planned_count * 100, aggregation: mean-over-records, reference_percent: '56.93', maximum_gap_pp_exclusive: '7.0', required_for_formal_gate: true}
+      - {metric_id: success_rate, unit: percent, denominator_id: planned-panel-128, projection: identity-percent, formula: count(native_task_score == 1) / planned_count * 100, aggregation: success-rate, reference_percent: '32.03', maximum_gap_pp_exclusive: '7.0', required_for_formal_gate: true}
+  alfworld:
+    status: paper-reported-protocol-incomplete
+    condition_id: alfworld-benchmark-native-memory-v7@1
+    reference_condition_id: null
+    reference_population: null
+    reference_aggregation: null
+    evidence: *skillflow-evidence
+    metrics:
+      - {metric_id: success_rate, unit: percent, denominator_id: planned-panel-128, projection: identity-percent, formula: count(native_won) / planned_count * 100, aggregation: success-rate, reference_percent: '48.28', maximum_gap_pp_exclusive: '7.0', required_for_formal_gate: true}
+  mbpp-plus:
+    status: external-aggregate-anchor
+    condition_id: mbpp-plus-random0-128-direct@4
+    reference_condition_id: null
+    reference_population: null
+    reference_aggregation: null
+    evidence:
+      source_kind: official-model-card
+      repository_or_paper: https://huggingface.co/JetBrains/Mellum2-12B-A2.5B-Instruct
+      revision_or_version: public-model-card
+      path_or_section: EvalPlus table
+      supported_fields: [actor_model, evalplus_aggregate]
+    metrics:
+      - {metric_id: evalplus_aggregate, unit: percent, denominator_id: full-humaneval-plus-and-mbpp-plus, projection: identity-percent, formula: 'mean(humaneval_plus_pass_at_1, mbpp_plus_pass_at_1)', aggregation: external-reported, reference_percent: '71.8', maximum_gap_pp_exclusive: '7.0', required_for_formal_gate: false}
+  humaneval:
+    status: paper-reported-protocol-incomplete
+    condition_id: humaneval-deterministic-direct@4
+    reference_condition_id: null
+    reference_population: null
+    reference_aggregation: null
+    evidence: *skillflow-evidence
+    metrics:
+      - {metric_id: pass_at_1, unit: percent, denominator_id: planned-panel-128, projection: identity-percent, formula: count(official_humaneval_pass) / planned_count * 100, aggregation: mean-over-records, reference_percent: '89.06', maximum_gap_pp_exclusive: '7.0', required_for_formal_gate: true}

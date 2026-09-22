@@ -1,0 +1,5 @@
+format: skillev-gradient-profile@1
+profile: steady
+visible_roles: [coordinator, gradient_primary]
+standby_processes: 0
+retry_same_sealed_batch: false

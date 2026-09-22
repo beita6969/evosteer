@@ -1,0 +1,19 @@
+format: skillev-protocol-v11-formal-experiment@1
+protocol_format: skillev-benchmark-protocol@11
+seed: 0
+methods:
+  - skillflow-baseline
+  - bayesian-improve-full
+  - bayesian-improve-no-calibration
+training: {batch_size: 16, total_steps: 288, total_episodes: 4608}
+execution_gate:
+  executable: false
+  unblock_when:
+    - catalog-migration-complete
+    - all-nine-training-populations-materialized
+    - all-nine-validation-populations-materialized
+    - final-populations-frozen-and-disjoint
+    - official-evaluators-preflighted
+    - structured-no-skill-baseline-sane
+    - training-dataflow-invariants-pass
+    - short-curve-validation-pass

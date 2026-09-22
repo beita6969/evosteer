@@ -1,0 +1,255 @@
+{
+  "schema": "step0-integrity-communication-diagnostic@1",
+  "run_id": "expanded-native-notations-official-goals-20260906T140746Z",
+  "implementation_revision": "uncommitted-native-notations-after-e06fa03-type-fix",
+  "codec_committed_in": "3cb5a4f",
+  "source_scope": "Nonfinal development runtime; not asserted to be the immutable full-run source snapshot",
+  "scope": "Six final-disjoint tasks per native domain, including six ALFWorld train task types; not a quality estimate",
+  "candidate_count": 24,
+  "count_per_arm": 12,
+  "full_paired_evaluation_complete": false,
+  "quality_scores_intentionally_not_published": "Native canary scores stay private and were not used for condition selection.",
+  "arms": [
+    {
+      "arm_id": "A1-single-no-skill-thinking-off",
+      "optimizer_steps": 0,
+      "native_thinking": false,
+      "reasoning_pass": "disabled",
+      "skill_mode": "off",
+      "agent_topology": "single-controller",
+      "handwritten_policy": false,
+      "semantic_action_pruning": false,
+      "demonstrations": false,
+      "automatic_catalog_actions": false,
+      "precomputed_task_context": false,
+      "legacy": false
+    },
+    {
+      "arm_id": "A2-multi-no-skill-thinking-off",
+      "optimizer_steps": 0,
+      "native_thinking": false,
+      "reasoning_pass": "disabled",
+      "skill_mode": "off",
+      "agent_topology": "multi-agent",
+      "handwritten_policy": false,
+      "semantic_action_pruning": false,
+      "demonstrations": false,
+      "automatic_catalog_actions": false,
+      "precomputed_task_context": false,
+      "legacy": false
+    }
+  ],
+  "communication": {
+    "webshop": {
+      "A1-single-no-skill-thinking-off": {
+        "model_requests": 88,
+        "model_responses": 88,
+        "native_surfaces": 50,
+        "surface_mismatches": 0,
+        "decisions": 88,
+        "rejected_decisions": 40,
+        "executions": 48,
+        "unmatched_executions": 0,
+        "missing_acknowledgements": 0,
+        "feedback_mismatches": 0,
+        "peer_requests": 0,
+        "peer_replies": 0,
+        "late_peer_replies": 0,
+        "peer_route_mismatches": 0,
+        "episodes_with_peer_calls": 0,
+        "actual_agent_identities": [
+          "owner"
+        ],
+        "actual_agent_count": 1,
+        "status": "pass",
+        "native_task_success": "reported-separately",
+        "native_execution_status": "observed"
+      },
+      "A2-multi-no-skill-thinking-off": {
+        "model_requests": 108,
+        "model_responses": 108,
+        "native_surfaces": 43,
+        "surface_mismatches": 0,
+        "decisions": 94,
+        "rejected_decisions": 54,
+        "executions": 40,
+        "unmatched_executions": 0,
+        "missing_acknowledgements": 0,
+        "feedback_mismatches": 0,
+        "peer_requests": 7,
+        "peer_replies": 7,
+        "late_peer_replies": 0,
+        "peer_route_mismatches": 0,
+        "episodes_with_peer_calls": 4,
+        "actual_agent_identities": [
+          "owner",
+          "researcher",
+          "solver"
+        ],
+        "actual_agent_count": 3,
+        "status": "pass",
+        "native_task_success": "reported-separately",
+        "native_execution_status": "observed"
+      }
+    },
+    "alfworld": {
+      "A1-single-no-skill-thinking-off": {
+        "model_requests": 162,
+        "model_responses": 162,
+        "native_surfaces": 107,
+        "surface_mismatches": 0,
+        "decisions": 160,
+        "rejected_decisions": 53,
+        "executions": 107,
+        "unmatched_executions": 0,
+        "missing_acknowledgements": 0,
+        "feedback_mismatches": 0,
+        "peer_requests": 0,
+        "peer_replies": 0,
+        "late_peer_replies": 0,
+        "peer_route_mismatches": 0,
+        "episodes_with_peer_calls": 0,
+        "actual_agent_identities": [
+          "owner"
+        ],
+        "actual_agent_count": 1,
+        "status": "pass",
+        "native_task_success": "reported-separately",
+        "native_execution_status": "observed"
+      },
+      "A2-multi-no-skill-thinking-off": {
+        "model_requests": 273,
+        "model_responses": 273,
+        "native_surfaces": 96,
+        "surface_mismatches": 0,
+        "decisions": 149,
+        "rejected_decisions": 55,
+        "executions": 94,
+        "unmatched_executions": 0,
+        "missing_acknowledgements": 0,
+        "feedback_mismatches": 0,
+        "peer_requests": 62,
+        "peer_replies": 62,
+        "late_peer_replies": 0,
+        "peer_route_mismatches": 0,
+        "episodes_with_peer_calls": 6,
+        "actual_agent_identities": [
+          "owner",
+          "researcher",
+          "solver"
+        ],
+        "actual_agent_count": 3,
+        "status": "pass",
+        "native_task_success": "reported-separately",
+        "native_execution_status": "observed"
+      }
+    }
+  },
+  "interventions": {
+    "A1-single-no-skill-thinking-off": {
+      "skill_blocks_injected": 0,
+      "skill_body_tokens": 0,
+      "skill_calls": 0,
+      "handwritten_decisions": 0,
+      "legal_actions_removed_by_policy": 0,
+      "automatic_catalog_actions": 0,
+      "demonstration_tokens": 0,
+      "extra_model_calls_for_serialization": 0,
+      "model_calls": 250,
+      "tool_calls": 155,
+      "communication_repairs": 91,
+      "peer_model_calls": 0,
+      "peer_messages": 0
+    },
+    "A2-multi-no-skill-thinking-off": {
+      "skill_blocks_injected": 0,
+      "skill_body_tokens": 0,
+      "skill_calls": 0,
+      "handwritten_decisions": 0,
+      "legal_actions_removed_by_policy": 0,
+      "automatic_catalog_actions": 0,
+      "demonstration_tokens": 0,
+      "extra_model_calls_for_serialization": 0,
+      "model_calls": 381,
+      "tool_calls": 134,
+      "communication_repairs": 108,
+      "peer_model_calls": 69,
+      "peer_messages": 138
+    }
+  },
+  "actual_cost": {
+    "A1-single-no-skill-thinking-off": {
+      "input_tokens": 622128,
+      "output_tokens": 145783,
+      "model_calls": 250,
+      "tool_calls": 155,
+      "peer_model_calls": 0
+    },
+    "A2-multi-no-skill-thinking-off": {
+      "input_tokens": 914288,
+      "output_tokens": 138479,
+      "model_calls": 381,
+      "tool_calls": 134,
+      "peer_model_calls": 69
+    }
+  },
+  "scorer_cost": {
+    "A1-single-no-skill-thinking-off": {
+      "records_with_cost": 12,
+      "records_without_cost": 0,
+      "totals": {
+        "wall_seconds": 0.02241072803735733
+      }
+    },
+    "A2-multi-no-skill-thinking-off": {
+      "records_with_cost": 12,
+      "records_without_cost": 0,
+      "totals": {
+        "wall_seconds": 0.020588313229382038
+      }
+    }
+  },
+  "transport_events": {
+    "model-transport-complete": 631,
+    "model-transport-start": 631
+  },
+  "syntax_forms": {
+    "header_json_accepted": 2,
+    "function_rejected": 2,
+    "space_literal_accepted": 1,
+    "space_literal_rejected": 1
+  },
+  "rejection_reasons": {
+    "not-on-current-public-surface": 110,
+    "ambiguous-action-fields": 67,
+    "ambiguous-action-section": 14,
+    "expected-one-native-call": 2,
+    "invalid-json": 7,
+    "invalid-tool-call": 2
+  },
+  "candidate_authority": "evaluated-policy-single-final-no-selection",
+  "generation_records_per_hour": 27.698277302268878,
+  "generation_elapsed_seconds": 3119.32756889984,
+  "selection": {
+    "webshop": {
+      "count": 6,
+      "final_source_overlap": 0,
+      "task_types": [
+        "shopping"
+      ]
+    },
+    "alfworld": {
+      "count": 6,
+      "final_source_overlap": 0,
+      "task_types": [
+        "look_at_obj_in_light",
+        "pick_and_place_simple",
+        "pick_clean_then_place_in_recep",
+        "pick_cool_then_place_in_recep",
+        "pick_heat_then_place_in_recep",
+        "pick_two_obj_and_place"
+      ]
+    }
+  },
+  "throughput_status": "below-40-records-per-hour-needs-human-decision"
+}

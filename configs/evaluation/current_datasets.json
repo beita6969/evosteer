@@ -1,0 +1,166 @@
+{
+  "format": "skillev-datasets@2026-09-15",
+  "iid": [
+    "hotpotqa",
+    "triviaqa",
+    "aime-2026",
+    "healthbench",
+    "alfworld",
+    "mbpp-plus"
+  ],
+  "ood": [
+    "musique",
+    "nq-open",
+    "math-hard",
+    "gpqa-diamond-bioorganic",
+    "scienceworld",
+    "apps-introductory"
+  ],
+  "native_thinking_default": false,
+  "seed": 0,
+  "single_owner": "Qwen3.5-9B",
+  "datasets": {
+    "hotpotqa": {
+      "kind": "huggingface-files",
+      "repository": "hotpotqa/hotpot_qa",
+      "files": [
+        "distractor/validation-00000-of-00001.parquet"
+      ],
+      "split": "distractor/validation",
+      "expected_rows": 7405
+    },
+    "triviaqa": {
+      "kind": "huggingface-files",
+      "repository": "mandarjoshi/trivia_qa",
+      "files": [
+        "rc/validation-00000-of-00004.parquet",
+        "rc/validation-00001-of-00004.parquet",
+        "rc/validation-00002-of-00004.parquet",
+        "rc/validation-00003-of-00004.parquet"
+      ],
+      "split": "rc/validation",
+      "expected_rows": 17944
+    },
+    "aime-2026": {
+      "kind": "huggingface-files",
+      "repository": "MathArena/aime_2026",
+      "files": [
+        "data/train-00000-of-00001.parquet"
+      ],
+      "split": "train (upstream label; project evaluation-only 2026 exam)",
+      "expected_rows": 30
+    },
+    "healthbench": {
+      "kind": "huggingface-files",
+      "repository": "openai/healthbench",
+      "files": [
+        "2025-05-07-06-14-12_oss_eval.jsonl"
+      ],
+      "split": "full",
+      "expected_rows": 5000
+    },
+    "alfworld": {
+      "kind": "http-files",
+      "files": [
+        {
+          "name": "json_2.1.1_json.zip",
+          "url": "https://github.com/alfworld/alfworld/releases/download/0.2.2/json_2.1.1_json.zip"
+        },
+        {
+          "name": "json_2.1.1_pddl.zip",
+          "url": "https://github.com/alfworld/alfworld/releases/download/0.2.2/json_2.1.1_pddl.zip"
+        },
+        {
+          "name": "json_2.1.3_tw-pddl.zip",
+          "url": "https://github.com/alfworld/alfworld/releases/download/0.4.2/json_2.1.3_tw-pddl.zip"
+        }
+      ],
+      "split": "official train/valid_seen/valid_unseen text environment assets",
+      "package": "alfworld==0.4.2",
+      "note": "No pretrained BUTLER/vision detector or extra agents are downloaded."
+    },
+    "mbpp-plus": {
+      "kind": "http-files",
+      "files": [
+        {
+          "name": "MbppPlus.jsonl.gz",
+          "url": "https://github.com/evalplus/mbppplus_release/releases/download/v0.2.0/MbppPlus.jsonl.gz"
+        }
+      ],
+      "split": "MBPP+ v0.2.0 (Base and Plus)",
+      "expected_rows": 378,
+      "source_revision": "v0.2.0",
+      "note": "Downloaded official v0.2.0 artifact contains 378 distinct tasks; the historical release announcement says 399. Do not fabricate or duplicate the missing 21."
+    },
+    "musique": {
+      "kind": "google-drive",
+      "file_id": "1tGdADlNjWFaHLeZZGShh2IRcpO6Lv24h",
+      "file": "musique_v1.0.zip",
+      "split": "musique_ans_v1.0_dev.jsonl",
+      "expected_rows": 2417,
+      "repository": "https://github.com/StonyBrookNLP/musique"
+    },
+    "nq-open": {
+      "kind": "http-files",
+      "files": [
+        {
+          "name": "NQ-open.dev.jsonl",
+          "url": "https://raw.githubusercontent.com/google-research-datasets/natural-questions/master/nq_open/NQ-open.dev.jsonl"
+        }
+      ],
+      "split": "dev",
+      "expected_rows": 3610
+    },
+    "math-hard": {
+      "kind": "huggingface-files",
+      "repository": "lighteval/MATH-Hard",
+      "files": [
+        "test/algebra.jsonl",
+        "test/counting_and_probability.jsonl",
+        "test/geometry.jsonl",
+        "test/intermediate_algebra.jsonl",
+        "test/number_theory.jsonl",
+        "test/prealgebra.jsonl",
+        "test/precalculus.jsonl"
+      ],
+      "split": "test",
+      "expected_rows": 1324,
+      "filter": "level == Level 5"
+    },
+    "gpqa-diamond-bioorganic": {
+      "kind": "huggingface-files",
+      "repository": "Idavidrein/gpqa",
+      "files": [
+        "gpqa_diamond.csv"
+      ],
+      "split": "gpqa_diamond",
+      "expected_rows": 198,
+      "auth_required": true,
+      "population_rows": 91,
+      "filter": "Biology OR (Chemistry AND Organic Chemistry)",
+      "strata": {
+        "Biology": 19,
+        "Organic Chemistry": 72
+      },
+      "sampling": "all 19 biology; seed-0 sample sorted organic IDs when a smaller panel is explicitly requested"
+    },
+    "scienceworld": {
+      "kind": "installed-environment",
+      "package": "scienceworld==1.2.3",
+      "module": "scienceworld",
+      "split": "official test task/variation; simplification frozen at panel creation",
+      "repository": "https://github.com/allenai/ScienceWorld"
+    },
+    "apps-introductory": {
+      "kind": "huggingface-files",
+      "repository": "codeparrot/apps",
+      "files": [
+        "test.jsonl"
+      ],
+      "split": "test",
+      "expected_rows": 5000,
+      "population_rows": 1000,
+      "filter": "difficulty == introductory"
+    }
+  }
+}

@@ -1,0 +1,75 @@
+# Owner-requested six-domain continuation; future B24 excludes HumanEval.
+# Owner-requested proactive skill prompt; a declared input-condition change.
+# No read quota, reward bonus or extra learning objective; not A0 qualification.
+# Fresh pre-skill-SFT F/B/Z initialization; full application checkpoints on resume.
+# Initial library and public-needs source order freeze before any model response.
+# 250 real updates (249 search + 1 closure); no teaching, auxiliary loss or
+# zero-coverage bypass. No invocation quota or reward bonus.
+domains: [hotpotqa, triviaqa, aime-2026, healthbench, alfworld, mbpp-plus]
+format: skillev-bayesian-formal-training@6
+model: Qwen3.5-9B
+base_dtype: bfloat16
+lora_rank: 4
+lora_alpha: 8
+seed: 0
+steps: 250
+closure_steps: 1
+maximum_cycles: 2
+checkpoint_every: 10
+max_turns: 25
+static_max_turns: 8
+max_reasoning_tokens: 1024
+max_action_tokens: 2048
+max_input_tokens: 65536
+input_window: h0-head-tail-recent-tokens@1
+adapter_learning_rate: 0.0001
+z_learning_rate: 0.0001
+weight_decay: 0.0
+gradient_clipping: false
+extra_kl: 0.0
+ttb_beta: 1.0
+epsilon: 0.1
+prior_alpha: 1.0
+prior_beta: 1.0
+window: 50
+rho: 0.05
+k: 1.0
+reasoning_native_thinking: true
+thinking_off_domains:
+- hotpotqa
+- triviaqa
+- mbpp-plus
+- alfworld
+hotpot_deliberation: true
+phi_calls_per_cycle: 64
+performance_profile: configs/training/protocol13_replica_collection32.yaml
+planning_hours: 72.0
+target_steps_per_hour: 4.2
+healthbench_judge: healthbench-luna-medium-flowsteer-per-rubric@2
+phase_context: true
+reasoning_tool_catalog: true
+token_budget_notice: true
+action_wire: native-single-tool-call@3
+skill_exposure: catalog-then-read@3
+public_action_semantics: true
+task_semantic_guidance: public-task-semantics@8
+initial_skill_profile: public-method-cards@5
+learning_protocol: autonomous-ttb@1
+cold_start: null
+reasoning_tokens_by_domain:
+- - hotpotqa
+  - 1024
+- - triviaqa
+  - 4096
+- - aime-2026
+  - 16384
+- - healthbench
+  - 8192
+- - alfworld
+  - 8192
+- - mbpp-plus
+  - 1024
+# Only HealthBench receives the larger final-reply allowance.
+action_tokens_by_domain:
+- - healthbench
+  - 4096

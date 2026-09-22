@@ -1,0 +1,34 @@
+track_id: qwen35-triviaqa-search-augmented@2
+benchmark: triviaqa
+base_protocol: configs/evaluation/qwen35_skillflow_direct_reference.yaml
+population: skillflow-released-iid-v3
+dataset_revision: 07bb38bcc62fa8bebab6af86c39ba23b0293c97d
+selection_rule: released-panel-order
+dataset_variant: skillflow-triviaqa-question-only-codex-dossier-wikipedia-search-v2
+sample_count: 128
+prompt_profile: triviaqa-local-search-react-detailed@2
+parser_profile: triviaqa-search-or-final@1
+scorer_profile: triviaqa-official-alias-em-f1@1
+decoding_profile: qwen35-nonthinking-general@1
+seed: 42
+retrieval:
+  database_format: skillev-triviaqa-search-corpus-detailed@2
+  max_search_calls: 1
+  hits_per_search: 8
+  max_hits_per_document: 2
+  task_partitioned: true
+retry:
+  infrastructure_maximum_attempts: 3
+  candidate_failure_retry: false
+corpus:
+  codex_profile: triviaqa-codex-detailed-research-plan@2
+  codex_model: gpt-5.6-sol
+  codex_reasoning_effort: xhigh
+  codex_maximum_attempts: 3
+  codex_dossier_characters: [1200, 3000]
+  wikipedia_language: en
+  wikipedia_queries_per_task: 8
+  maximum_wikipedia_pages_per_task: 12
+  chunk_characters: 1600
+  overlap_characters: 200
+  maximum_chunks_per_page: 16

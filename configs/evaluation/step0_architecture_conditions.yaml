@@ -1,0 +1,158 @@
+format: skillev-step0-architecture-conditions@10
+condition_id: skillev-bayesian-improve-step-zero-exact-eight-128@10
+method_id: skillev-bayesian-improve-step-zero@1
+promotion_target_id: qwen35-current-eight-backbone-strict-improvement-2026-08-31@2
+promotion_rule: every-headline-metric-strictly-greater-than-current-backbone
+architecture:
+  family: skillev-bayesian-improve
+  lineage: skillflow-plus-idea-tex
+  authority: idea.tex
+  components:
+    - seeded-skill-controller
+    - trajectory-balance-gflownet
+    - beta-bernoulli-lcb-calibration
+    - operator-driven-skill-evolution
+  step_zero_activation:
+    inference_controller: true
+    optimizer: false
+    trajectory_balance_update: false
+    bayesian_posterior_update: false
+    calibration_update: false
+    operator_skill_evolution: false
+catalog:
+  - hotpotqa
+  - triviaqa
+  - aime-2026
+  - healthbench
+  - webshop
+  - alfworld
+  - mbpp-plus
+  - humaneval
+population:
+  default_count: 128
+  default_selection: complete-frozen-result-blind-128-panel
+  overrides:
+    aime-2026:
+      count: 30
+      selection: complete-released-aime-2026-population
+model:
+  backbone: Qwen3.5-9B
+  adapter_active: false
+  optimizer_steps: 0
+reasoning:
+  authority: frozen-benchmark-conditioned-mixed
+  probability_in_forward_edge: false
+  contract_resolved: true
+  default:
+    authority: frozen-deterministic
+    sampling_mode: greedy
+    temperature: 0.0
+    top_p: 1.0
+    top_k: 1
+  benchmark_overrides:
+    aime-2026:
+      authority: frozen-benchmark-matched
+      source: protocol14-public-backbone-decoding-contract
+      sampling_mode: sampling
+      temperature: 1.0
+      top_p: 0.95
+      top_k: 20
+      min_p: 0.0
+      presence_penalty: 1.5
+      repetition_penalty: 1.0
+      max_new_tokens: 81920
+      seed: 42
+      probability_in_forward_edge: false
+root_query:
+  source: benchmark-native-answer-free-task
+  stable_across_episode: true
+  trivia_search_requires_explicit_question: true
+retrieval:
+  policy_id: step0-exact-eight-deterministic-top1@1
+  seed_library_id: step0-exact-eight-answer-free-seeds@1
+  top_k: 1
+  exposure_mode: full-inline-no-invoke
+  maximum_instruction_tokens: 1024
+execution:
+  initial_context_profile: seeded-step-zero-neutral-source@1
+  source_prompt_behavior_authority: none-interface-only
+  task_behavior_authority: retrieved-typed-skill
+  action_policy_authority: retrieved-skill-orchestration-plus-adapter-free-evaluation-matched-base
+  typed_terminal_and_action_wires: true
+  terminal_prompt: benchmark-native-no-json@1
+  persistent_interactive_episode: true
+  refresh_model_visible_interactive_context_each_native_turn: true
+  constrain_action_to_current_public_surface: true
+  explicit_nonterminal_feedback: true
+  controller_memory_reports_environment_nonterminal_fact: true
+  controller_memory_is_executable_action: false
+  controller_memory_refresh: live-after-every-environment-transition
+  controller_action_selection: false
+  retrieved_skill_orchestration:
+    activation: exact-retrieved-skill-id
+    evidence: current-public-task-state-actions-and-tools-only
+    evaluator_target_or_reward_visible: false
+  reasoning_action_transcription: exact-current-surface-action-only
+  model_memory_authority: public-observation-history-only
+  internal_action_repair_turns: 8
+  interactive_history:
+    policy: bounded-recent-turns-plus-persistent-controller-memory
+    window_steps: 4
+    maximum_characters: 24000
+    reason: prevent-stale-action-surfaces-and-context-growth
+benchmarks:
+  hotpotqa: {terminal: short-answer, context: all-ten-released-passages}
+  triviaqa:
+    terminal: short-answer
+    terminal_projection: frozen-greedy-reasoning-hypothesis-transcription
+    retrieval: detailed-answer-isolated-diverse-complementary-search-v4
+    scorer: official-complete-alias-em-f1
+    scorer_alias_source: pinned-unfiltered-nocontext-validation-parquet
+    search_calls: 3
+    hits_per_search: 8
+    max_hits_per_document: 2
+    deduplicate_passages_across_searches: true
+    snippet_token_window: 96
+    maximum_snippet_characters: 1200
+    primary_metric: f1
+    owner_minimum_goal_percent: 81.00
+  aime-2026:
+    terminal: integer-0-999
+    reasoning_template: qwen-native-thinking
+    terminal_projection: frozen-greedy-last-explicit-integer-transcription
+    terminal_recomputation: forbidden
+    backbone_external_minimum_goal_percent: 80.00
+  healthbench: {terminal: natural-language, judge: qwen35-local-pinned-simple-evals}
+  webshop:
+    action: native-search-click
+    prompt_profile: webshop-step0-skill-owned-react-memory@1
+    source_prompt_role: public-interface-state-only
+    behavior_source: skill-webshop-constraint-ledger
+    public_catalog: answer-independent-public-task-and-official-product-index
+    public_constraint_plan: answer-independent-public-instruction-parser
+    public_catalog_selector: skillev-step0-webshop-expanded-public-structured-consensus@1
+    public_catalog_executor: retrieved-skill-owned-native-action-operator
+    evaluator_target_or_reward_in_catalog: false
+    official_environment_java: pinned-java11
+    public_memory: model-updated-memory-thought-action
+    history_window_steps: 4
+    history_maximum_characters: 24000
+    max_steps: 75
+  alfworld:
+    action: native-admissible-command
+    prompt_profile: alfworld-step0-skill-owned-react-memory@1
+    source_prompt_role: public-interface-state-only
+    behavior_source: skill-alfworld-subgoal-machine
+    public_action_projection: retrieved-skill-owned-public-state-machine
+    public_memory: model-updated-memory-thought-action
+    preserve_numeric_location_instances: true
+    task_text_authority: official-reset-public-observation
+    stale_manifest_annotation_authority: false
+    task_target_destination_roles: public-instruction-span-derived
+    public_entity_aliases: true
+    single_object_completion_requires_environment_success: true
+    history_window_steps: 4
+    history_maximum_characters: 24000
+    max_steps: 75
+  mbpp-plus: {terminal: python-source, reasoning_template: qwen-native-thinking, evaluator: evalplus-v0.2.0-base-and-plus}
+  humaneval: {terminal: python-source, reasoning_template: qwen-native-thinking, evaluator: original-humaneval-tests}

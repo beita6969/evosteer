@@ -1,0 +1,8 @@
+format: skillev-rollout-workflow-binding@1
+max_resident_trajectories: 20
+max_inflight_model_requests: 12
+max_inflight_environment_calls: 8
+max_inflight_terminal_evaluations: 6
+max_inflight_process_graders: 3
+transport_worker_threads: 12
+scheduling_policy: stable-fifo-work-conserving

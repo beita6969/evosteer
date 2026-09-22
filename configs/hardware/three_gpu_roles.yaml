@@ -1,0 +1,7 @@
+format: skillev-three-gpu-roles@1
+inference_physical_index: 5
+coordinator_physical_index: 4
+gradient_primary_physical_index: 6
+forbidden_physical_indices: []
+minimum_free_memory_mib: 70000
+training_may_share: false

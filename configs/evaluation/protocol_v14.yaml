@@ -1,0 +1,23 @@
+format: skillev-benchmark-protocol@14
+benchmarks:
+  - hotpotqa
+  - triviaqa
+  - aime-2026
+  - healthbench
+  - webshop
+  - alfworld
+  - mbpp-plus
+  - humaneval
+parity_gate:
+  mode: absolute_percentage_points
+  threshold_exclusive: '7.0'
+final_evaluation:
+  planned_count: 926
+  adapter_policy: forbidden
+execution_gate:
+  executable: true
+  unblock_when:
+    - all corrected source contracts and evaluators pass their non-final canaries
+    - all eight standalone exact-panel targets are frozen before candidate generation
+    - all source, model, environment, scorer, grader, and sandbox revisions are pinned
+    - the final panels have not been used for prompt, parser, or parameter selection

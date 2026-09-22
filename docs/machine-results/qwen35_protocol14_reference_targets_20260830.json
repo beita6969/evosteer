@@ -1,0 +1,400 @@
+{
+  "catalog": [
+    "hotpotqa",
+    "triviaqa",
+    "aime-2026",
+    "healthbench",
+    "webshop",
+    "alfworld",
+    "mbpp-plus",
+    "humaneval"
+  ],
+  "format": "skillev-protocol14-reference-targets@1",
+  "frozen_at": "2026-08-30T09:48:26.158226+00:00",
+  "receipts": {
+    "aime-2026": {
+      "attempt_id": "p14-reference-aime-2026-07d",
+      "benchmark": "aime-2026",
+      "completed_at": "2026-08-30T07:38:03.583832+00:00",
+      "condition_id": "aime2026-source-integer-final-all30@1",
+      "diagnostics": {},
+      "evaluator_version": "aime-official-integer@2",
+      "final_panel_used_for_selection": false,
+      "format": "skillev-protocol14-run-receipt@1",
+      "generation_code_revision": "07d14788e7c0664f15888c5553635a858191bcb3",
+      "metrics": [
+        {
+          "aggregation": "mean-over-planned-records",
+          "denominator": 30,
+          "denominator_id": "planned-panel-30",
+          "formula": "official_aime_integer_exact_match",
+          "metric_id": "accuracy",
+          "numerator": "28.0",
+          "observed_percent": "93.33333333333333333333333333",
+          "projection": "identity-percent",
+          "unit": "percent"
+        }
+      ],
+      "outcomes": {
+        "binary_failure": 2,
+        "binary_success": 28,
+        "definitive_detail": {
+          "model-invalid": 0,
+          "scored-valid": 30
+        },
+        "environment_infrastructure": 0,
+        "generation_infrastructure": 0,
+        "model_output_invalid": 0,
+        "scored_valid": 30,
+        "scorer_infrastructure": 0
+      },
+      "planned_count": 30,
+      "role": "reference",
+      "runtime_contract_matched": true,
+      "scoring_code_revision": "07d14788e7c0664f15888c5553635a858191bcb3",
+      "started_at": "2026-08-30T06:19:53.989165+00:00"
+    },
+    "alfworld": {
+      "attempt_id": "p14-reference-alfworld-001",
+      "benchmark": "alfworld",
+      "completed_at": "2026-08-30T09:18:08.025697+00:00",
+      "condition_id": "alfworld-skillflow-action-only-128@1",
+      "diagnostics": {
+        "invalid_actions": 0,
+        "total_steps": 1515
+      },
+      "evaluator_version": "alfworld-official-success@1",
+      "final_panel_used_for_selection": false,
+      "format": "skillev-protocol14-run-receipt@1",
+      "generation_code_revision": "001666a3c143b02b7dbbabde3be494e0c957fc81",
+      "metrics": [
+        {
+          "aggregation": "success-rate",
+          "denominator": 128,
+          "denominator_id": "planned-panel-128",
+          "formula": "count(native_won) / planned_count * 100",
+          "metric_id": "success_rate",
+          "numerator": "5",
+          "observed_percent": "3.9062500",
+          "projection": "identity-percent",
+          "unit": "percent"
+        }
+      ],
+      "outcomes": {
+        "binary_failure": 123,
+        "binary_success": 5,
+        "definitive_detail": {
+          "model-invalid": 0,
+          "scored-valid": 128
+        },
+        "environment_infrastructure": 0,
+        "generation_infrastructure": 0,
+        "model_output_invalid": 0,
+        "scored_valid": 128,
+        "scorer_infrastructure": 0
+      },
+      "planned_count": 128,
+      "role": "reference",
+      "runtime_contract_matched": true,
+      "scoring_code_revision": "001666a3c143b02b7dbbabde3be494e0c957fc81",
+      "started_at": "2026-08-30T09:13:15.506955+00:00"
+    },
+    "healthbench": {
+      "attempt_id": "p14-reference-healthbench-4fa",
+      "benchmark": "healthbench",
+      "completed_at": "2026-08-30T09:40:03.454678+00:00",
+      "condition_id": "healthbench-qwen-local-random0-128@1",
+      "diagnostics": {
+        "judge_backend": "qwen-sglang",
+        "judge_label": "Qwen-local-judge diagnostic",
+        "official_gpt_comparable": "false",
+        "population_std_percent": "not-applicable-single-seed",
+        "seed_count": 1
+      },
+      "evaluator_version": "healthbench-simple-evals-formula@2",
+      "final_panel_used_for_selection": false,
+      "format": "skillev-protocol14-run-receipt@1",
+      "generation_code_revision": "4fac675f61503a8ed84b55364c4887f1fd196387",
+      "metrics": [
+        {
+          "aggregation": "single-seed-identity",
+          "denominator": 128,
+          "denominator_id": "planned-panel-128",
+          "formula": "simple_evals_mean_then_clip",
+          "metric_id": "overall_score",
+          "numerator": "67.8162682837939456",
+          "observed_percent": "52.9814595967140200",
+          "projection": "clip-mean-to-unit-interval-percent",
+          "unit": "percent"
+        }
+      ],
+      "outcomes": {
+        "binary_failure": null,
+        "binary_success": null,
+        "definitive_detail": {
+          "model-invalid": 0,
+          "scored-valid": 128
+        },
+        "environment_infrastructure": 0,
+        "generation_infrastructure": 0,
+        "model_output_invalid": 0,
+        "scored_valid": 128,
+        "scorer_infrastructure": 0
+      },
+      "planned_count": 128,
+      "role": "reference",
+      "runtime_contract_matched": true,
+      "scoring_code_revision": "4fac675f61503a8ed84b55364c4887f1fd196387",
+      "started_at": "2026-08-30T09:28:30.834594+00:00"
+    },
+    "hotpotqa": {
+      "attempt_id": "p14-reference-hotpotqa-07d",
+      "benchmark": "hotpotqa",
+      "completed_at": "2026-08-30T06:16:03.221825+00:00",
+      "condition_id": "hotpotqa-source-parity-128@1",
+      "diagnostics": {},
+      "evaluator_version": "hotpotqa-official-em-f1@2",
+      "final_panel_used_for_selection": false,
+      "format": "skillev-protocol14-run-receipt@1",
+      "generation_code_revision": "07d14788e7c0664f15888c5553635a858191bcb3",
+      "metrics": [
+        {
+          "aggregation": "mean-over-planned-records",
+          "denominator": 128,
+          "denominator_id": "planned-panel-128",
+          "formula": "official_hotpotqa_exact_match",
+          "metric_id": "em",
+          "numerator": "79.0",
+          "observed_percent": "61.7187500",
+          "projection": "identity-percent",
+          "unit": "percent"
+        },
+        {
+          "aggregation": "mean-over-planned-records",
+          "denominator": 128,
+          "denominator_id": "planned-panel-128",
+          "formula": "official_hotpotqa_token_f1",
+          "metric_id": "f1",
+          "numerator": "100.52045655582807266",
+          "observed_percent": "78.53160668424068176562500",
+          "projection": "identity-percent",
+          "unit": "percent"
+        }
+      ],
+      "outcomes": {
+        "binary_failure": null,
+        "binary_success": null,
+        "definitive_detail": {
+          "model-invalid": 0,
+          "scored-valid": 128
+        },
+        "environment_infrastructure": 0,
+        "generation_infrastructure": 0,
+        "model_output_invalid": 0,
+        "scored_valid": 128,
+        "scorer_infrastructure": 0
+      },
+      "planned_count": 128,
+      "role": "reference",
+      "runtime_contract_matched": true,
+      "scoring_code_revision": "07d14788e7c0664f15888c5553635a858191bcb3",
+      "started_at": "2026-08-30T06:14:00.748843+00:00"
+    },
+    "humaneval": {
+      "attempt_id": "p14-reference-humaneval-07d",
+      "benchmark": "humaneval",
+      "completed_at": "2026-08-30T07:53:15.699497+00:00",
+      "condition_id": "humaneval-source-parity-128@1",
+      "diagnostics": {},
+      "evaluator_version": "humaneval-original-pass1@3",
+      "final_panel_used_for_selection": false,
+      "format": "skillev-protocol14-run-receipt@1",
+      "generation_code_revision": "07d14788e7c0664f15888c5553635a858191bcb3",
+      "metrics": [
+        {
+          "aggregation": "mean-over-planned-records",
+          "denominator": 128,
+          "denominator_id": "planned-panel-128",
+          "formula": "count(official_humaneval_pass) / planned_count * 100",
+          "metric_id": "pass_at_1",
+          "numerator": "118.0",
+          "observed_percent": "92.187500",
+          "projection": "identity-percent",
+          "unit": "percent"
+        }
+      ],
+      "outcomes": {
+        "binary_failure": 10,
+        "binary_success": 118,
+        "definitive_detail": {
+          "model-invalid": 3,
+          "scored-valid": 125
+        },
+        "environment_infrastructure": 0,
+        "generation_infrastructure": 0,
+        "model_output_invalid": 3,
+        "scored_valid": 125,
+        "scorer_infrastructure": 0
+      },
+      "planned_count": 128,
+      "role": "reference",
+      "runtime_contract_matched": true,
+      "scoring_code_revision": "07d14788e7c0664f15888c5553635a858191bcb3",
+      "started_at": "2026-08-30T07:38:07.763040+00:00"
+    },
+    "mbpp-plus": {
+      "attempt_id": "p14-reference-mbpp-plus-07d",
+      "benchmark": "mbpp-plus",
+      "completed_at": "2026-08-30T08:57:59.308544+00:00",
+      "condition_id": "mbpp-plus-evalplus-v020-nonthinking-random0-128@1",
+      "diagnostics": {
+        "source_full_count": 378,
+        "source_full_percent": "64.81481481481481"
+      },
+      "evaluator_version": "evalplus-mbpp-base-plus-v0.2.0@3",
+      "final_panel_used_for_selection": false,
+      "format": "skillev-protocol14-run-receipt@1",
+      "generation_code_revision": "07d14788e7c0664f15888c5553635a858191bcb3",
+      "metrics": [
+        {
+          "aggregation": "mean-over-planned-records",
+          "denominator": 128,
+          "denominator_id": "planned-panel-128",
+          "formula": "count(base_and_plus_pass) / planned_count * 100",
+          "metric_id": "pass_at_1",
+          "numerator": "86",
+          "observed_percent": "67.187500",
+          "projection": "identity-percent",
+          "unit": "percent"
+        }
+      ],
+      "outcomes": {
+        "binary_failure": 42,
+        "binary_success": 86,
+        "definitive_detail": {
+          "model-invalid": 9,
+          "scored-valid": 119
+        },
+        "environment_infrastructure": 0,
+        "generation_infrastructure": 0,
+        "model_output_invalid": 9,
+        "scored_valid": 119,
+        "scorer_infrastructure": 0
+      },
+      "planned_count": 128,
+      "role": "reference",
+      "runtime_contract_matched": true,
+      "scoring_code_revision": "4c9a808847ab475556e77e9151c93c6c936bab7f",
+      "started_at": "2026-08-30T08:11:47.980239+00:00"
+    },
+    "triviaqa": {
+      "attempt_id": "p14-reference-triviaqa-07d",
+      "benchmark": "triviaqa",
+      "completed_at": "2026-08-30T06:19:51.612217+00:00",
+      "condition_id": "triviaqa-source-parity-128@1",
+      "diagnostics": {},
+      "evaluator_version": "triviaqa-official-alias-em-f1@2",
+      "final_panel_used_for_selection": false,
+      "format": "skillev-protocol14-run-receipt@1",
+      "generation_code_revision": "07d14788e7c0664f15888c5553635a858191bcb3",
+      "metrics": [
+        {
+          "aggregation": "mean-over-planned-records",
+          "denominator": 128,
+          "denominator_id": "planned-panel-128",
+          "formula": "official_triviaqa_alias_exact_match",
+          "metric_id": "em",
+          "numerator": "63.0",
+          "observed_percent": "49.2187500",
+          "projection": "identity-percent",
+          "unit": "percent"
+        },
+        {
+          "aggregation": "mean-over-planned-records",
+          "denominator": 128,
+          "denominator_id": "planned-panel-128",
+          "formula": "official_triviaqa_alias_token_f1",
+          "metric_id": "f1",
+          "numerator": "71.72857142857142837",
+          "observed_percent": "56.037946428571428414062500",
+          "projection": "identity-percent",
+          "unit": "percent"
+        }
+      ],
+      "outcomes": {
+        "binary_failure": null,
+        "binary_success": null,
+        "definitive_detail": {
+          "model-invalid": 2,
+          "scored-valid": 126
+        },
+        "environment_infrastructure": 0,
+        "generation_infrastructure": 0,
+        "model_output_invalid": 2,
+        "scored_valid": 126,
+        "scorer_infrastructure": 0
+      },
+      "planned_count": 128,
+      "role": "reference",
+      "runtime_contract_matched": true,
+      "scoring_code_revision": "07d14788e7c0664f15888c5553635a858191bcb3",
+      "started_at": "2026-08-30T06:16:05.673452+00:00"
+    },
+    "webshop": {
+      "attempt_id": "p14-reference-webshop-001",
+      "benchmark": "webshop",
+      "completed_at": "2026-08-30T09:19:07.693200+00:00",
+      "condition_id": "webshop-skillflow-action-only-128@1",
+      "diagnostics": {
+        "invalid_actions": 4,
+        "total_steps": 839
+      },
+      "evaluator_version": "webshop-official-reward@1",
+      "final_panel_used_for_selection": false,
+      "format": "skillev-protocol14-run-receipt@1",
+      "generation_code_revision": "001666a3c143b02b7dbbabde3be494e0c957fc81",
+      "metrics": [
+        {
+          "aggregation": "mean-over-planned-records",
+          "denominator": 128,
+          "denominator_id": "planned-panel-128",
+          "formula": "sum(native_task_score) / planned_count * 100",
+          "metric_id": "average_score",
+          "numerator": "41.00476190476190347",
+          "observed_percent": "32.034970238095237085937500",
+          "projection": "identity-percent",
+          "unit": "percent"
+        },
+        {
+          "aggregation": "success-rate",
+          "denominator": 128,
+          "denominator_id": "planned-panel-128",
+          "formula": "count(native_task_score == 1) / planned_count * 100",
+          "metric_id": "success_rate",
+          "numerator": "16",
+          "observed_percent": "12.500",
+          "projection": "identity-percent",
+          "unit": "percent"
+        }
+      ],
+      "outcomes": {
+        "binary_failure": 112,
+        "binary_success": 16,
+        "definitive_detail": {
+          "model-invalid": 4,
+          "scored-valid": 124
+        },
+        "environment_infrastructure": 0,
+        "generation_infrastructure": 0,
+        "model_output_invalid": 4,
+        "scored_valid": 124,
+        "scorer_infrastructure": 0
+      },
+      "planned_count": 128,
+      "role": "reference",
+      "runtime_contract_matched": true,
+      "scoring_code_revision": "001666a3c143b02b7dbbabde3be494e0c957fc81",
+      "started_at": "2026-08-30T09:13:15.585029+00:00"
+    }
+  }
+}

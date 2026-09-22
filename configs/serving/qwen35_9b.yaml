@@ -1,0 +1,19 @@
+format: skillev-sglang-service@3
+model_path_env: SKILLEV_MODEL_PATH
+tokenizer_path_env: SKILLEV_TOKENIZER_PATH
+served_model_name: skillflow-qwen35
+supervisor_adapter_name: skillflow-qwen35:theta_live
+host: 127.0.0.1
+port: 8005
+context_length: 32768
+tensor_parallel_size: 1
+enable_deterministic_inference: true
+sampling_backend: pytorch
+enable_multimodal: true
+max_lora_rank: 64
+lora_target_modules: [q_proj, k_proj, v_proj, o_proj]
+enable_metrics: true
+
+max_running_requests: 12
+max_loras_per_batch: 2
+disable_radix_cache: true

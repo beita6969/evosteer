@@ -1,0 +1,387 @@
+format: skillev-qwen35-direct-reference@2
+
+model:
+  repo_id: Qwen/Qwen3.5-9B
+  route: base-model-direct
+  served_model_name: qwen35-direct-base
+  adapters: forbidden
+  skill_library: forbidden
+  rollout_engine: forbidden
+
+upstream:
+  repository: https://github.com/beita6969/SkillFlow
+  revision: 74be52bb6bd9f0e9e68dacb72636b75649197983
+  iid_dataset: https://huggingface.co/datasets/JeffersonXiao/SkillFlow-Dataset
+  iid_dataset_revision: 07bb38bcc62fa8bebab6af86c39ba23b0293c97d
+  preparation_seed: 42
+
+parity:
+  metric: absolute-percentage-point-gap
+  max_gap_pp_exclusive: "7.0"
+  require_complete_population: true
+  require_zero_infrastructure_failures: true
+  require_all_declared_metrics: true
+
+profiles:
+  qwen35-thinking-general@1:
+    sampling_mode: sampling
+    enable_thinking: true
+    temperature: 1.0
+    top_p: 0.95
+    top_k: 20
+    min_p: 0.0
+    presence_penalty: 1.5
+    repetition_penalty: 1.0
+    max_new_tokens: 32768
+    seed: 42
+  qwen35-thinking-math@1:
+    sampling_mode: sampling
+    enable_thinking: true
+    temperature: 1.0
+    top_p: 0.95
+    top_k: 20
+    min_p: 0.0
+    presence_penalty: 1.5
+    repetition_penalty: 1.0
+    max_new_tokens: 81920
+    seed: 42
+  qwen35-thinking-code@1:
+    sampling_mode: sampling
+    enable_thinking: true
+    temperature: 0.6
+    top_p: 0.95
+    top_k: 20
+    min_p: 0.0
+    presence_penalty: 0.0
+    repetition_penalty: 1.0
+    max_new_tokens: 32768
+    seed: 42
+  qwen35-repository-agent-supervisor@1:
+    sampling_mode: sampling
+    enable_thinking: false
+    temperature: 0.8
+    top_p: 1.0
+    top_k: 0
+    min_p: 0.0
+    presence_penalty: 0.0
+    repetition_penalty: 1.0
+    max_new_tokens: 512
+    seed: 42
+  qwen35-humaneval-deterministic@1:
+    sampling_mode: greedy
+    enable_thinking: true
+    temperature: 0.0
+    top_p: 1.0
+    top_k: 1
+    min_p: 0.0
+    presence_penalty: 0.0
+    repetition_penalty: 1.0
+    max_new_tokens: 32768
+    seed: 42
+  qwen35-nonthinking-general@1:
+    sampling_mode: sampling
+    enable_thinking: false
+    temperature: 0.7
+    top_p: 0.8
+    top_k: 20
+    min_p: 0.0
+    presence_penalty: 1.5
+    repetition_penalty: 1.0
+    max_new_tokens: 8192
+    seed: 42
+  qwen35-visible-react@1:
+    sampling_mode: sampling
+    enable_thinking: false
+    temperature: 0.7
+    top_p: 0.8
+    top_k: 20
+    min_p: 0.0
+    presence_penalty: 1.5
+    repetition_penalty: 1.0
+    max_new_tokens: 8192
+    seed: 42
+
+benchmarks:
+  - id: hotpotqa
+    role: iid
+    population: skillflow-released-iid-v3
+    dataset_revision: 07bb38bcc62fa8bebab6af86c39ba23b0293c97d
+    selection_rule: released-panel-order
+    dataset_variant: skillflow-hotpotqa-full-context-distractor-validation
+    n: 128
+    comparability: exact-paper
+    evidence: &released_iid_evidence
+      {population: exact, prompt: unknown, decoding: unknown, seed_aggregation: unknown,
+       scorer: exact, environment: not-applicable}
+    prompt: hotpotqa-full-context@1
+    decoding: qwen35-nonthinking-general@1
+    parser: short-answer-final@2
+    scorer: hotpotqa-official-em-f1@1
+    seed_aggregation: &unknown_seed {mode: comparison-semantics-unknown, seeds: [42]}
+    metrics:
+      - {id: em, reference_percent: "60.94", source_scale: unit-interval}
+      - {id: f1, reference_percent: "75.70", source_scale: unit-interval}
+  - id: triviaqa
+    role: iid
+    population: skillflow-released-iid-v3
+    dataset_revision: 07bb38bcc62fa8bebab6af86c39ba23b0293c97d
+    selection_rule: released-panel-order
+    dataset_variant: skillflow-triviaqa-rc-validation-rendered
+    n: 128
+    comparability: exact-paper
+    evidence: *released_iid_evidence
+    prompt: short-answer-with-context@1
+    decoding: qwen35-nonthinking-general@1
+    parser: short-answer-final@2
+    scorer: triviaqa-official-alias-em-f1@1
+    seed_aggregation: *unknown_seed
+    metrics:
+      - {id: em, reference_percent: "44.88", source_scale: unit-interval}
+      - {id: f1, reference_percent: "54.30", source_scale: unit-interval}
+  - id: aime-2026
+    role: iid
+    population: skillflow-released-iid-v3-full
+    dataset_revision: 07bb38bcc62fa8bebab6af86c39ba23b0293c97d
+    selection_rule: released-panel-order
+    dataset_variant: aime-2026-all-30
+    n: 30
+    comparability: exact-paper
+    evidence: *released_iid_evidence
+    prompt: integer-cot@1
+    decoding: qwen35-thinking-math@1
+    parser: aime-integer-final@2
+    scorer: aime-official-integer@1
+    seed_aggregation: *unknown_seed
+    metrics:
+      - {id: accuracy, reference_percent: "46.67", source_scale: unit-interval}
+  - id: medqa
+    role: iid
+    population: skillflow-released-iid-v3
+    dataset_revision: 07bb38bcc62fa8bebab6af86c39ba23b0293c97d
+    selection_rule: released-panel-order
+    dataset_variant: skillflow-medqa-mixed-source-iid-v3
+    n: 128
+    comparability: exact-paper
+    evidence: *released_iid_evidence
+    prompt: multiple-choice-label@1
+    decoding: qwen35-thinking-general@1
+    parser: multiple-choice-label@1
+    scorer: medqa-option@1
+    seed_aggregation: *unknown_seed
+    metrics:
+      - {id: accuracy, reference_percent: "69.53", source_scale: unit-interval}
+  - id: webshop
+    role: iid
+    population: official-valid-seed42-reconstruction
+    dataset_revision: runtime-source-revision-in-private-manifest
+    selection_rule: frozen-private-manifest-order
+    n: 128
+    comparability: approximate-only
+    evidence: &reconstructed_interactive_evidence
+      {population: reconstructed, prompt: unknown, decoding: unknown,
+       seed_aggregation: unknown, scorer: exact, environment: reconstructed}
+    prompt: webshop-native-react-v3@1
+    decoding: qwen35-visible-react@1
+    parser: native-action@2
+    scorer: webshop-official-reward@1
+    environment_contract: webshop-official-text@3
+    invalid_candidate_policy: terminate-zero
+    invalid_environment_action_policy: delegate-to-official-env
+    history_window_steps: 8
+    horizon_policy: manifest-per-case
+    max_steps_cap: 100
+    include_reasoning_in_history: false
+    seed_aggregation: *unknown_seed
+    metrics:
+      - {id: average_score, reference_percent: "56.93", source_scale: unit-interval}
+      - {id: success_rate, reference_percent: "32.03", source_scale: unit-interval}
+  - id: alfworld
+    role: iid
+    population: official-valid-seen-unseen-seed42-reconstruction
+    dataset_revision: runtime-source-revision-in-private-manifest
+    selection_rule: frozen-private-manifest-order
+    n: 128
+    comparability: approximate-only
+    evidence: *reconstructed_interactive_evidence
+    prompt: alfworld-native-react-v3@1
+    decoding: qwen35-visible-react@1
+    parser: native-action@2
+    scorer: alfworld-official-success@1
+    environment_contract: alfworld-official-text@3
+    invalid_candidate_policy: terminate-zero
+    invalid_environment_action_policy: delegate-to-official-env
+    history_window_steps: 16
+    horizon_policy: official-case-max-steps
+    max_steps_cap: 100
+    include_reasoning_in_history: false
+    seed_aggregation: *unknown_seed
+    metrics:
+      - {id: success_rate, reference_percent: "48.28", source_scale: unit-interval}
+  - id: swe-bench
+    role: iid
+    population: skillflow-released-iid-v3-verified
+    dataset_revision: 07bb38bcc62fa8bebab6af86c39ba23b0293c97d
+    selection_rule: released-panel-order
+    dataset_variant: princeton-nlp/SWE-bench_Verified
+    n: 128
+    comparability: exact-paper
+    evidence: *released_iid_evidence
+    prompt: qwen-direct-readonly-repository-agent@1
+    decoding: qwen35-repository-agent-supervisor@1
+    parser: unified-diff@2
+    scorer: swe-official-resolved@1
+    seed_aggregation: *unknown_seed
+    metrics:
+      - {id: resolved, reference_percent: "17.19", source_scale: unit-interval}
+  - id: musique
+    role: ood
+    population: official-validation-seed42-reconstruction
+    dataset_revision: runtime-source-revision-in-private-manifest
+    selection_rule: frozen-private-manifest-order
+    n: 128
+    comparability: approximate-only
+    evidence: &reconstructed_static_evidence
+      {population: reconstructed, prompt: unknown, decoding: unknown,
+       seed_aggregation: unknown, scorer: exact, environment: not-applicable}
+    prompt: short-answer-with-context@1
+    decoding: qwen35-nonthinking-general@1
+    parser: short-answer-final@2
+    scorer: musique-official-em-f1@1
+    seed_aggregation: *unknown_seed
+    metrics:
+      - {id: em, reference_percent: "39.06", source_scale: unit-interval}
+      - {id: f1, reference_percent: "47.79", source_scale: unit-interval}
+  - id: nq-open
+    role: ood
+    population: official-dev-seed42-reconstruction
+    dataset_revision: runtime-source-revision-in-private-manifest
+    selection_rule: frozen-private-manifest-order
+    n: 128
+    comparability: approximate-only
+    evidence: *reconstructed_static_evidence
+    prompt: short-answer-closed-book@1
+    decoding: qwen35-nonthinking-general@1
+    parser: short-answer-final@2
+    scorer: nq-open-official-em-f1@1
+    seed_aggregation: *unknown_seed
+    metrics:
+      - {id: em, reference_percent: "21.88", source_scale: unit-interval}
+      - {id: f1, reference_percent: "30.03", source_scale: unit-interval}
+  - id: math-hard
+    role: ood
+    population: official-test-seed42-reconstruction
+    dataset_revision: runtime-source-revision-in-private-manifest
+    selection_rule: frozen-private-manifest-order
+    n: 128
+    comparability: approximate-only
+    evidence: *reconstructed_static_evidence
+    prompt: boxed-math@1
+    decoding: qwen35-thinking-math@1
+    parser: boxed-math@1
+    scorer: math-hard-official-equivalence@2
+    seed_aggregation: *unknown_seed
+    metrics:
+      - {id: accuracy, reference_percent: "89.06", source_scale: unit-interval}
+  - id: gpqa-diamond
+    role: ood
+    population: official-diamond-seed42-reconstruction
+    dataset_revision: runtime-source-revision-in-private-manifest
+    selection_rule: frozen-private-manifest-order
+    n: 128
+    comparability: approximate-only
+    evidence: *reconstructed_static_evidence
+    prompt: multiple-choice-label@1
+    decoding: qwen35-thinking-general@1
+    parser: multiple-choice-label@1
+    scorer: gpqa-diamond-option@1
+    seed_aggregation: *unknown_seed
+    metrics:
+      - {id: accuracy, reference_percent: "61.72", source_scale: unit-interval}
+  - id: humaneval
+    role: ood
+    population: official-v1-seed42-reconstruction
+    dataset_revision: runtime-source-revision-in-private-manifest
+    selection_rule: frozen-private-manifest-order
+    n: 128
+    comparability: approximate-only
+    evidence: *reconstructed_static_evidence
+    prompt: direct-code@1
+    decoding: qwen35-humaneval-deterministic@1
+    parser: python-source@2
+    scorer: humaneval-official-pass1@1
+    seed_aggregation: *unknown_seed
+    metrics:
+      - {id: pass_at_1, reference_percent: "89.06", source_scale: unit-interval}
+  - id: scienceworld
+    role: ood
+    population: official-test-seed42-reconstruction
+    dataset_revision: runtime-source-revision-in-private-manifest
+    selection_rule: frozen-private-manifest-order
+    n: 128
+    comparability: approximate-only
+    evidence: *reconstructed_interactive_evidence
+    prompt: scienceworld-native-react@2
+    decoding: qwen35-nonthinking-general@1
+    parser: native-action@2
+    scorer: scienceworld-official-reward@1
+    environment_contract: scienceworld-official-text@2
+    invalid_candidate_policy: terminate-zero
+    invalid_environment_action_policy: delegate-to-official-env
+    history_window_steps: 16
+    horizon_policy: official-case-max-steps
+    max_steps_cap: 100
+    include_reasoning_in_history: false
+    seed_aggregation: *unknown_seed
+    metrics:
+      - {id: success_rate, reference_percent: "25.78", source_scale: unit-interval}
+      - {id: average_score, reference_percent: "41.86", source_scale: unit-interval}
+  - id: mind2web
+    role: ood
+    population: official-cross-split-seed42-reconstruction
+    dataset_revision: runtime-source-revision-in-private-manifest
+    selection_rule: frozen-private-manifest-order
+    n: 128
+    comparability: approximate-only
+    evidence: *reconstructed_static_evidence
+    prompt: mind2web-offline-action@2
+    decoding: qwen35-nonthinking-general@1
+    parser: native-action@2
+    scorer: mind2web-official-step@2
+    action_f1_contract: operation-value-string@1
+    seed_aggregation: *unknown_seed
+    metrics:
+      - {id: step_accuracy, reference_percent: "26.64", source_scale: unit-interval}
+      - {id: action_f1, reference_percent: "63.85", source_scale: unit-interval}
+
+formal_run:
+  final_attempts: 1
+  max_samples_per_benchmark: 128
+  retries_after_candidate_failure: 0
+  result_based_sampling: forbidden
+  private_outputs_required: true
+
+aggregates:
+  - id: avg-iid-answer-em
+    reference_percent: "52.91"
+    reducer: arithmetic-mean
+    components: [[hotpotqa, em], [triviaqa, em]]
+  - id: avg-iid-answer-f1
+    reference_percent: "65.00"
+    reducer: arithmetic-mean
+    components: [[hotpotqa, f1], [triviaqa, f1]]
+  - id: avg-iid-acc-pass
+    reference_percent: "45.11"
+    reducer: arithmetic-mean
+    components: [[aime-2026, accuracy], [medqa, accuracy], [webshop, average_score], [webshop, success_rate], [alfworld, success_rate], [swe-bench, resolved]]
+  - id: avg-ood-em
+    reference_percent: "30.47"
+    reducer: arithmetic-mean
+    components: [[musique, em], [nq-open, em]]
+  - id: avg-ood-f1
+    reference_percent: "47.22"
+    reducer: arithmetic-mean
+    components: [[musique, f1], [nq-open, f1], [mind2web, action_f1]]
+  - id: avg-ood-acc-pass
+    reference_percent: "55.69"
+    reducer: arithmetic-mean
+    components: [[math-hard, accuracy], [gpqa-diamond, accuracy], [humaneval, pass_at_1], [scienceworld, success_rate], [scienceworld, average_score], [mind2web, step_accuracy]]

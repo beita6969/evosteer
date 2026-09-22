@@ -1,0 +1,40 @@
+format: skillev-bayesian-formal-training@3
+model: Qwen3.5-9B
+base_dtype: bfloat16
+lora_rank: 4
+lora_alpha: 8
+seed: 0
+steps: 250
+closure_steps: 1
+maximum_cycles: 2
+checkpoint_every: 10
+max_turns: 20
+static_max_turns: 8
+max_reasoning_tokens: 1024
+max_action_tokens: 2048
+max_input_tokens: 65536
+input_window: h0-head-tail-recent-tokens@1
+adapter_learning_rate: 0.0001
+z_learning_rate: 0.0001
+weight_decay: 0.0
+gradient_clipping: false
+extra_kl: 0.0
+ttb_beta: 1.0
+epsilon: 0.1
+prior_alpha: 1.0
+prior_beta: 1.0
+window: 50
+rho: 0.05
+k: 1.0
+reasoning_native_thinking: true
+# Reasoning phase is retained; native thinking is disabled only in these domains.
+thinking_off_domains: [humaneval, hotpotqa, triviaqa, mbpp-plus, alfworld]
+hotpot_deliberation: true
+phi_calls_per_cycle: 64
+performance_profile: configs/training/protocol13_turn_latency.yaml
+# These are planning targets; neither truncates nor drops an active batch.
+planning_hours: 72.0
+target_steps_per_hour: 4.2
+
+# Terminal evaluator only; does not change the Qwen task agent.
+healthbench_judge: healthbench-luna-medium-flowsteer-per-rubric@2

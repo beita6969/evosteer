@@ -1,0 +1,51 @@
+format: skillev-step0-integrity-targets@1
+authority: owner-current-six-iid-directives
+candidate: single-owner-step0-thinking-off
+agent_topology: single-controller
+skill_mode: 'off'
+native_thinking: false
+optimizer_steps: 0
+panel: six-benchmarks-128-and-aime2026-all-30
+development_panel: five-benchmarks-32-and-aime2026-all-30
+generation_seed: 0
+unit: percent
+purpose: development-acceptance-not-a-scoring-rule
+exposure: previously-inspected-development-panel
+benchmarks:
+  hotpotqa:
+    metric: answer-f1
+    operator: greater-than-or-equal
+    threshold: 80.0
+    secondary_metrics:
+    - exact-match
+  triviaqa:
+    metric: answer-f1
+    operator: greater-than
+    threshold: 75.0
+    secondary_metrics:
+    - exact-match
+  aime-2026:
+    metric: accuracy
+    operator: greater-than-or-equal
+    threshold: 80.0
+  healthbench:
+    metric: qwen-local-rubric-score
+    operator: greater-than
+    threshold: 53.17
+    reference: latest-completed-local-qwen-backbone-aggregate
+    official_gpt_judge_comparable: false
+    diagnostic_floor_percent: 45.0
+    reference_comparison: unmatched-historical-snapshot
+  alfworld:
+    metric: success
+    operator: greater-than-or-equal
+    threshold: 80.0
+    secondary_metrics:
+    - seen-success-rate
+    - unseen-success-rate
+  mbpp-plus:
+    display_name: MBPP+
+    metric: base-plus-pass-at-1
+    operator: greater-than-or-equal
+    threshold: 80.0
+    population_note: EvalPlus-v0.2.0-no-separate-official-hard-split

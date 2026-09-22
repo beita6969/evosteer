@@ -1,0 +1,13 @@
+format: skillev-qwen35-protocol14-runner@1
+conditions: configs/evaluation/protocol_v14_conditions.yaml
+actor_route: qwen35-direct-base
+adapter_policy: forbidden
+context_length: 98304
+final_panel_policy:
+  selection_after_scoring: forbidden
+  retries: unresolved-infrastructure-only
+  model_output_invalid: definitive-zero
+reference_policy:
+  freeze_before_candidate: required
+  separate_attempt_ids: required
+  separate_result_directories: required

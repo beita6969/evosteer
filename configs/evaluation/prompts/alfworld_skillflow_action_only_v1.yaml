@@ -1,0 +1,16 @@
+format: skillev-source-interactive-prompt@1
+benchmark: alfworld
+asset_id: alfworld-skillflow-action-only-v1
+reasoning_mode: action-only
+demonstrations: forbidden
+source:
+  repository: https://github.com/beita6969/SkillFlow
+  revision: 74be52bb6bd9f0e9e68dacb72636b75649197983
+  path: training/react_prompts.py
+  symbols: [ALFWORLD_TEMPLATE_NO_HIS, ALFWORLD_TEMPLATE, _ALFWORLD_EXAMPLE]
+history:
+  actions_only: true
+  include_reasoning: false
+  window_steps: 6
+  observation_characters: 360
+strict_output: one exact admissible action

@@ -1,0 +1,28 @@
+# New-condition candidate: unchanged B28, turns, token budgets and TTB math.
+# Pair with native-single-tool-call@2. Do not overwrite an existing run's profile.
+resident_trajectories: 16
+actor_requests: 12
+environment_calls: 8
+terminal_evaluations: 8
+# Four HealthBench workers can wait on HTTP while four code graders use CPU.
+# Keep terminal evaluation bounded, without letting network waits occupy all
+# of the subprocess slots needed by MBPP and environment preparation.
+process_graders: 8
+transport_threads: 16
+coordinator_participates: true
+max_running_requests: 12
+max_loras_per_batch: 2
+pipeline_mode: within-step
+rollout_scheduling_policy: long-horizon-first-stable@1
+provisional_edge_gradients: true
+z_feature_cache_entries: 256
+gradient_buffer_bytes: 2147483648
+disable_radix_cache: false
+deterministic_gradients: true
+request_scheduling_policy: horizon-action-aging@1
+provisional_queue_bytes: 134217728
+provisional_plan_bytes: 1073741824
+provisional_device_bytes: 536870912
+# Keep the already-qualified scorer/storage implementation for this candidate.
+# Pinned offload is a separate numerical/performance qualification, not a silent
+# promotion bundled into a parser or request-admission repair.

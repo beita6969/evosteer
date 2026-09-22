@@ -1,0 +1,28 @@
+{
+  "schema": "step0-integrity-incomplete-attempt@1",
+  "implementation_revision": "b140e33",
+  "started_utc": "2026-09-06T13:04:39Z",
+  "stop_requested_utc": "2026-09-06T13:53:43Z",
+  "confirmed_stopped_utc": "2026-09-06T13:59:06Z",
+  "status": "incomplete-stopped-for-operation-header-and-named-argument-repair",
+  "planned_candidates": 1852,
+  "retained_candidates": 66,
+  "retained_scores": 0,
+  "retained_candidates_by_benchmark": {
+    "webshop": 66,
+    "alfworld": 0,
+    "mbpp-plus": 0,
+    "humaneval": 0,
+    "hotpotqa": 0,
+    "triviaqa": 0,
+    "aime-2026": 0,
+    "healthbench": 0
+  },
+  "unfinished_transport_records": 4,
+  "unfinished_transport_token_usage": "unknown",
+  "successful_response_usage_is_total_compute_cost": false,
+  "quality_scores_available_for_repair": false,
+  "old_candidates_spliced_into_new_run": false,
+  "inference_services_stopped": false,
+  "complete_comparison": false
+}

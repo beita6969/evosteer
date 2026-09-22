@@ -1,0 +1,8 @@
+policy_id: six-iid-aime-health-thinking-on@1
+thinking_by_benchmark:
+  hotpotqa: false
+  triviaqa: false
+  aime-2026: true
+  healthbench: true
+  alfworld: false
+  mbpp-plus: false

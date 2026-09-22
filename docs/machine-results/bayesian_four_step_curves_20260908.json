@@ -1,0 +1,35 @@
+{
+  "condition": "seven-domain-B32-seed0-four-step-correctness",
+  "source_revision": "ed04e85",
+  "new_process_before_step": 3,
+  "steps": [
+    {
+      "step": 1,
+      "ttb_loss": 1.730138633784251,
+      "mean_terminal_reward": 0.27684294871794873
+    },
+    {
+      "step": 2,
+      "ttb_loss": 1.1186550262636477,
+      "mean_terminal_reward": 0.39972527472527475
+    },
+    {
+      "step": 3,
+      "ttb_loss": 1.3598368985570939,
+      "mean_terminal_reward": 0.2247596153846154
+    },
+    {
+      "step": 4,
+      "ttb_loss": 1.1865883693146546,
+      "mean_terminal_reward": 0.16815476190476192
+    }
+  ],
+  "posterior_updates_per_batch": [
+    3,
+    0,
+    5,
+    0
+  ],
+  "library_mutations": 0,
+  "interpretation": "Four different batches; raw mixed-domain means, not convergence or IID improvement."
+}

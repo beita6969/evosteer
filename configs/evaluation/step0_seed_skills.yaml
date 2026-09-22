@@ -1,0 +1,11 @@
+format: skillev-step0-answer-free-seed-library@1
+library_id: step0-exact-eight-answer-free-seeds@1
+exposure_mode: full-inline-no-invoke
+skills:
+  - {skill_id: skill-hotpot-evidence-chain, benchmarks: [hotpotqa]}
+  - {skill_id: skill-trivia-search-synthesis, benchmarks: [triviaqa], required_tools: [search]}
+  - {skill_id: skill-aime-integer-verification, benchmarks: [aime-2026]}
+  - {skill_id: skill-health-comprehensive-response, benchmarks: [healthbench]}
+  - {skill_id: skill-webshop-constraint-ledger, benchmarks: [webshop], required_tools: [click, search]}
+  - {skill_id: skill-alfworld-subgoal-machine, benchmarks: [alfworld], required_tools: [act]}
+  - {skill_id: skill-python-function-completion, benchmarks: [humaneval, mbpp-plus]}

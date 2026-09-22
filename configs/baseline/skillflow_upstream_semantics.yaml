@@ -1,0 +1,30 @@
+format: skillev-skillflow-upstream-semantics@1
+upstream:
+  revision: 74be52bb6bd9f0e9e68dacb72636b75649197983
+  parity_contract: skillflow-upstream-parity@1
+parameterization:
+  theta_lora: {rank: 64, alpha: 128, targets: [q_proj, k_proj, v_proj, o_proj]}
+  phi_lora: {rank: 16, alpha: 32, targets: [q_proj, v_proj]}
+  partition_head: upstream-log-z
+objective:
+  algorithm: trajectory-balance
+  beta: 1.0
+  epsilon_min: 0.1
+  kl_coefficient: 0.01
+  edge_normalization: per-token
+  trajectory_normalization: steps
+  reward: outcome-only
+optimization:
+  gradient_clip_norm: 3.0
+evolution:
+  plateau_window: 10
+  classification: cgf-d-r-u
+  workspace: upstream-skill-workspace
+protocol_v10_allowed_adaptations:
+  - ordered-4608-episode-training-mix
+  - batch-size-16-and-288-optimizer-steps
+  - trusted-protocol-v10-terminal-evaluators
+  - external-sglang-rollout-transport
+  - distributed-gradient-transport
+  - protocol-v10-gpu-role-mapping
+  - durable-checkpoint-adapter-and-step-transactions

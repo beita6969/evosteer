@@ -1,0 +1,17 @@
+format: skillev-bayesian-improve@1
+name: skillflow_bayesian_improve_debug
+baseline_config: configs/baseline/paper_v1_250step.yaml
+method_authority: idea.tex
+mode: hybrid
+maximum_steps: 3
+posterior:
+  family: beta_bernoulli
+  alpha0: 1.0
+  beta0: 1.0
+  flow_weighting: uncapped_mean_normalized
+decision:
+  confidence_multiplier: 1.0
+phase_transition:
+  residual_stagnation_and_skill_entropy_decrease: true
+training:
+  seed: 0

@@ -1,0 +1,516 @@
+{
+  "schema": "step0-a2-separated-development-rounds@1",
+  "population_exposure": "development-exposed",
+  "candidate_authority": "evaluated-Qwen3.5-9B-owner-single-final-no-voting-or-fallback",
+  "generation_seed": 0,
+  "optimizer_steps": 0,
+  "thinking": false,
+  "scores_are_not_pooled_across_rounds": true,
+  "rounds": [
+    {
+      "run_id": "full-a2-native-api-3f37ec0-20260907T021520Z",
+      "implementation_revision": "3f37ec0",
+      "count": 926,
+      "complete": true,
+      "scope": "eight-IID",
+      "presence_penalty": 0.0,
+      "concurrency": 96,
+      "benchmarks": {
+        "hotpotqa": {
+          "count": 128,
+          "metric": "answer-f1",
+          "native_value": 0.7595866706505495,
+          "secondary_native_values": {
+            "answer-exact-match": 0.5859375,
+            "answer-f1": 0.7595866706505495
+          },
+          "status_counts": {
+            "scored": 128,
+            "candidate-failure": 0,
+            "infrastructure-failure": 0
+          },
+          "development_goal": {
+            "operator": "greater-than",
+            "threshold_percent": 75.0,
+            "met": true
+          }
+        },
+        "triviaqa": {
+          "count": 128,
+          "metric": "answer-f1",
+          "native_value": 0.8181787591113197,
+          "secondary_native_values": {
+            "answer-exact-match": 0.78125,
+            "answer-f1": 0.8181787591113197
+          },
+          "status_counts": {
+            "scored": 128,
+            "candidate-failure": 0,
+            "infrastructure-failure": 0
+          },
+          "development_goal": {
+            "operator": "greater-than",
+            "threshold_percent": 75.0,
+            "met": true
+          }
+        },
+        "aime-2026": {
+          "count": 30,
+          "metric": "accuracy",
+          "native_value": 0.7333333333333333,
+          "secondary_native_values": {},
+          "status_counts": {
+            "scored": 30,
+            "candidate-failure": 0,
+            "infrastructure-failure": 0
+          },
+          "development_goal": {
+            "operator": "greater-than-or-equal",
+            "threshold_percent": 80.0,
+            "met": false
+          }
+        },
+        "healthbench": {
+          "count": 128,
+          "metric": "qwen-local-rubric-score",
+          "native_value": 0.4865394644331626,
+          "secondary_native_values": {
+            "triggered-negative-rubric-count": 0.6640625
+          },
+          "status_counts": {
+            "scored": 128,
+            "candidate-failure": 0,
+            "infrastructure-failure": 0
+          },
+          "development_goal": {
+            "operator": "greater-than",
+            "threshold_percent": 53.17,
+            "met": false
+          }
+        },
+        "webshop": {
+          "count": 128,
+          "metric": "native-reward",
+          "native_value": 0.24036458333333333,
+          "secondary_native_values": {
+            "success": 0.1171875
+          },
+          "status_counts": {
+            "scored": 128,
+            "candidate-failure": 0,
+            "infrastructure-failure": 0
+          },
+          "development_goal": {
+            "operator": "greater-than-or-equal",
+            "threshold_percent": 80.0,
+            "met": false
+          }
+        },
+        "alfworld": {
+          "count": 128,
+          "metric": "success",
+          "native_value": 0.3671875,
+          "secondary_native_values": {
+            "success": 0.3671875
+          },
+          "status_counts": {
+            "scored": 128,
+            "candidate-failure": 0,
+            "infrastructure-failure": 0
+          },
+          "splits": {
+            "valid_seen": {
+              "count": 97,
+              "successes": 38,
+              "value": 0.3917525773195876
+            },
+            "valid_unseen": {
+              "count": 31,
+              "successes": 9,
+              "value": 0.2903225806451613
+            }
+          },
+          "development_goal": {
+            "operator": "greater-than-or-equal",
+            "threshold_percent": 80.0,
+            "met": false
+          }
+        },
+        "mbpp-plus": {
+          "count": 128,
+          "metric": "base-plus-pass-at-1",
+          "native_value": 0.7265625,
+          "secondary_native_values": {
+            "base-pass": 0.875,
+            "plus-pass": 0.7265625
+          },
+          "status_counts": {
+            "scored": 128,
+            "candidate-failure": 0,
+            "infrastructure-failure": 0
+          },
+          "development_goal": {
+            "operator": "greater-than",
+            "threshold_percent": 70.0,
+            "met": true
+          }
+        },
+        "humaneval": {
+          "count": 128,
+          "metric": "pass-at-1",
+          "native_value": 0.921875,
+          "secondary_native_values": {},
+          "status_counts": {
+            "scored": 128,
+            "candidate-failure": 0,
+            "infrastructure-failure": 0
+          },
+          "development_goal": {
+            "operator": "greater-than-or-equal",
+            "threshold_percent": 92.1875,
+            "met": true
+          }
+        }
+      },
+      "actor_cost": {
+        "input_tokens": 11459791,
+        "output_tokens": 1146474,
+        "model_calls": 4461,
+        "tool_calls": 2792,
+        "peer_model_calls": 44
+      },
+      "scorer_cost": {
+        "records_with_cost": 926,
+        "records_without_cost": 0,
+        "totals": {
+          "known_input_tokens": 2275646.0,
+          "known_output_tokens": 165272.0,
+          "model_request_attempts": 1500.0,
+          "model_responses": 1500.0,
+          "semantic_repairs": 3.0,
+          "unknown_usage_calls": 0.0,
+          "wall_seconds": 1578.8054294763133
+        }
+      },
+      "completed_utc": "2026-09-07T03:32:27.969758+00:00"
+    },
+    {
+      "run_id": "focused-a2-interactive-transport-9a6c4c1-20260907T024940Z",
+      "implementation_revision": "9a6c4c1",
+      "count": 256,
+      "complete": true,
+      "scope": "WebShop-and-ALFWorld-focused-128-each",
+      "presence_penalty": 0.0,
+      "concurrency": 64,
+      "benchmarks": {
+        "webshop": {
+          "count": 128,
+          "metric": "native-reward",
+          "native_value": 0.2596354166666667,
+          "secondary_native_values": {
+            "success": 0.1171875
+          },
+          "status_counts": {
+            "scored": 128,
+            "candidate-failure": 0,
+            "infrastructure-failure": 0
+          },
+          "development_goal": {
+            "operator": "greater-than-or-equal",
+            "threshold_percent": 80.0,
+            "met": false
+          }
+        },
+        "alfworld": {
+          "count": 128,
+          "metric": "success",
+          "native_value": 0.390625,
+          "secondary_native_values": {
+            "success": 0.390625
+          },
+          "status_counts": {
+            "scored": 128,
+            "candidate-failure": 0,
+            "infrastructure-failure": 0
+          },
+          "splits": {
+            "valid_seen": {
+              "count": 97,
+              "successes": 39,
+              "value": 0.4020618556701031
+            },
+            "valid_unseen": {
+              "count": 31,
+              "successes": 11,
+              "value": 0.3548387096774194
+            }
+          },
+          "development_goal": {
+            "operator": "greater-than-or-equal",
+            "threshold_percent": 80.0,
+            "met": false
+          }
+        }
+      },
+      "actor_cost": {
+        "input_tokens": 9603249,
+        "output_tokens": 336322,
+        "model_calls": 3687,
+        "tool_calls": 2878,
+        "peer_model_calls": 6
+      },
+      "scorer_cost": {
+        "records_with_cost": 256,
+        "records_without_cost": 0,
+        "totals": {
+          "wall_seconds": 2.469460812397301
+        }
+      },
+      "completed_utc": "2026-09-07T03:13:05.576579+00:00"
+    },
+    {
+      "run_id": "full-a2-instruct-sampling-9a6c4c1-20260907T025817Z",
+      "implementation_revision": "9a6c4c1",
+      "count": 926,
+      "complete": true,
+      "scope": "eight-IID",
+      "presence_penalty": 1.5,
+      "concurrency": 64,
+      "benchmarks": {
+        "hotpotqa": {
+          "count": 128,
+          "metric": "answer-f1",
+          "native_value": 0.7186267547489001,
+          "secondary_native_values": {
+            "answer-exact-match": 0.5390625,
+            "answer-f1": 0.7186267547489001
+          },
+          "status_counts": {
+            "scored": 128,
+            "candidate-failure": 0,
+            "infrastructure-failure": 0
+          },
+          "development_goal": {
+            "operator": "greater-than",
+            "threshold_percent": 75.0,
+            "met": false
+          }
+        },
+        "triviaqa": {
+          "count": 128,
+          "metric": "answer-f1",
+          "native_value": 0.8059917193552063,
+          "secondary_native_values": {
+            "answer-exact-match": 0.765625,
+            "answer-f1": 0.8059917193552063
+          },
+          "status_counts": {
+            "scored": 128,
+            "candidate-failure": 0,
+            "infrastructure-failure": 0
+          },
+          "development_goal": {
+            "operator": "greater-than",
+            "threshold_percent": 75.0,
+            "met": true
+          }
+        },
+        "aime-2026": {
+          "count": 30,
+          "metric": "accuracy",
+          "native_value": 0.7,
+          "secondary_native_values": {},
+          "status_counts": {
+            "scored": 30,
+            "candidate-failure": 0,
+            "infrastructure-failure": 0
+          },
+          "development_goal": {
+            "operator": "greater-than-or-equal",
+            "threshold_percent": 80.0,
+            "met": false
+          }
+        },
+        "healthbench": {
+          "count": 128,
+          "metric": "qwen-local-rubric-score",
+          "native_value": 0.44932331604012,
+          "secondary_native_values": {
+            "triggered-negative-rubric-count": 0.59375
+          },
+          "status_counts": {
+            "scored": 128,
+            "candidate-failure": 0,
+            "infrastructure-failure": 0
+          },
+          "development_goal": {
+            "operator": "greater-than",
+            "threshold_percent": 53.17,
+            "met": false
+          }
+        },
+        "webshop": {
+          "count": 128,
+          "metric": "native-reward",
+          "native_value": 0.27236793154761907,
+          "secondary_native_values": {
+            "success": 0.109375
+          },
+          "status_counts": {
+            "scored": 128,
+            "candidate-failure": 0,
+            "infrastructure-failure": 0
+          },
+          "development_goal": {
+            "operator": "greater-than-or-equal",
+            "threshold_percent": 80.0,
+            "met": false
+          }
+        },
+        "alfworld": {
+          "count": 128,
+          "metric": "success",
+          "native_value": 0.3984375,
+          "secondary_native_values": {
+            "success": 0.3984375
+          },
+          "status_counts": {
+            "scored": 128,
+            "candidate-failure": 0,
+            "infrastructure-failure": 0
+          },
+          "splits": {
+            "valid_seen": {
+              "count": 97,
+              "successes": 38,
+              "value": 0.3917525773195876
+            },
+            "valid_unseen": {
+              "count": 31,
+              "successes": 13,
+              "value": 0.41935483870967744
+            }
+          },
+          "development_goal": {
+            "operator": "greater-than-or-equal",
+            "threshold_percent": 80.0,
+            "met": false
+          }
+        },
+        "mbpp-plus": {
+          "count": 128,
+          "metric": "base-plus-pass-at-1",
+          "native_value": 0.671875,
+          "secondary_native_values": {
+            "base-pass": 0.8203125,
+            "plus-pass": 0.671875
+          },
+          "status_counts": {
+            "scored": 128,
+            "candidate-failure": 0,
+            "infrastructure-failure": 0
+          },
+          "development_goal": {
+            "operator": "greater-than",
+            "threshold_percent": 70.0,
+            "met": false
+          }
+        },
+        "humaneval": {
+          "count": 128,
+          "metric": "pass-at-1",
+          "native_value": 0.9140625,
+          "secondary_native_values": {},
+          "status_counts": {
+            "scored": 128,
+            "candidate-failure": 0,
+            "infrastructure-failure": 0
+          },
+          "development_goal": {
+            "operator": "greater-than-or-equal",
+            "threshold_percent": 92.1875,
+            "met": false
+          }
+        }
+      },
+      "actor_cost": {
+        "input_tokens": 9686047,
+        "output_tokens": 784342,
+        "model_calls": 4398,
+        "tool_calls": 2818,
+        "peer_model_calls": 47
+      },
+      "scorer_cost": {
+        "records_with_cost": 926,
+        "records_without_cost": 0,
+        "totals": {
+          "known_input_tokens": 2216235.0,
+          "known_output_tokens": 159997.0,
+          "model_request_attempts": 1499.0,
+          "model_responses": 1499.0,
+          "semantic_repairs": 2.0,
+          "unknown_usage_calls": 0.0,
+          "wall_seconds": 1536.6947553725913
+        }
+      },
+      "completed_utc": "2026-09-07T03:20:54.393760+00:00"
+    },
+    {
+      "run_id": "focused-a2-alfworld-reset-7fda9d4-20260907T023943Z",
+      "implementation_revision": "7fda9d4",
+      "count": 128,
+      "complete": true,
+      "scope": "ALFWorld-focused-128",
+      "presence_penalty": 0.0,
+      "concurrency": 64,
+      "benchmarks": {
+        "alfworld": {
+          "count": 128,
+          "metric": "success",
+          "native_value": 0.4140625,
+          "secondary_native_values": {
+            "success": 0.4140625
+          },
+          "status_counts": {
+            "scored": 128,
+            "candidate-failure": 0,
+            "infrastructure-failure": 0
+          },
+          "splits": {
+            "valid_seen": {
+              "count": 97,
+              "successes": 40,
+              "value": 0.41237113402061853
+            },
+            "valid_unseen": {
+              "count": 31,
+              "successes": 13,
+              "value": 0.41935483870967744
+            }
+          },
+          "development_goal": {
+            "operator": "greater-than-or-equal",
+            "threshold_percent": 80.0,
+            "met": false
+          }
+        }
+      },
+      "actor_cost": {
+        "input_tokens": 5598600,
+        "output_tokens": 224155,
+        "model_calls": 2395,
+        "tool_calls": 1895,
+        "peer_model_calls": 1
+      },
+      "scorer_cost": {
+        "records_with_cost": 128,
+        "records_without_cost": 0,
+        "totals": {
+          "wall_seconds": 0.798091484233737
+        }
+      },
+      "completed_utc": "2026-09-07T03:33:40.236091+00:00"
+    }
+  ],
+  "note": "Completed rounds predate the HealthBench deadline and failed-cost-accounting patch. These are separate development experiments, not a pooled best-of table or a claim that the accepted HumanEval result changed."
+}

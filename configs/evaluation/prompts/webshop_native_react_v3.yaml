@@ -1,0 +1,73 @@
+format: skillev-public-interactive-prompt@1
+benchmark: webshop
+source_split: train
+reasoning_mode: visible-react
+examples:
+  - example_id: train/synthetic-shopping-001
+    task: Find a blue cotton shirt in medium and purchase it.
+    turns:
+      - observation: Search page with a search box.
+        assistant: |
+          Thought: I should search using the public attributes.
+          Action: search[blue cotton shirt]
+      - observation: Product list with a matching shirt link.
+        assistant: |
+          Thought: I need to inspect the matching product and choose its public options.
+          Action: click[matching blue cotton shirt]
+      - observation: Product page with color and size options plus a Buy Now button.
+        assistant: |
+          Thought: I should select every required option before purchasing.
+          Action: click[blue]
+      - observation: Product page with blue selected and medium still available.
+        assistant: |
+          Thought: I still need the requested size.
+          Action: click[medium]
+      - observation: Product page with blue and medium selected.
+        assistant: |
+          Thought: The public attributes now match, so I can complete the purchase.
+          Action: click[buy now]
+  - example_id: train/synthetic-shopping-002
+    task: Compare two public listings for a quiet black desk fan under $40 and buy a matching item.
+    turns:
+      - observation: Search page with a search box.
+        assistant: |
+          Thought: I should search with the requested attributes and budget.
+          Action: search[quiet black desk fan under $40]
+      - observation: Results page with two plausible fans and a Next button.
+        assistant: |
+          Thought: I should inspect a plausible candidate before purchasing.
+          Action: click[first quiet black desk fan]
+      - observation: Product page showing a price above $40 and a Back button.
+        assistant: |
+          Thought: This violates the budget, so I should return rather than buy it.
+          Action: click[back]
+      - observation: Results page with the second fan and a Next button.
+        assistant: |
+          Thought: I should inspect the other candidate.
+          Action: click[second quiet black desk fan]
+  - example_id: train/synthetic-shopping-003
+    task: Find a stainless travel mug with a lid; do not buy an item that lacks either attribute.
+    turns:
+      - observation: Results page whose visible products are plastic mugs without lids and a Next button.
+        assistant: |
+          Thought: None of the visible products satisfies both attributes, so I must not purchase one.
+          Action: click[next]
+      - observation: Next results page with a stainless travel mug with lid.
+        assistant: |
+          Thought: This listing matches both required public attributes, so I should inspect it.
+          Action: click[stainless travel mug with lid]
+  - example_id: train/synthetic-shopping-004
+    task: Purchase red running shoes in size 9 after confirming both options.
+    turns:
+      - observation: Product page with color choices, size choices, and Buy Now.
+        assistant: |
+          Thought: I need to select the requested color first.
+          Action: click[red]
+      - observation: Product page with red selected and size choices visible.
+        assistant: |
+          Thought: I need to select size 9 before buying.
+          Action: click[9]
+      - observation: Product page with red and size 9 selected.
+        assistant: |
+          Thought: All requested options are confirmed, so I can purchase.
+          Action: click[buy now]

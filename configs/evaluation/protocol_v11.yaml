@@ -1,0 +1,32 @@
+format: skillev-benchmark-protocol@11
+status: implementation-preflight
+method_authority: idea.tex
+evaluation_authority: docs/benchmark-evaluation-guide.md
+seed: 0
+benchmarks:
+  - hotpotqa
+  - triviaqa
+  - aime-2026
+  - healthbench
+  - webshop
+  - alfworld
+  - spreadsheetbench
+  - appworld
+  - mbpp-plus-hard
+  - humaneval
+training:
+  per_domain_episodes: 512
+  global_shuffle_seed: 0
+  batch_size: 16
+  optimizer_steps: 320
+execution_gate:
+  executable: false
+  unblock_when:
+    - catalog-migration-complete
+    - all-ten-training-populations-materialized
+    - all-ten-validation-populations-materialized
+    - final-populations-frozen-and-disjoint
+    - official-evaluators-preflighted
+    - structured-no-skill-baseline-sane
+    - training-dataflow-invariants-pass
+    - short-curve-validation-pass

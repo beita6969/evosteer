@@ -1,0 +1,17 @@
+format: skillev-direct-sglang-service@1
+configured_repo_id: Qwen/Qwen3.5-9B
+model_path_env: SKILLEV_MODEL_PATH
+tokenizer_path_env: SKILLEV_TOKENIZER_PATH
+served_model_name: qwen35-direct-base
+host: 127.0.0.1
+port: 8015
+context_length: 98304
+tensor_parallel_size: 1
+mem_fraction_static: 0.88
+max_running_requests: 8
+reasoning_parser: qwen3
+trust_remote_code: true
+enable_metrics: true
+enable_deterministic_inference: true
+sampling_backend: pytorch
+adapters: forbidden

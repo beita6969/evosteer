@@ -1,0 +1,17 @@
+{
+  "condition": "development-target-search-not-unseen-generalization@1",
+  "gate_ratio": 0.9,
+  "comparison": "strictly-greater",
+  "initial_samples": 32,
+  "confirmation_samples": 64,
+  "selection": "freeze-each-panel-before-generation; retain-all-attempts; no-cross-panel-splicing",
+  "targets": {
+    "musique": 75.0,
+    "nq-open": 49.2,
+    "math-hard": 81.4,
+    "gpqa-diamond-bioorganic": 70.0,
+    "scienceworld": 56.17,
+    "apps-introductory": 89.4
+  },
+  "units": "percent-except-scienceworld-native-points"
+}
