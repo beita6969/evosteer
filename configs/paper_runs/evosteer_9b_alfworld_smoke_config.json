@@ -1,0 +1,150 @@
+{
+  "format": "evosteer-local-training@2",
+  "model": {
+    "model_path": "/workspace/models/Qwen3.5-9B-ms",
+    "reference_id": "Qwen3.5-9B-actor@alfworld-smoke",
+    "device": "cuda:0",
+    "dtype": "bfloat16",
+    "lora_rank": 64,
+    "lora_alpha": 128,
+    "target_modules": [
+      "o_proj",
+      "out_proj",
+      "q_proj",
+      "k_proj",
+      "v_proj",
+      "in_proj_qkv"
+    ],
+    "context_window": 24576,
+    "max_action_tokens": 256,
+    "context_mode": "full"
+  },
+  "application": {
+    "task_families": [
+      "alfworld"
+    ],
+    "roles": [
+      {
+        "role_id": "solver",
+        "instruction": "Solve the public task. Give the final answer in the form the task requests. If you are running long, stop exploring and give your best current answer in the requested form immediately.",
+        "model_maximum": {
+          "input_tokens": 20480,
+          "output_tokens": 8192,
+          "model_calls": 1,
+          "agent_turns": 1,
+          "wall_time_milliseconds": 300000
+        }
+      },
+      {
+        "role_id": "verifier",
+        "instruction": "Check the available draft against the public task and provide useful feedback.",
+        "model_maximum": {
+          "input_tokens": 20480,
+          "output_tokens": 8192,
+          "model_calls": 1,
+          "agent_turns": 1,
+          "wall_time_milliseconds": 300000
+        }
+      },
+      {
+        "role_id": "planner",
+        "instruction": "Write a short step-by-step plan for the public task. Do not solve it.",
+        "model_maximum": {
+          "input_tokens": 20480,
+          "output_tokens": 8192,
+          "model_calls": 1,
+          "agent_turns": 1,
+          "wall_time_milliseconds": 300000
+        }
+      },
+      {
+        "role_id": "researcher",
+        "instruction": "List the facts from the public task and any draft that are needed to answer it, each with where it comes from. Do not give a final answer.",
+        "model_maximum": {
+          "input_tokens": 20480,
+          "output_tokens": 8192,
+          "model_calls": 1,
+          "agent_turns": 1,
+          "wall_time_milliseconds": 300000
+        }
+      },
+      {
+        "role_id": "finalizer",
+        "instruction": "Give the final answer to the public task based on the available draft, in exactly the form the task requests.",
+        "model_maximum": {
+          "input_tokens": 20480,
+          "output_tokens": 8192,
+          "model_calls": 1,
+          "agent_turns": 1,
+          "wall_time_milliseconds": 300000
+        }
+      }
+    ],
+    "optimizer": {
+      "actor_learning_rate": 5e-06,
+      "head_learning_rate": 0.001,
+      "weight_decay": 0.01,
+      "gradient_clip": 1.0,
+      "beta": 2.0,
+      "value_loss_weight": 1.0,
+      "gradient_mode": "dense",
+      "outcome_loss_weight": 1.0,
+      "value_fit_steps": 50,
+      "value_replay_batches": 4,
+      "actor_beta1": 0.95,
+      "head_beta1": 0.9
+    },
+    "max_nodes": null,
+    "max_actions": null,
+    "current_rollouts": 1,
+    "reference_rollouts": 1,
+    "total_token_cap": 196608,
+    "seed": 42,
+    "author_interval": 1,
+    "retirement_interval": 10,
+    "value_refresh_interval": 1,
+    "strict_value_context": false,
+    "episode_budget": null,
+    "structure_source_mode": "reference_with_paired",
+    "max_candidates_per_family": 1,
+    "author_start_batch": 1000,
+    "author_start_families": 1,
+    "author_evidence_pool": 2,
+    "allow_repeated_pair_tasks": true,
+    "validation_interval": 30
+  },
+  "executor_temperature": 0.3,
+  "steps": 2,
+  "batch_size": 2,
+  "author": {
+    "model": {
+      "model_path": "/workspace/models/Qwen3.5-9B-ms",
+      "reference_id": "Qwen3.5-9B-author@paper-v12-20260920",
+      "device": "cuda:0",
+      "dtype": "bfloat16",
+      "lora_rank": 64,
+      "lora_alpha": 128,
+      "target_modules": [
+        "o_proj",
+        "out_proj"
+      ],
+      "context_window": 24576,
+      "max_action_tokens": 256,
+      "context_mode": "full"
+    },
+    "config": {
+      "input_limit": 32000,
+      "max_new_tokens": 4096,
+      "temperature": 0.3,
+      "max_trajectories": 6,
+      "max_history_events": 20,
+      "max_public_text_chars": 2000
+    },
+    "budget": {
+      "input_tokens": 4000000,
+      "output_tokens": 1000000,
+      "model_calls": 400
+    }
+  },
+  "method_mode": "full"
+}

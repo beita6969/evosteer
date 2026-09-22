@@ -329,6 +329,20 @@ def task_factory(*, policy: Any, config: Any) -> tuple[TaskBinding, ...]:
             )
 
         bindings.append(TaskBinding(task, executor_id, session, replay_safe=True))
+    # Optional: mix ALFWorld games into the text-benchmark pool.  The config's
+    # task_families must then list "alfworld" as well.
+    mix = os.environ.get("EVOSTEER_MIX_ALFWORLD_COUNT", "").strip()
+    if mix and int(mix) > 0:
+        from skillev.experiments.curve_alfworld import make_bindings as alfworld_bindings
+
+        bindings.extend(
+            alfworld_bindings(
+                policy=executor_model,
+                config=config,
+                mode=os.environ.get("EVOSTEER_ALFWORLD_SPLIT", "train"),
+                count=int(mix),
+            )
+        )
     return tuple(bindings)
 
 

@@ -1,5 +1,7 @@
 # SKILLEV-new
 
+> **EvoSteer paper runs (v13/v14), released checkpoints and the ALFWorld integration:** see [REPRODUCE.md](REPRODUCE.md).
+
 This repository now includes **EvoSteer**, adapted from the supplied
 `EvoSteer-ICLR2027.pdf`, alongside the original Bayesian SKILLEV and SkillFlow
 baselines. EvoSteer follows the existing `src/skillev` package architecture.

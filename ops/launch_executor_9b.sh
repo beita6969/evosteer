@@ -8,5 +8,5 @@ cd /workspace/evosteer
 export CUDA_VISIBLE_DEVICES=$GPU HF_HUB_OFFLINE=1 SGLANG_ENABLE_JIT_DEEPGEMM=0 SGL_ENABLE_JIT_DEEPGEMM=0
 exec $S -u -m sglang.launch_server --model-path /workspace/models/Qwen3.5-9B-ms \
   --served-model-name qwen9b-exec --host 127.0.0.1 --port $PORT --context-length 32768 \
-  --tp-size 1 --mem-fraction-static 0.70 --max-total-tokens 400000 --max-mamba-cache-size 320 \
+  --tp-size 1 --mem-fraction-static ${MEM_FRACTION:-0.70} --max-total-tokens 400000 --max-mamba-cache-size 320 \
   --max-running-requests 64 --chunked-prefill-size 8192 --random-seed 0

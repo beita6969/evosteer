@@ -49,12 +49,16 @@ def _patch_textworld_python313() -> None:
 
 
 def _load_alfworld_env() -> Any:
-    """Return the repository's official TextWorld wrapper."""
+    """Return the official TextWorld wrapper (``skillev.alfworld_env``).
+
+    A RAGEN ``ragen_adapter`` on the path is still accepted as a fallback so
+    older deployments keep working.
+    """
     _patch_textworld_python313()
     try:
-        from ragen_adapter import ALFWorldEnv, AlfredEnvConfig
+        from skillev.alfworld_env import ALFWorldEnv, AlfredEnvConfig
     except ImportError:
-        from skillev.ragen_adapter import ALFWorldEnv, AlfredEnvConfig  # type: ignore
+        from ragen_adapter import ALFWorldEnv, AlfredEnvConfig  # type: ignore
     return ALFWorldEnv, AlfredEnvConfig
 
 
@@ -78,14 +82,22 @@ def _configured_path() -> str:
     return ""
 
 
+def _max_episode_steps() -> int:
+    return max(1, int(os.environ.get("ALFWORLD_MAX_STEPS", "50")))
+
+
+def _steps_per_node() -> int:
+    return max(1, int(os.environ.get("ALFWORLD_STEPS_PER_NODE", "20")))
+
+
 def _catalog(*, mode: str = "train") -> tuple[tuple[str, ...], str]:
     """Discover official game files without starting an episode."""
     ALFWorldEnv, AlfredEnvConfig = _load_alfworld_env()
-    config = AlfredEnvConfig(config_file=_configured_path())
+    config = AlfredEnvConfig(config_file=_configured_path(), max_episode_steps=_max_episode_steps())
     catalog = ALFWorldEnv(config=config, mode=mode)
     files = tuple(str(item) for item in catalog.game_files)
     if not files:
-        raise RuntimeError("ALFWorld has no game files; set ALFWORLD_DATA and run provision script")
+        raise RuntimeError("ALFWorld has no game files; set ALFWORLD_DATA and run scripts/provision_alfworld.sh")
     return files, str(config.config_file)
 
 
@@ -105,8 +117,9 @@ def training_split_manifest(*, mode: str = "train") -> dict[str, Any]:
 class _ALFWorldEpisode:
     def __init__(self, *, request: SessionRequest, mode: str, max_steps: int, selection_seed: int | None = None) -> None:
         ALFWorldEnv, AlfredEnvConfig = _load_alfworld_env()
-        config = AlfredEnvConfig(config_file=_configured_path())
+        config = AlfredEnvConfig(config_file=_configured_path(), max_episode_steps=max(1, int(max_steps)))
         self.env = ALFWorldEnv(config=config, mode=mode)
+        self.history: list[tuple[str, str]] = []
         self.request = request
         self.max_steps = max(1, int(max_steps))
         self.steps = 0
@@ -121,6 +134,11 @@ class _ALFWorldEpisode:
         # ALFWorldEnv maps a seed to a game-file index.  Bindings pass their
         # catalog index here so each task covers exactly one official game.
         self.last_observation = str(self.env.reset(seed=self.request.seed if selection_seed is None else selection_seed))
+        self.initial_observation = self.last_observation
+        self.history = []
+        self.steps = 0
+        self.done = False
+        self.won = False
         self.admissible = tuple(str(x) for x in getattr(self.env, "_admissible_commands", ()))
         self.game_file = str(getattr(self.env, "current_game_file", ""))
 
@@ -130,15 +148,20 @@ class _ALFWorldEpisode:
         obs, _reward, done, info = self.env.step(action)
         self.steps += 1
         self.last_observation = str(obs)
+        self.history.append((action, self.last_observation))
         self.admissible = tuple(str(x) for x in info.get("available_actions", ()))
         self.won = bool(info.get("won", False))
-        self.done = bool(done) or self.steps >= self.max_steps
+        self.done = bool(done) or self.won or self.steps >= self.max_steps
         return self.last_observation, self.won
 
     def close(self) -> None:
-        close = getattr(self.env, "alfred_env", None)
-        if close is not None and hasattr(close, "close"):
-            close.close()
+        close = getattr(self.env, "close", None)
+        if callable(close):
+            close()
+            return
+        inner = getattr(self.env, "alfred_env", None)
+        if inner is not None and hasattr(inner, "close"):
+            inner.close()
 
     def public_state(self) -> dict[str, Any]:
         return {
@@ -150,13 +173,30 @@ class _ALFWorldEpisode:
         }
 
 
+def _normalise(text: str) -> str:
+    return " ".join(str(text).strip().strip("`'\".").lower().split())
+
+
 def _select_action(text: str, admissible: tuple[str, ...]) -> str:
-    """Extract a single command while never inventing an unavailable command."""
-    for command in admissible:
-        if text.strip() == command or command in text.splitlines():
-            return command
-    candidate = next((line.strip() for line in text.splitlines() if line.strip()), "look")
-    return candidate if candidate in admissible else (admissible[0] if admissible else candidate)
+    """Map model text to one admissible command; never invent an unavailable one.
+
+    Order: an exact line match (last line wins, so "Thought ... \\n go to desk 1"
+    works), then the longest admissible command contained in the text, then
+    ``look`` if it is admissible, else the first admissible command.
+    """
+    if not admissible:
+        return next((line.strip() for line in str(text).splitlines() if line.strip()), "look")
+    by_norm = {_normalise(command): command for command in admissible}
+    lines = [_normalise(line.split(":", 1)[-1] if line.lower().startswith(("action", "command")) else line)
+             for line in str(text).splitlines() if line.strip()]
+    for line in reversed(lines):
+        if line in by_norm:
+            return by_norm[line]
+    flat = _normalise(text)
+    contained = [command for norm, command in by_norm.items() if norm and norm in flat]
+    if contained:
+        return max(contained, key=len)
+    return by_norm.get("look", admissible[0])
 
 
 class ALFWorldTextExecutor:
@@ -177,43 +217,88 @@ class ALFWorldTextExecutor:
     def public_environment_state(self) -> dict[str, Any]:
         return self.episode.public_state()
 
-    async def execute(self, request: NodeExecutionRequest) -> NodeExecutionResult:
-        prompt = json.dumps(
+    def _step_prompt(self, request: NodeExecutionRequest, goal: str) -> str:
+        recent = self.episode.history[-8:]
+        return json.dumps(
             {
                 "role": request.role.instruction,
                 "task": request.task_prompt,
+                "goal_and_room": goal,
+                "team_messages": list(request.messages),
+                "previous_output": request.previous_output,
+                "recent_history": [{"action": a, "observation": o} for a, o in recent],
                 "observation": self.episode.last_observation,
                 "admissible_commands": list(self.episode.admissible),
-                "messages": list(request.messages),
-                "previous_output": request.previous_output,
-                "instruction": "Return exactly one admissible ALFWorld command.",
+                "instruction": "Reply with exactly one command copied from admissible_commands and nothing else.",
             },
             sort_keys=True,
         )
+
+    async def execute(self, request: NodeExecutionRequest) -> NodeExecutionResult:
+        """One agent turn = up to ALFWORLD_STEPS_PER_NODE real environment steps.
+
+        The episode is shared by every node of the team, so a later node (for
+        example a RERUN) continues from the current environment state.
+        """
         started = time.monotonic()
-        output, inputs, outputs = self.policy.frozen_text(
-            prompt,
-            max_new_tokens=request.role.model_maximum.output_tokens,
-            input_limit=request.role.model_maximum.input_tokens,
-            temperature=self.temperature,
-            seed=request.seed,
-        )
-        action = _select_action(str(output), self.episode.admissible)
-        observation, _won = self.episode.step(action)
+        goal = self.episode.initial_observation
+        per_step_output = max(16, min(64, int(request.role.model_maximum.output_tokens)))
+        inputs_total = outputs_total = calls = 0
+        taken: list[str] = []
+        if self.episode.done:
+            # The game already ended (won or step limit).  A node still has to be
+            # a real model call, so it reports the final state instead of acting.
+            output, inputs, outputs = self.policy.frozen_text(
+                json.dumps(
+                    {
+                        "role": request.role.instruction,
+                        "final_observation": self.episode.last_observation,
+                        "instruction": "The episode has ended. Summarise the final observation in one line.",
+                    },
+                    sort_keys=True,
+                ),
+                max_new_tokens=per_step_output,
+                input_limit=request.role.model_maximum.input_tokens,
+                temperature=self.temperature,
+                seed=int(request.seed),
+            )
+            inputs_total, outputs_total, calls = int(inputs), int(outputs), 1
+        for offset in range(_steps_per_node()):
+            if self.episode.done:
+                break
+            output, inputs, outputs = self.policy.frozen_text(
+                self._step_prompt(request, goal),
+                max_new_tokens=per_step_output,
+                input_limit=request.role.model_maximum.input_tokens,
+                temperature=self.temperature,
+                seed=int(request.seed) + offset,
+            )
+            inputs_total += int(inputs)
+            outputs_total += int(outputs)
+            calls += 1
+            action = _select_action(str(output), self.episode.admissible)
+            self.episode.step(action)
+            taken.append(action)
         public = json.dumps(
-            {"action": action, "observation": observation, "admissible_commands": list(self.episode.admissible)},
+            {
+                "actions": taken,
+                "observation": self.episode.last_observation,
+                "episode_done": self.episode.done,
+                "environment_steps_total": self.episode.steps,
+                "admissible_commands": list(self.episode.admissible),
+            },
             sort_keys=True,
         )
         return NodeExecutionResult(
             public,
             BudgetVector(
-                input_tokens=int(inputs),
-                output_tokens=int(outputs),
-                model_calls=1,
+                input_tokens=inputs_total,
+                output_tokens=outputs_total,
+                model_calls=calls,
                 agent_turns=1,
                 wall_time_milliseconds=max(0, int((time.monotonic() - started) * 1000)),
             ),
-            {"environment_step": {"action": action, "done": self.episode.done}},
+            {"environment_step": {"actions": taken, "done": self.episode.done, "steps": self.episode.steps}},
         )
 
 
@@ -237,7 +322,7 @@ def make_bindings(*, policy: Any, config: Any, mode: str = "train", count: int |
         ).hexdigest()[:16]
 
         def session(request: SessionRequest, *, _task=task, _index=index) -> TaskSession:
-            episode = _ALFWorldEpisode(request=request, mode=mode, max_steps=int(os.environ.get("ALFWORLD_MAX_STEPS", "50")), selection_seed=_index)
+            episode = _ALFWorldEpisode(request=request, mode=mode, max_steps=_max_episode_steps(), selection_seed=_index)
             executor = ALFWorldTextExecutor(policy, episode)
 
             def evaluate(_output: str) -> float:
@@ -259,7 +344,11 @@ def make_bindings(*, policy: Any, config: Any, mode: str = "train", count: int |
             )
             return TaskSession(executor, evaluate, close=episode.close, reset_receipt=receipt, risk_assessor=risk)
 
-        bindings.append(TaskBinding(task, executor_id, session, replay_safe=False))
+        # Every session registers a fresh single-game TextWorld env for the same
+        # game file, so two sessions of one task start from identical, isolated
+        # states; the paired candidate/control trials of the full method need
+        # exactly that (verified by tests/experiments/test_curve_alfworld_real.py).
+        bindings.append(TaskBinding(task, executor_id, session, replay_safe=True))
     return tuple(bindings)
 
 
@@ -267,4 +356,29 @@ def alfworld_bindings(*, policy: Any, config: Any) -> tuple[TaskBinding, ...]:
     return make_bindings(policy=policy, config=config)
 
 
-__all__ = ["ALFWORLD_FAMILY", "alfworld_bindings", "make_bindings", "training_split_manifest"]
+def _count_from_env(name: str) -> int | None:
+    raw = os.environ.get(name, "").strip()
+    return int(raw) if raw else None
+
+
+def task_factory(*, policy: Any, config: Any) -> tuple[TaskBinding, ...]:
+    """ALFWorld-only EvoSteer task factory.
+
+    Use with ``--task-factory skillev.experiments.curve_alfworld:task_factory``.
+    Node calls go to the same frozen executor as the text benchmarks (the
+    SGLang server when ``EVOSTEER_EXECUTOR_URL`` is set).  Environment:
+    ``EVOSTEER_ALFWORLD_SPLIT`` (default ``train``), ``EVOSTEER_ALFWORLD_COUNT``
+    (first N games of the sorted split; default all), ``ALFWORLD_MAX_STEPS``
+    (default 50), ``ALFWORLD_STEPS_PER_NODE`` (default 20).
+    """
+    from skillev.experiments.curve_benchmarks import _executor_model
+
+    return make_bindings(
+        policy=_executor_model(policy),
+        config=config,
+        mode=os.environ.get("EVOSTEER_ALFWORLD_SPLIT", "train"),
+        count=_count_from_env("EVOSTEER_ALFWORLD_COUNT"),
+    )
+
+
+__all__ = ["ALFWORLD_FAMILY", "alfworld_bindings", "make_bindings", "task_factory", "training_split_manifest"]
