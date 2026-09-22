@@ -343,7 +343,7 @@ def make_bindings(*, policy: Any, config: Any, mode: str = "train", count: int |
             risk = ExecutionRiskPolicy(
                 executor.frozen_identity,
                 request.task.environment_config_id,
-                scope="interactive_text",
+                scope="isolated",  # each session owns a disposable TextWorld game
                 capability_id="alfworld-textworld@1",
             )
             return TaskSession(executor, evaluate, close=episode.close, reset_receipt=receipt, risk_assessor=risk)

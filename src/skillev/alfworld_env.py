@@ -19,6 +19,7 @@ for the terminal evaluator.
 from __future__ import annotations
 
 import os
+import threading
 from dataclasses import dataclass
 from typing import Any
 
@@ -30,6 +31,10 @@ _SPLITS = {
     "eval_out_of_distribution": "eval_out_of_distribution",
 }
 _WELCOME = "-= Welcome to TextWorld, ALFRED! =-"
+# (config file, split, $ALFWORLD_DATA) -> sorted game files; scanning a split walks
+# ~9k directories, so it is done once per process instead of once per episode.
+_CATALOG: dict[tuple[str, str, str], tuple[str, ...]] = {}
+_CATALOG_LOCK = threading.Lock()
 
 
 @dataclass(frozen=True)
@@ -69,14 +74,17 @@ class ALFWorldEnv:
     def __init__(self, config: AlfredEnvConfig, mode: str = "train") -> None:
         if mode not in _SPLITS:
             raise ValueError(f"unknown ALFWorld split {mode!r}; use one of {sorted(_SPLITS)}")
-        from alfworld.agents.environment.alfred_tw_env import AlfredTWEnv
-
         self.config = config
         self.mode = mode
-        self._raw_config = _read_config(config.config_file)
-        self.alfred_env = AlfredTWEnv(self._raw_config, train_eval=_SPLITS[mode])
-        # Sorted so that task index -> game file is stable across processes.
-        self.game_files = tuple(sorted(str(item) for item in self.alfred_env.game_files))
+        key = (str(config.config_file), mode, os.environ.get("ALFWORLD_DATA", ""))
+        with _CATALOG_LOCK:
+            if key not in _CATALOG:
+                from alfworld.agents.environment.alfred_tw_env import AlfredTWEnv
+
+                alfred = AlfredTWEnv(_read_config(config.config_file), train_eval=_SPLITS[mode])
+                # Sorted so that task index -> game file is stable across processes.
+                _CATALOG[key] = tuple(sorted(str(item) for item in alfred.game_files))
+        self.game_files = _CATALOG[key]
         self.current_game_file = ""
         self._admissible_commands: tuple[str, ...] = ()
         self._env: Any = None
