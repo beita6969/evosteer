@@ -1,0 +1,40 @@
+[build-system]
+requires = ["hatchling==1.27.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "evosteer"
+version = "1.0.0"
+description = "EvoSteer: online self-evolving graph orchestration via reference-anchored credit assignment"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "numpy==2.5.3",
+    "pyyaml==6.0.3",
+]
+
+[project.optional-dependencies]
+policy = [
+    "peft==0.19.1",
+    "safetensors==0.8.0",
+    "tokenizers==0.22.2",
+    "torch==2.13.0",
+    "transformers==5.14.1",
+]
+gpu = [
+    "causal-conv1d==1.6.2.post1",
+    "flash-linear-attention==0.5.2",
+]
+alfworld = [
+    "alfworld",
+    "textworld",
+]
+data = [
+    "pyarrow",
+]
+
+[project.scripts]
+evosteer = "skillev.evosteer_cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/skillev"]

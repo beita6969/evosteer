@@ -1,0 +1,72 @@
+{
+  "builder": {
+    "path": "scripts/evosteer/build_ood_text_test.py",
+    "sha256": "02865fe9dae86d2ed86c4322a0d563d94575e6555b36017b39ce2ae1f6851fa6",
+    "usage": [
+      "python scripts/evosteer/build_ood_text_test.py text <raw_dir> data/evosteer/test/ood",
+      "python scripts/evosteer/build_ood_text_test.py gpqa <gpqa_diamond.csv> data/evosteer/test/ood/gpqa_diamond.ids.json <out.jsonl>"
+    ]
+  },
+  "selection": "per benchmark, the first 128 candidates by ascending sha256('test:<kind>:<source_id>')",
+  "benchmarks": {
+    "triviaqa": {
+      "task_type": "nq_open",
+      "file": "triviaqa.jsonl",
+      "rows": 128,
+      "sha256": "940a7c8bfbe6a20bfaf26a4b22bb4121724bbfd8fa49fcfd6603a64505bc68e7",
+      "raw": {
+        "file": "triviaqa_rc_nocontext_validation.parquet",
+        "sha256": "48a5005c0eb4f8a4ae5b9868644297fd5bf1e694aeb3dc9c8ab958cac0d5b201",
+        "rows": 17944,
+        "source": "https://huggingface.co/datasets/mandarjoshi/trivia_qa/blob/0f7faf33a3908546c6fd5b73a660e0f8ff173c2f/rc.nocontext/validation-00000-of-00001.parquet"
+      },
+      "candidates": "9958 unique question_id (the rc split repeats questions of its web and wikipedia parts; qz_4576 and bb_956 have conflicting duplicates and are excluded)",
+      "answer": "answer = answers = normalized_value followed by the normalized_aliases, deduplicated"
+    },
+    "musique": {
+      "task_type": "hotpotqa",
+      "file": "musique.jsonl",
+      "rows": 128,
+      "sha256": "6633aea3b2e4b0294f64b58d7a009418aec9365b7bbc8ea3d52ce8c26479d451",
+      "raw": {
+        "file": "musique_validation.parquet",
+        "sha256": "2d671592a7674a0920d2a595df2e13acd74c8a80997f763ca81484a273f8adfe",
+        "rows": 2417,
+        "source": "https://huggingface.co/datasets/dgslibisey/MuSiQue/blob/1bd32e8b3f4f29a11f8240a9f666ef52e159c24e/default/validation/0000.parquet",
+        "upstream": "musique_ans_v1.0_dev.jsonl, https://huggingface.co/datasets/dgslibisey/MuSiQue/tree/c8f4f8c9465fb69d31a8eae894c3fd509c4ca321 (MuSiQue-Ans v1.0 dev)"
+      },
+      "candidates": "2417 (all answerable)",
+      "answer": "answer = gold answer string; answers = gold answer followed by answer_aliases"
+    },
+    "gpqa_diamond": {
+      "task_type": "medqa",
+      "file": "gpqa_diamond.ids.json",
+      "rows": 128,
+      "sha256": "21908959daf23a3f92d7f74ebc57aac427ebbe7937558be9a870db2aa670d901",
+      "raw": {
+        "file": "gpqa_diamond.csv",
+        "sha256": "41d1213cd7a4998605a26c2798500652572007161b3a92817ba46b35befcd305",
+        "git_blob_sha1": "7589e3e467d69a1dceb126a60c4108d6d4f1d166",
+        "rows": 198,
+        "source": "https://huggingface.co/datasets/Idavidrein/gpqa/blob/83022cefff930aea54f654c0b282e74b9eeda5c6/gpqa_diamond.csv (gated; accept the terms and download it yourself)"
+      },
+      "materialized_sha256": "9069aa45a5b8e6e074fa229a09fd9e8a77f34d3dabc97a50243e63c17f51a12d",
+      "answer": "answer = letter of the correct option after the per-record option permutation"
+    },
+    "math_hard": {
+      "task_type": "aime_2026",
+      "file": "math_hard.jsonl",
+      "rows": 128,
+      "sha256": "e71a37da820f9071d0fd74ff6f082a2268e597680760275a580ff696f85ee3e5",
+      "raw": {
+        "file": "math_hard_test.parquet",
+        "sha256": "90ba4ce7f108cd511c8eb716ea7ca906d5dc1621f5e804565765a368ca02ab01",
+        "rows": 1324,
+        "source": "https://huggingface.co/datasets/lighteval/MATH-Hard/blob/69bc17a93d6754e3c3a22084a58f6ad2c24f1f07/default/test/0000.parquet",
+        "upstream": "test/<subject>.jsonl of https://huggingface.co/datasets/lighteval/MATH-Hard/tree/cf0716b8bafa192bcb6b455b0679538787dc43f0 (MATH test, Level 5), concatenated in alphabetical subject order"
+      },
+      "candidates": "1324 (all Level 5); source_id = <subject>_<index within the subject file>",
+      "answer": "answer = content of the last \\boxed{} of the reference solution"
+    }
+  }
+}
